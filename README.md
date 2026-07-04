@@ -18,18 +18,18 @@ Implemented:
 - Worker-side Clerk session verification path
 - Dodo checkout route and webhook entitlement ingestion path
 - automatic pending-entitlement claiming on authenticated session load
-- frontend shell with:
-  - home
-  - pricing
-  - explore
-  - shared term preview
-  - term detail
-- pricing now previews the launch curriculum contract from the published JSON layer so the membership pitch stays tied to the actual structure blueprint
-- saved terms
-- notes
-- account boundary
+- frontend shell with all routes (home, pricing, explore, paths, terms, saved, notes, account)
 - study workspace with bookmark, note, annotation, share, and export flows
 - Worker app with static asset serving and billing/study API endpoints
+
+### Editorial Pipeline (2026-07-04)
+
+- **Taxonomy registry** (`data/taxonomy-registry.json`): canonical editorial taxonomy source with 17,717 entries
+- **Batch classification pipeline**: consolidated classifier (`tools/classify_unclassified.py`) with three graduated strategies — explicit mapping, pattern-list matching, and suffix/prefix regex
+- **Coverage**: 99.80% taxonomy coverage (18,075 terms), up from 53.54% baseline
+- **194 learning paths** (was 57 at baseline)
+- **0 high-severity quality issues**
+- **109 emerging terms added** (2024-2026 concepts)
 
 ## Commands
 
@@ -93,7 +93,12 @@ The `tools/build_published_content.py` script accepts the following flags:
 - `Docs/architecture/TECHNICAL_ARCHITECTURE_2026-06-29.md`
 - `Docs/data/CANONICAL_TERM_SCHEMA.md`
 - `Docs/data/AUTO_CLASSIFICATION_STRATEGY.md` — full taxonomy auto-classification pipeline: rule evolution, scoring formula, per-batch details, quality audits, hard-200 corrections, and Batch 7 candidate analysis
+- `Docs/data/TAXONOMY_REGISTRY.md` — editorial taxonomy registry: batch classification, coverage tracking, and merge operations
+- `data/taxonomy-registry.json` — canonical editorial taxonomy source (17,717 entries)
+- `tools/propose_taxonomy_registry.py` — token-similarity + heuristic classification proposal engine
+- `tools/classify_unclassified.py` — consolidated batch classifier (replaces legacy v1-v4 scripts)
 - `Docs/data/LAUNCH_IMPORT_BOUNDARY.md`
+- `Docs/data/CONTENT_INGESTION_WORKFLOW.md`
 - `Docs/data/CONTENT_INGESTION_WORKFLOW.md`
 - `Docs/deployment/CLOUDFLARE_RUNTIME_SETUP_2026-06-29.md`
 - `infra/d1/schema.sql`

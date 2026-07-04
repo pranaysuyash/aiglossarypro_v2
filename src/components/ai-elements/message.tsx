@@ -14,14 +14,15 @@ import {
 import { cn } from "@/lib/utils";
 import { cjk } from "@streamdown/cjk";
 import { ChevronLeftIcon, ChevronRightIcon } from "lucide-react";
-import type { ComponentProps, HTMLAttributes, ReactElement } from "react";
+import type { ComponentProps, HTMLAttributes, ReactNode } from "react";
 import {
+  Children,
   createContext,
+  isValidElement,
   memo,
   useCallback,
-  useContext,
-  useEffect,
   useMemo,
+  use,
   useState,
 } from "react";
 import { Streamdown } from "streamdown";
@@ -116,8 +117,6 @@ interface MessageBranchContextType {
   totalBranches: number;
   goToPrevious: () => void;
   goToNext: () => void;
-  branches: ReactElement[];
-  setBranches: (branches: ReactElement[]) => void;
 }
 
 const MessageBranchContext = createContext<MessageBranchContextType | null>(
@@ -125,7 +124,7 @@ const MessageBranchContext = createContext<MessageBranchContextType | null>(
 );
 
 const useMessageBranch = () => {
-  const context = useContext(MessageBranchContext);
+  const context = use(MessageBranchContext);
 
   if (!context) {
     throw new Error(
@@ -145,10 +144,11 @@ export const MessageBranch = ({
   defaultBranch = 0,
   onBranchChange,
   className,
+  children,
   ...props
 }: MessageBranchProps) => {
   const [currentBranch, setCurrentBranch] = useState(defaultBranch);
-  const [branches, setBranches] = useState<ReactElement[]>([]);
+  const totalBranches = getMessageBranchCount(children);
 
   const handleBranchChange = useCallback(
     (newBranch: number) => {
@@ -159,27 +159,31 @@ export const MessageBranch = ({
   );
 
   const goToPrevious = useCallback(() => {
+    if (totalBranches <= 0) {
+      return;
+    }
     const newBranch =
-      currentBranch > 0 ? currentBranch - 1 : branches.length - 1;
+      currentBranch > 0 ? currentBranch - 1 : totalBranches - 1;
     handleBranchChange(newBranch);
-  }, [currentBranch, branches.length, handleBranchChange]);
+  }, [currentBranch, handleBranchChange, totalBranches]);
 
   const goToNext = useCallback(() => {
+    if (totalBranches <= 0) {
+      return;
+    }
     const newBranch =
-      currentBranch < branches.length - 1 ? currentBranch + 1 : 0;
+      currentBranch < totalBranches - 1 ? currentBranch + 1 : 0;
     handleBranchChange(newBranch);
-  }, [currentBranch, branches.length, handleBranchChange]);
+  }, [currentBranch, handleBranchChange, totalBranches]);
 
   const contextValue = useMemo<MessageBranchContextType>(
     () => ({
-      branches,
       currentBranch,
       goToNext,
       goToPrevious,
-      setBranches,
-      totalBranches: branches.length,
+      totalBranches,
     }),
-    [branches, currentBranch, goToNext, goToPrevious]
+    [currentBranch, goToNext, goToPrevious, totalBranches]
   );
 
   return (
@@ -187,7 +191,9 @@ export const MessageBranch = ({
       <div
         className={cn("grid w-full gap-2 [&>div]:pb-0", className)}
         {...props}
-      />
+      >
+        {children}
+      </div>
     </MessageBranchContext.Provider>
   );
 };
@@ -198,18 +204,11 @@ export const MessageBranchContent = ({
   children,
   ...props
 }: MessageBranchContentProps) => {
-  const { currentBranch, setBranches, branches } = useMessageBranch();
+  const { currentBranch } = useMessageBranch();
   const childrenArray = useMemo(
-    () => (Array.isArray(children) ? children : [children]),
+    () => Children.toArray(children),
     [children]
   );
-
-  // Use useEffect to update branches when they change
-  useEffect(() => {
-    if (branches.length !== childrenArray.length) {
-      setBranches(childrenArray);
-    }
-  }, [childrenArray, branches, setBranches]);
 
   return childrenArray.map((branch, index) => (
     <div
@@ -217,13 +216,27 @@ export const MessageBranchContent = ({
         "grid gap-2 overflow-hidden [&>div]:pb-0",
         index === currentBranch ? "block" : "hidden"
       )}
-      key={branch.key}
       {...props}
+      key={isValidElement(branch) ? (branch.key ?? index) : index}
     >
       {branch}
     </div>
   ));
 };
+
+function getMessageBranchCount(children: ReactNode) {
+  let branchCount = 0;
+
+  Children.forEach(children, (child) => {
+    if (!isValidElement<MessageBranchContentProps>(child) || child.type !== MessageBranchContent) {
+      return;
+    }
+
+    branchCount = Children.count(child.props.children);
+  });
+
+  return branchCount;
+}
 
 export type MessageBranchSelectorProps = ComponentProps<typeof ButtonGroup>;
 

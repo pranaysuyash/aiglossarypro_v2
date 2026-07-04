@@ -2,6 +2,7 @@ import { Link, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import type { LearningPathRecord } from "../types";
 import { useCatalog } from "../content/CatalogContext";
+import { getTermBlocks } from "../content/termBlocks";
 import { saveLastOpenedPathSlug } from "../study/storage";
 
 export function PathDetailPage() {
@@ -59,7 +60,7 @@ export function PathDetailPage() {
   const featuredFeaturedTerms = featuredTerms.filter((term) => term.metadata.editorialTier === "featured");
   const pathContentCounts = featuredTerms.reduce(
     (accumulator, term) => {
-      for (const block of term.blocks) {
+      for (const block of getTermBlocks(term)) {
         if (block.type === "quiz") {
           accumulator.quizzes += 1;
         } else if (block.type === "diagram") {
@@ -121,7 +122,7 @@ export function PathDetailPage() {
   if (isCatalogLoading || isLoading) {
     return (
       <section className="page-grid">
-        <h2>Loading path</h2>
+        <h2>Loading path…</h2>
         <p>Preparing the published learning trail.</p>
       </section>
     );
@@ -146,7 +147,7 @@ export function PathDetailPage() {
           <p className="eyebrow">
             {path.category} / {path.subCategory}
           </p>
-          <h2>{path.title}</h2>
+          <h1>{path.title}</h1>
           <p className="term-hero-intro">
             A guided trail through the concepts that belong together. Use it when you want a
             learning sequence instead of a search result list.
@@ -204,7 +205,7 @@ export function PathDetailPage() {
                     <h3>{term.title}</h3>
                     <p>{term.summary}</p>
                     <Link className="text-link" to={`/term/${term.slug}`}>
-                      Open deep dive
+                      Open {term.title}
                     </Link>
                   </article>
                 ))}

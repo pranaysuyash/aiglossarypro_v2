@@ -188,7 +188,7 @@ export function PricingPage() {
       ) : null}
       {isLoading ? (
         <article className="summary-card">
-          <h3>Loading plans</h3>
+          <h3>Loading plans…</h3>
           <p>Reading the live commercial plan configuration from the Worker.</p>
         </article>
       ) : error && source === "unavailable" ? (
@@ -225,7 +225,7 @@ export function PricingPage() {
                     onClick={() => startCheckout(plan.key, billingMode)}
                     type="button"
                   >
-                    {isSubmitting ? "Preparing checkout" : `Choose ${billingMode}`}
+                    {isSubmitting ? "Preparing checkout…" : `Choose ${billingMode}`}
                   </button>
                 ))}
               </div>

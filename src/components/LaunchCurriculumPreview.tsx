@@ -30,7 +30,7 @@ export function LaunchCurriculumPreview() {
           editorial blueprint are part of the current runtime and which ones stay in expansion mode.
         </p>
         <div className="note-snippet-list">
-          <span>{manifest ? `${manifest.launchSectionCount} launch sections` : "Loading launch sections"}</span>
+          <span>{manifest ? `${manifest.launchSectionCount} launch sections` : "Loading launch sections…"}</span>
           <span>{manifest ? `${manifest.structureLayerCounts["launch-runtime"]} runtime fields` : "JSON-backed"}</span>
           <span>{manifest ? `${manifest.structureLayerCounts.backlog} backlog fields` : "Structure-aware"}</span>
         </div>

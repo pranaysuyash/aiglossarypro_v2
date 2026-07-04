@@ -1,0 +1,1124 @@
+{
+  "computer-vision-core-models": {
+    "steps": [
+      {
+        "slug": "cascade-rcnn",
+        "title": "Cascade RCNN",
+        "stage": "start",
+        "why": "Establish the core vocabulary for Core Models. Start here to anchor your understanding of this area."
+      },
+      {
+        "slug": "grid-rcnn",
+        "title": "Grid RCNN",
+        "stage": "start",
+        "why": "Establish the core vocabulary for Core Models. Start here to anchor your understanding of this area."
+      },
+      {
+        "slug": "grid-rcnn-v2",
+        "title": "Grid RCNN-V2",
+        "stage": "build",
+        "why": "Builds on earlier terms to connect patterns and variants in Core Models. The concept graph makes it a useful bridge to specialized methods."
+      },
+      {
+        "slug": "libra-rcnn",
+        "title": "Libra RCNN",
+        "stage": "build",
+        "why": "Builds on earlier terms to connect patterns and variants in Core Models. The concept graph makes it a useful bridge to specialized methods."
+      },
+      {
+        "slug": "libra-rcnn-x101",
+        "title": "Libra RCNN-X101",
+        "stage": "build",
+        "why": "Builds on earlier terms to connect patterns and variants in Core Models. The concept graph makes it a useful bridge to specialized methods."
+      },
+      {
+        "slug": "mask-rcnn",
+        "title": "Mask RCNN",
+        "stage": "advance",
+        "why": "A specialized concept in Core Models. Treat this as an advanced extension once the earlier terms are solid."
+      },
+      {
+        "slug": "pv-rcnn",
+        "title": "PV-RCNN",
+        "stage": "advance",
+        "why": "A specialized concept in Core Models. Treat this as an advanced extension once the earlier terms are solid."
+      },
+      {
+        "slug": "pv-rcnn-2",
+        "title": "PV-RCNN++",
+        "stage": "advance",
+        "why": "A specialized concept in Core Models. Treat this as an advanced extension once the earlier terms are solid."
+      }
+    ],
+    "category": "Computer Vision",
+    "subCategory": "Core Models"
+  },
+  "computer-vision-image-processing": {
+    "steps": [
+      {
+        "slug": "image-segmentation",
+        "title": "Image Segmentation",
+        "stage": "start",
+        "why": "A foundational concept in Image Processing — start here to build vocabulary and core intuition before moving to techniques and extensions."
+      },
+      {
+        "slug": "instance-segmentation",
+        "title": "Instance Segmentation",
+        "stage": "start",
+        "why": "A foundational concept in Image Processing — start here to build vocabulary and core intuition before moving to techniques and extensions."
+      },
+      {
+        "slug": "affine-transformation",
+        "title": "Affine Transformation",
+        "stage": "build",
+        "why": "Builds on earlier terms to connect patterns and variants in Image Processing. The concept graph makes it a useful bridge to specialized methods."
+      },
+      {
+        "slug": "ai-in-augmented-reality-rendering",
+        "title": "AI in Augmented Reality Rendering",
+        "stage": "build",
+        "why": "Builds on earlier terms to connect patterns and variants in Image Processing. The concept graph makes it a useful bridge to specialized methods."
+      },
+      {
+        "slug": "ai-in-panoptic-segmentation",
+        "title": "AI in Panoptic Segmentation",
+        "stage": "build",
+        "why": "Builds on earlier terms to connect patterns and variants in Image Processing. The concept graph makes it a useful bridge to specialized methods."
+      },
+      {
+        "slug": "ai21-studio",
+        "title": "AI21 Studio",
+        "stage": "advance",
+        "why": "A specialized concept in Image Processing. Treat this as an advanced extension once the earlier terms are solid."
+      },
+      {
+        "slug": "altered-studio",
+        "title": "Altered Studio",
+        "stage": "advance",
+        "why": "A specialized concept in Image Processing. Treat this as an advanced extension once the earlier terms are solid."
+      },
+      {
+        "slug": "beit",
+        "title": "BEiT",
+        "stage": "advance",
+        "why": "A specialized concept in Image Processing. Treat this as an advanced extension once the earlier terms are solid."
+      }
+    ],
+    "category": "Computer Vision",
+    "subCategory": "Image Processing"
+  },
+  "computer-vision-object-detection": {
+    "steps": [
+      {
+        "slug": "3d-ssd",
+        "title": "3D-SSD",
+        "stage": "start",
+        "why": "Establish the core vocabulary for Object Detection. Start here to anchor your understanding of this area."
+      },
+      {
+        "slug": "computer-vision-algorithms-e-g-cnns-r-cnn-yolo",
+        "title": "Computer Vision Algorithms (e.g., CNNs, R-CNN, YOLO)",
+        "stage": "start",
+        "why": "Establish the core vocabulary for Object Detection. Start here to anchor your understanding of this area."
+      },
+      {
+        "slug": "yolo-variants",
+        "title": "Yolo Variants",
+        "stage": "build",
+        "why": "Builds on earlier terms to connect patterns and variants in Object Detection. The concept graph makes it a useful bridge to specialized methods."
+      },
+      {
+        "slug": "yolo-variants-and-extensions",
+        "title": "YOLO Variants and Extensions",
+        "stage": "build",
+        "why": "Builds on earlier terms to connect patterns and variants in Object Detection. The concept graph makes it a useful bridge to specialized methods."
+      },
+      {
+        "slug": "yolo-you-only-look-once",
+        "title": "YOLO You Only Look Once",
+        "stage": "build",
+        "why": "Builds on earlier terms to connect patterns and variants in Object Detection. The concept graph makes it a useful bridge to specialized methods."
+      },
+      {
+        "slug": "yolo-nas-medium",
+        "title": "YOLO-NAS-Medium",
+        "stage": "advance",
+        "why": "A specialized concept in Object Detection. Treat this as an advanced extension once the earlier terms are solid."
+      },
+      {
+        "slug": "anchor-free-fcos",
+        "title": "Anchor-Free FCOS",
+        "stage": "advance",
+        "why": "A specialized concept in Object Detection. Treat this as an advanced extension once the earlier terms are solid."
+      },
+      {
+        "slug": "cascade-classifier",
+        "title": "Cascade Classifier",
+        "stage": "advance",
+        "why": "A specialized concept in Object Detection. Treat this as an advanced extension once the earlier terms are solid."
+      }
+    ],
+    "category": "Computer Vision",
+    "subCategory": "Object Detection"
+  },
+  "data-preprocessing-data-enhancement": {
+    "steps": [
+      {
+        "slug": "data-augmentation",
+        "title": "Data Augmentation",
+        "stage": "start",
+        "why": "A foundational concept in Data Enhancement — start here to build vocabulary and core intuition before moving to techniques and extensions."
+      },
+      {
+        "slug": "adjacent-bigram-swap",
+        "title": "Adjacent Bigram Swap",
+        "stage": "start",
+        "why": "Establish the core vocabulary for Data Enhancement. Start here to anchor your understanding of this area."
+      },
+      {
+        "slug": "antonym-swap",
+        "title": "Antonym Swap",
+        "stage": "build",
+        "why": "Builds on earlier terms to connect patterns and variants in Data Enhancement. The concept graph makes it a useful bridge to specialized methods."
+      },
+      {
+        "slug": "appositive-swap",
+        "title": "Appositive Swap",
+        "stage": "build",
+        "why": "Builds on earlier terms to connect patterns and variants in Data Enhancement. The concept graph makes it a useful bridge to specialized methods."
+      },
+      {
+        "slug": "automated-data-labeling",
+        "title": "Automated Data Labeling",
+        "stage": "build",
+        "why": "Builds on earlier terms to connect patterns and variants in Data Enhancement. The concept graph makes it a useful bridge to specialized methods."
+      },
+      {
+        "slug": "bigram-swap",
+        "title": "Bigram Swap",
+        "stage": "advance",
+        "why": "A specialized concept in Data Enhancement. Treat this as an advanced extension once the earlier terms are solid."
+      },
+      {
+        "slug": "british-american-spelling-swap",
+        "title": "British-American Spelling Swap",
+        "stage": "advance",
+        "why": "A specialized concept in Data Enhancement. Treat this as an advanced extension once the earlier terms are solid."
+      },
+      {
+        "slug": "character-swap",
+        "title": "Character Swap",
+        "stage": "advance",
+        "why": "A specialized concept in Data Enhancement. Treat this as an advanced extension once the earlier terms are solid."
+      }
+    ],
+    "category": "Data Preprocessing",
+    "subCategory": "Data Enhancement"
+  },
+  "ensemble-methods-tree-based-models": {
+    "steps": [
+      {
+        "slug": "adaptive-random-forest-arf",
+        "title": "Adaptive Random Forest (ARF)",
+        "stage": "start",
+        "why": "A foundational concept in Tree-Based Models — start here to build vocabulary and core intuition before moving to techniques and extensions."
+      },
+      {
+        "slug": "adaptive-bagging",
+        "title": "Adaptive Bagging",
+        "stage": "start",
+        "why": "Establish the core vocabulary for Tree-Based Models. Start here to anchor your understanding of this area."
+      },
+      {
+        "slug": "alternating-decision-trees",
+        "title": "Alternating Decision Trees",
+        "stage": "build",
+        "why": "Builds on earlier terms to connect patterns and variants in Tree-Based Models. The concept graph makes it a useful bridge to specialized methods."
+      },
+      {
+        "slug": "axis-aligned-decision-trees",
+        "title": "Axis-Aligned Decision Trees",
+        "stage": "build",
+        "why": "Builds on earlier terms to connect patterns and variants in Tree-Based Models. The concept graph makes it a useful bridge to specialized methods."
+      },
+      {
+        "slug": "bagboost-bagging-boosting",
+        "title": "BagBoost (Bagging + Boosting)",
+        "stage": "build",
+        "why": "Builds on earlier terms to connect patterns and variants in Tree-Based Models. The concept graph makes it a useful bridge to specialized methods."
+      },
+      {
+        "slug": "bagged-decision-trees",
+        "title": "Bagged Decision Trees",
+        "stage": "advance",
+        "why": "A specialized concept in Tree-Based Models. Treat this as an advanced extension once the earlier terms are solid."
+      },
+      {
+        "slug": "bagging",
+        "title": "Bagging",
+        "stage": "advance",
+        "why": "A specialized concept in Tree-Based Models. Treat this as an advanced extension once the earlier terms are solid."
+      },
+      {
+        "slug": "bagging-classifier",
+        "title": "Bagging Classifier",
+        "stage": "advance",
+        "why": "A specialized concept in Tree-Based Models. Treat this as an advanced extension once the earlier terms are solid."
+      }
+    ],
+    "category": "Ensemble Methods",
+    "subCategory": "Tree-Based Models"
+  },
+  "foundations-core-concepts": {
+    "steps": [
+      {
+        "slug": "artificial-intelligence-ai",
+        "title": "Artificial Intelligence (AI)",
+        "stage": "start",
+        "why": "A foundational concept in Core Concepts — start here to build vocabulary and core intuition before moving to techniques and extensions."
+      },
+      {
+        "slug": "a-b-testing-for-machine-learning",
+        "title": "A/B Testing for Machine Learning",
+        "stage": "start",
+        "why": "Establish the core vocabulary for Core Concepts. Start here to anchor your understanding of this area."
+      },
+      {
+        "slug": "adversarial-machine-learning",
+        "title": "Adversarial Machine Learning",
+        "stage": "build",
+        "why": "Builds on earlier terms to connect patterns and variants in Core Concepts. The concept graph makes it a useful bridge to specialized methods."
+      },
+      {
+        "slug": "ai-in-quantum-machine-learning",
+        "title": "AI in Quantum Machine Learning",
+        "stage": "build",
+        "why": "Builds on earlier terms to connect patterns and variants in Core Concepts. The concept graph makes it a useful bridge to specialized methods."
+      },
+      {
+        "slug": "azure-machine-learning",
+        "title": "Azure Machine Learning",
+        "stage": "build",
+        "why": "Builds on earlier terms to connect patterns and variants in Core Concepts. The concept graph makes it a useful bridge to specialized methods."
+      },
+      {
+        "slug": "double-machine-learning-dml",
+        "title": "Double Machine Learning (DML)",
+        "stage": "advance",
+        "why": "A specialized concept in Core Concepts. Treat this as an advanced extension once the earlier terms are solid."
+      },
+      {
+        "slug": "emotion-aware-machine-learning",
+        "title": "Emotion-aware Machine Learning",
+        "stage": "advance",
+        "why": "A specialized concept in Core Concepts. Treat this as an advanced extension once the earlier terms are solid."
+      },
+      {
+        "slug": "interactive-machine-learning",
+        "title": "Interactive Machine Learning",
+        "stage": "advance",
+        "why": "A specialized concept in Core Concepts. Treat this as an advanced extension once the earlier terms are solid."
+      }
+    ],
+    "category": "Foundations",
+    "subCategory": "Core Concepts"
+  },
+  "generative-models-diffusion-models": {
+    "steps": [
+      {
+        "slug": "audio-diffusion-model",
+        "title": "Audio Diffusion Model",
+        "stage": "start",
+        "why": "Establish the core vocabulary for Diffusion Models. Start here to anchor your understanding of this area."
+      },
+      {
+        "slug": "audio-diffusion-models",
+        "title": "Audio Diffusion Models",
+        "stage": "start",
+        "why": "Establish the core vocabulary for Diffusion Models. Start here to anchor your understanding of this area."
+      },
+      {
+        "slug": "behavior-diffusion-models",
+        "title": "Behavior Diffusion Models",
+        "stage": "build",
+        "why": "Builds on earlier terms to connect patterns and variants in Diffusion Models. The concept graph makes it a useful bridge to specialized methods."
+      },
+      {
+        "slug": "conditional-diffusion-models",
+        "title": "Conditional diffusion models",
+        "stage": "build",
+        "why": "Builds on earlier terms to connect patterns and variants in Diffusion Models. The concept graph makes it a useful bridge to specialized methods."
+      },
+      {
+        "slug": "consistent-diffusion-models",
+        "title": "Consistent Diffusion Models",
+        "stage": "build",
+        "why": "Builds on earlier terms to connect patterns and variants in Diffusion Models. The concept graph makes it a useful bridge to specialized methods."
+      },
+      {
+        "slug": "ddpm",
+        "title": "DDPM",
+        "stage": "advance",
+        "why": "A specialized concept in Diffusion Models. Treat this as an advanced extension once the earlier terms are solid."
+      },
+      {
+        "slug": "denoising-diffusion-implicit-model-ddim",
+        "title": "Denoising Diffusion Implicit Model (DDIM)",
+        "stage": "advance",
+        "why": "A specialized concept in Diffusion Models. Treat this as an advanced extension once the earlier terms are solid."
+      },
+      {
+        "slug": "denoising-diffusion-models",
+        "title": "Denoising Diffusion Models",
+        "stage": "advance",
+        "why": "A specialized concept in Diffusion Models. Treat this as an advanced extension once the earlier terms are solid."
+      }
+    ],
+    "category": "Generative Models",
+    "subCategory": "Diffusion Models"
+  },
+  "learning-paradigms-supervised-learning": {
+    "steps": [
+      {
+        "slug": "classification",
+        "title": "Classification",
+        "stage": "start",
+        "why": "Establish the core vocabulary for Supervised Learning. Start here to anchor your understanding of this area."
+      },
+      {
+        "slug": "classification-problem",
+        "title": "Classification Problem",
+        "stage": "start",
+        "why": "Establish the core vocabulary for Supervised Learning. Start here to anchor your understanding of this area."
+      },
+      {
+        "slug": "regression",
+        "title": "Regression",
+        "stage": "build",
+        "why": "Builds on earlier terms to connect patterns and variants in Supervised Learning. The concept graph makes it a useful bridge to specialized methods."
+      },
+      {
+        "slug": "regression-problem",
+        "title": "Regression Problem",
+        "stage": "build",
+        "why": "Builds on earlier terms to connect patterns and variants in Supervised Learning. The concept graph makes it a useful bridge to specialized methods."
+      },
+      {
+        "slug": "active-learning",
+        "title": "Active Learning",
+        "stage": "build",
+        "why": "Builds on earlier terms to connect patterns and variants in Supervised Learning. The concept graph makes it a useful bridge to specialized methods."
+      },
+      {
+        "slug": "bagged-svm",
+        "title": "Bagged SVM",
+        "stage": "advance",
+        "why": "A specialized concept in Supervised Learning. Treat this as an advanced extension once the earlier terms are solid."
+      },
+      {
+        "slug": "boosted-random-forests",
+        "title": "Boosted Random Forests",
+        "stage": "advance",
+        "why": "A specialized concept in Supervised Learning. Treat this as an advanced extension once the earlier terms are solid."
+      },
+      {
+        "slug": "cart-entropy",
+        "title": "CART Entropy",
+        "stage": "advance",
+        "why": "A specialized concept in Supervised Learning. Treat this as an advanced extension once the earlier terms are solid."
+      }
+    ],
+    "category": "Learning Paradigms",
+    "subCategory": "Supervised Learning"
+  },
+  "natural-language-processing-language-generation": {
+    "steps": [
+      {
+        "slug": "aider-cli-code-assistant",
+        "title": "Aider (CLI code assistant)",
+        "stage": "start",
+        "why": "A foundational concept in Language Generation — start here to build vocabulary and core intuition before moving to techniques and extensions."
+      },
+      {
+        "slug": "approximate-dynamic-programming-adp",
+        "title": "Approximate Dynamic Programming (ADP)",
+        "stage": "start",
+        "why": "A foundational concept in Language Generation — start here to build vocabulary and core intuition before moving to techniques and extensions."
+      },
+      {
+        "slug": "abstractive-coreference",
+        "title": "Abstractive Coreference",
+        "stage": "build",
+        "why": "Builds on earlier terms to connect patterns and variants in Language Generation. The concept graph makes it a useful bridge to specialized methods."
+      },
+      {
+        "slug": "abstractive-summarization",
+        "title": "Abstractive Summarization",
+        "stage": "build",
+        "why": "Builds on earlier terms to connect patterns and variants in Language Generation. The concept graph makes it a useful bridge to specialized methods."
+      },
+      {
+        "slug": "abstractive-techniques",
+        "title": "Abstractive techniques",
+        "stage": "build",
+        "why": "Builds on earlier terms to connect patterns and variants in Language Generation. The concept graph makes it a useful bridge to specialized methods."
+      },
+      {
+        "slug": "adaptive-speculative-decoding",
+        "title": "Adaptive Speculative Decoding",
+        "stage": "advance",
+        "why": "A specialized concept in Language Generation. Treat this as an advanced extension once the earlier terms are solid."
+      },
+      {
+        "slug": "ai-in-animation-generation",
+        "title": "AI in Animation Generation",
+        "stage": "advance",
+        "why": "A specialized concept in Language Generation. Treat this as an advanced extension once the earlier terms are solid."
+      },
+      {
+        "slug": "ai-in-code-generation",
+        "title": "AI in Code Generation",
+        "stage": "advance",
+        "why": "A specialized concept in Language Generation. Treat this as an advanced extension once the earlier terms are solid."
+      }
+    ],
+    "category": "Natural Language Processing",
+    "subCategory": "Language Generation"
+  },
+  "natural-language-processing-pre-trained-models": {
+    "steps": [
+      {
+        "slug": "bert-embedding",
+        "title": "BERT Embedding",
+        "stage": "start",
+        "why": "Establish the core vocabulary for Pre-trained Models. Start here to anchor your understanding of this area."
+      },
+      {
+        "slug": "bert-embeddings",
+        "title": "BERT Embeddings",
+        "stage": "start",
+        "why": "Establish the core vocabulary for Pre-trained Models. Start here to anchor your understanding of this area."
+      },
+      {
+        "slug": "distilbert-embeddings",
+        "title": "DistilBERT Embeddings",
+        "stage": "build",
+        "why": "Builds on earlier terms to connect patterns and variants in Pre-trained Models. The concept graph makes it a useful bridge to specialized methods."
+      },
+      {
+        "slug": "roberta-embeddings",
+        "title": "RoBERTa Embeddings",
+        "stage": "build",
+        "why": "Builds on earlier terms to connect patterns and variants in Pre-trained Models. The concept graph makes it a useful bridge to specialized methods."
+      },
+      {
+        "slug": "albert-a-lite-bert",
+        "title": "ALBERT (A Lite BERT)",
+        "stage": "build",
+        "why": "Builds on earlier terms to connect patterns and variants in Pre-trained Models. The concept graph makes it a useful bridge to specialized methods."
+      },
+      {
+        "slug": "albert",
+        "title": "ALBERT",
+        "stage": "advance",
+        "why": "A specialized concept in Pre-trained Models. Treat this as an advanced extension once the earlier terms are solid."
+      },
+      {
+        "slug": "albert-base-v2",
+        "title": "ALBERT-base-v2",
+        "stage": "advance",
+        "why": "A specialized concept in Pre-trained Models. Treat this as an advanced extension once the earlier terms are solid."
+      },
+      {
+        "slug": "albert-xxlarge-v2",
+        "title": "ALBERT-xxlarge-v2",
+        "stage": "advance",
+        "why": "A specialized concept in Pre-trained Models. Treat this as an advanced extension once the earlier terms are solid."
+      }
+    ],
+    "category": "Natural Language Processing",
+    "subCategory": "Pre-trained Models"
+  },
+  "natural-language-processing-text-analysis": {
+    "steps": [
+      {
+        "slug": "abstractive-question-answering",
+        "title": "Abstractive Question Answering",
+        "stage": "start",
+        "why": "Establish the core vocabulary for Text Analysis. Start here to anchor your understanding of this area."
+      },
+      {
+        "slug": "ambiguity-resolution",
+        "title": "Ambiguity Resolution",
+        "stage": "start",
+        "why": "Establish the core vocabulary for Text Analysis. Start here to anchor your understanding of this area."
+      },
+      {
+        "slug": "anaphora-resolution",
+        "title": "Anaphora Resolution",
+        "stage": "build",
+        "why": "Builds on earlier terms to connect patterns and variants in Text Analysis. The concept graph makes it a useful bridge to specialized methods."
+      },
+      {
+        "slug": "annotated-coreference-corpora",
+        "title": "Annotated Coreference Corpora",
+        "stage": "build",
+        "why": "Builds on earlier terms to connect patterns and variants in Text Analysis. The concept graph makes it a useful bridge to specialized methods."
+      },
+      {
+        "slug": "biomedical-coreference",
+        "title": "Biomedical Coreference",
+        "stage": "build",
+        "why": "Builds on earlier terms to connect patterns and variants in Text Analysis. The concept graph makes it a useful bridge to specialized methods."
+      },
+      {
+        "slug": "bridging-anaphora-resolution",
+        "title": "Bridging Anaphora Resolution",
+        "stage": "advance",
+        "why": "A specialized concept in Text Analysis. Treat this as an advanced extension once the earlier terms are solid."
+      },
+      {
+        "slug": "cataphora-resolution",
+        "title": "Cataphora Resolution",
+        "stage": "advance",
+        "why": "A specialized concept in Text Analysis. Treat this as an advanced extension once the earlier terms are solid."
+      },
+      {
+        "slug": "coreference-resolution",
+        "title": "Coreference Resolution",
+        "stage": "advance",
+        "why": "A specialized concept in Text Analysis. Treat this as an advanced extension once the earlier terms are solid."
+      }
+    ],
+    "category": "Natural Language Processing",
+    "subCategory": "Text Analysis"
+  },
+  "natural-language-processing-text-preprocessing": {
+    "steps": [
+      {
+        "slug": "tokenization",
+        "title": "Tokenization",
+        "stage": "start",
+        "why": "A foundational concept in Text Preprocessing — start here to build vocabulary and core intuition before moving to techniques and extensions."
+      },
+      {
+        "slug": "lemmatization-and-stemming",
+        "title": "Lemmatization and stemming",
+        "stage": "start",
+        "why": "Establish the core vocabulary for Text Preprocessing. Start here to anchor your understanding of this area."
+      },
+      {
+        "slug": "tokenizer",
+        "title": "Tokenizer",
+        "stage": "build",
+        "why": "Builds on earlier terms to connect patterns and variants in Text Preprocessing. The concept graph makes it a useful bridge to specialized methods."
+      },
+      {
+        "slug": "diarization-with-vbx",
+        "title": "Diarization with VBx",
+        "stage": "build",
+        "why": "Builds on earlier terms to connect patterns and variants in Text Preprocessing. The concept graph makes it a useful bridge to specialized methods."
+      },
+      {
+        "slug": "text-normalization",
+        "title": "Text Normalization",
+        "stage": "build",
+        "why": "Builds on earlier terms to connect patterns and variants in Text Preprocessing. The concept graph makes it a useful bridge to specialized methods."
+      },
+      {
+        "slug": "token-masking",
+        "title": "Token Masking",
+        "stage": "advance",
+        "why": "A specialized concept in Text Preprocessing. Treat this as an advanced extension once the earlier terms are solid."
+      }
+    ],
+    "category": "Natural Language Processing",
+    "subCategory": "Text Preprocessing"
+  },
+  "neural-networks-advanced-architectures": {
+    "steps": [
+      {
+        "slug": "antialiased-resnet",
+        "title": "Antialiased ResNet",
+        "stage": "start",
+        "why": "Establish the core vocabulary for Advanced Architectures. Start here to anchor your understanding of this area."
+      },
+      {
+        "slug": "bellman-residual-minimization",
+        "title": "Bellman Residual Minimization",
+        "stage": "start",
+        "why": "Establish the core vocabulary for Advanced Architectures. Start here to anchor your understanding of this area."
+      },
+      {
+        "slug": "bisenet-v2-resnet-101",
+        "title": "BiSeNet-v2-ResNet-101",
+        "stage": "build",
+        "why": "Builds on earlier terms to connect patterns and variants in Advanced Architectures. The concept graph makes it a useful bridge to specialized methods."
+      },
+      {
+        "slug": "boosted-trees-with-residual-analysis",
+        "title": "Boosted Trees with Residual Analysis",
+        "stage": "build",
+        "why": "Builds on earlier terms to connect patterns and variants in Advanced Architectures. The concept graph makes it a useful bridge to specialized methods."
+      },
+      {
+        "slug": "branched-residual-network-resnext",
+        "title": "Branched Residual Network (ResNeXt)",
+        "stage": "build",
+        "why": "Builds on earlier terms to connect patterns and variants in Advanced Architectures. The concept graph makes it a useful bridge to specialized methods."
+      },
+      {
+        "slug": "ccnet-resnet-101",
+        "title": "CCNet-ResNet-101",
+        "stage": "advance",
+        "why": "A specialized concept in Advanced Architectures. Treat this as an advanced extension once the earlier terms are solid."
+      },
+      {
+        "slug": "cyclegan-resnet-9",
+        "title": "CycleGAN-ResNet-9",
+        "stage": "advance",
+        "why": "A specialized concept in Advanced Architectures. Treat this as an advanced extension once the earlier terms are solid."
+      },
+      {
+        "slug": "deep-residual-learning",
+        "title": "Deep Residual Learning",
+        "stage": "advance",
+        "why": "A specialized concept in Advanced Architectures. Treat this as an advanced extension once the earlier terms are solid."
+      }
+    ],
+    "category": "Neural Networks",
+    "subCategory": "Advanced Architectures"
+  },
+  "neural-networks-attention-mechanism": {
+    "steps": [
+      {
+        "slug": "attention-mechanism-in-cnns",
+        "title": "Attention Mechanism in CNNs",
+        "stage": "start",
+        "why": "Establish the core vocabulary for Attention Mechanism. Start here to anchor your understanding of this area."
+      },
+      {
+        "slug": "attention-mechanism-variants",
+        "title": "Attention Mechanism Variants",
+        "stage": "start",
+        "why": "Establish the core vocabulary for Attention Mechanism. Start here to anchor your understanding of this area."
+      },
+      {
+        "slug": "attention-mechanisms",
+        "title": "Attention Mechanisms",
+        "stage": "build",
+        "why": "Builds on earlier terms to connect patterns and variants in Attention Mechanism. The concept graph makes it a useful bridge to specialized methods."
+      },
+      {
+        "slug": "attention-mechanisms-for-explainability",
+        "title": "Attention Mechanisms for Explainability",
+        "stage": "build",
+        "why": "Builds on earlier terms to connect patterns and variants in Attention Mechanism. The concept graph makes it a useful bridge to specialized methods."
+      },
+      {
+        "slug": "attention-mechanisms-in-nlp",
+        "title": "Attention Mechanisms in NLP",
+        "stage": "build",
+        "why": "Builds on earlier terms to connect patterns and variants in Attention Mechanism. The concept graph makes it a useful bridge to specialized methods."
+      },
+      {
+        "slug": "coattention-mechanism",
+        "title": "CoAttention Mechanism",
+        "stage": "advance",
+        "why": "A specialized concept in Attention Mechanism. Treat this as an advanced extension once the earlier terms are solid."
+      },
+      {
+        "slug": "cross-modal-attention-mechanisms",
+        "title": "Cross-Modal Attention Mechanisms",
+        "stage": "advance",
+        "why": "A specialized concept in Attention Mechanism. Treat this as an advanced extension once the earlier terms are solid."
+      },
+      {
+        "slug": "dual-attention-mechanism-variants",
+        "title": "Dual Attention Mechanism Variants",
+        "stage": "advance",
+        "why": "A specialized concept in Attention Mechanism. Treat this as an advanced extension once the earlier terms are solid."
+      }
+    ],
+    "category": "Neural Networks",
+    "subCategory": "Attention Mechanism"
+  },
+  "neural-networks-core-models": {
+    "steps": [
+      {
+        "slug": "3d-convolutional-neural-network-3d-cnn",
+        "title": "3D Convolutional Neural Network (3D CNN)",
+        "stage": "start",
+        "why": "A foundational concept in Core Models — start here to build vocabulary and core intuition before moving to techniques and extensions."
+      },
+      {
+        "slug": "artificial-neural-networks-anns",
+        "title": "Artificial Neural Networks (ANNs)",
+        "stage": "start",
+        "why": "A foundational concept in Core Models — start here to build vocabulary and core intuition before moving to techniques and extensions."
+      },
+      {
+        "slug": "affective-neural-networks",
+        "title": "Affective Neural Networks",
+        "stage": "build",
+        "why": "Builds on earlier terms to connect patterns and variants in Core Models. The concept graph makes it a useful bridge to specialized methods."
+      },
+      {
+        "slug": "ai-in-synthetic-neural-networks",
+        "title": "AI in Synthetic Neural Networks",
+        "stage": "build",
+        "why": "Builds on earlier terms to connect patterns and variants in Core Models. The concept graph makes it a useful bridge to specialized methods."
+      },
+      {
+        "slug": "ai-driven-neural-network-evolution",
+        "title": "AI-Driven Neural Network Evolution",
+        "stage": "build",
+        "why": "Builds on earlier terms to connect patterns and variants in Core Models. The concept graph makes it a useful bridge to specialized methods."
+      },
+      {
+        "slug": "ai-guided-neural-network-design",
+        "title": "AI-Guided Neural Network Design",
+        "stage": "advance",
+        "why": "A specialized concept in Core Models. Treat this as an advanced extension once the earlier terms are solid."
+      },
+      {
+        "slug": "artificial-neural-network",
+        "title": "Artificial Neural Network",
+        "stage": "advance",
+        "why": "A specialized concept in Core Models. Treat this as an advanced extension once the earlier terms are solid."
+      },
+      {
+        "slug": "attention-based-neural-networks",
+        "title": "Attention-Based Neural Networks",
+        "stage": "advance",
+        "why": "A specialized concept in Core Models. Treat this as an advanced extension once the earlier terms are solid."
+      }
+    ],
+    "category": "Neural Networks",
+    "subCategory": "Core Models"
+  },
+  "neural-networks-recurrent-models": {
+    "steps": [
+      {
+        "slug": "recurrent-neural-networks-rnns",
+        "title": "Recurrent Neural Networks (RNNs)",
+        "stage": "start",
+        "why": "A foundational concept in Recurrent Models — start here to build vocabulary and core intuition before moving to techniques and extensions."
+      },
+      {
+        "slug": "attention-based-recurrent-models",
+        "title": "Attention-Based Recurrent Models",
+        "stage": "start",
+        "why": "Establish the core vocabulary for Recurrent Models. Start here to anchor your understanding of this area."
+      },
+      {
+        "slug": "bidirectional-rnns",
+        "title": "Bidirectional RNNs",
+        "stage": "build",
+        "why": "Builds on earlier terms to connect patterns and variants in Recurrent Models. The concept graph makes it a useful bridge to specialized methods."
+      },
+      {
+        "slug": "block-recurrent-attention",
+        "title": "Block-Recurrent Attention",
+        "stage": "build",
+        "why": "Builds on earlier terms to connect patterns and variants in Recurrent Models. The concept graph makes it a useful bridge to specialized methods."
+      },
+      {
+        "slug": "block-recurrent-trans-xl",
+        "title": "Block-Recurrent Trans-XL",
+        "stage": "build",
+        "why": "Builds on earlier terms to connect patterns and variants in Recurrent Models. The concept graph makes it a useful bridge to specialized methods."
+      },
+      {
+        "slug": "char-rnn",
+        "title": "Char-RNN",
+        "stage": "advance",
+        "why": "A specialized concept in Recurrent Models. Treat this as an advanced extension once the earlier terms are solid."
+      },
+      {
+        "slug": "clockwork-recurrent-neural-network-cw-rnn",
+        "title": "Clockwork Recurrent Neural Network (CW-RNN)",
+        "stage": "advance",
+        "why": "A specialized concept in Recurrent Models. Treat this as an advanced extension once the earlier terms are solid."
+      },
+      {
+        "slug": "clockwork-rnn",
+        "title": "Clockwork RNN",
+        "stage": "advance",
+        "why": "A specialized concept in Recurrent Models. Treat this as an advanced extension once the earlier terms are solid."
+      }
+    ],
+    "category": "Neural Networks",
+    "subCategory": "Recurrent Models"
+  },
+  "neural-networks-specialized-architectures": {
+    "steps": [
+      {
+        "slug": "episodic-memory-module",
+        "title": "Episodic Memory Module",
+        "stage": "start",
+        "why": "Establish the core vocabulary for Specialized Architectures. Start here to anchor your understanding of this area."
+      },
+      {
+        "slug": "mem0-memory-layer",
+        "title": "Mem0 Memory Layer",
+        "stage": "start",
+        "why": "Establish the core vocabulary for Specialized Architectures. Start here to anchor your understanding of this area."
+      },
+      {
+        "slug": "zep-memory-layer",
+        "title": "Zep Memory Layer",
+        "stage": "build",
+        "why": "Builds on earlier terms to connect patterns and variants in Specialized Architectures. The concept graph makes it a useful bridge to specialized methods."
+      },
+      {
+        "slug": "temporal-convolutional-networks-tcns",
+        "title": "Temporal Convolutional Networks (TCNs)",
+        "stage": "build",
+        "why": "Builds on earlier terms to connect patterns and variants in Specialized Architectures. The concept graph makes it a useful bridge to specialized methods."
+      },
+      {
+        "slug": "4d-spatio-temporal-networks",
+        "title": "4D Spatio-Temporal Networks",
+        "stage": "build",
+        "why": "Builds on earlier terms to connect patterns and variants in Specialized Architectures. The concept graph makes it a useful bridge to specialized methods."
+      },
+      {
+        "slug": "ai-in-neuromorphic-computing",
+        "title": "AI in Neuromorphic Computing",
+        "stage": "advance",
+        "why": "A specialized concept in Specialized Architectures. Treat this as an advanced extension once the earlier terms are solid."
+      },
+      {
+        "slug": "ai-on-neuromorphic-hardware",
+        "title": "AI on Neuromorphic Hardware",
+        "stage": "advance",
+        "why": "A specialized concept in Specialized Architectures. Treat this as an advanced extension once the earlier terms are solid."
+      },
+      {
+        "slug": "bio-inspired-neural-networks",
+        "title": "Bio-inspired Neural Networks",
+        "stage": "advance",
+        "why": "A specialized concept in Specialized Architectures. Treat this as an advanced extension once the earlier terms are solid."
+      }
+    ],
+    "category": "Neural Networks",
+    "subCategory": "Specialized Architectures"
+  },
+  "neural-networks-training-techniques": {
+    "steps": [
+      {
+        "slug": "adaptive-regularization-of-weights-arow",
+        "title": "Adaptive Regularization of Weights (AROW)",
+        "stage": "start",
+        "why": "A foundational concept in Training Techniques — start here to build vocabulary and core intuition before moving to techniques and extensions."
+      },
+      {
+        "slug": "adversarial-training",
+        "title": "Adversarial Training",
+        "stage": "start",
+        "why": "A foundational concept in Training Techniques — start here to build vocabulary and core intuition before moving to techniques and extensions."
+      },
+      {
+        "slug": "adversarial-training-fgsm",
+        "title": "Adversarial Training (FGSM)",
+        "stage": "build",
+        "why": "Builds on earlier terms to connect patterns and variants in Training Techniques. The concept graph makes it a useful bridge to specialized methods."
+      },
+      {
+        "slug": "adversarial-training-fgsm-pgd",
+        "title": "Adversarial Training (FGSM, PGD)",
+        "stage": "build",
+        "why": "Builds on earlier terms to connect patterns and variants in Training Techniques. The concept graph makes it a useful bridge to specialized methods."
+      },
+      {
+        "slug": "adversarial-training-pgd",
+        "title": "Adversarial Training (PGD)",
+        "stage": "build",
+        "why": "Builds on earlier terms to connect patterns and variants in Training Techniques. The concept graph makes it a useful bridge to specialized methods."
+      },
+      {
+        "slug": "atlas-pretraining-data-engine",
+        "title": "Atlas pretraining (data engine)",
+        "stage": "advance",
+        "why": "An advanced extension of Training Techniques. Tackle this after the foundational and intermediate terms feel natural."
+      },
+      {
+        "slug": "regularization-techniques",
+        "title": "Regularization Techniques",
+        "stage": "advance",
+        "why": "An advanced extension of Training Techniques. Tackle this after the foundational and intermediate terms feel natural."
+      },
+      {
+        "slug": "allreduce-distributed-training",
+        "title": "AllReduce (Distributed Training)",
+        "stage": "advance",
+        "why": "An advanced extension of Training Techniques. Tackle this after the foundational and intermediate terms feel natural."
+      }
+    ],
+    "category": "Neural Networks",
+    "subCategory": "Training Techniques"
+  },
+  "optimization-algorithms-gradient-based-optimizers": {
+    "steps": [
+      {
+        "slug": "adaptive-learning-rate",
+        "title": "Adaptive Learning Rate",
+        "stage": "start",
+        "why": "Establish the core vocabulary for Gradient-based Optimizers. Start here to anchor your understanding of this area."
+      },
+      {
+        "slug": "auto-differentiation",
+        "title": "Auto-Differentiation",
+        "stage": "start",
+        "why": "Establish the core vocabulary for Gradient-based Optimizers. Start here to anchor your understanding of this area."
+      },
+      {
+        "slug": "block-diagonal-hessian-free",
+        "title": "Block-Diagonal Hessian-Free",
+        "stage": "build",
+        "why": "Builds on earlier terms to connect patterns and variants in Gradient-based Optimizers. The concept graph makes it a useful bridge to specialized methods."
+      },
+      {
+        "slug": "circular-learning-rate",
+        "title": "Circular Learning Rate",
+        "stage": "build",
+        "why": "Builds on earlier terms to connect patterns and variants in Gradient-based Optimizers. The concept graph makes it a useful bridge to specialized methods."
+      },
+      {
+        "slug": "cost-aware-routing",
+        "title": "Cost-aware routing",
+        "stage": "build",
+        "why": "Builds on earlier terms to connect patterns and variants in Gradient-based Optimizers. The concept graph makes it a useful bridge to specialized methods."
+      },
+      {
+        "slug": "cyclic-learning-rates",
+        "title": "Cyclic Learning Rates",
+        "stage": "advance",
+        "why": "A specialized concept in Gradient-based Optimizers. Treat this as an advanced extension once the earlier terms are solid."
+      },
+      {
+        "slug": "cyclical-learning-rate",
+        "title": "Cyclical Learning Rate",
+        "stage": "advance",
+        "why": "A specialized concept in Gradient-based Optimizers. Treat this as an advanced extension once the earlier terms are solid."
+      },
+      {
+        "slug": "cyclical-learning-rates",
+        "title": "Cyclical Learning Rates",
+        "stage": "advance",
+        "why": "A specialized concept in Gradient-based Optimizers. Treat this as an advanced extension once the earlier terms are solid."
+      }
+    ],
+    "category": "Optimization Algorithms",
+    "subCategory": "Gradient-based Optimizers"
+  },
+  "reinforcement-learning-advanced-rl-techniques": {
+    "steps": [
+      {
+        "slug": "meta-reinforcement-learning",
+        "title": "Meta Reinforcement Learning",
+        "stage": "start",
+        "why": "A foundational concept in Advanced RL Techniques — start here to build vocabulary and core intuition before moving to techniques and extensions."
+      },
+      {
+        "slug": "ape-x-dqn",
+        "title": "Ape-X DQN",
+        "stage": "start",
+        "why": "Establish the core vocabulary for Advanced RL Techniques. Start here to anchor your understanding of this area."
+      },
+      {
+        "slug": "atari-dqn",
+        "title": "Atari DQN",
+        "stage": "build",
+        "why": "Builds on earlier terms to connect patterns and variants in Advanced RL Techniques. The concept graph makes it a useful bridge to specialized methods."
+      },
+      {
+        "slug": "bootstrap-dqn",
+        "title": "Bootstrap DQN",
+        "stage": "build",
+        "why": "Builds on earlier terms to connect patterns and variants in Advanced RL Techniques. The concept graph makes it a useful bridge to specialized methods."
+      },
+      {
+        "slug": "bootstrap-dqn-deep-q-network",
+        "title": "Bootstrap DQN (Deep Q-Network)",
+        "stage": "build",
+        "why": "Builds on earlier terms to connect patterns and variants in Advanced RL Techniques. The concept graph makes it a useful bridge to specialized methods."
+      },
+      {
+        "slug": "deep-q-learning",
+        "title": "Deep Q-Learning",
+        "stage": "advance",
+        "why": "A specialized concept in Advanced RL Techniques. Treat this as an advanced extension once the earlier terms are solid."
+      },
+      {
+        "slug": "deep-q-learning-dqn",
+        "title": "Deep Q-Learning (DQN)",
+        "stage": "advance",
+        "why": "A specialized concept in Advanced RL Techniques. Treat this as an advanced extension once the earlier terms are solid."
+      },
+      {
+        "slug": "deep-q-learning-variants",
+        "title": "Deep Q-Learning Variants",
+        "stage": "advance",
+        "why": "A specialized concept in Advanced RL Techniques. Treat this as an advanced extension once the earlier terms are solid."
+      }
+    ],
+    "category": "Reinforcement Learning",
+    "subCategory": "Advanced RL Techniques"
+  },
+  "transfer-learning-model-adaptation": {
+    "steps": [
+      {
+        "slug": "cross-domain-transfer-learning",
+        "title": "Cross-Domain Transfer Learning",
+        "stage": "start",
+        "why": "Establish the core vocabulary for Model Adaptation. Start here to anchor your understanding of this area."
+      },
+      {
+        "slug": "cross-task-transfer-learning",
+        "title": "Cross-Task Transfer Learning",
+        "stage": "start",
+        "why": "Establish the core vocabulary for Model Adaptation. Start here to anchor your understanding of this area."
+      },
+      {
+        "slug": "fine-tuning",
+        "title": "Fine Tuning",
+        "stage": "build",
+        "why": "Builds on earlier terms to connect patterns and variants in Model Adaptation. The concept graph makes it a useful bridge to specialized methods."
+      },
+      {
+        "slug": "frozen-layers-in-transfer-learning",
+        "title": "Frozen Layers in Transfer Learning",
+        "stage": "build",
+        "why": "Builds on earlier terms to connect patterns and variants in Model Adaptation. The concept graph makes it a useful bridge to specialized methods."
+      },
+      {
+        "slug": "instruction-fine-tuning",
+        "title": "Instruction Fine Tuning",
+        "stage": "build",
+        "why": "Builds on earlier terms to connect patterns and variants in Model Adaptation. The concept graph makes it a useful bridge to specialized methods."
+      },
+      {
+        "slug": "pretrained-weights-from-transfer-learning",
+        "title": "Pretrained Weights from Transfer Learning",
+        "stage": "advance",
+        "why": "A specialized concept in Model Adaptation. Treat this as an advanced extension once the earlier terms are solid."
+      },
+      {
+        "slug": "quantum-transfer-learning",
+        "title": "Quantum Transfer Learning",
+        "stage": "advance",
+        "why": "A specialized concept in Model Adaptation. Treat this as an advanced extension once the earlier terms are solid."
+      },
+      {
+        "slug": "transfer-learning-agents",
+        "title": "transfer learning agents",
+        "stage": "advance",
+        "why": "A specialized concept in Model Adaptation. Treat this as an advanced extension once the earlier terms are solid."
+      }
+    ],
+    "category": "Transfer Learning",
+    "subCategory": "Model Adaptation"
+  }
+}

@@ -83,7 +83,7 @@ export function StudyMemoryCard() {
           Open shelf
         </Link>
         <Link className="ghost-button" to="/notes">
-          Open notebook
+          Open notes
         </Link>
         <button className="primary-button" onClick={exportStudyData} type="button">
           Export memory

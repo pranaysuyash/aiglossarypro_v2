@@ -12,6 +12,12 @@ import {
   getLatestExportJob,
 } from "../study/workspaceInsights";
 
+const workspaceDateFormatter = new Intl.DateTimeFormat("en-US", {
+  month: "short",
+  day: "numeric",
+  year: "numeric",
+});
+
 export function SavedPage() {
   const { terms, isLoading, error } = useCatalog();
   const { bookmarks, exportStudyData, isRemoteBacked } = useStudy();
@@ -191,7 +197,7 @@ export function SavedPage() {
       ) : null}
       {isLoading ? (
         <article className="summary-card">
-          <h3>Loading your shelf</h3>
+          <h3>Loading your shelf…</h3>
           <p>Joining your saved slugs against the current published catalog.</p>
         </article>
       ) : error ? (
@@ -243,9 +249,5 @@ function formatWorkspaceDate(value: string): string {
     return value;
   }
 
-  return new Intl.DateTimeFormat("en-US", {
-    month: "short",
-    day: "numeric",
-    year: "numeric",
-  }).format(parsed);
+  return workspaceDateFormatter.format(parsed);
 }

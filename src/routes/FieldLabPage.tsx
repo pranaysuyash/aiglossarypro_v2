@@ -1,4 +1,4 @@
-import { useDeferredValue, useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import { ContinueLearningCard } from "../components/ContinueLearningCard";
 import { ContinuePathCard } from "../components/ContinuePathCard";
@@ -20,8 +20,7 @@ import {
   type PublishedStructureRegistry,
 } from "../content/structureRegistry";
 import { useStudy } from "../study/StudyContext";
-
-const pageSize = 24;
+import { FieldLabTermInspection } from "./FieldLabTermInspection";
 
 export function FieldLabPage() {
   const { terms, paths, isLoading, error } = useCatalog();
@@ -29,10 +28,6 @@ export function FieldLabPage() {
   const [manifest, setManifest] = useState<PublishedCorpusManifest | null>(null);
   const [registry, setRegistry] = useState<PublishedStructureRegistry | null>(null);
   const [launchContract, setLaunchContract] = useState<PublishedLaunchContract | null>(null);
-  const [query, setQuery] = useState("");
-  const [tierFilter, setTierFilter] = useState<"all" | "featured" | "standard" | "sparse">("all");
-  const [pageIndex, setPageIndex] = useState(0);
-  const deferredQuery = useDeferredValue(query);
 
   useEffect(() => {
     let isCancelled = false;
@@ -57,10 +52,6 @@ export function FieldLabPage() {
     };
   }, []);
 
-  useEffect(() => {
-    setPageIndex(0);
-  }, [deferredQuery, tierFilter]);
-
   const noteCount = useMemo(
     () => Object.values(notes).filter((value) => value.trim()).length,
     [notes],
@@ -81,91 +72,62 @@ export function FieldLabPage() {
       .slice(0, 10);
   }, [terms]);
 
-  const filteredTerms = useMemo(() => {
-    const searchKey = deferredQuery.trim().toLowerCase();
-    return terms.filter((term) => {
-      if (tierFilter !== "all" && term.metadata.editorialTier !== tierFilter) {
-        return false;
-      }
-      if (!searchKey) {
-        return true;
-      }
-      return [
-        term.title,
-        term.summary,
-        term.taxonomy.topic,
-        term.taxonomy.category,
-        term.taxonomy.subCategory,
-        term.metadata.studyFamily ?? "",
-        ...term.aliases,
-        ...term.taxonomy.tags,
-      ]
-        .join(" ")
-        .toLowerCase()
-        .includes(searchKey);
-    });
-  }, [deferredQuery, terms, tierFilter]);
-
-  const totalPages = Math.max(1, Math.ceil(filteredTerms.length / pageSize));
-  const currentPage = Math.min(pageIndex, totalPages - 1);
-  const visibleTerms = filteredTerms.slice(currentPage * pageSize, (currentPage + 1) * pageSize);
-
   const routeSurfaces = useMemo(
     () => [
-      {
-        label: "Entry",
-        title: "Home command deck",
-        description: "The first screen should orient the learner and expose the product, not just the brand.",
-        to: "/",
-        action: "Open home",
-      },
-      {
-        label: "Catalog",
-        title: "Library and term search",
-        description: "Search across the published corpus, jump to deep dives, and test content breadth.",
-        to: "/explore",
-        action: "Open library",
-      },
-      {
-        label: "Families",
-        title: "Study-family rails",
-        description: "Inspect how the corpus clusters into learning lanes instead of a flat term list.",
-        to: "/families",
-        action: "Open families",
-      },
-      {
-        label: "Paths",
-        title: "Guided trails",
-        description: "Check whether learning paths feel sequenced, not just categorized.",
-        to: samplePath ? `/paths/${samplePath.slug}` : "/paths",
-        action: samplePath ? "Open sample path" : "Open paths",
-      },
-      {
-        label: "Deep dive",
-        title: "Term detail and study loop",
-        description: "Exercise blocks, bookmarking, notes, annotation, sharing, and export from one concept surface.",
-        to: sampleInteractiveTerm ? `/term/${sampleInteractiveTerm.slug}` : "/explore",
-        action: sampleInteractiveTerm ? "Open sample term" : "Open a term",
-      },
-      {
-        label: "Memory",
-        title: "Saved shelf and notebook",
-        description: "Verify that memory tools feel central to the product instead of buried utilities.",
-        to: "/saved",
-        action: "Open saved terms",
-      },
-      {
-        label: "Account",
-        title: "Membership and profile",
-        description: "Confirm the premium promise and learner identity flow are visible and coherent.",
-        to: "/account",
-        action: "Open profile",
-      },
-      {
-        label: "QA",
-        title: "Field lab",
-        description: "Stay on this surface to inspect routes, structures, features, and direct term access together.",
-        to: "/field-lab",
+        {
+          label: "Entry",
+          title: "Home command deck",
+          description: "The first screen should orient the learner and expose the product, not just the brand.",
+          to: "/",
+          action: "Open home",
+        },
+        {
+          label: "Catalog",
+          title: "Library and term search",
+          description: "Search across the published corpus, jump to deep dives, and test content breadth.",
+          to: "/explore",
+          action: "Browse library",
+        },
+        {
+          label: "Families",
+          title: "Study-family rails",
+          description: "Inspect how the corpus clusters into learning lanes instead of a flat term list.",
+          to: "/families",
+          action: "Browse families",
+        },
+        {
+          label: "Paths",
+          title: "Guided trails",
+          description: "Check whether learning paths feel sequenced, not just categorized.",
+          to: samplePath ? `/paths/${samplePath.slug}` : "/paths",
+          action: samplePath ? "Open sample trail" : "Browse paths",
+        },
+        {
+          label: "Deep dive",
+          title: "Term detail and study loop",
+          description: "Exercise blocks, bookmarking, notes, annotation, sharing, and export from one concept surface.",
+          to: sampleInteractiveTerm ? `/term/${sampleInteractiveTerm.slug}` : "/explore",
+          action: sampleInteractiveTerm ? "Open sample term" : "Browse terms",
+        },
+        {
+          label: "Memory",
+          title: "Saved shelf and notebook",
+          description: "Verify that memory tools feel central to the product instead of buried utilities.",
+          to: "/saved",
+          action: "Open shelf",
+        },
+        {
+          label: "Account",
+          title: "Membership and profile",
+          description: "Confirm the premium promise and learner identity flow are visible and coherent.",
+          to: "/account",
+          action: "Open profile",
+        },
+        {
+          label: "QA",
+          title: "Field lab",
+          description: "Stay on this surface to inspect routes, structures, features, and direct term access together.",
+          to: "/field-lab",
         action: "Stay in lab",
       },
     ],
@@ -173,30 +135,30 @@ export function FieldLabPage() {
   );
 
   const featureChecks = [
-    {
-      label: "Bookmark loop",
-      description: "Open a term, bookmark it, then confirm shelf counts and continue-learning cards update.",
-      to: sampleFeaturedTerm ? `/term/${sampleFeaturedTerm.slug}` : "/explore",
-      action: "Test bookmarks",
-    },
-    {
-      label: "Notebook loop",
-      description: "Write a note on a term, then verify the note summary and notes workspace reflect it.",
-      to: "/notes",
-      action: "Open notebook",
-    },
-    {
-      label: "Share and export",
-      description: "Use a term page to exercise canonical share links and JSON export packets.",
-      to: sampleInteractiveTerm ? `/term/${sampleInteractiveTerm.slug}` : "/explore",
-      action: "Open exportable term",
-    },
-    {
-      label: "Path memory",
-      description: "Open a trail, come back here, and verify resume-path memory appears immediately.",
-      to: samplePath ? `/paths/${samplePath.slug}` : "/paths",
-      action: "Test path memory",
-    },
+      {
+        label: "Bookmark loop",
+        description: "Open a term, bookmark it, then confirm shelf counts and continue-learning cards update.",
+        to: sampleFeaturedTerm ? `/term/${sampleFeaturedTerm.slug}` : "/explore",
+        action: "Test bookmarks",
+      },
+      {
+        label: "Notebook loop",
+        description: "Write a note on a term, then verify the note summary and notes workspace reflect it.",
+        to: "/notes",
+        action: "Open notes",
+      },
+      {
+        label: "Share and export",
+        description: "Use a term page to exercise canonical share links and JSON export packets.",
+        to: sampleInteractiveTerm ? `/term/${sampleInteractiveTerm.slug}` : "/explore",
+        action: "Open exportable term",
+      },
+      {
+        label: "Path memory",
+        description: "Open a trail, come back here, and verify resume-path memory appears immediately.",
+        to: samplePath ? `/paths/${samplePath.slug}` : "/paths",
+        action: "Test path memory",
+      },
   ];
 
   const blockCoverage = useMemo(() => {
@@ -263,7 +225,7 @@ export function FieldLabPage() {
             <h3>
               {manifest
                 ? `${manifest.launchSectionCount} launch sections, ${manifest.structureSectionCount} editorial sections`
-                : "Loading coverage snapshot"}
+                : "Loading coverage snapshot…"}
             </h3>
             <p>
               The app already knows what exists in the source workbooks. The job of this surface is
@@ -328,7 +290,7 @@ export function FieldLabPage() {
               <h3>{feature.action}</h3>
               <p>{feature.description}</p>
               <Link className="text-link" to={feature.to}>
-                Start check
+                {feature.action}
               </Link>
             </article>
           ))}
@@ -378,7 +340,7 @@ export function FieldLabPage() {
           <h3>
             {launchContract
               ? `${launchContract.launchSectionCount} source sections mapped to the launch runtime`
-              : "Loading launch contract"}
+              : "Loading launch contract…"}
           </h3>
           <div className="field-lab-contract-list">
             {(launchContract?.launchSections ?? []).slice(0, 8).map((section) => (
@@ -398,7 +360,7 @@ export function FieldLabPage() {
         <article className="summary-card field-lab-contract-card">
           <p className="eyebrow">Editorial structure</p>
           <h3>
-            {registry ? `${registry.fieldCount} workbook fields partitioned by product layer` : "Loading structure registry"}
+            {registry ? `${registry.fieldCount} workbook fields partitioned by product layer` : "Loading structure registry…"}
           </h3>
           <div className="field-lab-layer-columns">
             {(["launch-runtime", "editorial-expansion", "backlog"] as const).map((layer) => (
@@ -419,100 +381,7 @@ export function FieldLabPage() {
         </article>
       </section>
 
-      <section className="field-lab-section">
-        <div className="section-header">
-          <p className="eyebrow">Term inspection</p>
-          <h2>Search, filter, and jump directly into any live part of the corpus.</h2>
-          <p>
-            This is the practical answer to “can I test every term?” without rendering 17,988 cards
-            at once.
-          </p>
-        </div>
-        <div className="field-lab-term-controls">
-          <label className="search-panel search-panel-large">
-            <span>Search terms, families, aliases, tags, categories</span>
-            <input
-              autoComplete="off"
-              value={query}
-              onChange={(event) => setQuery(event.target.value)}
-              name="fieldLabSearch"
-              spellCheck={false}
-              placeholder="Try: transformer, rag, evaluation, active learning, alignment..."
-            />
-          </label>
-          <label className="field-lab-select">
-            <span>Tier filter</span>
-            <select
-              name="tierFilter"
-              value={tierFilter}
-              onChange={(event) => setTierFilter(event.target.value as typeof tierFilter)}
-            >
-              <option value="all">All terms</option>
-              <option value="featured">Featured</option>
-              <option value="standard">Standard</option>
-              <option value="sparse">Sparse</option>
-            </select>
-          </label>
-        </div>
-        <article className="summary-card field-lab-search-status">
-          <h3>
-            {filteredTerms.length.toLocaleString()} matching terms
-            {isLoading ? " (catalog loading)" : ""}
-          </h3>
-          <p>
-            {error
-              ? error
-              : deferredQuery.trim()
-                ? `Showing terms matching "${deferredQuery.trim()}" with the current tier filter.`
-                : "Showing the current corpus through a paged inspection surface instead of an endless render."}
-          </p>
-          <div className="field-lab-pagination">
-            <button
-              className="ghost-button"
-              type="button"
-              onClick={() => setPageIndex((value) => Math.max(0, value - 1))}
-              disabled={currentPage === 0}
-            >
-              Previous
-            </button>
-            <span>
-              Page {currentPage + 1} of {totalPages}
-            </span>
-            <button
-              className="ghost-button"
-              type="button"
-              onClick={() => setPageIndex((value) => Math.min(totalPages - 1, value + 1))}
-              disabled={currentPage >= totalPages - 1}
-            >
-              Next
-            </button>
-          </div>
-        </article>
-        <div className="field-lab-term-grid">
-          {visibleTerms.map((term) => (
-            <article key={term.slug} className="field-lab-term-card">
-              <div className="field-lab-term-head">
-                <span className={`term-tier term-tier-${term.metadata.editorialTier ?? "standard"}`}>
-                  {term.metadata.editorialTier ?? "standard"}
-                </span>
-                <p className="term-taxonomy">
-                  {term.taxonomy.category} / {term.taxonomy.subCategory}
-                </p>
-              </div>
-              <h3>{term.title}</h3>
-              <p>{term.summary}</p>
-              <div className="field-lab-chip-row">
-                <span>{term.aliases.length} aliases</span>
-                <span>{term.metadata.studyFamily || "No family"}</span>
-                <span>Shard {term.artifact.shardId}</span>
-              </div>
-              <Link className="text-link" to={`/term/${term.slug}`}>
-                Open term detail
-              </Link>
-            </article>
-          ))}
-        </div>
-      </section>
+      <FieldLabTermInspection terms={terms} isLoading={isLoading} error={error} />
     </section>
   );
 }

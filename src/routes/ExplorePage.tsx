@@ -163,7 +163,7 @@ export function ExplorePage() {
                 <h3>{term.title}</h3>
                 <p>{term.summary}</p>
                 <Link className="text-link" to={`/term/${term.slug}`}>
-                  Open deep dive
+                  Open {term.title}
                 </Link>
               </article>
             ))}
@@ -184,8 +184,8 @@ export function ExplorePage() {
                   </Link>
                 ))}
               </div>
-              <Link className="text-link" to="/families">
-                Open family rail
+              <Link className="text-link" to="/families" aria-label={`Browse families for ${shelf.label}`}>
+                Browse families
               </Link>
             </article>
           ))}
@@ -204,8 +204,8 @@ export function ExplorePage() {
                   </Link>
                 ))}
               </div>
-              <Link className="text-link" to="/families">
-                Open family rail
+              <Link className="text-link" to="/families" aria-label={`Browse families for ${shelf.label}`}>
+                Browse families
               </Link>
             </article>
           ))}
@@ -223,7 +223,7 @@ export function ExplorePage() {
         />
       </label>
       {!isLoading && !error ? (
-        <article className="summary-card search-status">
+        <article className="summary-card search-status" aria-live="polite" aria-atomic="true">
           <h3>{deferredQuery.trim() ? filteredTerms.length : visibleTerms.length} matching entries</h3>
           <p>
             {query.trim()
@@ -234,7 +234,7 @@ export function ExplorePage() {
       ) : null}
       {isLoading ? (
         <article className="summary-card">
-          <h3>Loading catalog</h3>
+          <h3>Loading catalog…</h3>
           <p>Preparing the current published term set for search.</p>
         </article>
       ) : error ? (

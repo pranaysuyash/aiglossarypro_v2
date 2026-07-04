@@ -33,7 +33,7 @@ export function PathsPage() {
 
       {isLoading ? (
         <article className="summary-card">
-          <h3>Loading paths</h3>
+          <h3>Loading paths…</h3>
           <p>Preparing the current published learning trails.</p>
         </article>
       ) : error ? (

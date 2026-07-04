@@ -2115,6 +2115,27 @@ def build_catalog_index(term_records: list[dict]) -> list[dict]:
     ]
 
 
+def load_path_sequences(sequences_path: Path | None) -> dict:
+    """Load editorial path sequences from editorial/path-sequences.json.
+
+    Returns a dict mapping path_slug -> {steps, category, subCategory}.
+    Each step has: {slug, title, stage, why}.
+    Returns {} when no path is given or the file is absent.
+    """
+    if sequences_path is None:
+        return {}
+    path = Path(sequences_path)
+    if not path.is_file():
+        return {}
+    try:
+        payload = json.loads(path.read_text(encoding="utf-8"))
+        if isinstance(payload, dict):
+            return payload
+    except (json.JSONDecodeError, OSError):
+        pass
+    return {}
+
+
 def classify_path_stage(index: int, total: int) -> str:
     if index == 0:
         return "start"
@@ -2141,7 +2162,7 @@ def term_path_score(term: dict) -> tuple[int, int, int, int, int]:
     )
 
 
-def build_learning_paths(term_records: list[dict]) -> tuple[list[dict], dict[str, dict]]:
+def build_learning_paths(term_records: list[dict], path_sequences: dict | None = None) -> tuple[list[dict], dict[str, dict]]:
     grouped: dict[tuple[str, str], list[dict]] = defaultdict(list)
     for term in term_records:
         category = term["taxonomy"]["category"]
@@ -2152,11 +2173,59 @@ def build_learning_paths(term_records: list[dict]) -> tuple[list[dict], dict[str
 
     path_summaries: list[dict] = []
     path_details: dict[str, dict] = {}
+    sequences = path_sequences if path_sequences else {}
 
     for (category, subcategory), terms in sorted(grouped.items()):
         if len(terms) < 3:
             continue
 
+        path_slug = slugify(f"{category} {subcategory}")
+
+        # Check for a manually sequenced path override
+        manual = sequences.get(path_slug)
+        if manual and manual.get("steps"):
+            term_by_slug: dict[str, dict] = {t["slug"]: t for t in terms}
+            manual_steps = manual["steps"]
+            steps = []
+            for step_def in manual_steps:
+                slug = step_def["slug"]
+                term = term_by_slug.get(slug)
+                if not term:
+                    continue
+                steps.append(
+                    {
+                        "slug": term["slug"],
+                        "title": term["title"],
+                        "summary": term["summary"],
+                        "stage": step_def.get("stage", "build"),
+                        "whyIncluded": step_def.get("why", ""),
+                    }
+                )
+
+            if len(steps) >= 2:
+                description = (
+                    f"Build fluency in {subcategory} inside {category} by moving from foundational terms "
+                    "into adjacent methods, variants, and extensions."
+                )
+                summary = {
+                    "slug": path_slug,
+                    "title": f"{subcategory} Path",
+                    "description": description,
+                    "category": category,
+                    "subCategory": subcategory,
+                    "termCount": len(terms),
+                    "featuredTermSlugs": [step["slug"] for step in steps[:4]],
+                }
+                detail = {
+                    **summary,
+                    "featuredTermTitles": [step["title"] for step in steps[:4]],
+                    "steps": steps,
+                }
+                path_summaries.append(summary)
+                path_details[path_slug] = detail
+                continue
+
+        # Auto-generate path (fallback when no manual sequence exists)
         ordered = sorted(
             terms,
             key=lambda term: (
@@ -2186,7 +2255,6 @@ def build_learning_paths(term_records: list[dict]) -> tuple[list[dict], dict[str
                 }
             )
 
-        path_slug = slugify(f"{category} {subcategory}")
         description = (
             f"Build fluency in {subcategory} inside {category} by moving from foundational terms "
             "into adjacent methods, variants, and extensions."

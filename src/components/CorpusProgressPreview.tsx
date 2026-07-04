@@ -5,6 +5,37 @@ function formatPercent(value: number) {
   return `${Math.round(value * 100)}%`;
 }
 
+const learningModes = [
+  {
+    title: "At a glance",
+    note: "Fast orientation with taxonomy, source trace, and study-family cues.",
+  },
+  {
+    title: "Concept map",
+    note: "Prerequisites, neighbors, and next concepts in one visual move.",
+  },
+  {
+    title: "Quick FAQ",
+    note: "Compact question-and-answer reinforcement for memory refresh.",
+  },
+  {
+    title: "Quick quiz",
+    note: "A one-question self-check that reveals the answer and explains why.",
+  },
+  {
+    title: "Featured deep dive",
+    note: "Richer infographic-style treatment for stronger concepts and path anchors.",
+  },
+  {
+    title: "Curriculum map",
+    note: "The workbook structure rendered as a visible learning arc on every term.",
+  },
+  {
+    title: "Structure expansion",
+    note: "Broader editorial and backlog layers promoted on featured concepts.",
+  },
+];
+
 export function CorpusProgressPreview() {
   const [manifest, setManifest] = useState<PublishedCorpusManifest | null>(null);
   const runtime = manifest?.structureLayerCounts["launch-runtime"] ?? 0;
@@ -23,36 +54,6 @@ export function CorpusProgressPreview() {
   const curriculumMapCount = blockCounts["curriculum-map"] ?? 0;
   const structureExpansionCount = blockCounts["structure-expansion"] ?? 0;
   const featuredStudyNodes = manifest?.contentDepth?.featuredTermCount ?? 0;
-  const learningModes = [
-    {
-      title: "At a glance",
-      note: "Fast orientation with taxonomy, source trace, and study-family cues.",
-    },
-    {
-      title: "Concept map",
-      note: "Prerequisites, neighbors, and next concepts in one visual move.",
-    },
-    {
-      title: "Quick FAQ",
-      note: "Compact question-and-answer reinforcement for memory refresh.",
-    },
-    {
-      title: "Quick quiz",
-      note: "A one-question self-check that reveals the answer and explains why.",
-    },
-    {
-      title: "Featured deep dive",
-      note: "Richer infographic-style treatment for stronger concepts and path anchors.",
-    },
-    {
-      title: "Curriculum map",
-      note: "The workbook structure rendered as a visible learning arc on every term.",
-    },
-    {
-      title: "Structure expansion",
-      note: "Broader editorial and backlog layers promoted on featured concepts.",
-    },
-  ];
 
   useEffect(() => {
     let isCancelled = false;
@@ -74,7 +75,7 @@ export function CorpusProgressPreview() {
     <section className="workspace-hero">
       <article className="summary-card">
         <p className="showcase-label">Learning depth atlas</p>
-        <h3>{manifest ? `${manifest.termCount.toLocaleString()} terms in the live library` : "Loading corpus atlas"}</h3>
+        <h3>{manifest ? `${manifest.termCount.toLocaleString()} terms in the live library` : "Loading corpus atlas…"}</h3>
         <p>
           The corpus is JSON-first and rechecked at build time, so the app can stay honest about
           where every term gets the compact launch stack and where richer study treatment is earned.

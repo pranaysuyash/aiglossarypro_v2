@@ -35,7 +35,7 @@ export function StructureExplorerCard() {
   return (
     <article className="structure-explorer-card">
       <p className="showcase-label">Curriculum blueprint</p>
-      <h3>{registry ? `${registry.fieldCount} workbook fields, one layered product` : "Loading structure map"}</h3>
+      <h3>{registry ? `${registry.fieldCount} workbook fields, one layered product` : "Loading structure map…"}</h3>
       <p>
         The workbook is not treated as one giant schema. It is split into launch runtime, editorial
         expansion, and backlog so the app can stay lean while still knowing exactly what exists.
@@ -47,7 +47,7 @@ export function StructureExplorerCard() {
             <section key={layer} className={`structure-layer structure-layer-${layer}`}>
               <div className="structure-layer-head">
                 <strong>{layer}</strong>
-                <span>{registry ? `${registry.layerCounts[layer]} fields` : "Loading"}</span>
+                <span>{registry ? `${registry.layerCounts[layer]} fields` : "Loading…"}</span>
               </div>
               <div className="structure-layer-bar" aria-hidden="true">
                 <div

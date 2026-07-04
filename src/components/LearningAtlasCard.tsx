@@ -32,7 +32,7 @@ export function LearningAtlasCard() {
   return (
     <article className="learning-atlas-card">
       <p className="showcase-label">Corpus atlas</p>
-      <h3>{manifest ? `${manifest.termCount.toLocaleString()} terms in one study graph` : "Loading atlas"}</h3>
+      <h3>{manifest ? `${manifest.termCount.toLocaleString()} terms in one study graph` : "Loading atlas…"}</h3>
       <p>
         The product is built from JSON artifacts, but the learning experience still needs to feel
         alive, visual, and easy to enter. This atlas keeps the corpus readable at a glance.

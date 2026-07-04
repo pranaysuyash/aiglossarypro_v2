@@ -1,4 +1,5 @@
 import type { ExportJobRecord, NoteRecord, TermSummary } from "../types";
+import { getTermBlocks } from "../content/termBlocks";
 
 export type SavedShelfSummary = {
   category: string;
@@ -130,7 +131,7 @@ export function buildInteractiveContentMix(terms: TermSummary[], slugs: string[]
   const matchedTerms = terms.filter((term) => slugSet.has(term.slug));
   return matchedTerms.reduce(
     (accumulator, term) => {
-      for (const block of term.blocks) {
+      for (const block of getTermBlocks(term)) {
         if (block.type === "quiz") {
           accumulator.quizzes += 1;
         } else if (block.type === "diagram") {

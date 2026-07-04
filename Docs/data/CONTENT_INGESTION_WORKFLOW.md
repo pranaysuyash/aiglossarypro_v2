@@ -225,10 +225,54 @@ The runtime content contract remains JSON-first and unchanged.
   - what it is not
   - common confusion
   - best next step
-- This is a durable bridge between the structure sheet and the learner surface because it turns “adjacent concepts” into a visible study move instead of leaving them implicit in related-term links.
-
-## Addendum (2026-07-04 Structure Expansion Bridge)
+- This is a durable bridge between the structure sheet and the learner surface because it turns “adjacent concepts” into a visible study move instead of leaving them implicit in related-term links.## Addendum (2026-07-04 Structure Expansion Bridge)
 
 - The importer now publishes `structure-expansion` for every term, not only for featured terms.
 - The block surfaces a ranked slice of the broader workbook ceiling, with `editorial-expansion` sections shown before `backlog` sections.
 - The explicit `STRUCTURE_EDITORIAL_SECTION_ORDER` is preserved in `editorial/structure-registry.json` so downstream consumers do not silently lose the editorial sequence.
+
+## Addendum (2026-07-04 Taxonomy Registry Pipeline)
+
+- The editorial taxonomy registry (`data/taxonomy-registry.json`) is now the primary taxonomy source for the build pipeline.
+- Registry entries override auto-classification rules and workbook taxonomy fields. The build prioritizes: registry > auto-classification > workbook taxonomy.
+- The registry grew from 13,256 → 17,717 entries through automated batch classification.
+
+### Batch Classification Pipeline (Consolidated)
+
+The batch classification pipeline now runs from a single script — `tools/classify_unclassified.py` — which combines three graduated strategies:
+
+1. **v3 — Explicit term mapping**: ~600-entry dictionary of exact term → (category, subCategory) pairs.
+2. **v1 — Pattern-list matching**: ~200 keyword patterns for architectures, datasets, tools, math concepts, and vendor names.
+3. **v2 — Suffix/prefix regex**: Architecture suffixes (-Former, -ViT, -GAN), dataset patterns (Set, Dataset), optimizer prefixes (Ada*, Diff*).
+
+The four legacy scripts (`classify_remaining.py` through `classify_remaining_v4.py`) were consolidated and removed. The consolidated script supports `--dry-run`, `--out`, `--merge`, `--backup`, and `--limit N` flags with 23 unit tests.
+
+Total coverage impact: from 74.49% baseline to 100%.
+
+### Coverage Progression
+
+| Stage | Coverage | Unclassified | Paths |
+|---|---|---|---|
+| Baseline | 75.20% | 4,461 | 57 |
+| Token similarity (v1 proposal) | 90.15% | 1,772 | 181 |
+| Pattern-list (v1 classifier) | 92.45% | 1,353 | — |
+| Suffix/regex (v2 classifier) | 94.20% | 1,038 | — |
+| Explicit mapping (v3 classifier) | 97.69% | 374 | — |
+| Final cleanup (v4 classifier) | 99.99% | 1 | 194 |
+| Final (after SlimPajama fix) | 100.00% | 0 | 194 |
+
+### Correction Quality
+
+- Spot check of 20 random v2 classifications: **18/20 correct (90%)**
+- Spot check of 30 random registry entries: **0 issues found**
+- Reviewer-flagged fixes applied: 7 (FlashAttention → Model Optimization, Make.com → ML Frameworks, etc.)
+- Remaining ~200 estimated errors in 2,689 original proposals (from token similarity pass) noted but not individually fixed; the v2-v4 passes added cleaner classifications on top
+
+### Key Files
+
+- `data/taxonomy-registry.json` — canonical editorial taxonomy registry (17,717 entries)
+- `tools/propose_taxonomy_registry.py` — token-similarity proposal engine (first pass, 2,689 proposals)
+- `tools/classify_unclassified.py` — consolidated batch classifier (replaces legacy v1-v4 scripts)
+- `public/content/published/reports/content-audit.json` — per-build quality audit with coverage tracking
+
+

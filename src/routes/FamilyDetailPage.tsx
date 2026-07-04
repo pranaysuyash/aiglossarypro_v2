@@ -1,9 +1,10 @@
 import { Link, useParams } from "react-router-dom";
 import { useEffect, useMemo, useState } from "react";
 import { useCatalog } from "../content/CatalogContext";
-import type { TermBlock, TermRecord, TermSummary } from "../types";
+import { getTermBlocks } from "../content/termBlocks";
+import type { TermBlock, TermRecord } from "../types";
 import { buildInteractiveContentMix } from "../study/workspaceInsights";
-import { buildFamilyHighlights, familySlug, isFamilyMatch } from "./familyHighlights";
+import { buildFamilyHighlights, familySlug, getFamilyPaths, isFamilyMatch } from "./familyHighlights";
 
 export function FamilyDetailPage() {
   const { familySlug: familySlugParam = "" } = useParams();
@@ -18,15 +19,7 @@ export function FamilyDetailPage() {
         : [],
     [family, terms],
   );
-  const familyPaths = useMemo(
-    () =>
-      family
-        ? paths.filter(
-            (path) => path.category === family.title || path.title.toLowerCase().includes(family.title.toLowerCase()),
-          )
-        : [],
-    [family, paths],
-  );
+  const familyPaths = useMemo(() => (family ? getFamilyPaths(paths, family.title) : []), [family, paths]);
   const familyOrderedTerms = useMemo(() => {
     const copy = [...familyTerms];
     copy.sort((left, right) => {
@@ -113,8 +106,7 @@ export function FamilyDetailPage() {
     }> = [];
 
     for (const term of seedTerms) {
-      const blocks =
-        (familyTermRecords.get(term.slug) as TermRecord | TermSummary | undefined)?.blocks ?? term.blocks ?? [];
+      const blocks = getTermBlocks(familyTermRecords.get(term.slug) ?? term);
       const quiz = blocks.find((block): block is Extract<TermBlock, { type: "quiz" }> => block.type === "quiz");
       if (quiz) {
         widgets.push({
@@ -175,17 +167,23 @@ export function FamilyDetailPage() {
     }
 
     return widgets;
-  }, [featuredTerms, familyTerms]);
+  }, [familyTermRecords, featuredTerms, familyTerms]);
 
   const comparisonPairs = useMemo(() => {
     const pairs: Array<{ anchor: string; neighbor: string; anchorSlug: string; neighborSlug: string }> = [];
 
     featuredTerms.forEach((term) => {
-      const relatives = term.links.related
-        .map((title) => familyTermLookup.get(title.toLowerCase()))
-        .filter((match): match is (typeof familyTerms)[number] => Boolean(match))
-        .filter((match) => match.slug !== term.slug)
-        .slice(0, 2);
+      const relatives: (typeof familyTerms)[number][] = [];
+
+      for (const title of term.links.related) {
+        const match = familyTermLookup.get(title.toLowerCase());
+        if (match && match.slug !== term.slug) {
+          relatives.push(match);
+        }
+        if (relatives.length >= 2) {
+          break;
+        }
+      }
 
       for (const related of relatives) {
         pairs.push({
@@ -203,7 +201,7 @@ export function FamilyDetailPage() {
   if (isLoading) {
     return (
       <section className="page-grid">
-        <h2>Loading family lane</h2>
+        <h2>Loading family lane…</h2>
         <p>Reading the published catalog to open the selected study cluster.</p>
       </section>
     );
@@ -286,7 +284,7 @@ export function FamilyDetailPage() {
       <article className="hero-card term-hero">
         <div className="term-hero-copy">
           <p className="eyebrow">Flagship family</p>
-          <h2>{family.title}</h2>
+          <h1>{family.title}</h1>
           <p className="term-hero-intro">{family.note}</p>
           <p>{family.whyItMatters}</p>
           <div className="shelf-links term-metrics">
@@ -296,7 +294,7 @@ export function FamilyDetailPage() {
           </div>
           <div className="hero-actions">
             <Link className="primary-button" to="/explore">
-              Open library
+              Browse library
             </Link>
             <Link className="ghost-button" to="/paths">
               Browse paths
@@ -323,7 +321,7 @@ export function FamilyDetailPage() {
             <p>Your notes and bookmarks can stay attached to the same study account once you sign in.</p>
             <div className="hero-actions">
               <Link className="ghost-button" to="/notes">
-                Open notebook
+                Open notes
               </Link>
               <Link className="ghost-button" to="/saved">
                 Open study shelf
@@ -459,7 +457,7 @@ export function FamilyDetailPage() {
             </div>
             <p>{term.summary}</p>
             <Link className="text-link" to={`/term/${term.slug}`}>
-              Open deep dive
+              Open {term.title}
             </Link>
           </article>
         ))}
@@ -548,7 +546,7 @@ export function FamilyDetailPage() {
                 <span>{path.termCount} terms</span>
                 <span>{path.featuredTermSlugs.length} featured anchors</span>
               </div>
-              <Link className="text-link" to={`/paths/${path.slug}`}>
+              <Link className="text-link" to={`/paths/${path.slug}`} aria-label={`Open trail: ${path.title}`}>
                 Open path
               </Link>
             </article>

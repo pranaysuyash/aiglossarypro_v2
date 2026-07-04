@@ -54,7 +54,7 @@ export function AccountPage() {
       </div>
       {isLoading ? (
         <article className="summary-card">
-          <h3>Loading your member space</h3>
+          <h3>Loading your member space…</h3>
           <p>Reading the live identity and continuity surface from the Worker.</p>
         </article>
       ) : error && source === "unavailable" ? (
@@ -136,7 +136,7 @@ export function AccountPage() {
       <section className="workspace-hero">
         <article className="summary-card">
           <p className="showcase-label">Corpus depth</p>
-          <h3>{manifest ? `${manifest.contentTierCounts.featured ?? 0} featured deep dives` : "Loading corpus depth"}</h3>
+          <h3>{manifest ? `${manifest.contentTierCounts.featured ?? 0} featured deep dives` : "Loading corpus depth…"}</h3>
           <p>
             Membership protects the full corpus, but the best terms get extra editorial depth so the library feels curated instead of flat.
           </p>

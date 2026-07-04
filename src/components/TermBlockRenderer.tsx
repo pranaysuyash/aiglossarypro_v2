@@ -276,10 +276,13 @@ function QuizBlock({ block }: { block: Extract<TermBlock, { type: "quiz" }> }) {
           <button
             key={option}
             className={`quiz-option ${selectedIndex === index ? "quiz-option-selected" : ""}`}
+            aria-label={`${String.fromCharCode(65 + index)}. ${option}`}
             onClick={() => setSelectedIndex(index)}
             type="button"
           >
-            <span className="quiz-option-label">{String.fromCharCode(65 + index)}</span>
+            <span className="quiz-option-label" aria-hidden="true">
+              {String.fromCharCode(65 + index)}
+            </span>
             <span>{option}</span>
           </button>
         ))}

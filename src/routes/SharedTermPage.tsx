@@ -2,6 +2,7 @@ import { useEffect, useMemo, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { TermBlockRenderer } from "../components/TermBlockRenderer";
 import { useCatalog } from "../content/CatalogContext";
+import { getTermBlocks } from "../content/termBlocks";
 import type { SharedResourceRecord, TermRecord } from "../types";
 import { fetchSharedResource } from "../study/workspaceApi";
 
@@ -69,7 +70,7 @@ export function SharedTermPage() {
   if (isLoading || isShareLoading) {
     return (
       <section className="page-grid">
-        <h2>Opening shared term</h2>
+        <h2>Opening shared term…</h2>
         <p>Resolving the shared token and loading the published term artifact.</p>
       </section>
     );
@@ -182,7 +183,7 @@ export function SharedTermPage() {
 
       <div className="detail-grid">
         <div className="content-column">
-          {term.blocks.map((block) => (
+          {getTermBlocks(term).map((block) => (
             <TermBlockRenderer key={block.id} block={block} />
           ))}
         </div>

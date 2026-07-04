@@ -2,9 +2,10 @@ import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import path from "node:path";
 import tailwindcss from "@tailwindcss/vite";
+import reactScan from "@react-scan/vite-plugin-react-scan";
 
 export default defineConfig({
-  plugins: [react(), tailwindcss()],
+  plugins: [react(), reactScan({ enable: process.env.NODE_ENV !== "production" }), tailwindcss()],
   build: {
     rollupOptions: {
       output: {

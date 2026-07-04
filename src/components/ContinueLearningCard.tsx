@@ -55,10 +55,10 @@ export function ContinueLearningCard() {
           {lastOpenedTerm ? "Resume term" : "Start exploring"}
         </Link>
         <Link className="ghost-button" to={suggestedNextTerm ? `/term/${suggestedNextTerm.slug}` : "/paths"}>
-          {suggestedNextTerm ? "Open next concept" : "Open a path"}
+          {suggestedNextTerm ? "Open next concept" : "Browse paths"}
         </Link>
         <Link className="ghost-button" to="/paths">
-          Open a path
+          Browse paths
         </Link>
       </div>
     </article>

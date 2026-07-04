@@ -1,4 +1,5 @@
 import type { TermSummary } from "../types";
+import type { LearningPathSummary } from "../types";
 import { flagshipFamilies, type FlagshipFamily } from "../content/flagshipFamilies";
 
 export type FamilyHighlight = FlagshipFamily & {
@@ -16,6 +17,18 @@ export function isFamilyMatch(term: TermSummary, familyTitle: string): boolean {
 
 export function familySlug(value: string): string {
   return value.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "");
+}
+
+export function isFamilyPathMatch(path: LearningPathSummary, familyTitle: string): boolean {
+  return (
+    path.category === familyTitle ||
+    path.title.toLowerCase().includes(familyTitle.toLowerCase()) ||
+    path.subCategory.toLowerCase().includes(familyTitle.toLowerCase())
+  );
+}
+
+export function getFamilyPaths(paths: LearningPathSummary[], familyTitle: string): LearningPathSummary[] {
+  return paths.filter((path) => isFamilyPathMatch(path, familyTitle));
 }
 
 export function buildFamilyHighlights(terms: TermSummary[]): FamilyHighlight[] {

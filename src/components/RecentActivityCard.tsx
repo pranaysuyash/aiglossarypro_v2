@@ -48,10 +48,10 @@ export function RecentActivityCard() {
       </div>
       <div className="hero-actions">
         <Link className="primary-button" to={lastOpenedTerm ? `/term/${lastOpenedTerm.slug}` : "/explore"}>
-          Continue studying
+          {lastOpenedTerm ? "Resume term" : "Start exploring"}
         </Link>
         <Link className="ghost-button" to="/notes">
-          Review notes
+          Open notes
         </Link>
       </div>
     </article>

@@ -1,13 +1,21 @@
 import { useEffect, useMemo, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import { StudyRichText } from "../components/StudyRichText";
+import { StudyRichText } from "../components/ai-elements/StudyRichText";
 import { TermBlockRenderer } from "../components/TermBlockRenderer";
 import { useCatalog } from "../content/CatalogContext";
+import { getTermBlocks } from "../content/termBlocks";
 import type { AnnotationRecord } from "../types";
 import { useWorkerRequest } from "../platform/workerApi";
 import { useStudy } from "../study/StudyContext";
 import { createRemoteShareLink, fetchAnnotations, removeAnnotation, saveAnnotation } from "../study/workspaceApi";
 import { buildFamilyHighlights, familySlug, isFamilyMatch } from "./familyHighlights";
+
+const studyLoop = [
+  "Read the definition",
+  "Bookmark the term",
+  "Annotate a block",
+  "Share or export the result",
+];
 
 export function TermPage() {
   const { slug = "" } = useParams();
@@ -64,15 +72,16 @@ export function TermPage() {
 
   useEffect(() => {
     const activeTerm = term;
+    const activeBlocks = getTermBlocks(activeTerm);
 
     if (!activeTerm || !isRemoteBacked) {
       setAnnotations([]);
-      setSelectedBlockId(activeTerm?.blocks[0]?.id ?? "");
+      setSelectedBlockId(activeBlocks[0]?.id ?? "");
       return;
     }
 
     const activeTermSlug = activeTerm.slug;
-    const defaultBlockId = activeTerm.blocks[0]?.id ?? "";
+    const defaultBlockId = activeBlocks[0]?.id ?? "";
 
     let isCancelled = false;
 
@@ -133,25 +142,21 @@ export function TermPage() {
   }, [loadTerm, markTermOpened, slug]);
 
   const currentTerm = term;
-  const termTitleToSlug = useMemo(
-    () =>
-      new Map(
-        terms.flatMap((item) =>
-          [item.title, ...item.aliases]
-            .map((label) => label.trim().toLowerCase())
-            .filter((label) => Boolean(label))
-            .map((label) => [label, item.slug]),
-        ),
-      ),
-    [terms],
-  );
+  const termTitleToSlug = useMemo(() => {
+    const nextMap = new Map<string, string>();
+
+    for (const item of terms) {
+      for (const label of [item.title, ...item.aliases]) {
+        const normalized = label.trim().toLowerCase();
+        if (normalized) {
+          nextMap.set(normalized, item.slug);
+        }
+      }
+    }
+
+    return nextMap;
+  }, [terms]);
   const resolveTermSlug = (value: string) => termTitleToSlug.get(value.trim().toLowerCase()) ?? null;
-  const studyLoop = [
-    "Read the definition",
-    "Bookmark the term",
-    "Annotate a block",
-    "Share or export the result",
-  ];
   const firstLinks = currentTerm
     ? [
         ...currentTerm.links.prerequisites.map((label) => ({ kind: "Prerequisite", label, slug: resolveTermSlug(label) })),
@@ -169,32 +174,39 @@ export function TermPage() {
     () => (currentTerm ? familyHighlights.find((family) => familySlug(family.title) === studyFamilySlug) ?? null : null),
     [currentTerm, familyHighlights, studyFamilySlug],
   );
-  const familyLaneTerms = useMemo(
-    () =>
-      familyLane
-        ? terms
-            .filter((candidate) => isFamilyMatch(candidate, familyLane.title))
-            .sort((left, right) => {
-              const leftScore =
-                left.metadata.editorialTier === "featured"
-                  ? 3
-                  : left.metadata.editorialTier === "standard"
-                    ? 2
-                    : 1;
-              const rightScore =
-                right.metadata.editorialTier === "featured"
-                  ? 3
-                  : right.metadata.editorialTier === "standard"
-                    ? 2
-                    : 1;
-              if (rightScore !== leftScore) {
-                return rightScore - leftScore;
-              }
-              return left.title.localeCompare(right.title);
-            })
-        : [],
-    [familyLane, terms],
-  );
+  const familyLaneTerms = useMemo(() => {
+    if (!familyLane) {
+      return [];
+    }
+
+    const matchingTerms: typeof terms = [];
+    for (const candidate of terms) {
+      if (isFamilyMatch(candidate, familyLane.title)) {
+        matchingTerms.push(candidate);
+      }
+    }
+
+    matchingTerms.sort((left, right) => {
+      const leftScore =
+        left.metadata.editorialTier === "featured"
+          ? 3
+          : left.metadata.editorialTier === "standard"
+            ? 2
+            : 1;
+      const rightScore =
+        right.metadata.editorialTier === "featured"
+          ? 3
+          : right.metadata.editorialTier === "standard"
+            ? 2
+            : 1;
+      if (rightScore !== leftScore) {
+        return rightScore - leftScore;
+      }
+      return left.title.localeCompare(right.title);
+    });
+
+    return matchingTerms;
+  }, [familyLane, terms]);
   const familyLaneIndex = currentTerm ? familyLaneTerms.findIndex((item) => item.slug === currentTerm.slug) : -1;
   const previousFamilyTerm = familyLaneIndex > 0 ? familyLaneTerms[familyLaneIndex - 1] : null;
   const nextFamilyTerm =
@@ -203,7 +215,7 @@ export function TermPage() {
   if (isLoading || isTermLoading) {
     return (
       <section className="page-grid">
-        <h2>Loading term</h2>
+        <h2>Loading term…</h2>
         <p>Reading the published catalog manifest and term detail artifact.</p>
       </section>
     );
@@ -234,9 +246,10 @@ export function TermPage() {
   }
 
   const activeTerm = term;
+  const activeBlocks = getTermBlocks(activeTerm);
   const note = notes[activeTerm.slug] ?? "";
   const isSaved = bookmarks.includes(activeTerm.slug);
-  const blockTypeSummary = activeTerm.blocks.reduce<Record<string, number>>((accumulator, block) => {
+  const blockTypeSummary = activeBlocks.reduce<Record<string, number>>((accumulator, block) => {
     accumulator[block.type] = (accumulator[block.type] ?? 0) + 1;
     return accumulator;
   }, {});
@@ -248,7 +261,7 @@ export function TermPage() {
     { id: "quick-quiz", label: "Quick quiz" },
     { id: "deep-dive", label: "Featured deep dive" },
     { id: "source-definition", label: "Source snippet" },
-  ].filter((shortcut) => activeTerm.blocks.some((block) => block.id === shortcut.id));
+  ].filter((shortcut) => activeBlocks.some((block) => block.id === shortcut.id));
   const source = activeTerm.source.glossaryWorkbook;
   const sourceTraceItems = [
     `Workbook: ${source.file} / ${source.sheetName}`,
@@ -353,7 +366,7 @@ export function TermPage() {
           <p className="eyebrow">
             {(termSummary?.taxonomy.topic ?? activeTerm.taxonomy.topic)} / {activeTerm.taxonomy.category} / {activeTerm.taxonomy.subCategory}
           </p>
-          <h2>{activeTerm.title}</h2>
+          <h1>{activeTerm.title}</h1>
           <p className="term-hero-intro">
             A focused entry in the field guide. Read the short version first, then stay for the
             concept graph, your own notes, and the deeper study blocks below.
@@ -365,7 +378,7 @@ export function TermPage() {
           </div>
           <p>{activeTerm.summary}</p>
           <div className="shelf-links term-metrics">
-            <span>{activeTerm.blocks.length} learning blocks</span>
+            <span>{activeBlocks.length} learning blocks</span>
             <span>{activeTerm.aliases.length} aliases</span>
             <span>{Object.keys(blockTypeSummary).length} content shapes</span>
             {activeTerm.metadata.studyFamily ? <span>{activeTerm.metadata.studyFamily}</span> : null}
@@ -528,7 +541,7 @@ export function TermPage() {
               </article>
             ))}
           </section>
-          {term.blocks.map((block) => (
+          {getTermBlocks(term).map((block) => (
             <TermBlockRenderer key={block.id} block={block} />
           ))}
         </div>
@@ -541,16 +554,19 @@ export function TermPage() {
                 ? "Your note is backed by your active membership account."
                 : "Your note is stored in the browser until an active membership is linked."}
             </p>
-            <textarea
-              autoComplete="off"
-              value={note}
-              onChange={(event) => {
-                void setNote(term.slug, event.target.value);
-              }}
-              name="termNote"
-              spellCheck={false}
-              placeholder="Capture what you want to remember, compare, or revisit."
-            />
+            <label className="search-panel">
+              <span>Personal note</span>
+              <textarea
+                autoComplete="off"
+                value={note}
+                onChange={(event) => {
+                  void setNote(term.slug, event.target.value);
+                }}
+                name="termNote"
+                spellCheck={false}
+                placeholder="Capture what you want to remember, compare, or revisit."
+              />
+            </label>
             {note.trim() ? (
               <div className="study-markdown-preview">
                 <p className="showcase-label">Rendered note</p>
@@ -657,21 +673,24 @@ export function TermPage() {
                 value={selectedBlockId}
                 onChange={(event) => setSelectedBlockId(event.target.value)}
               >
-                {term.blocks.map((block) => (
+                {getTermBlocks(term).map((block) => (
                   <option key={block.id} value={block.id}>
                     {block.title}
                   </option>
                 ))}
               </select>
             </label>
-            <textarea
-              autoComplete="off"
-              value={annotationNote}
-              onChange={(event) => setAnnotationNote(event.target.value)}
-              name="annotationNote"
-              spellCheck={false}
-              placeholder="Write a focused annotation for this block."
-            />
+            <label className="search-panel">
+              <span>Annotation note</span>
+              <textarea
+                autoComplete="off"
+                value={annotationNote}
+                onChange={(event) => setAnnotationNote(event.target.value)}
+                name="annotationNote"
+                spellCheck={false}
+                placeholder="Write a focused annotation for this block."
+              />
+            </label>
             <label className="search-panel">
               <span>Selected excerpt</span>
               <input

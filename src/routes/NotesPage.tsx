@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
-import { StudyRichText } from "../components/StudyRichText";
+import { useMemo } from "react";
+import { StudyRichText } from "../components/ai-elements/StudyRichText";
 import { useCatalog } from "../content/CatalogContext";
 import { useStudy } from "../study/StudyContext";
 import {
@@ -12,18 +13,24 @@ export function NotesPage() {
   const { terms, isLoading, error } = useCatalog();
   const { notes, isRemoteBacked, exportStudyData } = useStudy();
   const notebook = buildNotebookSummary(terms, notes);
-  const notebookTierBreakdown = buildEditorialTierBreakdown(
-    terms,
-    Object.entries(notes)
-      .filter(([, value]) => value.trim())
-      .map(([slug]) => slug),
+  const noteSlugs = useMemo(() => {
+    const slugs: string[] = [];
+
+    for (const [slug, value] of Object.entries(notes)) {
+      if (value.trim()) {
+        slugs.push(slug);
+      }
+    }
+
+    return slugs;
+  }, [notes]);
+  const noteSlugSet = useMemo(() => new Set(noteSlugs), [noteSlugs]);
+  const notedTerms = useMemo(
+    () => terms.filter((term) => noteSlugSet.has(term.slug)),
+    [noteSlugSet, terms],
   );
-  const notebookInteractiveMix = buildInteractiveContentMix(
-    terms,
-    Object.entries(notes)
-      .filter(([, value]) => value.trim())
-      .map(([slug]) => slug),
-  );
+  const notebookTierBreakdown = buildEditorialTierBreakdown(terms, noteSlugs);
+  const notebookInteractiveMix = buildInteractiveContentMix(terms, noteSlugs);
   const recentNotes = [...notebook.denseNotes].slice(0, 6);
   const strongestNote = notebook.longestNote;
 
@@ -116,7 +123,7 @@ export function NotesPage() {
       </section>
       {isLoading ? (
         <article className="summary-card">
-          <h3>Loading your notebook</h3>
+          <h3>Loading your notebook…</h3>
           <p>Resolving notes against the current published catalog.</p>
         </article>
       ) : error ? (
@@ -141,9 +148,7 @@ export function NotesPage() {
               </article>
             ))}
           </section>
-          {terms
-            .filter((term) => (notes[term.slug] ?? "").trim())
-            .map((term) => (
+          {notedTerms.map((term) => (
               <article key={term.slug} className="note-card">
                 <div className="term-card-header">
                   <div>

@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { useMemo } from "react";
 import { useCatalog } from "../content/CatalogContext";
-import { buildFamilyHighlights, familySlug } from "./familyHighlights";
+import { buildFamilyHighlights, familySlug, getFamilyPaths } from "./familyHighlights";
 
 export function FamiliesPage() {
   const { terms, paths, isLoading, error } = useCatalog();
@@ -9,12 +9,7 @@ export function FamiliesPage() {
   const familyCards = useMemo(
     () =>
       highlights.map((family) => {
-        const lanePaths = paths.filter(
-          (path) =>
-            path.category === family.title ||
-            path.title.toLowerCase().includes(family.title.toLowerCase()) ||
-            path.subCategory.toLowerCase().includes(family.title.toLowerCase()),
-        );
+        const lanePaths = getFamilyPaths(paths, family.title);
         const laneTerms = family.terms
           .filter((term) => term.metadata.editorialTier !== "sparse")
           .slice(0, 2);
@@ -25,17 +20,27 @@ export function FamiliesPage() {
           laneTermCount: lanePaths.length,
           starterPath: lanePaths[0] ?? null,
           featuredLaneTerms: laneTerms,
-          starterTerm,
-        };
-      }),
+        starterTerm,
+      };
+    }),
     [highlights, paths],
+  );
+  const compassMaxCount = familyCards[0]?.count ?? 1;
+  const compassLanes = useMemo(
+    () =>
+      familyCards.slice(0, 3).map((family, index) => ({
+        ...family,
+        rank: index + 1,
+        focusTerm: family.featuredLaneTerms[0] ?? family.starterTerm,
+      })),
+    [familyCards],
   );
 
   return (
     <section className="page-grid">
       <div className="section-header explore-heading">
         <p className="eyebrow">Flagship families</p>
-        <h2>Start with the clusters that deserve a deeper read.</h2>
+        <h1>Start with the clusters that carry the most learning depth.</h1>
         <p>
           These families are where the product can be more visual, more comparative, and more
           memorable. They are the best on-ramp when you want curated learning instead of flat search.
@@ -58,8 +63,30 @@ export function FamiliesPage() {
               Browse paths
             </Link>
             <Link className="text-link" to="/pricing">
-              See membership
+              Review membership
             </Link>
+          </div>
+          <div className="family-compass" aria-label="Top study lanes">
+            {compassLanes.map((lane) => (
+              <article key={lane.title} className="family-compass-row">
+                <span className="family-compass-index">0{lane.rank}</span>
+                <div className="family-compass-copy">
+                  <strong>{lane.title}</strong>
+                  <span>
+                    {lane.count.toLocaleString()} terms, {lane.featuredCount} featured,{" "}
+                    {lane.laneTermCount} matching paths
+                  </span>
+                  <p>{lane.focusTerm ? `Start from ${lane.focusTerm.title}.` : "Start from the family anchor."}</p>
+                </div>
+                <div className="family-compass-bar" aria-hidden="true">
+                  <span
+                    style={{
+                      width: `${Math.max(22, Math.min(100, (lane.count / compassMaxCount) * 100))}%`,
+                    }}
+                  />
+                </div>
+              </article>
+            ))}
           </div>
         </article>
         <article className="summary-card">
@@ -133,7 +160,7 @@ export function FamiliesPage() {
 
       {isLoading ? (
         <article className="summary-card">
-          <h3>Loading families</h3>
+          <h3>Loading families…</h3>
           <p>Reading the published catalog to group the deepest concept clusters.</p>
         </article>
       ) : error ? (

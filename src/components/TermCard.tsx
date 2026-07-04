@@ -1,8 +1,9 @@
+import { memo } from "react";
 import { Link } from "react-router-dom";
 import type { TermSummary } from "../types";
 import { useStudy } from "../study/StudyContext";
 
-export function TermCard({ term }: { term: TermSummary }) {
+export const TermCard = memo(function TermCard({ term }: { term: TermSummary }) {
   const { bookmarks, toggleBookmark } = useStudy();
   const isSaved = bookmarks.includes(term.slug);
 
@@ -36,4 +37,4 @@ export function TermCard({ term }: { term: TermSummary }) {
       </Link>
     </article>
   );
-}
+});
