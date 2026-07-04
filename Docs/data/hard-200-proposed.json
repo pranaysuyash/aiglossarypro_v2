@@ -1,0 +1,3106 @@
+{
+  "meta": {
+    "description": "Hard-200 analysis: hardest-to-classify terms with proposed categories",
+    "total_unclassified": 4631,
+    "method": "Terms are ranked by hardness: standard-tier first, then no clear category, then most tokens",
+    "correction_summary": "Manually reviewed and corrected first 50 terms. Categories/subcategories align with the project's AUTO_CLASSIFICATION_RULES taxonomy system.",
+    "corrections_applied": 50
+  },
+  "top_200": [
+    {
+      "slug": "peactidm-cycle-perceive-encode-attend-comprehend-think-intend-decide-motor",
+      "title": "PEACTIDM Cycle (Perceive-Encode-Attend-Comprehend-Think-Intend-Decide-Motor)",
+      "tier": "standard",
+      "family": "",
+      "tokens": [
+        "peactidm",
+        "cycle",
+        "perceive",
+        "encode",
+        "attend",
+        "comprehend",
+        "think",
+        "intend",
+        "decide",
+        "motor"
+      ],
+      "proposed_category": "AI Theory",
+      "token_count": 10,
+      "proposed_subcategory": "Knowledge Representation",
+      "correction_note": "PEACTIDM is a deliberative cognitive agent architecture (Perceive-Encode-Attend-Comprehend-Think-Intend-Decide-Motor)."
+    },
+    {
+      "slug": "clarion-connectionist-learning-with-adaptive-rule-induction-on-line",
+      "title": "CLARION (Connectionist Learning with Adaptive Rule Induction ON-line)",
+      "tier": "standard",
+      "family": "",
+      "tokens": [
+        "clarion",
+        "connectionist",
+        "learning",
+        "with",
+        "adaptive",
+        "rule",
+        "induction",
+        "on",
+        "line"
+      ],
+      "proposed_category": "AI Theory",
+      "token_count": 9,
+      "proposed_subcategory": "Knowledge Representation",
+      "correction_note": "CLARION is a cognitive architecture combining connectionist and symbolic learning, like ACT-R/SOAR."
+    },
+    {
+      "slug": "ooda-loop-observe-orient-decide-act-in-ai",
+      "title": "OODA Loop (Observe-Orient-Decide-Act) in AI",
+      "tier": "standard",
+      "family": "",
+      "tokens": [
+        "ooda",
+        "loop",
+        "observe",
+        "orient",
+        "decide",
+        "act",
+        "in",
+        "ai"
+      ],
+      "proposed_category": "AI Theory",
+      "token_count": 8,
+      "proposed_subcategory": "Knowledge Representation",
+      "correction_note": "OODA Loop is a decision-making framework from military strategy, adopted in AI agent architectures."
+    },
+    {
+      "slug": "average-value-at-risk-avar-in-ai",
+      "title": "Average Value-at-Risk (AVaR) in AI",
+      "tier": "standard",
+      "family": "",
+      "tokens": [
+        "average",
+        "value",
+        "at",
+        "risk",
+        "avar",
+        "in",
+        "ai"
+      ],
+      "proposed_category": "Statistical Methods",
+      "token_count": 7,
+      "proposed_subcategory": "Bayesian Inference",
+      "correction_note": "AVaR (Average Value-at-Risk) is a coherent risk measure from statistics/finance, applied in RL contexts."
+    },
+    {
+      "slug": "candi-child-and-adolescent-neuro-development-initiative",
+      "title": "CANDI (Child and Adolescent Neuro Development Initiative)",
+      "tier": "standard",
+      "family": "",
+      "tokens": [
+        "candi",
+        "child",
+        "and",
+        "adolescent",
+        "neuro",
+        "development",
+        "initiative"
+      ],
+      "proposed_category": "AI Applications",
+      "token_count": 7,
+      "proposed_subcategory": "",
+      "correction_note": "CANDI (Child and Adolescent Neuro Development Initiative) is a neuroimaging dataset — healthcare AI application."
+    },
+    {
+      "slug": "laplace-transform-applied-in-ml-signal-work",
+      "title": "Laplace Transform (applied in ML signal work)",
+      "tier": "standard",
+      "family": "",
+      "tokens": [
+        "laplace",
+        "transform",
+        "applied",
+        "in",
+        "ml",
+        "signal",
+        "work"
+      ],
+      "proposed_category": "Data Processing",
+      "token_count": 7,
+      "proposed_subcategory": "Data Pipeline",
+      "correction_note": "Laplace Transform is a signal-processing transform used in ML pipelines and signal work."
+    },
+    {
+      "slug": "rrhf-rank-responses-to-align-human-feedback",
+      "title": "RRHF (Rank Responses to Align Human Feedback)",
+      "tier": "standard",
+      "family": "",
+      "tokens": [
+        "rrhf",
+        "rank",
+        "responses",
+        "to",
+        "align",
+        "human",
+        "feedback"
+      ],
+      "proposed_category": "Natural Language Processing",
+      "token_count": 7,
+      "proposed_subcategory": "Pre-trained Models",
+      "correction_note": "RRHF (Rank Responses to Align Human Feedback) is an RLHF variant for LLM alignment."
+    },
+    {
+      "slug": "seasonal-and-trend-decomposition-using-loess-stl",
+      "title": "Seasonal and Trend Decomposition using Loess (STL)",
+      "tier": "standard",
+      "family": "",
+      "tokens": [
+        "seasonal",
+        "and",
+        "trend",
+        "decomposition",
+        "using",
+        "loess",
+        "stl"
+      ],
+      "proposed_category": "Statistical Methods",
+      "token_count": 7,
+      "proposed_subcategory": "Bayesian Inference",
+      "correction_note": "STL (Seasonal and Trend Decomposition using Loess) is a time-series statistical decomposition method."
+    },
+    {
+      "slug": "time-to-live-ttl-caching-in-ai",
+      "title": "Time-to-Live (TTL) Caching in AI",
+      "tier": "standard",
+      "family": "",
+      "tokens": [
+        "time",
+        "to",
+        "live",
+        "ttl",
+        "caching",
+        "in",
+        "ai"
+      ],
+      "proposed_category": "Data Processing",
+      "token_count": 7,
+      "proposed_subcategory": "Data Pipeline",
+      "correction_note": "TTL caching is a systems/infrastructure concept for ML serving pipelines."
+    },
+    {
+      "slug": "a-b-testing-for-ml-platforms",
+      "title": "A/B Testing for ML Platforms",
+      "tier": "standard",
+      "family": "",
+      "tokens": [
+        "a",
+        "b",
+        "testing",
+        "for",
+        "ml",
+        "platforms"
+      ],
+      "proposed_category": "Model Evaluation",
+      "token_count": 6,
+      "proposed_subcategory": "Performance Metrics",
+      "correction_note": "A/B Testing for ML Platforms — comparing model versions in production to evaluate performance."
+    },
+    {
+      "slug": "aiops-artificial-intelligence-for-it-operations",
+      "title": "AIOps (Artificial Intelligence for IT Operations)",
+      "tier": "standard",
+      "family": "",
+      "tokens": [
+        "aiops",
+        "artificial",
+        "intelligence",
+        "for",
+        "it",
+        "operations"
+      ],
+      "proposed_category": "AI Applications",
+      "token_count": 6,
+      "proposed_subcategory": "",
+      "correction_note": "AIOps (Artificial Intelligence for IT Operations) applies AI to IT operations and monitoring."
+    },
+    {
+      "slug": "all-pairs-shortest-path-floyd-warshall",
+      "title": "All-Pairs Shortest Path (Floyd-Warshall)",
+      "tier": "standard",
+      "family": "",
+      "tokens": [
+        "all",
+        "pairs",
+        "shortest",
+        "path",
+        "floyd",
+        "warshall"
+      ],
+      "proposed_category": "AI Theory",
+      "token_count": 6,
+      "proposed_subcategory": "Knowledge Representation",
+      "correction_note": "Floyd-Warshall all-pairs shortest path is a classic graph algorithm. Fits Knowledge Representation."
+    },
+    {
+      "slug": "alternating-direction-method-of-multipliers-admm",
+      "title": "Alternating Direction Method of Multipliers (ADMM)",
+      "tier": "standard",
+      "family": "",
+      "tokens": [
+        "alternating",
+        "direction",
+        "method",
+        "of",
+        "multipliers",
+        "admm"
+      ],
+      "proposed_category": "Optimization Algorithms",
+      "token_count": 6,
+      "proposed_subcategory": "Gradient-Based Optimizers",
+      "correction_note": "ADMM (Alternating Direction Method of Multipliers) is a distributed convex optimization method. Covered by Batch 6 (admm)."
+    },
+    {
+      "slug": "annoy-approximate-nearest-neighbors-oh-yeah",
+      "title": "Annoy (Approximate Nearest Neighbors Oh Yeah)",
+      "tier": "standard",
+      "family": "",
+      "tokens": [
+        "annoy",
+        "approximate",
+        "nearest",
+        "neighbors",
+        "oh",
+        "yeah"
+      ],
+      "proposed_category": "Similarity & Deduplication",
+      "token_count": 6,
+      "proposed_subcategory": "",
+      "correction_note": "Annoy (Approximate Nearest Neighbors Oh Yeah) is an ANN indexing library from Spotify — similarity search."
+    },
+    {
+      "slug": "base-layers-balanced-sparsely-activated-experts",
+      "title": "BASE Layers (Balanced Sparsely Activated Experts)",
+      "tier": "standard",
+      "family": "",
+      "tokens": [
+        "base",
+        "layers",
+        "balanced",
+        "sparsely",
+        "activated",
+        "experts"
+      ],
+      "proposed_category": "Neural Networks",
+      "token_count": 6,
+      "proposed_subcategory": "Specialized Architectures",
+      "correction_note": "BASE Layers (Balanced Sparsely Activated Experts) is an MoE architecture variant."
+    },
+    {
+      "slug": "brain-computer-interface-bci-for-ai",
+      "title": "Brain-Computer Interface (BCI) for AI",
+      "tier": "standard",
+      "family": "",
+      "tokens": [
+        "brain",
+        "computer",
+        "interface",
+        "bci",
+        "for",
+        "ai"
+      ],
+      "proposed_category": "AI Applications",
+      "token_count": 6,
+      "proposed_subcategory": "",
+      "correction_note": "Brain-Computer Interface (BCI) for AI — interfacing biological signals with AI systems."
+    },
+    {
+      "slug": "clausius-clapeyron-relation-in-ai-thermodynamics",
+      "title": "Clausius-Clapeyron Relation in AI Thermodynamics",
+      "tier": "standard",
+      "family": "",
+      "tokens": [
+        "clausius",
+        "clapeyron",
+        "relation",
+        "in",
+        "ai",
+        "thermodynamics"
+      ],
+      "proposed_category": "AI Applications",
+      "token_count": 6,
+      "proposed_subcategory": "",
+      "correction_note": "Clausius-Clapeyron Relation — a thermodynamics concept applied in physics-inspired ML."
+    },
+    {
+      "slug": "concentration-of-measure-in-high-dimensions",
+      "title": "Concentration of Measure in High Dimensions",
+      "tier": "standard",
+      "family": "",
+      "tokens": [
+        "concentration",
+        "of",
+        "measure",
+        "in",
+        "high",
+        "dimensions"
+      ],
+      "proposed_category": "Statistical Methods",
+      "token_count": 6,
+      "proposed_subcategory": "Bayesian Inference",
+      "correction_note": "Concentration of Measure is a high-dimensional statistical phenomenon (concentration inequalities)."
+    },
+    {
+      "slug": "continuous-integration-for-ml-ci-cd",
+      "title": "Continuous Integration for ML (CI/CD)",
+      "tier": "standard",
+      "family": "",
+      "tokens": [
+        "continuous",
+        "integration",
+        "for",
+        "ml",
+        "ci",
+        "cd"
+      ],
+      "proposed_category": "Machine Learning Frameworks",
+      "token_count": 6,
+      "proposed_subcategory": "Automated Processes",
+      "correction_note": "CI/CD for ML (MLOps) — automating ML pipeline integration and deployment."
+    },
+    {
+      "slug": "decentralized-partially-observable-mdps-dec-pomdps",
+      "title": "Decentralized Partially Observable MDPs (Dec-POMDPs)",
+      "tier": "standard",
+      "family": "",
+      "tokens": [
+        "decentralized",
+        "partially",
+        "observable",
+        "mdps",
+        "dec",
+        "pomdps"
+      ],
+      "proposed_category": "Reinforcement Learning",
+      "token_count": 6,
+      "proposed_subcategory": "Advanced RL Techniques",
+      "correction_note": "Dec-POMDPs (Decentralized Partially Observable MDPs) are the standard model for multi-agent RL."
+    },
+    {
+      "slug": "forr-for-the-right-reasons-architecture",
+      "title": "FORR (FOr the Right Reasons) Architecture",
+      "tier": "standard",
+      "family": "",
+      "tokens": [
+        "forr",
+        "for",
+        "the",
+        "right",
+        "reasons",
+        "architecture"
+      ],
+      "proposed_category": "AI Theory",
+      "token_count": 6,
+      "proposed_subcategory": "Knowledge Representation",
+      "correction_note": "FORR (FOr the Right Reasons) is a cognitive architecture for reasoning and problem-solving."
+    },
+    {
+      "slug": "global-workspace-theory-gwt-in-ai",
+      "title": "Global Workspace Theory (GWT) in AI",
+      "tier": "standard",
+      "family": "",
+      "tokens": [
+        "global",
+        "workspace",
+        "theory",
+        "gwt",
+        "in",
+        "ai"
+      ],
+      "proposed_category": "AI Theory",
+      "token_count": 6,
+      "proposed_subcategory": "Knowledge Representation",
+      "correction_note": "Global Workspace Theory is a cognitive architecture from neuroscience, widely referenced in AI consciousness research."
+    },
+    {
+      "slug": "graphsage-variants-and-extensions-techniques-enhancements",
+      "title": "GraphSAGE Variants and Extensions Techniques Enhancements",
+      "tier": "standard",
+      "family": "",
+      "tokens": [
+        "graphsage",
+        "variants",
+        "and",
+        "extensions",
+        "techniques",
+        "enhancements"
+      ],
+      "proposed_category": "Neural Networks",
+      "token_count": 6,
+      "proposed_subcategory": "Graph-Based Models",
+      "correction_note": "GraphSAGE is a graph neural network method for inductive node embedding. Noise suffixes stripped."
+    },
+    {
+      "slug": "graphsage-variants-and-extensions-techniques-extensions",
+      "title": "GraphSAGE Variants and Extensions Techniques Extensions",
+      "tier": "standard",
+      "family": "",
+      "tokens": [
+        "graphsage",
+        "variants",
+        "and",
+        "extensions",
+        "techniques",
+        "extensions"
+      ],
+      "proposed_category": "Neural Networks",
+      "token_count": 6,
+      "proposed_subcategory": "Graph-Based Models",
+      "correction_note": "Same GraphSAGE entry with different noise-particle suffix (extensions vs enhancements)."
+    },
+    {
+      "slug": "hybrid-models-in-ai-extensions-techniques",
+      "title": "Hybrid Models in AI Extensions Techniques",
+      "tier": "standard",
+      "family": "",
+      "tokens": [
+        "hybrid",
+        "models",
+        "in",
+        "ai",
+        "extensions",
+        "techniques"
+      ],
+      "proposed_category": "Neural Networks",
+      "token_count": 6,
+      "proposed_subcategory": "Specialized Architectures",
+      "correction_note": "Hybrid Models combine multiple architectures (e.g. CNN+Transformer) — fits Specialized Architectures."
+    },
+    {
+      "slug": "hypernetworks-extensions-extensions-techniques-enhancements-techniques",
+      "title": "Hypernetworks Extensions Extensions Techniques Enhancements Techniques",
+      "tier": "standard",
+      "family": "",
+      "tokens": [
+        "hypernetworks",
+        "extensions",
+        "extensions",
+        "techniques",
+        "enhancements",
+        "techniques"
+      ],
+      "proposed_category": "Neural Networks",
+      "token_count": 6,
+      "proposed_subcategory": "Specialized Architectures",
+      "correction_note": "Hypernetworks are networks that generate parameters for other networks — specialized architecture."
+    },
+    {
+      "slug": "impala-importance-weighted-actor-learner-architecture",
+      "title": "Impala (Importance Weighted Actor Learner Architecture)",
+      "tier": "standard",
+      "family": "",
+      "tokens": [
+        "impala",
+        "importance",
+        "weighted",
+        "actor",
+        "learner",
+        "architecture"
+      ],
+      "proposed_category": "Reinforcement Learning",
+      "token_count": 6,
+      "proposed_subcategory": "Advanced RL Techniques",
+      "correction_note": "Impala (Importance Weighted Actor Learner) is a scalable distributed RL algorithm from DeepMind."
+    },
+    {
+      "slug": "janet-just-another-neville-elman-type",
+      "title": "JANET (Just Another Neville-Elman Type)",
+      "tier": "standard",
+      "family": "",
+      "tokens": [
+        "janet",
+        "just",
+        "another",
+        "neville",
+        "elman",
+        "type"
+      ],
+      "proposed_category": "Neural Networks",
+      "token_count": 6,
+      "proposed_subcategory": "Recurrent Models",
+      "correction_note": "JANET (Just Another Neville-Elman Type) is a simplified RNN unit (variant of GRU/LSTM)."
+    },
+    {
+      "slug": "kernel-trick-in-high-dimensional-space",
+      "title": "Kernel Trick in High-Dimensional Space",
+      "tier": "standard",
+      "family": "",
+      "tokens": [
+        "kernel",
+        "trick",
+        "in",
+        "high",
+        "dimensional",
+        "space"
+      ],
+      "proposed_category": "Statistical Methods",
+      "token_count": 6,
+      "proposed_subcategory": "Probabilistic Models",
+      "correction_note": "Kernel Trick is the core technique enabling kernel methods (SVM, Gaussian Processes) in ML."
+    },
+    {
+      "slug": "label-propagation-already-in-your-list",
+      "title": "Label Propagation (Already in your list)",
+      "tier": "standard",
+      "family": "",
+      "tokens": [
+        "label",
+        "propagation",
+        "already",
+        "in",
+        "your",
+        "list"
+      ],
+      "proposed_category": "Learning Paradigms",
+      "token_count": 6,
+      "proposed_subcategory": "Low-Data Learning",
+      "correction_note": "Label Propagation is a semi-supervised learning algorithm that spreads labels through a graph."
+    },
+    {
+      "slug": "long-range-arena-performer-lra-performer",
+      "title": "Long-Range Arena Performer (LRA-Performer)",
+      "tier": "standard",
+      "family": "",
+      "tokens": [
+        "long",
+        "range",
+        "arena",
+        "performer",
+        "lra",
+        "performer"
+      ],
+      "proposed_category": "Neural Networks",
+      "token_count": 6,
+      "proposed_subcategory": "Core Models",
+      "correction_note": "LRA-Performer is an efficient transformer architecture for long-range sequence modeling."
+    },
+    {
+      "slug": "midca-metacognitive-integrated-dual-cycle-architecture",
+      "title": "MIDCA (Metacognitive Integrated Dual-Cycle Architecture)",
+      "tier": "standard",
+      "family": "",
+      "tokens": [
+        "midca",
+        "metacognitive",
+        "integrated",
+        "dual",
+        "cycle",
+        "architecture"
+      ],
+      "proposed_category": "AI Theory",
+      "token_count": 6,
+      "proposed_subcategory": "Knowledge Representation",
+      "correction_note": "MIDCA (Metacognitive Integrated Dual-Cycle Architecture) is a cognitive architecture."
+    },
+    {
+      "slug": "minsky-s-society-of-mind-model",
+      "title": "Minsky’s Society of Mind Model",
+      "tier": "standard",
+      "family": "",
+      "tokens": [
+        "minsky",
+        "s",
+        "society",
+        "of",
+        "mind",
+        "model"
+      ],
+      "proposed_category": "AI Theory",
+      "token_count": 6,
+      "proposed_subcategory": "Knowledge Representation",
+      "correction_note": "Minsky's Society of Mind is a foundational cognitive theory about emergent intelligence from agent interaction."
+    },
+    {
+      "slug": "model-registries-in-k8s-sagemaker-kserve",
+      "title": "Model registries in K8s (SageMaker/KServe)",
+      "tier": "standard",
+      "family": "",
+      "tokens": [
+        "model",
+        "registries",
+        "in",
+        "k8s",
+        "sagemaker",
+        "kserve"
+      ],
+      "proposed_category": "Machine Learning Frameworks",
+      "token_count": 6,
+      "proposed_subcategory": "Automated Processes",
+      "correction_note": "Model registries in K8s (SageMaker/KServe) — MLOps infrastructure for model versioning and serving."
+    },
+    {
+      "slug": "mujoco-multi-joint-dynamics-with-contact",
+      "title": "MuJoCo (Multi-Joint dynamics with Contact)",
+      "tier": "standard",
+      "family": "",
+      "tokens": [
+        "mujoco",
+        "multi",
+        "joint",
+        "dynamics",
+        "with",
+        "contact"
+      ],
+      "proposed_category": "AI Applications",
+      "token_count": 6,
+      "proposed_subcategory": "",
+      "correction_note": "MuJoCo (Multi-Joint dynamics with Contact) is a physics simulator for robotics and RL research."
+    },
+    {
+      "slug": "non-maximum-suppression-nms-extensions-techniques",
+      "title": "Non-Maximum Suppression (NMS) Extensions Techniques",
+      "tier": "standard",
+      "family": "",
+      "tokens": [
+        "non",
+        "maximum",
+        "suppression",
+        "nms",
+        "extensions",
+        "techniques"
+      ],
+      "proposed_category": "Computer Vision",
+      "token_count": 6,
+      "proposed_subcategory": "Object Detection",
+      "correction_note": "NMS (Non-Maximum Suppression) is a post-processing step in object detection pipelines. Covered by Batch 6 (nms)."
+    },
+    {
+      "slug": "nsga-ii-non-dominated-sorting-ga",
+      "title": "NSGA-II (Non-Dominated Sorting GA)",
+      "tier": "standard",
+      "family": "",
+      "tokens": [
+        "nsga",
+        "ii",
+        "non",
+        "dominated",
+        "sorting",
+        "ga"
+      ],
+      "proposed_category": "Optimization Algorithms",
+      "token_count": 6,
+      "proposed_subcategory": "",
+      "correction_note": "NSGA-II (Non-Dominated Sorting Genetic Algorithm II) is an evolutionary multi-objective optimization method."
+    },
+    {
+      "slug": "ooda-loop-observe-orient-decide-act",
+      "title": "OODA Loop (Observe-Orient-Decide-Act)",
+      "tier": "standard",
+      "family": "",
+      "tokens": [
+        "ooda",
+        "loop",
+        "observe",
+        "orient",
+        "decide",
+        "act"
+      ],
+      "proposed_category": "AI Theory",
+      "token_count": 6,
+      "proposed_subcategory": "Knowledge Representation",
+      "correction_note": "OODA Loop (variant without 'in AI' suffix) — decision-making loop from Boyd's theory."
+    },
+    {
+      "slug": "out-of-bag-estimation-oob-error",
+      "title": "Out-of-Bag Estimation (OOB Error)",
+      "tier": "standard",
+      "family": "",
+      "tokens": [
+        "out",
+        "of",
+        "bag",
+        "estimation",
+        "oob",
+        "error"
+      ],
+      "proposed_category": "Model Evaluation",
+      "token_count": 6,
+      "proposed_subcategory": "Performance Metrics",
+      "correction_note": "Out-of-Bag (OOB) estimation is an internal validation method for ensemble models like Random Forest."
+    },
+    {
+      "slug": "peak-signal-to-noise-ratio-psnr",
+      "title": "Peak Signal-to-Noise Ratio (PSNR)",
+      "tier": "standard",
+      "family": "",
+      "tokens": [
+        "peak",
+        "signal",
+        "to",
+        "noise",
+        "ratio",
+        "psnr"
+      ],
+      "proposed_category": "Computer Vision",
+      "token_count": 6,
+      "proposed_subcategory": "Image Processing",
+      "correction_note": "PSNR (Peak Signal-to-Noise Ratio) is an image quality assessment metric. Covered by Batch 6 (psnr)."
+    },
+    {
+      "slug": "a-b-testing-for-ml",
+      "title": "A/B testing for ML",
+      "tier": "standard",
+      "family": "",
+      "tokens": [
+        "a",
+        "b",
+        "testing",
+        "for",
+        "ml"
+      ],
+      "proposed_category": "Model Evaluation",
+      "token_count": 5,
+      "proposed_subcategory": "Performance Metrics",
+      "correction_note": "A/B testing for ML — comparing model performance in production environments."
+    },
+    {
+      "slug": "a-b-testing-for-models",
+      "title": "A/B Testing for Models",
+      "tier": "standard",
+      "family": "",
+      "tokens": [
+        "a",
+        "b",
+        "testing",
+        "for",
+        "models"
+      ],
+      "proposed_category": "Model Evaluation",
+      "token_count": 5,
+      "proposed_subcategory": "Performance Metrics",
+      "correction_note": "A/B Testing for Models — same evaluation methodology, different phrasing."
+    },
+    {
+      "slug": "ai-degrees-bachelor-master-phd",
+      "title": "AI Degrees (Bachelor, Master, PhD)",
+      "tier": "standard",
+      "family": "",
+      "tokens": [
+        "ai",
+        "degrees",
+        "bachelor",
+        "master",
+        "phd"
+      ],
+      "proposed_category": "AI Applications",
+      "token_count": 5,
+      "proposed_subcategory": "",
+      "correction_note": "AI Degrees (Bachelor, Master, PhD) — AI education programs, not a technical ML term."
+    },
+    {
+      "slug": "ai-hype-vs-ai-reality",
+      "title": "AI Hype vs. AI Reality",
+      "tier": "standard",
+      "family": "",
+      "tokens": [
+        "ai",
+        "hype",
+        "vs",
+        "ai",
+        "reality"
+      ],
+      "proposed_category": "AI Applications",
+      "token_count": 5,
+      "proposed_subcategory": "",
+      "correction_note": "AI Hype vs AI Reality — general discourse/business framing of AI capabilities."
+    },
+    {
+      "slug": "ai-narrow-vs-ai-general",
+      "title": "AI Narrow vs. AI General",
+      "tier": "standard",
+      "family": "",
+      "tokens": [
+        "ai",
+        "narrow",
+        "vs",
+        "ai",
+        "general"
+      ],
+      "proposed_category": "AI Types",
+      "token_count": 5,
+      "proposed_subcategory": "Narrow AI",
+      "correction_note": "AI Narrow vs AI General — fundamental taxonomy distinction of AI capability levels."
+    },
+    {
+      "slug": "anil-almost-no-inner-loop",
+      "title": "ANIL (Almost No Inner Loop)",
+      "tier": "standard",
+      "family": "",
+      "tokens": [
+        "anil",
+        "almost",
+        "no",
+        "inner",
+        "loop"
+      ],
+      "proposed_category": "Learning Paradigms",
+      "token_count": 5,
+      "proposed_subcategory": "Low-Data Learning",
+      "correction_note": "ANIL (Almost No Inner Loop) is a meta-learning algorithm that simplifies MAML by removing inner updates."
+    },
+    {
+      "slug": "aws-step-functions-for-ml",
+      "title": "AWS Step Functions for ML",
+      "tier": "standard",
+      "family": "",
+      "tokens": [
+        "aws",
+        "step",
+        "functions",
+        "for",
+        "ml"
+      ],
+      "proposed_category": "Machine Learning Frameworks",
+      "token_count": 5,
+      "proposed_subcategory": "Automated Processes",
+      "correction_note": "AWS Step Functions for ML — orchestrating ML workflows on AWS. MLOps infrastructure."
+    },
+    {
+      "slug": "bag-of-little-bootstraps-blb",
+      "title": "Bag of Little Bootstraps (BLB)",
+      "tier": "standard",
+      "family": "",
+      "tokens": [
+        "bag",
+        "of",
+        "little",
+        "bootstraps",
+        "blb"
+      ],
+      "proposed_category": "Statistical Methods",
+      "token_count": 5,
+      "proposed_subcategory": "Bayesian Inference",
+      "correction_note": "BLB (Bag of Little Bootstraps) is a scalable bootstrap resampling method for big data statistics."
+    },
+    {
+      "slug": "belief-desire-intention-with-rules",
+      "title": "Belief-Desire-Intention with Rules",
+      "tier": "standard",
+      "family": "",
+      "tokens": [
+        "belief",
+        "desire",
+        "intention",
+        "with",
+        "rules"
+      ],
+      "proposed_category": "AI Theory",
+      "token_count": 5,
+      "proposed_subcategory": "Knowledge Representation",
+      "correction_note": "BDI (Belief-Desire-Intention) with Rules — the standard BDI agent architecture model."
+    },
+    {
+      "slug": "canary-shadow-deployment-for-models",
+      "title": "Canary shadow deployment for models",
+      "tier": "standard",
+      "family": "",
+      "tokens": [
+        "canary",
+        "shadow",
+        "deployment",
+        "for",
+        "models"
+      ],
+      "proposed_category": "Machine Learning Frameworks",
+      "token_count": 5,
+      "proposed_subcategory": "Automated Processes",
+      "correction_note": "Canary/shadow deployment for ML models — MLOps deployment strategy for safe rollouts."
+    },
+    {
+      "slug": "canonical-polyadic-decomposition-cp-decomposition",
+      "title": "canonical polyadic decomposition (CP decomposition)",
+      "tier": "standard",
+      "family": "",
+      "tokens": [
+        "canonical",
+        "polyadic",
+        "decomposition",
+        "cp",
+        "decomposition"
+      ],
+      "proposed_category": "Uncategorized",
+      "token_count": 5
+    },
+    {
+      "slug": "cart-mean-squared-error-split",
+      "title": "CART Mean Squared Error Split",
+      "tier": "standard",
+      "family": "",
+      "tokens": [
+        "cart",
+        "mean",
+        "squared",
+        "error",
+        "split"
+      ],
+      "proposed_category": "Uncategorized",
+      "token_count": 5
+    },
+    {
+      "slug": "character-substitution-with-unicode-homoglyphs",
+      "title": "Character Substitution with Unicode Homoglyphs",
+      "tier": "standard",
+      "family": "",
+      "tokens": [
+        "character",
+        "substitution",
+        "with",
+        "unicode",
+        "homoglyphs"
+      ],
+      "proposed_category": "Uncategorized",
+      "token_count": 5
+    },
+    {
+      "slug": "cmac-cerebellar-model-articulation-controller",
+      "title": "CMAC (Cerebellar Model Articulation Controller)",
+      "tier": "standard",
+      "family": "",
+      "tokens": [
+        "cmac",
+        "cerebellar",
+        "model",
+        "articulation",
+        "controller"
+      ],
+      "proposed_category": "Uncategorized",
+      "token_count": 5
+    },
+    {
+      "slug": "coco-common-objects-in-context",
+      "title": "COCO (Common Objects in Context)",
+      "tier": "standard",
+      "family": "",
+      "tokens": [
+        "coco",
+        "common",
+        "objects",
+        "in",
+        "context"
+      ],
+      "proposed_category": "Uncategorized",
+      "token_count": 5
+    },
+    {
+      "slug": "copa-choice-of-plausible-alternatives",
+      "title": "COPA (Choice of Plausible Alternatives)",
+      "tier": "standard",
+      "family": "",
+      "tokens": [
+        "copa",
+        "choice",
+        "of",
+        "plausible",
+        "alternatives"
+      ],
+      "proposed_category": "Uncategorized",
+      "token_count": 5
+    },
+    {
+      "slug": "corels-certifiably-optimal-rule-lists",
+      "title": "CORELS (Certifiably Optimal Rule Lists)",
+      "tier": "standard",
+      "family": "",
+      "tokens": [
+        "corels",
+        "certifiably",
+        "optimal",
+        "rule",
+        "lists"
+      ],
+      "proposed_category": "Uncategorized",
+      "token_count": 5
+    },
+    {
+      "slug": "cosine-annealing-with-warm-restarts",
+      "title": "Cosine annealing with warm restarts",
+      "tier": "standard",
+      "family": "",
+      "tokens": [
+        "cosine",
+        "annealing",
+        "with",
+        "warm",
+        "restarts"
+      ],
+      "proposed_category": "Uncategorized",
+      "token_count": 5
+    },
+    {
+      "slug": "cram-r-rao-lower-bound",
+      "title": "Cramér-Rao Lower Bound",
+      "tier": "standard",
+      "family": "",
+      "tokens": [
+        "cram",
+        "r",
+        "rao",
+        "lower",
+        "bound"
+      ],
+      "proposed_category": "Uncategorized",
+      "token_count": 5
+    },
+    {
+      "slug": "cyclical-lr-triangular-tri2-exp",
+      "title": "Cyclical LR (Triangular, Tri2, Exp)",
+      "tier": "standard",
+      "family": "",
+      "tokens": [
+        "cyclical",
+        "lr",
+        "triangular",
+        "tri2",
+        "exp"
+      ],
+      "proposed_category": "Uncategorized",
+      "token_count": 5
+    },
+    {
+      "slug": "dexterous-in-hand-manipulation-ai",
+      "title": "Dexterous in-hand manipulation AI",
+      "tier": "standard",
+      "family": "",
+      "tokens": [
+        "dexterous",
+        "in",
+        "hand",
+        "manipulation",
+        "ai"
+      ],
+      "proposed_category": "Uncategorized",
+      "token_count": 5
+    },
+    {
+      "slug": "dp-tp-pp-hybrid-layout",
+      "title": "DP-TP-PP hybrid layout",
+      "tier": "standard",
+      "family": "",
+      "tokens": [
+        "dp",
+        "tp",
+        "pp",
+        "hybrid",
+        "layout"
+      ],
+      "proposed_category": "Uncategorized",
+      "token_count": 5
+    },
+    {
+      "slug": "dpdp-act-india-ai-handling",
+      "title": "DPDP Act (India) AI handling",
+      "tier": "standard",
+      "family": "",
+      "tokens": [
+        "dpdp",
+        "act",
+        "india",
+        "ai",
+        "handling"
+      ],
+      "proposed_category": "Uncategorized",
+      "token_count": 5
+    },
+    {
+      "slug": "dynamic-routing-by-agreement-enhancements",
+      "title": "Dynamic Routing by Agreement Enhancements",
+      "tier": "standard",
+      "family": "",
+      "tokens": [
+        "dynamic",
+        "routing",
+        "by",
+        "agreement",
+        "enhancements"
+      ],
+      "proposed_category": "Uncategorized",
+      "token_count": 5
+    },
+    {
+      "slug": "error-correcting-output-codes-ecoc",
+      "title": "Error-Correcting Output Codes (ECOC)",
+      "tier": "standard",
+      "family": "",
+      "tokens": [
+        "error",
+        "correcting",
+        "output",
+        "codes",
+        "ecoc"
+      ],
+      "proposed_category": "Uncategorized",
+      "token_count": 5
+    },
+    {
+      "slug": "fail-safe-plans-for-tools",
+      "title": "Fail-safe plans for tools",
+      "tier": "standard",
+      "family": "",
+      "tokens": [
+        "fail",
+        "safe",
+        "plans",
+        "for",
+        "tools"
+      ],
+      "proposed_category": "Uncategorized",
+      "token_count": 5
+    },
+    {
+      "slug": "false-discovery-rate-for-rules",
+      "title": "False Discovery Rate for Rules",
+      "tier": "standard",
+      "family": "",
+      "tokens": [
+        "false",
+        "discovery",
+        "rate",
+        "for",
+        "rules"
+      ],
+      "proposed_category": "Uncategorized",
+      "token_count": 5
+    },
+    {
+      "slug": "focl-first-order-combined-learner",
+      "title": "FOCL (First Order Combined Learner)",
+      "tier": "standard",
+      "family": "",
+      "tokens": [
+        "focl",
+        "first",
+        "order",
+        "combined",
+        "learner"
+      ],
+      "proposed_category": "Uncategorized",
+      "token_count": 5
+    },
+    {
+      "slug": "formal-verification-for-nn-marabou",
+      "title": "Formal verification for NN (Marabou)",
+      "tier": "standard",
+      "family": "",
+      "tokens": [
+        "formal",
+        "verification",
+        "for",
+        "nn",
+        "marabou"
+      ],
+      "proposed_category": "Uncategorized",
+      "token_count": 5
+    },
+    {
+      "slug": "frozen-backbone-with-trainable-head",
+      "title": "frozen backbone with trainable head",
+      "tier": "standard",
+      "family": "",
+      "tokens": [
+        "frozen",
+        "backbone",
+        "with",
+        "trainable",
+        "head"
+      ],
+      "proposed_category": "Uncategorized",
+      "token_count": 5
+    },
+    {
+      "slug": "funnel-shifted-mlp-fs-mlp",
+      "title": "Funnel Shifted MLP (FS-MLP)",
+      "tier": "standard",
+      "family": "",
+      "tokens": [
+        "funnel",
+        "shifted",
+        "mlp",
+        "fs",
+        "mlp"
+      ],
+      "proposed_category": "Uncategorized",
+      "token_count": 5
+    },
+    {
+      "slug": "generalized-intersection-over-union-giou",
+      "title": "Generalized Intersection over Union (GIoU)",
+      "tier": "standard",
+      "family": "",
+      "tokens": [
+        "generalized",
+        "intersection",
+        "over",
+        "union",
+        "giou"
+      ],
+      "proposed_category": "Uncategorized",
+      "token_count": 5
+    },
+    {
+      "slug": "graphsage-variants-and-extensions-techniques",
+      "title": "GraphSAGE Variants and Extensions Techniques",
+      "tier": "standard",
+      "family": "",
+      "tokens": [
+        "graphsage",
+        "variants",
+        "and",
+        "extensions",
+        "techniques"
+      ],
+      "proposed_category": "Uncategorized",
+      "token_count": 5
+    },
+    {
+      "slug": "group-aware-ranking-in-gbms",
+      "title": "Group-Aware Ranking in GBMs",
+      "tier": "standard",
+      "family": "",
+      "tokens": [
+        "group",
+        "aware",
+        "ranking",
+        "in",
+        "gbms"
+      ],
+      "proposed_category": "Uncategorized",
+      "token_count": 5
+    },
+    {
+      "slug": "hamilton-jacobi-bellman-equation-hjb",
+      "title": "Hamilton-Jacobi-Bellman Equation (HJB)",
+      "tier": "standard",
+      "family": "",
+      "tokens": [
+        "hamilton",
+        "jacobi",
+        "bellman",
+        "equation",
+        "hjb"
+      ],
+      "proposed_category": "Uncategorized",
+      "token_count": 5
+    },
+    {
+      "slug": "hinge-squared-hinge-soft-margin",
+      "title": "Hinge, Squared-Hinge, Soft Margin",
+      "tier": "standard",
+      "family": "",
+      "tokens": [
+        "hinge",
+        "squared",
+        "hinge",
+        "soft",
+        "margin"
+      ],
+      "proposed_category": "Uncategorized",
+      "token_count": 5
+    },
+    {
+      "slug": "histogram-based-gpu-split-finding",
+      "title": "Histogram-Based GPU Split Finding",
+      "tier": "standard",
+      "family": "",
+      "tokens": [
+        "histogram",
+        "based",
+        "gpu",
+        "split",
+        "finding"
+      ],
+      "proposed_category": "Uncategorized",
+      "token_count": 5
+    },
+    {
+      "slug": "human-in-the-loop-approvals",
+      "title": "Human-in-the-loop approvals",
+      "tier": "standard",
+      "family": "",
+      "tokens": [
+        "human",
+        "in",
+        "the",
+        "loop",
+        "approvals"
+      ],
+      "proposed_category": "Uncategorized",
+      "token_count": 5
+    },
+    {
+      "slug": "hybrid-models-in-ai-extensions",
+      "title": "Hybrid Models in AI Extensions",
+      "tier": "standard",
+      "family": "",
+      "tokens": [
+        "hybrid",
+        "models",
+        "in",
+        "ai",
+        "extensions"
+      ],
+      "proposed_category": "Uncategorized",
+      "token_count": 5
+    },
+    {
+      "slug": "hybrid-models-in-ai-techniques",
+      "title": "Hybrid Models in AI Techniques",
+      "tier": "standard",
+      "family": "",
+      "tokens": [
+        "hybrid",
+        "models",
+        "in",
+        "ai",
+        "techniques"
+      ],
+      "proposed_category": "Uncategorized",
+      "token_count": 5
+    },
+    {
+      "slug": "individual-conditional-expectation-ice-plots",
+      "title": "Individual Conditional Expectation (ICE) Plots",
+      "tier": "standard",
+      "family": "",
+      "tokens": [
+        "individual",
+        "conditional",
+        "expectation",
+        "ice",
+        "plots"
+      ],
+      "proposed_category": "Uncategorized",
+      "token_count": 5
+    },
+    {
+      "slug": "internal-consistency-cronbach-s-alpha",
+      "title": "Internal Consistency (Cronbach's Alpha)",
+      "tier": "standard",
+      "family": "",
+      "tokens": [
+        "internal",
+        "consistency",
+        "cronbach",
+        "s",
+        "alpha"
+      ],
+      "proposed_category": "Uncategorized",
+      "token_count": 5
+    },
+    {
+      "slug": "interval-type-2-fuzzy-sets",
+      "title": "Interval Type-2 Fuzzy Sets",
+      "tier": "standard",
+      "family": "",
+      "tokens": [
+        "interval",
+        "type",
+        "2",
+        "fuzzy",
+        "sets"
+      ],
+      "proposed_category": "Uncategorized",
+      "token_count": 5
+    },
+    {
+      "slug": "intuitive-physics-engines-in-ai",
+      "title": "Intuitive Physics Engines in AI",
+      "tier": "standard",
+      "family": "",
+      "tokens": [
+        "intuitive",
+        "physics",
+        "engines",
+        "in",
+        "ai"
+      ],
+      "proposed_category": "Uncategorized",
+      "token_count": 5
+    },
+    {
+      "slug": "iso-iec-23894-ai-risk",
+      "title": "ISO/IEC 23894 AI Risk",
+      "tier": "standard",
+      "family": "",
+      "tokens": [
+        "iso",
+        "iec",
+        "23894",
+        "ai",
+        "risk"
+      ],
+      "proposed_category": "Uncategorized",
+      "token_count": 5
+    },
+    {
+      "slug": "iso-iec-42001-ai-management",
+      "title": "ISO/IEC 42001 AI Management",
+      "tier": "standard",
+      "family": "",
+      "tokens": [
+        "iso",
+        "iec",
+        "42001",
+        "ai",
+        "management"
+      ],
+      "proposed_category": "Uncategorized",
+      "token_count": 5
+    },
+    {
+      "slug": "iterative-linear-quadratic-regulator-ilqr",
+      "title": "Iterative Linear Quadratic Regulator (iLQR)",
+      "tier": "standard",
+      "family": "",
+      "tokens": [
+        "iterative",
+        "linear",
+        "quadratic",
+        "regulator",
+        "ilqr"
+      ],
+      "proposed_category": "Uncategorized",
+      "token_count": 5
+    },
+    {
+      "slug": "kullback-leibler-divergence-kl-divergence",
+      "title": "Kullback-Leibler Divergence (KL Divergence)",
+      "tier": "standard",
+      "family": "",
+      "tokens": [
+        "kullback",
+        "leibler",
+        "divergence",
+        "kl",
+        "divergence"
+      ],
+      "proposed_category": "Uncategorized",
+      "token_count": 5
+    },
+    {
+      "slug": "l-shade-success-history-de",
+      "title": "L-SHADE (Success-History DE)",
+      "tier": "standard",
+      "family": "",
+      "tokens": [
+        "l",
+        "shade",
+        "success",
+        "history",
+        "de"
+      ],
+      "proposed_category": "Uncategorized",
+      "token_count": 5
+    },
+    {
+      "slug": "l1-l2-on-leaf-scores",
+      "title": "L1/L2 on Leaf Scores",
+      "tier": "standard",
+      "family": "",
+      "tokens": [
+        "l1",
+        "l2",
+        "on",
+        "leaf",
+        "scores"
+      ],
+      "proposed_category": "Uncategorized",
+      "token_count": 5
+    },
+    {
+      "slug": "leaky-integrate-and-fire-models",
+      "title": "Leaky Integrate-and-Fire Models",
+      "tier": "standard",
+      "family": "",
+      "tokens": [
+        "leaky",
+        "integrate",
+        "and",
+        "fire",
+        "models"
+      ],
+      "proposed_category": "Uncategorized",
+      "token_count": 5
+    },
+    {
+      "slug": "lr-1-bottom-up-parser",
+      "title": "LR(1) Bottom-Up Parser",
+      "tier": "standard",
+      "family": "",
+      "tokens": [
+        "lr",
+        "1",
+        "bottom",
+        "up",
+        "parser"
+      ],
+      "proposed_category": "Uncategorized",
+      "token_count": 5
+    },
+    {
+      "slug": "maximum-a-posteriori-estimation-map",
+      "title": "maximum a posteriori estimation (MAP)",
+      "tier": "standard",
+      "family": "",
+      "tokens": [
+        "maximum",
+        "a",
+        "posteriori",
+        "estimation",
+        "map"
+      ],
+      "proposed_category": "Uncategorized",
+      "token_count": 5
+    },
+    {
+      "slug": "mean-absolute-percentage-error-mape",
+      "title": "Mean Absolute Percentage Error (MAPE)",
+      "tier": "standard",
+      "family": "",
+      "tokens": [
+        "mean",
+        "absolute",
+        "percentage",
+        "error",
+        "mape"
+      ],
+      "proposed_category": "Uncategorized",
+      "token_count": 5
+    },
+    {
+      "slug": "mean-iou-intersection-over-union",
+      "title": "mean IoU (Intersection over Union)",
+      "tier": "standard",
+      "family": "",
+      "tokens": [
+        "mean",
+        "iou",
+        "intersection",
+        "over",
+        "union"
+      ],
+      "proposed_category": "Uncategorized",
+      "token_count": 5
+    },
+    {
+      "slug": "min-gain-to-split-gamma",
+      "title": "Min Gain to Split (gamma)",
+      "tier": "standard",
+      "family": "",
+      "tokens": [
+        "min",
+        "gain",
+        "to",
+        "split",
+        "gamma"
+      ],
+      "proposed_category": "Uncategorized",
+      "token_count": 5
+    },
+    {
+      "slug": "minsky-s-society-of-mind",
+      "title": "Minsky’s Society of Mind",
+      "tier": "standard",
+      "family": "",
+      "tokens": [
+        "minsky",
+        "s",
+        "society",
+        "of",
+        "mind"
+      ],
+      "proposed_category": "Uncategorized",
+      "token_count": 5
+    },
+    {
+      "slug": "missing-values-as-a-branch",
+      "title": "Missing Values as a Branch",
+      "tier": "standard",
+      "family": "",
+      "tokens": [
+        "missing",
+        "values",
+        "as",
+        "a",
+        "branch"
+      ],
+      "proposed_category": "Uncategorized",
+      "token_count": 5
+    },
+    {
+      "slug": "mixture-of-depthwise-experts-s",
+      "title": "Mixture-of-Depthwise Experts-S",
+      "tier": "standard",
+      "family": "",
+      "tokens": [
+        "mixture",
+        "of",
+        "depthwise",
+        "experts",
+        "s"
+      ],
+      "proposed_category": "Uncategorized",
+      "token_count": 5
+    },
+    {
+      "slug": "model-merging-via-ties-merging",
+      "title": "Model merging via TIES-Merging",
+      "tier": "standard",
+      "family": "",
+      "tokens": [
+        "model",
+        "merging",
+        "via",
+        "ties",
+        "merging"
+      ],
+      "proposed_category": "Uncategorized",
+      "token_count": 5
+    },
+    {
+      "slug": "mora-mixture-of-rank-adapters",
+      "title": "MoRA (Mixture of Rank Adapters)",
+      "tier": "standard",
+      "family": "",
+      "tokens": [
+        "mora",
+        "mixture",
+        "of",
+        "rank",
+        "adapters"
+      ],
+      "proposed_category": "Uncategorized",
+      "token_count": 5
+    },
+    {
+      "slug": "narrow-ai-vs-general-ai",
+      "title": "Narrow AI vs. General AI",
+      "tier": "standard",
+      "family": "",
+      "tokens": [
+        "narrow",
+        "ai",
+        "vs",
+        "general",
+        "ai"
+      ],
+      "proposed_category": "Uncategorized",
+      "token_count": 5
+    },
+    {
+      "slug": "nist-ai-rmf-1-0",
+      "title": "NIST AI RMF 1.0",
+      "tier": "standard",
+      "family": "",
+      "tokens": [
+        "nist",
+        "ai",
+        "rmf",
+        "1",
+        "0"
+      ],
+      "proposed_category": "Uncategorized",
+      "token_count": 5
+    },
+    {
+      "slug": "no-u-turn-sampler-nuts",
+      "title": "No-U-Turn Sampler (NUTS)",
+      "tier": "standard",
+      "family": "",
+      "tokens": [
+        "no",
+        "u",
+        "turn",
+        "sampler",
+        "nuts"
+      ],
+      "proposed_category": "Uncategorized",
+      "token_count": 5
+    },
+    {
+      "slug": "non-maximum-suppression-nms-extensions",
+      "title": "Non-Maximum Suppression (NMS) Extensions",
+      "tier": "standard",
+      "family": "",
+      "tokens": [
+        "non",
+        "maximum",
+        "suppression",
+        "nms",
+        "extensions"
+      ],
+      "proposed_category": "Uncategorized",
+      "token_count": 5
+    },
+    {
+      "slug": "non-maximum-suppression-nms-techniques",
+      "title": "Non-Maximum Suppression (NMS) Techniques",
+      "tier": "standard",
+      "family": "",
+      "tokens": [
+        "non",
+        "maximum",
+        "suppression",
+        "nms",
+        "techniques"
+      ],
+      "proposed_category": "Uncategorized",
+      "token_count": 5
+    },
+    {
+      "slug": "non-negative-matrix-factorization-nmf",
+      "title": "Non-Negative Matrix Factorization (NMF)",
+      "tier": "standard",
+      "family": "",
+      "tokens": [
+        "non",
+        "negative",
+        "matrix",
+        "factorization",
+        "nmf"
+      ],
+      "proposed_category": "Uncategorized",
+      "token_count": 5
+    },
+    {
+      "slug": "normalized-discounted-cumulative-gain-ndcg",
+      "title": "normalized discounted cumulative gain (nDCG)",
+      "tier": "standard",
+      "family": "",
+      "tokens": [
+        "normalized",
+        "discounted",
+        "cumulative",
+        "gain",
+        "ndcg"
+      ],
+      "proposed_category": "Uncategorized",
+      "token_count": 5
+    },
+    {
+      "slug": "oblique-split-via-linear-projections",
+      "title": "Oblique Split via Linear Projections",
+      "tier": "standard",
+      "family": "",
+      "tokens": [
+        "oblique",
+        "split",
+        "via",
+        "linear",
+        "projections"
+      ],
+      "proposed_category": "Uncategorized",
+      "token_count": 5
+    },
+    {
+      "slug": "oob-error-out-of-bag",
+      "title": "OOB Error (Out-of-Bag)",
+      "tier": "standard",
+      "family": "",
+      "tokens": [
+        "oob",
+        "error",
+        "out",
+        "of",
+        "bag"
+      ],
+      "proposed_category": "Uncategorized",
+      "token_count": 5
+    },
+    {
+      "slug": "operator-in-the-loop-governance",
+      "title": "Operator-in-the-Loop Governance",
+      "tier": "standard",
+      "family": "Ethics & Governance",
+      "tokens": [
+        "operator",
+        "in",
+        "the",
+        "loop",
+        "governance"
+      ],
+      "proposed_category": "Uncategorized",
+      "token_count": 5
+    },
+    {
+      "slug": "out-of-bag-decision-function",
+      "title": "Out-of-Bag Decision Function",
+      "tier": "standard",
+      "family": "",
+      "tokens": [
+        "out",
+        "of",
+        "bag",
+        "decision",
+        "function"
+      ],
+      "proposed_category": "Uncategorized",
+      "token_count": 5
+    },
+    {
+      "slug": "part-of-speech-tagging-pos",
+      "title": "Part-of-Speech Tagging (POS)",
+      "tier": "standard",
+      "family": "",
+      "tokens": [
+        "part",
+        "of",
+        "speech",
+        "tagging",
+        "pos"
+      ],
+      "proposed_category": "Uncategorized",
+      "token_count": 5
+    },
+    {
+      "slug": "perceiver-io-models-and-extensions",
+      "title": "Perceiver IO Models and Extensions",
+      "tier": "standard",
+      "family": "",
+      "tokens": [
+        "perceiver",
+        "io",
+        "models",
+        "and",
+        "extensions"
+      ],
+      "proposed_category": "Uncategorized",
+      "token_count": 5
+    },
+    {
+      "slug": "pseudo-labeling-with-confidence-filtering",
+      "title": "Pseudo-Labeling with Confidence Filtering",
+      "tier": "standard",
+      "family": "",
+      "tokens": [
+        "pseudo",
+        "labeling",
+        "with",
+        "confidence",
+        "filtering"
+      ],
+      "proposed_category": "Uncategorized",
+      "token_count": 5
+    },
+    {
+      "slug": "r-squared-coefficient-of-determination",
+      "title": "R-Squared (Coefficient of Determination)",
+      "tier": "standard",
+      "family": "",
+      "tokens": [
+        "r",
+        "squared",
+        "coefficient",
+        "of",
+        "determination"
+      ],
+      "proposed_category": "Uncategorized",
+      "token_count": 5
+    },
+    {
+      "slug": "role-based-policies-in-marl",
+      "title": "Role-Based Policies in MARL",
+      "tier": "standard",
+      "family": "",
+      "tokens": [
+        "role",
+        "based",
+        "policies",
+        "in",
+        "marl"
+      ],
+      "proposed_category": "Uncategorized",
+      "token_count": 5
+    },
+    {
+      "slug": "scaled-exponential-linear-units-selu",
+      "title": "Scaled Exponential Linear Units (SELU)",
+      "tier": "standard",
+      "family": "",
+      "tokens": [
+        "scaled",
+        "exponential",
+        "linear",
+        "units",
+        "selu"
+      ],
+      "proposed_category": "Uncategorized",
+      "token_count": 5
+    },
+    {
+      "slug": "scaled-mlp-mixer-s-mixer",
+      "title": "Scaled MLP Mixer (S-Mixer)",
+      "tier": "standard",
+      "family": "",
+      "tokens": [
+        "scaled",
+        "mlp",
+        "mixer",
+        "s",
+        "mixer"
+      ],
+      "proposed_category": "Uncategorized",
+      "token_count": 5
+    },
+    {
+      "slug": "second-order-approximation-in-gbms",
+      "title": "Second-Order Approximation in GBMs",
+      "tier": "standard",
+      "family": "",
+      "tokens": [
+        "second",
+        "order",
+        "approximation",
+        "in",
+        "gbms"
+      ],
+      "proposed_category": "Uncategorized",
+      "token_count": 5
+    },
+    {
+      "slug": "secure-multi-party-computation-smpc",
+      "title": "Secure Multi-Party Computation (SMPC)",
+      "tier": "standard",
+      "family": "",
+      "tokens": [
+        "secure",
+        "multi",
+        "party",
+        "computation",
+        "smpc"
+      ],
+      "proposed_category": "Uncategorized",
+      "token_count": 5
+    },
+    {
+      "slug": "sense-model-plan-act-paradigm",
+      "title": "Sense-Model-Plan-Act Paradigm",
+      "tier": "standard",
+      "family": "",
+      "tokens": [
+        "sense",
+        "model",
+        "plan",
+        "act",
+        "paradigm"
+      ],
+      "proposed_category": "Uncategorized",
+      "token_count": 5
+    },
+    {
+      "slug": "sequence-to-sequence-seq2seq-models",
+      "title": "Sequence-to-Sequence (Seq2Seq) Models",
+      "tier": "standard",
+      "family": "",
+      "tokens": [
+        "sequence",
+        "to",
+        "sequence",
+        "seq2seq",
+        "models"
+      ],
+      "proposed_category": "Uncategorized",
+      "token_count": 5
+    },
+    {
+      "slug": "shifted-window-mlp-sw-mlp",
+      "title": "Shifted Window MLP (SW-MLP)",
+      "tier": "standard",
+      "family": "",
+      "tokens": [
+        "shifted",
+        "window",
+        "mlp",
+        "sw",
+        "mlp"
+      ],
+      "proposed_category": "Uncategorized",
+      "token_count": 5
+    },
+    {
+      "slug": "side-aware-boundary-localization-sabl",
+      "title": "Side-Aware Boundary Localization (SABL)",
+      "tier": "standard",
+      "family": "",
+      "tokens": [
+        "side",
+        "aware",
+        "boundary",
+        "localization",
+        "sabl"
+      ],
+      "proposed_category": "Uncategorized",
+      "token_count": 5
+    },
+    {
+      "slug": "slam-simultaneous-localization-and-mapping",
+      "title": "SLAM (Simultaneous Localization and Mapping)",
+      "tier": "standard",
+      "family": "",
+      "tokens": [
+        "slam",
+        "simultaneous",
+        "localization",
+        "and",
+        "mapping"
+      ],
+      "proposed_category": "Uncategorized",
+      "token_count": 5
+    },
+    {
+      "slug": "slim-supersparse-linear-integer-models",
+      "title": "SLIM (Supersparse Linear Integer Models)",
+      "tier": "standard",
+      "family": "",
+      "tokens": [
+        "slim",
+        "supersparse",
+        "linear",
+        "integer",
+        "models"
+      ],
+      "proposed_category": "Uncategorized",
+      "token_count": 5
+    },
+    {
+      "slug": "social-choice-voting-in-mas",
+      "title": "Social Choice / Voting in MAS",
+      "tier": "standard",
+      "family": "",
+      "tokens": [
+        "social",
+        "choice",
+        "voting",
+        "in",
+        "mas"
+      ],
+      "proposed_category": "Uncategorized",
+      "token_count": 5
+    },
+    {
+      "slug": "society-of-minds-in-llms",
+      "title": "Society of Minds in LLMs",
+      "tier": "standard",
+      "family": "",
+      "tokens": [
+        "society",
+        "of",
+        "minds",
+        "in",
+        "llms"
+      ],
+      "proposed_category": "Uncategorized",
+      "token_count": 5
+    },
+    {
+      "slug": "soft-target-hard-target-mix",
+      "title": "Soft Target & Hard Target Mix",
+      "tier": "standard",
+      "family": "",
+      "tokens": [
+        "soft",
+        "target",
+        "hard",
+        "target",
+        "mix"
+      ],
+      "proposed_category": "Uncategorized",
+      "token_count": 5
+    },
+    {
+      "slug": "spike-based-learning-techniques-extensions",
+      "title": "Spike-Based Learning Techniques Extensions",
+      "tier": "standard",
+      "family": "",
+      "tokens": [
+        "spike",
+        "based",
+        "learning",
+        "techniques",
+        "extensions"
+      ],
+      "proposed_category": "Uncategorized",
+      "token_count": 5
+    },
+    {
+      "slug": "sr-11-7-for-ml",
+      "title": "SR 11-7 for ML",
+      "tier": "standard",
+      "family": "",
+      "tokens": [
+        "sr",
+        "11",
+        "7",
+        "for",
+        "ml"
+      ],
+      "proposed_category": "Uncategorized",
+      "token_count": 5
+    },
+    {
+      "slug": "step-decay-time-based-decay",
+      "title": "Step-Decay / Time-based Decay",
+      "tier": "standard",
+      "family": "",
+      "tokens": [
+        "step",
+        "decay",
+        "time",
+        "based",
+        "decay"
+      ],
+      "proposed_category": "Uncategorized",
+      "token_count": 5
+    },
+    {
+      "slug": "strong-ai-vs-weak-ai",
+      "title": "Strong AI vs. Weak AI",
+      "tier": "standard",
+      "family": "",
+      "tokens": [
+        "strong",
+        "ai",
+        "vs",
+        "weak",
+        "ai"
+      ],
+      "proposed_category": "Uncategorized",
+      "token_count": 5
+    },
+    {
+      "slug": "t-curved-cosine-sgdr-t",
+      "title": "T-Curved Cosine (SGDR-T)",
+      "tier": "standard",
+      "family": "",
+      "tokens": [
+        "t",
+        "curved",
+        "cosine",
+        "sgdr",
+        "t"
+      ],
+      "proposed_category": "Uncategorized",
+      "token_count": 5
+    },
+    {
+      "slug": "theory-of-mind-in-ai",
+      "title": "Theory of Mind in AI",
+      "tier": "standard",
+      "family": "",
+      "tokens": [
+        "theory",
+        "of",
+        "mind",
+        "in",
+        "ai"
+      ],
+      "proposed_category": "Uncategorized",
+      "token_count": 5
+    },
+    {
+      "slug": "topic-models-with-rule-constraints",
+      "title": "Topic Models with Rule Constraints",
+      "tier": "standard",
+      "family": "",
+      "tokens": [
+        "topic",
+        "models",
+        "with",
+        "rule",
+        "constraints"
+      ],
+      "proposed_category": "Uncategorized",
+      "token_count": 5
+    },
+    {
+      "slug": "universal-value-function-approximators-uvfa",
+      "title": "Universal Value Function Approximators (UVFA)",
+      "tier": "standard",
+      "family": "",
+      "tokens": [
+        "universal",
+        "value",
+        "function",
+        "approximators",
+        "uvfa"
+      ],
+      "proposed_category": "Uncategorized",
+      "token_count": 5
+    },
+    {
+      "slug": "upper-or-lower-triangular-matrix",
+      "title": "Upper (or Lower) triangular matrix",
+      "tier": "standard",
+      "family": "",
+      "tokens": [
+        "upper",
+        "or",
+        "lower",
+        "triangular",
+        "matrix"
+      ],
+      "proposed_category": "Uncategorized",
+      "token_count": 5
+    },
+    {
+      "slug": "yaml-for-model-configuration-techniques",
+      "title": "YAML for Model Configuration Techniques",
+      "tier": "standard",
+      "family": "",
+      "tokens": [
+        "yaml",
+        "for",
+        "model",
+        "configuration",
+        "techniques"
+      ],
+      "proposed_category": "Uncategorized",
+      "token_count": 5
+    },
+    {
+      "slug": "a2a-discovery-and-registry",
+      "title": "A2A Discovery and Registry",
+      "tier": "standard",
+      "family": "",
+      "tokens": [
+        "a2a",
+        "discovery",
+        "and",
+        "registry"
+      ],
+      "proposed_category": "Uncategorized",
+      "token_count": 4
+    },
+    {
+      "slug": "accumulated-local-effects-ale",
+      "title": "Accumulated Local Effects (ALE)",
+      "tier": "standard",
+      "family": "",
+      "tokens": [
+        "accumulated",
+        "local",
+        "effects",
+        "ale"
+      ],
+      "proposed_category": "Uncategorized",
+      "token_count": 4
+    },
+    {
+      "slug": "ace-automated-concept-extraction",
+      "title": "ACE (Automated Concept Extraction)",
+      "tier": "standard",
+      "family": "",
+      "tokens": [
+        "ace",
+        "automated",
+        "concept",
+        "extraction"
+      ],
+      "proposed_category": "Uncategorized",
+      "token_count": 4
+    },
+    {
+      "slug": "adaptive-computation-time-act",
+      "title": "Adaptive Computation Time (ACT)",
+      "tier": "standard",
+      "family": "",
+      "tokens": [
+        "adaptive",
+        "computation",
+        "time",
+        "act"
+      ],
+      "proposed_category": "Uncategorized",
+      "token_count": 4
+    },
+    {
+      "slug": "adaptive-lr-clipping-adaclip",
+      "title": "Adaptive LR Clipping (AdaClip)",
+      "tier": "standard",
+      "family": "",
+      "tokens": [
+        "adaptive",
+        "lr",
+        "clipping",
+        "adaclip"
+      ],
+      "proposed_category": "Uncategorized",
+      "token_count": 4
+    },
+    {
+      "slug": "adaptive-moment-estimation-variants",
+      "title": "Adaptive Moment Estimation Variants",
+      "tier": "standard",
+      "family": "",
+      "tokens": [
+        "adaptive",
+        "moment",
+        "estimation",
+        "variants"
+      ],
+      "proposed_category": "Uncategorized",
+      "token_count": 4
+    },
+    {
+      "slug": "adaptive-resonance-theory-art",
+      "title": "Adaptive Resonance Theory (ART)",
+      "tier": "standard",
+      "family": "",
+      "tokens": [
+        "adaptive",
+        "resonance",
+        "theory",
+        "art"
+      ],
+      "proposed_category": "Uncategorized",
+      "token_count": 4
+    },
+    {
+      "slug": "adaptive-task-routing-protocols",
+      "title": "Adaptive Task Routing Protocols",
+      "tier": "standard",
+      "family": "",
+      "tokens": [
+        "adaptive",
+        "task",
+        "routing",
+        "protocols"
+      ],
+      "proposed_category": "Uncategorized",
+      "token_count": 4
+    },
+    {
+      "slug": "adjusted-rand-index-ari",
+      "title": "Adjusted Rand Index (ARI)",
+      "tier": "standard",
+      "family": "",
+      "tokens": [
+        "adjusted",
+        "rand",
+        "index",
+        "ari"
+      ],
+      "proposed_category": "Uncategorized",
+      "token_count": 4
+    },
+    {
+      "slug": "adobe-pdf-extract-api",
+      "title": "Adobe PDF Extract API",
+      "tier": "standard",
+      "family": "",
+      "tokens": [
+        "adobe",
+        "pdf",
+        "extract",
+        "api"
+      ],
+      "proposed_category": "Uncategorized",
+      "token_count": 4
+    },
+    {
+      "slug": "ai-myths-and-misconceptions",
+      "title": "AI Myths and Misconceptions",
+      "tier": "standard",
+      "family": "",
+      "tokens": [
+        "ai",
+        "myths",
+        "and",
+        "misconceptions"
+      ],
+      "proposed_category": "Uncategorized",
+      "token_count": 4
+    },
+    {
+      "slug": "akaike-information-criterion-aic",
+      "title": "Akaike Information Criterion (AIC)",
+      "tier": "standard",
+      "family": "",
+      "tokens": [
+        "akaike",
+        "information",
+        "criterion",
+        "aic"
+      ],
+      "proposed_category": "Uncategorized",
+      "token_count": 4
+    },
+    {
+      "slug": "alternating-least-squares-als",
+      "title": "Alternating Least Squares (ALS)",
+      "tier": "standard",
+      "family": "",
+      "tokens": [
+        "alternating",
+        "least",
+        "squares",
+        "als"
+      ],
+      "proposed_category": "Uncategorized",
+      "token_count": 4
+    },
+    {
+      "slug": "amazon-lookout-for-equipment",
+      "title": "Amazon Lookout for Equipment",
+      "tier": "standard",
+      "family": "",
+      "tokens": [
+        "amazon",
+        "lookout",
+        "for",
+        "equipment"
+      ],
+      "proposed_category": "Uncategorized",
+      "token_count": 4
+    },
+    {
+      "slug": "ambiguity-decomposition-in-ensembles",
+      "title": "Ambiguity Decomposition in Ensembles",
+      "tier": "standard",
+      "family": "",
+      "tokens": [
+        "ambiguity",
+        "decomposition",
+        "in",
+        "ensembles"
+      ],
+      "proposed_category": "Uncategorized",
+      "token_count": 4
+    },
+    {
+      "slug": "ann-to-snn-conversion",
+      "title": "ANN-to-SNN conversion",
+      "tier": "standard",
+      "family": "",
+      "tokens": [
+        "ann",
+        "to",
+        "snn",
+        "conversion"
+      ],
+      "proposed_category": "Uncategorized",
+      "token_count": 4
+    },
+    {
+      "slug": "anti-money-laundering-ai",
+      "title": "Anti-Money Laundering AI",
+      "tier": "standard",
+      "family": "",
+      "tokens": [
+        "anti",
+        "money",
+        "laundering",
+        "ai"
+      ],
+      "proposed_category": "Uncategorized",
+      "token_count": 4
+    },
+    {
+      "slug": "approximate-nearest-neighbors-ann",
+      "title": "approximate nearest neighbors (ANN)",
+      "tier": "standard",
+      "family": "",
+      "tokens": [
+        "approximate",
+        "nearest",
+        "neighbors",
+        "ann"
+      ],
+      "proposed_category": "Uncategorized",
+      "token_count": 4
+    },
+    {
+      "slug": "approximation-theory-in-ml",
+      "title": "Approximation Theory in ML",
+      "tier": "standard",
+      "family": "",
+      "tokens": [
+        "approximation",
+        "theory",
+        "in",
+        "ml"
+      ],
+      "proposed_category": "Uncategorized",
+      "token_count": 4
+    },
+    {
+      "slug": "arithmetic-circuits-in-ai",
+      "title": "Arithmetic Circuits in AI",
+      "tier": "standard",
+      "family": "",
+      "tokens": [
+        "arithmetic",
+        "circuits",
+        "in",
+        "ai"
+      ],
+      "proposed_category": "Uncategorized",
+      "token_count": 4
+    },
+    {
+      "slug": "arnoldi-iteration-spectral-methods",
+      "title": "Arnoldi Iteration (Spectral Methods)",
+      "tier": "standard",
+      "family": "",
+      "tokens": [
+        "arnoldi",
+        "iteration",
+        "spectral",
+        "methods"
+      ],
+      "proposed_category": "Uncategorized",
+      "token_count": 4
+    },
+    {
+      "slug": "artificial-life-a-life",
+      "title": "Artificial Life (A-Life)",
+      "tier": "standard",
+      "family": "",
+      "tokens": [
+        "artificial",
+        "life",
+        "a",
+        "life"
+      ],
+      "proposed_category": "Uncategorized",
+      "token_count": 4
+    },
+    {
+      "slug": "auto-ml-for-bio",
+      "title": "Auto-ML for bio",
+      "tier": "standard",
+      "family": "",
+      "tokens": [
+        "auto",
+        "ml",
+        "for",
+        "bio"
+      ],
+      "proposed_category": "Uncategorized",
+      "token_count": 4
+    },
+    {
+      "slug": "average-treatment-effect-ate",
+      "title": "Average Treatment Effect (ATE)",
+      "tier": "standard",
+      "family": "",
+      "tokens": [
+        "average",
+        "treatment",
+        "effect",
+        "ate"
+      ],
+      "proposed_category": "Uncategorized",
+      "token_count": 4
+    },
+    {
+      "slug": "aws-glue-for-ml",
+      "title": "AWS Glue for ML",
+      "tier": "standard",
+      "family": "",
+      "tokens": [
+        "aws",
+        "glue",
+        "for",
+        "ml"
+      ],
+      "proposed_category": "Uncategorized",
+      "token_count": 4
+    },
+    {
+      "slug": "az-ai-content-safety",
+      "title": "AZ AI Content Safety",
+      "tier": "standard",
+      "family": "Ethics & Governance",
+      "tokens": [
+        "az",
+        "ai",
+        "content",
+        "safety"
+      ],
+      "proposed_category": "Uncategorized",
+      "token_count": 4
+    },
+    {
+      "slug": "azure-ai-content-safety",
+      "title": "Azure AI Content Safety",
+      "tier": "standard",
+      "family": "Ethics & Governance",
+      "tokens": [
+        "azure",
+        "ai",
+        "content",
+        "safety"
+      ],
+      "proposed_category": "Uncategorized",
+      "token_count": 4
+    },
+    {
+      "slug": "azure-databricks-mosaic-ai",
+      "title": "Azure Databricks Mosaic AI",
+      "tier": "standard",
+      "family": "",
+      "tokens": [
+        "azure",
+        "databricks",
+        "mosaic",
+        "ai"
+      ],
+      "proposed_category": "Uncategorized",
+      "token_count": 4
+    },
+    {
+      "slug": "azure-form-recognizer-tables",
+      "title": "Azure Form Recognizer tables",
+      "tier": "standard",
+      "family": "",
+      "tokens": [
+        "azure",
+        "form",
+        "recognizer",
+        "tables"
+      ],
+      "proposed_category": "Uncategorized",
+      "token_count": 4
+    },
+    {
+      "slug": "bag-of-n-grams",
+      "title": "Bag of N-Grams",
+      "tier": "standard",
+      "family": "",
+      "tokens": [
+        "bag",
+        "of",
+        "n",
+        "grams"
+      ],
+      "proposed_category": "Uncategorized",
+      "token_count": 4
+    },
+    {
+      "slug": "baseline-shift-reduce-parser",
+      "title": "Baseline Shift-Reduce Parser",
+      "tier": "standard",
+      "family": "",
+      "tokens": [
+        "baseline",
+        "shift",
+        "reduce",
+        "parser"
+      ],
+      "proposed_category": "Uncategorized",
+      "token_count": 4
+    },
+    {
+      "slug": "bci-brain-computer-interface",
+      "title": "BCI (Brain-Computer Interface)",
+      "tier": "standard",
+      "family": "",
+      "tokens": [
+        "bci",
+        "brain",
+        "computer",
+        "interface"
+      ],
+      "proposed_category": "Uncategorized",
+      "token_count": 4
+    },
+    {
+      "slug": "belief-desire-intention-framework",
+      "title": "Belief-Desire-Intention Framework",
+      "tier": "standard",
+      "family": "",
+      "tokens": [
+        "belief",
+        "desire",
+        "intention",
+        "framework"
+      ],
+      "proposed_category": "Uncategorized",
+      "token_count": 4
+    },
+    {
+      "slug": "belief-desire-intention-model",
+      "title": "Belief-Desire-Intention Model",
+      "tier": "standard",
+      "family": "",
+      "tokens": [
+        "belief",
+        "desire",
+        "intention",
+        "model"
+      ],
+      "proposed_category": "Uncategorized",
+      "token_count": 4
+    },
+    {
+      "slug": "biological-neurons-as-inspiration",
+      "title": "Biological Neurons as Inspiration",
+      "tier": "standard",
+      "family": "",
+      "tokens": [
+        "biological",
+        "neurons",
+        "as",
+        "inspiration"
+      ],
+      "proposed_category": "Uncategorized",
+      "token_count": 4
+    },
+    {
+      "slug": "bloom-filters-in-ml",
+      "title": "Bloom Filters in ML",
+      "tier": "standard",
+      "family": "",
+      "tokens": [
+        "bloom",
+        "filters",
+        "in",
+        "ml"
+      ],
+      "proposed_category": "Uncategorized",
+      "token_count": 4
+    },
+    {
+      "slug": "blue-green-model-rollout",
+      "title": "Blue-green model rollout",
+      "tier": "standard",
+      "family": "",
+      "tokens": [
+        "blue",
+        "green",
+        "model",
+        "rollout"
+      ],
+      "proposed_category": "Uncategorized",
+      "token_count": 4
+    },
+    {
+      "slug": "brain-computer-interfaces-bcis",
+      "title": "Brain-Computer Interfaces (BCIs)",
+      "tier": "standard",
+      "family": "",
+      "tokens": [
+        "brain",
+        "computer",
+        "interfaces",
+        "bcis"
+      ],
+      "proposed_category": "Uncategorized",
+      "token_count": 4
+    },
+    {
+      "slug": "brownian-motion-in-ml",
+      "title": "Brownian Motion in ML",
+      "tier": "standard",
+      "family": "",
+      "tokens": [
+        "brownian",
+        "motion",
+        "in",
+        "ml"
+      ],
+      "proposed_category": "Uncategorized",
+      "token_count": 4
+    },
+    {
+      "slug": "building-information-modeling-ai",
+      "title": "Building Information Modeling AI",
+      "tier": "standard",
+      "family": "",
+      "tokens": [
+        "building",
+        "information",
+        "modeling",
+        "ai"
+      ],
+      "proposed_category": "Uncategorized",
+      "token_count": 4
+    },
+    {
+      "slug": "business-intelligence-with-ai",
+      "title": "Business Intelligence with AI",
+      "tier": "standard",
+      "family": "",
+      "tokens": [
+        "business",
+        "intelligence",
+        "with",
+        "ai"
+      ],
+      "proposed_category": "Uncategorized",
+      "token_count": 4
+    },
+    {
+      "slug": "capacity-factor-in-moe",
+      "title": "Capacity Factor in MoE",
+      "tier": "standard",
+      "family": "",
+      "tokens": [
+        "capacity",
+        "factor",
+        "in",
+        "moe"
+      ],
+      "proposed_category": "Uncategorized",
+      "token_count": 4
+    },
+    {
+      "slug": "centrality-based-head-selection",
+      "title": "Centrality-Based Head Selection",
+      "tier": "standard",
+      "family": "",
+      "tokens": [
+        "centrality",
+        "based",
+        "head",
+        "selection"
+      ],
+      "proposed_category": "Uncategorized",
+      "token_count": 4
+    },
+    {
+      "slug": "cer-character-error-rate",
+      "title": "CER (Character Error Rate)",
+      "tier": "standard",
+      "family": "",
+      "tokens": [
+        "cer",
+        "character",
+        "error",
+        "rate"
+      ],
+      "proposed_category": "Uncategorized",
+      "token_count": 4
+    },
+    {
+      "slug": "checkpoint-averaging-ema-swapping",
+      "title": "Checkpoint Averaging / EMA Swapping",
+      "tier": "standard",
+      "family": "",
+      "tokens": [
+        "checkpoint",
+        "averaging",
+        "ema",
+        "swapping"
+      ],
+      "proposed_category": "Uncategorized",
+      "token_count": 4
+    },
+    {
+      "slug": "chi-squared-rule-selection",
+      "title": "Chi-Squared Rule Selection",
+      "tier": "standard",
+      "family": "",
+      "tokens": [
+        "chi",
+        "squared",
+        "rule",
+        "selection"
+      ],
+      "proposed_category": "Uncategorized",
+      "token_count": 4
+    },
+    {
+      "slug": "chunking-models-in-ai",
+      "title": "Chunking Models in AI",
+      "tier": "standard",
+      "family": "",
+      "tokens": [
+        "chunking",
+        "models",
+        "in",
+        "ai"
+      ],
+      "proposed_category": "Uncategorized",
+      "token_count": 4
+    },
+    {
+      "slug": "circular-padding-in-cnns",
+      "title": "Circular Padding in CNNs",
+      "tier": "standard",
+      "family": "",
+      "tokens": [
+        "circular",
+        "padding",
+        "in",
+        "cnns"
+      ],
+      "proposed_category": "Uncategorized",
+      "token_count": 4
+    },
+    {
+      "slug": "clause-level-reference-reordering",
+      "title": "Clause-Level Reference Reordering",
+      "tier": "standard",
+      "family": "",
+      "tokens": [
+        "clause",
+        "level",
+        "reference",
+        "reordering"
+      ],
+      "proposed_category": "Uncategorized",
+      "token_count": 4
+    },
+    {
+      "slug": "cml-ci-for-ml",
+      "title": "CML (CI for ML)",
+      "tier": "standard",
+      "family": "",
+      "tokens": [
+        "cml",
+        "ci",
+        "for",
+        "ml"
+      ],
+      "proposed_category": "Uncategorized",
+      "token_count": 4
+    },
+    {
+      "slug": "coe-composition-of-experts",
+      "title": "COE (Composition of Experts)",
+      "tier": "standard",
+      "family": "",
+      "tokens": [
+        "coe",
+        "composition",
+        "of",
+        "experts"
+      ],
+      "proposed_category": "Uncategorized",
+      "token_count": 4
+    },
+    {
+      "slug": "collaborative-filtering-in-mas",
+      "title": "Collaborative Filtering in MAS",
+      "tier": "standard",
+      "family": "",
+      "tokens": [
+        "collaborative",
+        "filtering",
+        "in",
+        "mas"
+      ],
+      "proposed_category": "Uncategorized",
+      "token_count": 4
+    },
+    {
+      "slug": "conceptual-blending-in-ai",
+      "title": "Conceptual Blending in AI",
+      "tier": "standard",
+      "family": "",
+      "tokens": [
+        "conceptual",
+        "blending",
+        "in",
+        "ai"
+      ],
+      "proposed_category": "Uncategorized",
+      "token_count": 4
+    },
+    {
+      "slug": "conditional-composition-of-experts",
+      "title": "Conditional Composition of Experts",
+      "tier": "standard",
+      "family": "",
+      "tokens": [
+        "conditional",
+        "composition",
+        "of",
+        "experts"
+      ],
+      "proposed_category": "Uncategorized",
+      "token_count": 4
+    },
+    {
+      "slug": "conditional-random-fields-crfs",
+      "title": "Conditional Random Fields (CRFs)",
+      "tier": "standard",
+      "family": "",
+      "tokens": [
+        "conditional",
+        "random",
+        "fields",
+        "crfs"
+      ],
+      "proposed_category": "Uncategorized",
+      "token_count": 4
+    },
+    {
+      "slug": "constrained-decoding-with-regex",
+      "title": "Constrained decoding with regex",
+      "tier": "standard",
+      "family": "",
+      "tokens": [
+        "constrained",
+        "decoding",
+        "with",
+        "regex"
+      ],
+      "proposed_category": "Uncategorized",
+      "token_count": 4
+    },
+    {
+      "slug": "content-filters-for-llms",
+      "title": "Content filters for LLMs",
+      "tier": "standard",
+      "family": "",
+      "tokens": [
+        "content",
+        "filters",
+        "for",
+        "llms"
+      ],
+      "proposed_category": "Uncategorized",
+      "token_count": 4
+    },
+    {
+      "slug": "content-hashing-for-llms",
+      "title": "Content hashing for LLMs",
+      "tier": "standard",
+      "family": "",
+      "tokens": [
+        "content",
+        "hashing",
+        "for",
+        "llms"
+      ],
+      "proposed_category": "Uncategorized",
+      "token_count": 4
+    },
+    {
+      "slug": "context-window-expansion-techniques",
+      "title": "Context-Window Expansion Techniques",
+      "tier": "standard",
+      "family": "",
+      "tokens": [
+        "context",
+        "window",
+        "expansion",
+        "techniques"
+      ],
+      "proposed_category": "Uncategorized",
+      "token_count": 4
+    },
+    {
+      "slug": "contextual-bandits-techniques-extensions",
+      "title": "Contextual Bandits Techniques Extensions",
+      "tier": "standard",
+      "family": "",
+      "tokens": [
+        "contextual",
+        "bandits",
+        "techniques",
+        "extensions"
+      ],
+      "proposed_category": "Uncategorized",
+      "token_count": 4
+    }
+  ]
+}

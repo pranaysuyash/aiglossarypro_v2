@@ -76,6 +76,11 @@ STRUCTURE_EDITORIAL_SECTION_ORDER = (
     "Illustration or Diagram",
 )
 STRUCTURE_EDITORIAL_SECTIONS = set(STRUCTURE_EDITORIAL_SECTION_ORDER)
+STRUCTURE_LAYER_PRIORITY = {
+    "launch-runtime": 0,
+    "editorial-expansion": 1,
+    "backlog": 2,
+}
 FAMILY_CONTENT_PROFILES = {
     "Computer Vision": {
         "note": "Watch how the concept changes image, video, spatial, or scene understanding instead of treating it as a generic AI label.",
@@ -130,130 +135,130 @@ FAMILY_CONTENT_PROFILES = {
 
 # ── Auto-classification system ──────────────────────────────────────────────
 
-TAXONOMY_COVERAGE_MINIMUM = 0.60
+TAXONOMY_COVERAGE_MINIMUM = 0.74
 
 AUTO_CLASSIFICATION_RULES: list[tuple[set[str], str, str, int]] = [
     # ==========================================
     # ORIGINAL RULES (curated, high confidence)
     # ==========================================
     ({"weight", "parameter"}, "Neural Networks", "Model Parameters", 8),
-    ({"ai-learning", "ai learning"}, "AI Applications", "", 10),
-    ({"ai-generated", "ai generated"}, "AI Applications", "", 10),
-    ({"few-shot", "few shot"}, "Learning Paradigms", "Low-Data Learning", 10),
-    ({"zero-shot", "zero shot"}, "Learning Paradigms", "Low-Data Learning", 10),
-    ({"one-shot", "one shot"}, "Learning Paradigms", "Low-Data Learning", 10),
-    ({"chain-of-thought", "chain of thought"}, "Natural Language Processing", "Language Generation", 10),
-    ({"actor-critic"}, "Reinforcement Learning", "Advanced RL Techniques", 10),
-    ({"retrieval-augmented", "retrieval augmented"}, "Natural Language Processing", "Pre-trained Models", 10),
-    ({"text-to-image", "text to image"}, "Generative Models", "Diffusion Models", 10),
-    ({"text-to-speech", "text to speech"}, "Natural Language Processing", "Language Generation", 10),
-    ({"speech-to-text", "speech to text"}, "Natural Language Processing", "Language Generation", 10),
-    ({"image-to-image", "image to image"}, "Computer Vision", "Image Processing", 10),
-    ({"adversarial-attack", "adversarial attack"}, "Security & Robustness", "Adversarial Machine Learning", 10),
-    ({"adversarial-example", "adversarial example"}, "Security & Robustness", "Adversarial Machine Learning", 10),
-    ({"federated-learning", "federated learning"}, "Learning Paradigms", "Low-Data Learning", 10),
-    ({"differential-privacy", "differential privacy", "privacy-preserving", "privacy preserving"}, "Ethics & Governance", "Fairness in ML", 9),
-    ({"explainable-ai", "explainable ai", "xai"}, "Explainable AI", "Model Interpretability", 10),
-    ({"time-series", "time series"}, "Data Processing", "Data Pipeline", 9),
-    ({"reinforcement-learning", "reinforcement learning"}, "Reinforcement Learning", "Learning Techniques", 10),
-    ({"semi-supervised", "semi supervised"}, "Learning Paradigms", "Low-Data Learning", 10),
-    ({"self-supervised", "self supervised"}, "Learning Paradigms", "Low-Data Learning", 10),
-    ({"active-learning", "active learning"}, "Learning Paradigms", "Low-Data Learning", 9),
-    ({"multi-task", "multitask"}, "Neural Networks", "Training Techniques", 9),
-    ({"multi-modal", "multimodal"}, "Neural Networks", "Specialized Architectures", 9),
-    ({"out-of-distribution", "ood"}, "Model Evaluation", "Generalization Issues", 9),
-    ({"bag-of-words", "bag of words"}, "Representation Learning", "Vector Representations", 9),
-    ({"word-embedding", "word embedding"}, "Representation Learning", "Vector Representations", 9),
-    ({"dimensionality-reduction", "dimensionality reduction"}, "Dimensionality Reduction", "Feature Reduction", 10),
-    ({"representation-learning", "representation learning"}, "Representation Learning", "Feature Learning", 10),
-    ({"feature-extraction", "feature extraction"}, "Data Preprocessing", "Data Enhancement", 9),
-    ({"feature-engineering", "feature engineering"}, "Data Preprocessing", "Data Enhancement", 9),
-    ({"feature-selection", "feature selection"}, "Data Preprocessing", "Data Enhancement", 9),
-    ({"hyperparameter-tuning", "hyperparameter tuning", "hyperparameter-optimization"}, "Optimization Algorithms", "Gradient-based Optimizers", 9),
-    ({"model-compression", "model compression"}, "Neural Networks", "Training Techniques", 9),
-    ({"knowledge-distillation", "knowledge distillation"}, "Neural Networks", "Training Techniques", 9),
-    ({"model-quantization", "model quantization"}, "Neural Networks", "Training Techniques", 9),
-    ({"ablation-study", "ablation study"}, "Model Evaluation", "Performance Metrics", 9),
-    ({"anomaly-detection", "anomaly detection"}, "Detection Techniques", "Unsupervised Detection", 9),
-    ({"object-detection", "object detection"}, "Computer Vision", "Object Detection", 9),
-    ({"image-segmentation", "image segmentation"}, "Computer Vision", "Image Processing", 9),
-    ({"image-classification", "image classification"}, "Computer Vision", "Image Processing", 9),
-    ({"sentiment-analysis", "sentiment analysis"}, "Natural Language Processing", "Text Analysis", 9),
-    ({"named-entity", "named entity recognition"}, "Natural Language Processing", "Text Analysis", 9),
-    ({"text-classification", "text classification"}, "Natural Language Processing", "Text Analysis", 9),
-    ({"machine-translation", "machine translation"}, "Natural Language Processing", "Language Generation", 9),
-    ({"question-answering", "question answering"}, "Natural Language Processing", "Language Generation", 9),
-    ({"text-summarization", "text summarization"}, "Natural Language Processing", "Language Generation", 9),
-    ({"image-captioning", "image captioning"}, "Computer Vision", "Image Processing", 8),
-    ({"style-transfer", "style transfer"}, "Computer Vision", "Image Processing", 8),
-    ({"super-resolution", "super resolution"}, "Computer Vision", "Image Processing", 8),
-    ({"image-inpainting", "image inpainting"}, "Computer Vision", "Image Processing", 8),
-    ({"image-generation", "image generation"}, "Generative Models", "Adversarial Networks", 9),
-    ({"text-generation", "text generation"}, "Natural Language Processing", "Language Generation", 9),
-    ({"code-generation", "code generation"}, "Natural Language Processing", "Language Generation", 9),
-    ({"data-augmentation", "data augmentation"}, "Data Preprocessing", "Data Enhancement", 9),
-    ({"data-cleaning", "data cleaning"}, "Data Preprocessing", "Data Enhancement", 9),
-    ({"data-labeling", "data labeling"}, "Data Preprocessing", "Data Enhancement", 9),
-    ({"cross-validation", "cross validation"}, "Model Evaluation", "Performance Metrics", 9),
-    ({"transfer-learning", "transfer learning"}, "Transfer Learning", "Model Adaptation", 10),
-    ({"fine-tuning", "finetune", "fine-tuning", "finetuning"}, "Transfer Learning", "Model Adaptation", 10),
-    ({"domain-adaptation", "domain adaptation"}, "Transfer Learning", "Model Adaptation", 9),
-    ({"ensemble-learning", "ensemble learning"}, "Learning Paradigms", "Supervised Learning", 9),
-    ({"deep-learning", "deep learning"}, "Neural Networks", "Core Models", 9),
-    ({"machine-learning", "machine learning"}, "Foundations", "Core Concepts", 9),
-    ({"neural-network", "neural network"}, "Neural Networks", "Core Models", 9),
+    ({"ai learning"}, "AI Applications", "", 10),
+    ({"ai generated"}, "AI Applications", "", 10),
+    ({"few shot"}, "Learning Paradigms", "Low-Data Learning", 10),
+    ({"zero shot"}, "Learning Paradigms", "Low-Data Learning", 10),
+    ({"one shot"}, "Learning Paradigms", "Low-Data Learning", 10),
+    ({"chain of thought", "chain of thought"}, "Natural Language Processing", "Language Generation", 10),
+    ({"actor critic"}, "Reinforcement Learning", "Advanced RL Techniques", 10),
+    ({"retrieval augmented"}, "Natural Language Processing", "Pre-trained Models", 10),
+    ({"text to image"}, "Generative Models", "Diffusion Models", 10),
+    ({"text to speech"}, "Natural Language Processing", "Language Generation", 10),
+    ({"speech to text"}, "Natural Language Processing", "Language Generation", 10),
+    ({"image to image"}, "Computer Vision", "Image Processing", 10),
+    ({"adversarial attack"}, "Security & Robustness", "Adversarial Machine Learning", 10),
+    ({"adversarial example"}, "Security & Robustness", "Adversarial Machine Learning", 10),
+    ({"federated learning"}, "Learning Paradigms", "Low-Data Learning", 10),
+    ({"differential privacy", "privacy preserving"}, "Ethics & Governance", "Fairness in ML", 9),
+    ({"explainable ai", "xai"}, "Explainable AI", "Model Interpretability", 10),
+    ({"time series", "time series"}, "Data Processing", "Data Pipeline", 9),
+    ({"reinforcement learning"}, "Reinforcement Learning", "Learning Techniques", 10),
+    ({"semi supervised"}, "Learning Paradigms", "Low-Data Learning", 10),
+    ({"self supervised"}, "Learning Paradigms", "Low-Data Learning", 10),
+    ({"active learning"}, "Learning Paradigms", "Low-Data Learning", 9),
+    ({"multi task", "multitask"}, "Neural Networks", "Training Techniques", 9),
+    ({"multi modal", "multimodal"}, "Neural Networks", "Specialized Architectures", 9),
+    ({"out of distribution", "ood"}, "Model Evaluation", "Generalization Issues", 9),
+    ({"bag of words"}, "Representation Learning", "Vector Representations", 9),
+    ({"word embedding"}, "Representation Learning", "Vector Representations", 9),
+    ({"dimensionality reduction"}, "Dimensionality Reduction", "Feature Reduction", 10),
+    ({"representation learning"}, "Representation Learning", "Feature Learning", 10),
+    ({"feature extraction"}, "Data Preprocessing", "Data Enhancement", 9),
+    ({"feature engineering"}, "Data Preprocessing", "Data Enhancement", 9),
+    ({"feature selection"}, "Data Preprocessing", "Data Enhancement", 9),
+    ({"hyperparameter tuning", "hyperparameter optimization"}, "Optimization Algorithms", "Gradient-based Optimizers", 9),
+    ({"model compression"}, "Neural Networks", "Training Techniques", 9),
+    ({"knowledge distillation"}, "Neural Networks", "Training Techniques", 9),
+    ({"model quantization"}, "Neural Networks", "Training Techniques", 9),
+    ({"ablation study"}, "Model Evaluation", "Performance Metrics", 9),
+    ({"anomaly detection"}, "Detection Techniques", "Unsupervised Detection", 9),
+    ({"object detection"}, "Computer Vision", "Object Detection", 9),
+    ({"image segmentation"}, "Computer Vision", "Image Processing", 9),
+    ({"image classification"}, "Computer Vision", "Image Processing", 9),
+    ({"sentiment analysis"}, "Natural Language Processing", "Text Analysis", 9),
+    ({"named entity", "named entity recognition"}, "Natural Language Processing", "Text Analysis", 9),
+    ({"text classification"}, "Natural Language Processing", "Text Analysis", 9),
+    ({"machine translation"}, "Natural Language Processing", "Language Generation", 9),
+    ({"question answering"}, "Natural Language Processing", "Language Generation", 9),
+    ({"text summarization"}, "Natural Language Processing", "Language Generation", 9),
+    ({"image captioning"}, "Computer Vision", "Image Processing", 8),
+    ({"style transfer"}, "Computer Vision", "Image Processing", 8),
+    ({"super resolution"}, "Computer Vision", "Image Processing", 8),
+    ({"image inpainting"}, "Computer Vision", "Image Processing", 8),
+    ({"image generation"}, "Generative Models", "Adversarial Networks", 9),
+    ({"text generation"}, "Natural Language Processing", "Language Generation", 9),
+    ({"code generation"}, "Natural Language Processing", "Language Generation", 9),
+    ({"data augmentation"}, "Data Preprocessing", "Data Enhancement", 9),
+    ({"data cleaning"}, "Data Preprocessing", "Data Enhancement", 9),
+    ({"data labeling"}, "Data Preprocessing", "Data Enhancement", 9),
+    ({"cross validation"}, "Model Evaluation", "Performance Metrics", 9),
+    ({"transfer learning"}, "Transfer Learning", "Model Adaptation", 10),
+    ({"fine tuning", "finetune", "fine tuning", "finetuning"}, "Transfer Learning", "Model Adaptation", 10),
+    ({"domain adaptation"}, "Transfer Learning", "Model Adaptation", 9),
+    ({"ensemble learning"}, "Learning Paradigms", "Supervised Learning", 9),
+    ({"deep learning"}, "Neural Networks", "Core Models", 9),
+    ({"machine learning"}, "Foundations", "Core Concepts", 9),
+    ({"neural network"}, "Neural Networks", "Core Models", 9),
     ({"convolutional", "convolution"}, "Neural Networks", "Core Models", 8),
     ({"recurrent", "rnn"}, "Neural Networks", "Recurrent Models", 8),
-    ({"long-short-term", "lstm"}, "Neural Networks", "Recurrent Models", 8),
-    ({"gated-recurrent", "gru"}, "Neural Networks", "Recurrent Models", 8),
+    ({"long short term", "lstm"}, "Neural Networks", "Recurrent Models", 8),
+    ({"gated recurrent", "gru"}, "Neural Networks", "Recurrent Models", 8),
     ({"transformer"}, "Neural Networks", "Core Models", 8),
-    ({"attention-mechanism", "attention mechanism"}, "Neural Networks", "Attention Mechanism", 9),
-    ({"self-attention", "self attention"}, "Neural Networks", "Attention Mechanism", 9),
-    ({"generative-adversarial", "generative adversarial", "gan"}, "Generative Models", "Adversarial Networks", 9),
-    ({"variational-autoencoder", "variational autoencoder", "vae"}, "Generative Models", "Autoencoders", 9),
-    ({"diffusion-model", "diffusion model"}, "Generative Models", "Diffusion Models", 9),
+    ({"attention mechanism"}, "Neural Networks", "Attention Mechanism", 9),
+    ({"self attention"}, "Neural Networks", "Attention Mechanism", 9),
+    ({"generative adversarial", "gan"}, "Generative Models", "Adversarial Networks", 9),
+    ({"variational autoencoder", "vae"}, "Generative Models", "Autoencoders", 9),
+    ({"diffusion model"}, "Generative Models", "Diffusion Models", 9),
     ({"autoencoder"}, "Neural Networks", "Autoencoders", 8),
-    ({"gradient-descent", "gradient descent"}, "Optimization Algorithms", "Gradient-based Optimizers", 8),
-    ({"stochastic-gradient", "sgd"}, "Optimization Algorithms", "Gradient-based Optimizers", 8),
-    ({"adam-optimizer", "adam optimizer", "adamw", "adam"}, "Optimization Algorithms", "Gradient-based Optimizers", 8),
-    ({"batch-normalization", "batch normalization"}, "Neural Networks", "Training Techniques", 8),
-    ({"layer-normalization", "layer normalization"}, "Neural Networks", "Training Techniques", 8),
+    ({"gradient descent"}, "Optimization Algorithms", "Gradient-based Optimizers", 8),
+    ({"stochastic gradient", "sgd"}, "Optimization Algorithms", "Gradient-based Optimizers", 8),
+    ({"adam optimizer", "adamw", "adam"}, "Optimization Algorithms", "Gradient-based Optimizers", 8),
+    ({"batch normalization"}, "Neural Networks", "Training Techniques", 8),
+    ({"layer normalization"}, "Neural Networks", "Training Techniques", 8),
     ({"dropout"}, "Neural Networks", "Regularization Techniques", 8),
     ({"regularization"}, "Neural Networks", "Regularization Techniques", 8),
     ({"backpropagation", "backprop"}, "Neural Networks", "Training Algorithms", 8),
-    ({"loss-function", "loss function"}, "Loss Functions", "Classification Loss", 8),
-    ({"activation-function", "activation function"}, "Neural Networks", "Activation Functions", 8),
-    ({"metric-learning", "metric learning"}, "Representation Learning", "Feature Learning", 8),
-    ({"contrastive-learning", "contrastive learning"}, "Representation Learning", "Feature Learning", 8),
-    ({"recommender-system", "recommender system"}, "AI Applications", "Knowledge Representation", 8),
-    ({"knowledge-graph", "knowledge graph"}, "AI Theory", "Knowledge Representation", 8),
-    ({"graph-neural", "graph neural", "gnn"}, "Neural Networks", "Graph-based Models", 8),
-    ({"graph-convolution", "graph convolution"}, "Neural Networks", "Graph-based Models", 8),
-    ({"graph-attention", "graph attention"}, "Neural Networks", "Graph-based Models", 8),
-    ({"natural-language", "tokenizer", "tokenization", "lemmatization", "stemming"}, "Natural Language Processing", "Text Preprocessing", 8),
-    ({"word2vec", "glove", "fasttext", "cbow", "skip-gram"}, "Representation Learning", "Vector Representations", 8),
+    ({"loss function"}, "Loss Functions", "Classification Loss", 8),
+    ({"activation function"}, "Neural Networks", "Activation Functions", 8),
+    ({"metric learning"}, "Representation Learning", "Feature Learning", 8),
+    ({"contrastive learning"}, "Representation Learning", "Feature Learning", 8),
+    ({"recommender system"}, "AI Applications", "Knowledge Representation", 8),
+    ({"knowledge graph"}, "AI Theory", "Knowledge Representation", 8),
+    ({"graph neural", "gnn"}, "Neural Networks", "Graph-based Models", 8),
+    ({"graph convolution"}, "Neural Networks", "Graph-based Models", 8),
+    ({"graph attention"}, "Neural Networks", "Graph-based Models", 8),
+    ({"natural language", "tokenizer", "tokenization", "lemmatization", "stemming"}, "Natural Language Processing", "Text Preprocessing", 8),
+    ({"word2vec", "glove", "fasttext", "cbow", "skip gram"}, "Representation Learning", "Vector Representations", 8),
     ({"bert", "gpt", "t5", "bart", "roberta", "electra", "xlnet", "albert"}, "Natural Language Processing", "Pre-trained Models", 8),
     ({"resnet", "densenet", "mobilenet", "efficientnet", "inception", "vgg", "yolo", "rcnn", "unet", "detr", "segformer"}, "Computer Vision", "Core Models", 8),
-    ({"vit", "vision-transformer", "vision transformer"}, "Computer Vision", "Core Models", 8),
-    ({"clip", "contrastive-language-image-pretraining"}, "Computer Vision", "Core Models", 8),
-    ({"reinforce", "policy-gradient", "policy gradient", "q-learning", "deep-q", "ppo", "sac", "td3"}, "Reinforcement Learning", "Advanced RL Techniques", 8),
-    ({"monte-carlo", "monte carlo"}, "Statistical Methods", "Bayesian Inference", 8),
-    ({"markov-chain", "markov chain", "markov-decision", "markov decision"}, "AI Theory", "Knowledge Representation", 8),
-    ({"bayesian-network", "bayesian network", "probabilistic-graphical"}, "Statistical Methods", "Bayesian Inference", 8),
-    ({"gaussian-process", "gaussian process"}, "Statistical Models", "Probabilistic Models", 8),
-    ({"random-forest", "random forest"}, "Learning Paradigms", "Supervised Learning", 8),
-    ({"decision-tree", "decision tree"}, "Learning Paradigms", "Supervised Learning", 8),
-    ({"support-vector", "support vector", "svm"}, "Learning Paradigms", "Supervised Learning", 8),
-    ({"k-nearest", "k nearest", "knn"}, "Learning Paradigms", "Supervised Learning", 8),
-    ({"k-means", "kmeans"}, "Detection Techniques", "Unsupervised Detection", 8),
-    ({"pca", "principal-component", "principal component"}, "Dimensionality Reduction", "Feature Reduction", 8),
-    ({"tsne", "t-sne"}, "Dimensionality Reduction", "Feature Reduction", 8),
-    ({"gradient-boosting", "gradient boosting", "xgboost", "lightgbm", "catboost"}, "Machine Learning Frameworks", "Automated Processes", 8),
-    ({"database", "sql", "nosql", "vector-database", "vector database"}, "Data Processing", "Data Pipeline", 7),
+    ({"vit", "vision transformer"}, "Computer Vision", "Core Models", 8),
+    ({"clip", "contrastive language image pretraining"}, "Computer Vision", "Core Models", 8),
+    ({"reinforce", "policy gradient", "q learning", "deep q", "ppo", "sac", "td3"}, "Reinforcement Learning", "Advanced RL Techniques", 8),
+    ({"monte carlo"}, "Statistical Methods", "Bayesian Inference", 8),
+    ({"markov chain", "markov decision"}, "AI Theory", "Knowledge Representation", 8),
+    ({"bayesian network", "probabilistic graphical"}, "Statistical Methods", "Bayesian Inference", 8),
+    ({"gaussian process"}, "Statistical Models", "Probabilistic Models", 8),
+    ({"random forest"}, "Learning Paradigms", "Supervised Learning", 8),
+    ({"decision tree"}, "Learning Paradigms", "Supervised Learning", 8),
+    ({"support vector", "svm"}, "Learning Paradigms", "Supervised Learning", 8),
+    ({"k nearest", "knn"}, "Learning Paradigms", "Supervised Learning", 8),
+    ({"k means", "kmeans"}, "Detection Techniques", "Unsupervised Detection", 8),
+    ({"pca", "principal component"}, "Dimensionality Reduction", "Feature Reduction", 8),
+    ({"tsne", "t sne"}, "Dimensionality Reduction", "Feature Reduction", 8),
+    ({"gradient boosting", "xgboost", "lightgbm", "catboost"}, "Machine Learning Frameworks", "Automated Processes", 8),
+    ({"database", "sql", "nosql", "vector database"}, "Data Processing", "Data Pipeline", 7),
     ({"api", "microservice", "rest", "graphql", "endpoint"}, "Data Processing", "Data Pipeline", 7),
-    ({"gpu", "tpu", "cuda", "tensor-core"}, "Neural Networks", "Training Techniques", 7),
+    ({"gpu", "tpu", "cuda", "tensor core"}, "Neural Networks", "Training Techniques", 7),
     ({"cloud", "aws", "gcp", "azure", "kubernetes", "docker"}, "AI Applications", "", 7),
-    ({"edge-ai", "edge ai", "edge-computing", "edge computing", "on-device"}, "AI Applications", "", 7),
+    ({"edge ai", "edge computing", "on device"}, "AI Applications", "", 7),
     ({"robotics", "robot", "autonomous", "drone"}, "AI Applications", "", 8),
     ({"healthcare", "medical", "clinical", "diagnosis", "drug"}, "AI Applications", "", 8),
     ({"finance", "financial", "trading", "portfolio"}, "AI Applications", "", 8),
@@ -267,80 +272,356 @@ AUTO_CLASSIFICATION_RULES: list[tuple[set[str], str, str, int]] = [
     ({"ai in", "ai for", "ai and", "ai on"}, "AI Applications", "", 9),
     ({"ai research", "ai ethics", "ai safety", "ai alignment", "ai governance"}, "AI Applications", "", 8),
     ({"ai system", "ai systems", "ai model", "ai models", "ai tool", "ai tools", "ai platform"}, "AI Applications", "", 8),
-    ({"ai driven", "ai-based", "ai powered"}, "AI Applications", "", 8),
+    ({"ai driven", "ai based", "ai powered"}, "AI Applications", "", 8),
 
     # === Cognitive / Agent Systems ===
-    ({"cognitive", "cognition", "act-r", "soar", "bdi"}, "AI Theory", "Knowledge Representation", 9),
-    ({"agent", "agentic", "multi-agent", "autonomous-agent", "intelligent-agent"}, "AI Applications", "", 9),
-    ({"autogen", "crewai", "langgraph", "pydantic-ai"}, "AI Applications", "", 8),
-    ({"auto-gpt", "autogpt", "babyagi", "gpt-researcher"}, "AI Applications", "", 8),
-    ({"alphafold", "alphago", "alphazero", "alphastar", "openai-five"}, "AI Applications", "", 8),
-    ({"claude", "gpt-4", "gpt4", "gpt-3", "gpt3", "gemini", "mistral", "llama"}, "Natural Language Processing", "Pre-trained Models", 8),
+    ({"cognitive", "cognition", "act r", "soar", "bdi"}, "AI Theory", "Knowledge Representation", 9),
+    ({"agent", "agentic", "multi agent", "autonomous agent", "intelligent agent"}, "AI Applications", "", 9),
+    ({"autogen", "crewai", "langgraph", "pydantic ai"}, "AI Applications", "", 8),
+    ({"auto gpt", "autogpt", "babyagi", "gpt researcher"}, "AI Applications", "", 8),
+    ({"alphafold", "alphago", "alphazero", "alphastar", "openai five"}, "AI Applications", "", 8),
+    ({"claude", "gpt 4", "gpt4", "gpt 3", "gpt3", "gemini", "mistral", "llama"}, "Natural Language Processing", "Pre-trained Models", 8),
     ({"copilot", "codex"}, "Natural Language Processing", "Language Generation", 8),
 
     # === Domain applications ===
     ({"education", "teaching", "learning tool", "tutor"}, "AI Applications", "", 8),
     ({"legal", "law", "compliance"}, "AI Applications", "", 8),
     ({"climate", "environmental", "sustainability", "energy"}, "AI Applications", "", 8),
-    ({"gaming", "game ai", "procedural-generation", "procedural generation", "npc"}, "AI Applications", "", 8),
-    ({"autonomous-vehicle", "self-driving", "driverless"}, "AI Types", "Narrow AI", 8),
+    ({"gaming", "game ai", "procedural generation", "npc"}, "AI Applications", "", 8),
+    ({"autonomous vehicle", "self driving", "driverless"}, "AI Types", "Narrow AI", 8),
 
     # === Time series / signal ===
-    ({"time-series", "temporal", "sequential-data"}, "Data Processing", "Data Pipeline", 8),
+    ({"time series", "temporal", "sequential data"}, "Data Processing", "Data Pipeline", 8),
 
     # === Techniques ===
-    ({"ablation", "sensitivity-analysis"}, "Model Evaluation", "Performance Metrics", 8),
-    ({"affine-transformation", "affine transformation", "homography"}, "Computer Vision", "Image Processing", 8),
-    ({"auto-differentiation", "autograd", "autodiff"}, "Optimization Algorithms", "Gradient-based Optimizers", 8),
-    ({"beam-search", "beam search", "greedy-decoding"}, "Natural Language Processing", "Language Generation", 8),
+    ({"ablation", "sensitivity analysis"}, "Model Evaluation", "Performance Metrics", 8),
+    ({"affine transformation", "homography"}, "Computer Vision", "Image Processing", 8),
+    ({"auto differentiation", "autograd", "autodiff"}, "Optimization Algorithms", "Gradient-based Optimizers", 8),
+    ({"beam search", "greedy decoding"}, "Natural Language Processing", "Language Generation", 8),
     ({"bilinear", "trilinear", "interpolation"}, "Computer Vision", "Image Processing", 8),
-    ({"focal-loss", "dice-loss", "huber-loss", "hinge-loss"}, "Loss Functions", "Classification Loss", 8),
-    ({"multi-head", "multihead"}, "Neural Networks", "Attention Mechanism", 8),
-    ({"positional-encoding", "positional encoding"}, "Neural Networks", "Core Models", 8),
-    ({"residual-connection", "skip-connection", "residual block"}, "Neural Networks", "Core Models", 8),
-    ({"softmax", "log-softmax"}, "Neural Networks", "Activation Functions", 8),
-    ({"teacher-forcing", "teacher forcing"}, "Natural Language Processing", "Language Generation", 8),
-    ({"top-k", "top-p", "temperature-scaling"}, "Natural Language Processing", "Language Generation", 8),
-    ({"label-smoothing", "label smoothing"}, "Neural Networks", "Regularization Techniques", 8),
-    ({"early-stopping", "early stopping"}, "Neural Networks", "Training Techniques", 8),
-    ({"learning-rate", "lr scheduler", "lr schedule"}, "Optimization Algorithms", "Gradient-based Optimizers", 8),
-    ({"weight-decay", "weight tying"}, "Neural Networks", "Model Parameters", 8),
-    ({"gradient-clipping", "gradient clipping"}, "Neural Networks", "Training Techniques", 8),
-    ({"data-parallel", "model-parallel", "distributed-training", "distributed training"}, "Neural Networks", "Training Techniques", 8),
-    ({"mixed-precision", "fp16", "bf16", "amp"}, "Neural Networks", "Training Techniques", 8),
-    ({"curriculum-learning", "curriculum learning"}, "Learning Paradigms", "Supervised Learning", 8),
-    ({"imitation-learning", "behavior-cloning", "behavioral-cloning"}, "Reinforcement Learning", "Learning Techniques", 8),
-    ({"inverse-reinforcement", "inverse reinforcement"}, "Reinforcement Learning", "Advanced RL Techniques", 8),
-    ({"hierarchical-reinforcement", "hierarchical rl"}, "Reinforcement Learning", "Advanced RL Techniques", 8),
+    ({"focal loss", "dice loss", "huber loss", "hinge loss"}, "Loss Functions", "Classification Loss", 8),
+    ({"multi head", "multihead"}, "Neural Networks", "Attention Mechanism", 8),
+    ({"positional encoding"}, "Neural Networks", "Core Models", 8),
+    ({"residual connection", "skip connection", "residual block"}, "Neural Networks", "Core Models", 8),
+    ({"softmax", "log softmax"}, "Neural Networks", "Activation Functions", 8),
+    ({"teacher forcing"}, "Natural Language Processing", "Language Generation", 8),
+    ({"top k", "top p", "temperature scaling"}, "Natural Language Processing", "Language Generation", 8),
+    ({"label smoothing"}, "Neural Networks", "Regularization Techniques", 8),
+    ({"early stopping"}, "Neural Networks", "Training Techniques", 8),
+    ({"learning rate", "lr scheduler", "lr schedule"}, "Optimization Algorithms", "Gradient-based Optimizers", 8),
+    ({"weight decay", "weight tying"}, "Neural Networks", "Model Parameters", 8),
+    ({"gradient clipping"}, "Neural Networks", "Training Techniques", 8),
+    ({"data parallel", "model parallel", "distributed training"}, "Neural Networks", "Training Techniques", 8),
+    ({"mixed precision", "fp16", "bf16", "amp"}, "Neural Networks", "Training Techniques", 8),
+    ({"curriculum learning"}, "Learning Paradigms", "Supervised Learning", 8),
+    ({"imitation learning", "behavior cloning", "behavioral cloning"}, "Reinforcement Learning", "Learning Techniques", 8),
+    ({"inverse reinforcement"}, "Reinforcement Learning", "Advanced RL Techniques", 8),
+    ({"hierarchical reinforcement", "hierarchical rl"}, "Reinforcement Learning", "Advanced RL Techniques", 8),
 
     # === Affective / social AI ===
-    ({"affective-computing", "affective computing", "emotion-ai", "emotion recognition", "sentiment"}, "AI Applications", "", 8),
+    ({"affective computing", "emotion ai", "emotion recognition", "sentiment"}, "AI Applications", "", 8),
 
     # === Social / behavioral AI ===
-    ({"social-network", "social network", "community-detection", "influence"}, "AI Applications", "", 8),
+    ({"social network", "community detection", "influence"}, "AI Applications", "", 8),
 
     # === Deception / red-team ===
-    ({"red-team", "red team", "jailbreak", "prompt-injection"}, "Security & Robustness", "Adversarial Machine Learning", 9),
+    ({"red team", "jailbreak", "prompt injection"}, "Security & Robustness", "Adversarial Machine Learning", 9),
 
     # === Meta-learning ===
-    ({"meta-learning", "meta learning", "learn-to-learn"}, "Learning Paradigms", "Low-Data Learning", 9),
+    ({"meta learning", "learn to learn"}, "Learning Paradigms", "Low-Data Learning", 9),
 
     # === Alignment / safety ===
-    ({"superalignment", "mechanistic-interpretability", "circuit-analysis"}, "Explainable AI", "Model Interpretability", 9),
+    ({"superalignment", "mechanistic interpretability", "circuit analysis"}, "Explainable AI", "Model Interpretability", 9),
 
     # === Fine-tuning / adaptation patterns ===
-    ({"lora", "qlora", "adapter", "prefix-tuning", "prompt-tuning", "p-tuning"}, "Transfer Learning", "Model Adaptation", 9),
+    ({"lora", "qlora", "adapter", "prefix tuning", "prompt tuning", "p tuning"}, "Transfer Learning", "Model Adaptation", 9),
 
     # === Specific named techniques ===
-    ({"chain-of-thought", "tree-of-thought", "reasoning"}, "Natural Language Processing", "Language Generation", 9),
-    ({"rag", "retrieval-augmented-generation"}, "Natural Language Processing", "Pre-trained Models", 9),
-    ({"instruction-tuning", "instruction following"}, "Natural Language Processing", "Pre-trained Models", 8),
-    ({"rlhf", "reinforcement-learning-from-human-feedback"}, "Natural Language Processing", "Pre-trained Models", 9),
-    ({"dpo", "direct-preference-optimization"}, "Natural Language Processing", "Pre-trained Models", 9),
+    ({"chain of thought", "tree of thought", "reasoning"}, "Natural Language Processing", "Language Generation", 9),
+    ({"rag", "retrieval augmented generation"}, "Natural Language Processing", "Pre-trained Models", 9),
+    ({"instruction tuning", "instruction following"}, "Natural Language Processing", "Pre-trained Models", 8),
+    ({"rlhf", "reinforcement learning from human feedback"}, "Natural Language Processing", "Pre-trained Models", 9),
+    ({"dpo", "direct preference optimization"}, "Natural Language Processing", "Pre-trained Models", 9),
 
     # === AI safety / bias ===
     ({"hallucination", "confabulation"}, "Natural Language Processing", "Language Generation", 8),
+
+    # ==========================================
+    # LLM-DERIVED RULES Batch 2 — Broad single-token patterns
+    # These tokens appear in hundreds of unclassified terms.
+    # Priority 9 for high-confidence, 8 for medium-confidence.
+    # ==========================================
+
+    # === Neural Networks / Architecture ===
+    ({"neural"}, "Neural Networks", "Core Models", 9),
+    ({"graph"}, "Neural Networks", "Graph-based Models", 9),
+    ({"networks"}, "Neural Networks", "Core Models", 8),
+    ({"transformers"}, "Neural Networks", "Core Models", 8),
+    ({"attention"}, "Neural Networks", "Attention Mechanism", 8),
+    ({"gradient"}, "Optimization Algorithms", "Gradient-based Optimizers", 8),
+    ({"differentiable"}, "Neural Networks", "Training Techniques", 9),
+    ({"scaling"}, "Neural Networks", "Training Techniques", 8),
+    ({"pruning"}, "Neural Networks", "Training Techniques", 8),
+    ({"sparse"}, "Neural Networks", "Model Parameters", 8),
+    ({"memory"}, "Neural Networks", "Specialized Architectures", 8),
+
+    # === Data / Features ===
+    ({"feature"}, "Data Preprocessing", "Data Enhancement", 9),
+    ({"embedding"}, "Representation Learning", "Vector Representations", 8),
+    ({"latent"}, "Representation Learning", "Feature Learning", 8),
+
+    # === Statistical Methods ===
+    ({"bayesian"}, "Statistical Methods", "Bayesian Inference", 9),
+    ({"regression"}, "Statistical Models", "Probabilistic Models", 9),
+    ({"probabilistic"}, "Statistical Models", "Probabilistic Models", 9),
+    ({"clustering"}, "Detection Techniques", "Unsupervised Detection", 9),
+    ({"causal"}, "Statistical Methods", "Bayesian Inference", 8),
+    ({"inference"}, "Statistical Methods", "Bayesian Inference", 8),
+    ({"bootstrap"}, "Statistical Methods", "Bayesian Inference", 8),
+    ({"similarity"}, "Similarity & Deduplication", "", 8),
+    ({"sampling"}, "Statistical Methods", "Bayesian Inference", 8),
+
+    # === Security & Robustness ===
+    ({"adversarial"}, "Security & Robustness", "Adversarial Machine Learning", 9),
+
+    # === NLP / Language ===
+    ({"language"}, "Natural Language Processing", "Text Preprocessing", 8),
+    ({"parsing"}, "Natural Language Processing", "Text Preprocessing", 8),
+    ({"semantic"}, "Natural Language Processing", "Text Analysis", 8),
+    ({"coreference"}, "Natural Language Processing", "Text Analysis", 9),
+    ({"slot"}, "Natural Language Processing", "Language Generation", 8),
+
+    # === Learning Paradigms ===
+    ({"ensemble"}, "Learning Paradigms", "Supervised Learning", 8),
+    ({"trees"}, "Learning Paradigms", "Supervised Learning", 8),
+
+    # === AI Applications ===
+    ({"quantum"}, "AI Applications", "", 8),
+    ({"heuristic"}, "AI Theory", "Knowledge Representation", 8),
+    ({"planning"}, "AI Applications", "", 8),
+    ({"agents"}, "AI Applications", "", 8),
+    ({"temporal"}, "Data Processing", "Data Pipeline", 8),
+
+    # ==========================================
+    # LLM-DERIVED RULES Batch 3 — X-pattern multi-word patterns
+    # Catch terms with suffixes like "X-based", "X-aware", "cross-X",
+    # "X-driven", "X-free", "X-wise", "X-level" etc.
+    # With hyphen normalization, "attention based" now matches
+    # "Attention-Based" in titles. Using space-separated multi-word
+    # keywords for readability.
+    # ==========================================
+
+    # === X-based (142 unique unclassified terms) ===
+    ({"attention based"}, "Neural Networks", "Attention Mechanism", 9),
+    ({"transformer based"}, "Neural Networks", "Core Models", 9),
+    ({"graph based"}, "Neural Networks", "Graph-based Models", 9),
+    ({"memory based"}, "Neural Networks", "Specialized Architectures", 8),
+    ({"rule based"}, "Foundations", "Core Concepts", 8),
+    ({"embedding based"}, "Representation Learning", "Vector Representations", 8),
+    ({"image based"}, "Computer Vision", "", 8),
+    ({"text based"}, "Natural Language Processing", "Text Preprocessing", 8),
+    ({"token based"}, "Natural Language Processing", "Text Preprocessing", 8),
+    ({"agent based"}, "AI Applications", "", 8),
+    ({"model based"}, "AI Applications", "", 8),
+    ({"data based"}, "Data Preprocessing", "Data Enhancement", 8),
+    ({"kernel based"}, "Statistical Methods", "Bayesian Inference", 8),
+    ({"similarity based"}, "Similarity & Deduplication", "", 8),
+    ({"feature based"}, "Data Preprocessing", "Data Enhancement", 8),
+    ({"score based"}, "Generative Models", "Diffusion Models", 8),
+    ({"energy based"}, "Generative Models", "", 8),
+    ({"flow based"}, "Generative Models", "", 8),
+    ({"rl based"}, "Reinforcement Learning", "Learning Techniques", 8),
+    ({"nn based"}, "Neural Networks", "Core Models", 8),
+    ({"cnn based"}, "Computer Vision", "Core Models", 8),
+    ({"lstm based"}, "Neural Networks", "Recurrent Models", 8),
+
+    # === X-aware (56 unique unclassified terms) ===
+    ({"context aware"}, "Natural Language Processing", "Text Analysis", 8),
+    ({"privacy aware"}, "Ethics & Governance", "Fairness in ML", 8),
+    ({"carbon aware"}, "AI Applications", "", 8),
+    ({"confidence aware"}, "Model Evaluation", "Generalization Issues", 8),
+    ({"domain aware"}, "Transfer Learning", "Domain Adaptation", 8),
+    ({"task aware"}, "Transfer Learning", "Model Adaptation", 8),
+    ({"cost aware"}, "Optimization Algorithms", "Gradient-based Optimizers", 8),
+    ({"uncertainty aware"}, "Statistical Methods", "Bayesian Inference", 8),
+    ({"risk aware"}, "AI Applications", "", 8),
+    ({"safety aware"}, "Ethics & Governance", "", 8),
+    ({"bias aware"}, "Ethics & Governance", "Fairness in ML", 8),
+    ({"communication aware"}, "AI Applications", "", 8),
+
+    # === cross-X (37 unique unclassified terms) ===
+    ({"cross entropy"}, "Loss Functions", "Classification Loss", 9),
+    ({"cross modal"}, "Neural Networks", "Specialized Architectures", 8),
+    ({"cross domain"}, "Transfer Learning", "Domain Adaptation", 8),
+    ({"cross lingual"}, "Natural Language Processing", "Text Analysis", 8),
+    ({"cross task"}, "Transfer Learning", "Model Adaptation", 8),
+    ({"cross attention"}, "Neural Networks", "Attention Mechanism", 8),
+    ({"cross platform"}, "AI Applications", "", 7),
+
+    # === X-driven (10 unique unclassified terms) ===
+    ({"data driven"}, "Data Preprocessing", "Data Enhancement", 8),
+    ({"curiosity driven"}, "Reinforcement Learning", "Learning Techniques", 8),
+    ({"goal driven"}, "AI Applications", "", 8),
+    ({"evidence driven"}, "AI Applications", "", 7),
+
+    # === X-free (26 unique unclassified terms) ===
+    ({"label free"}, "Data Preprocessing", "Data Enhancement", 8),
+    ({"annotation free"}, "Data Preprocessing", "Data Enhancement", 8),
+    ({"anchor free"}, "Computer Vision", "Object Detection", 8),
+    ({"classifier free"}, "Generative Models", "Diffusion Models", 8),
+    ({"parameter free"}, "Neural Networks", "Model Parameters", 8),
+    ({"hessian free"}, "Optimization Algorithms", "Gradient-based Optimizers", 8),
+    ({"model free"}, "Reinforcement Learning", "Learning Techniques", 8),
+
+    # === X-wise (21 unique unclassified terms) ===
+    ({"layer wise"}, "Neural Networks", "Core Models", 8),
+    ({"channel wise"}, "Neural Networks", "Core Models", 8),
+    ({"pixel wise"}, "Computer Vision", "Image Processing", 8),
+    ({"token wise"}, "Natural Language Processing", "Text Preprocessing", 8),
+    ({"element wise"}, "Neural Networks", "Core Models", 8),
+    ({"point wise"}, "Computer Vision", "", 7),
+
+    # === X-level (20 unique unclassified terms) ===
+    ({"token level"}, "Natural Language Processing", "Text Preprocessing", 8),
+    ({"sentence level"}, "Natural Language Processing", "Text Analysis", 8),
+    ({"document level"}, "Natural Language Processing", "Text Analysis", 8),
+    ({"word level"}, "Natural Language Processing", "Text Preprocessing", 8),
+    ({"character level"}, "Natural Language Processing", "Text Preprocessing", 8),
+    ({"system level"}, "AI Applications", "", 7),
+    ({"dataset level"}, "Data Preprocessing", "Data Enhancement", 7),
+    ({"concept level"}, "AI Theory", "Knowledge Representation", 7),
+
+    # === X-specific (9 unique unclassified terms) ===
+    ({"domain specific"}, "Transfer Learning", "Domain Adaptation", 8),
+    ({"task specific"}, "Transfer Learning", "Model Adaptation", 8),
+    ({"dataset specific"}, "Data Preprocessing", "Data Enhancement", 7),
+
+    # === X-centric (6 unique unclassified terms) ===
+    ({"data centric"}, "Data Preprocessing", "Data Enhancement", 8),
+    ({"object centric"}, "Computer Vision", "Image Processing", 8),
+    ({"user centric"}, "AI Applications", "", 7),
+    ({"model centric"}, "Neural Networks", "Core Models", 7),
+
+    # === X-only (3 unique unclassified terms) ===
+    ({"decoder only"}, "Neural Networks", "Core Models", 8),
+    ({"encoder only"}, "Neural Networks", "Core Models", 8),
+
+    # === X-scale (4 unique unclassified terms) ===
+    ({"large scale"}, "Neural Networks", "Training Techniques", 8),
+    ({"multi scale"}, "Computer Vision", "Image Processing", 8),
+    ({"brain scale"}, "Neural Networks", "Specialized Architectures", 7),
+
+    # ==========================================
+    # Batch 4 — Named acronyms and specific techniques
+    # Extracted from the hardest 200 unclassified terms.
+    # Single-token rules for distinct acronyms (SMOTE, UMAP, etc.)
+    # and multi-word rules for specific named techniques.
+    # ==========================================
+
+    # === Named acronyms (high-confidence single-token patterns) ===
+    ({"smote"}, "Data Preprocessing", "Data Enhancement", 9),
+    ({"umap"}, "Dimensionality Reduction", "Feature Reduction", 9),
+    ({"lime"}, "Explainable AI", "Model Interpretability", 9),
+    ({"arima"}, "Statistical Methods", "Bayesian Inference", 9),
+    ({"roc"}, "Model Evaluation", "Performance Metrics", 9),
+    ({"hnsw"}, "Similarity & Deduplication", "", 8),
+    ({"neat"}, "AI Applications", "", 8),
+    ({"ffjord"}, "Generative Models", "", 8),
+    ({"kfac", "k fac"}, "Optimization Algorithms", "Gradient-based Optimizers", 8),
+    ({"adni"}, "AI Applications", "", 7),
+
+    # === Named techniques (multi-word patterns) ===
+    ({"contrastive divergence"}, "Neural Networks", "Training Techniques", 9),
+    ({"variational information bottleneck"}, "Representation Learning", "Feature Learning", 9),
+    ({"variational information"}, "Representation Learning", "Feature Learning", 8),
+    ({"uniform manifold approximation"}, "Dimensionality Reduction", "Feature Reduction", 9),
+    ({"random fourier features"}, "Neural Networks", "Core Models", 8),
+    ({"random fourier"}, "Neural Networks", "Core Models", 8),
+    ({"co occurrence matrix"}, "Representation Learning", "Vector Representations", 8),
+    ({"progressive growing"}, "Generative Models", "Adversarial Networks", 8),
+    ({"lipschitz continuity"}, "Neural Networks", "Regularization Techniques", 8),
+    ({"lipschitz"}, "Neural Networks", "Regularization Techniques", 8),
+    ({"orthogonal initialization"}, "Neural Networks", "Training Techniques", 8),
+    ({"mean cancellation"}, "Neural Networks", "Training Techniques", 8),
+    ({"cyclical consistency"}, "Computer Vision", "Image Processing", 8),
+    ({"random projection"}, "Dimensionality Reduction", "Feature Reduction", 8),
+    ({"covariance"}, "Statistical Methods", "Bayesian Inference", 8),
+    ({"heteroscedastic"}, "Statistical Methods", "Bayesian Inference", 9),
+    ({"boltzmann"}, "Neural Networks", "Core Models", 9),
 ]
+
+# Batch 5 — Data processing and high-frequency multi-word techniques
+BATCH_5 = [
+    # === Single-token data/processing patterns (p8) ===
+    ({"loss"}, "Loss Functions", "Classification Loss", 8),
+    ({"transformation"}, "Data Preprocessing", "Data Scaling", 8),
+    ({"mining"}, "Data Processing", "Data Pipeline", 8),
+    ({"swap"}, "Data Preprocessing", "Data Enhancement", 8),
+    # === Named multi-word techniques (p8) ===
+    ({"mixture of experts"}, "Neural Networks", "Specialized Architectures", 8),
+    ({"deep equilibrium"}, "Neural Networks", "Core Models", 8),
+    ({"mean teacher"}, "Learning Paradigms", "Low-Data Learning", 8),
+    ({"state space"}, "Statistical Methods", "Probabilistic Models", 8),
+    ({"noise injection"}, "Neural Networks", "Regularization Techniques", 8),
+    ({"association rule"}, "Data Processing", "Data Pipeline", 8),
+    ({"frozen pretrained"}, "Transfer Learning", "Model Adaptation", 8),
+    ({"mutual information"}, "Representation Learning", "Feature Learning", 8),
+    ({"autoregressive"}, "Statistical Methods", "Probabilistic Models", 8),
+    ({"dynamic loss"}, "Loss Functions", "Classification Loss", 8),
+    ({"polyak averaging"}, "Optimization Algorithms", "Gradient-Based Optimizers", 8),
+    ({"log ratio"}, "Data Preprocessing", "Data Scaling", 8),
+    ({"information maximization"}, "Representation Learning", "Feature Learning", 8),
+    ({"exponential family"}, "Statistical Methods", "Probabilistic Models", 8),
+    ({"cycle consistency"}, "Computer Vision", "Image Processing", 8),
+]
+AUTO_CLASSIFICATION_RULES.extend(BATCH_5)
+
+# Batch 6 — Named acronyms from the hard-200 analysis
+BATCH_6 = [
+    # === Named acronyms (3-4+ chars, high domain specificity) ===
+    ({"nms"}, "Computer Vision", "Object Detection", 9),
+    ({"cart"}, "Learning Paradigms", "Supervised Learning", 9),
+    ({"slam"}, "Computer Vision", "Image Processing", 8),
+    ({"admm"}, "Optimization Algorithms", "Gradient-Based Optimizers", 8),
+    ({"focl"}, "Machine Learning Frameworks", "Automated Processes", 8),
+    ({"ecoc"}, "Loss Functions", "Classification Loss", 8),
+    ({"slim"}, "Model Optimization", "Model Compression", 8),
+    ({"nmf"}, "Dimensionality Reduction", "Feature Reduction", 8),
+    ({"nist"}, "Ethics & Governance", "", 8),
+    ({"wer"}, "Model Evaluation", "Performance Metrics", 8),
+    ({"cer"}, "Model Evaluation", "Performance Metrics", 8),
+    ({"psnr"}, "Computer Vision", "Image Processing", 8),
+    ({"mpnn"}, "Neural Networks", "Graph-Based Models", 8),
+    ({"pos"}, "Natural Language Processing", "Text Analysis", 8),
+    # === Named multi-word concepts (domain-specific phrases) ===
+    ({"theory of mind"}, "AI Theory", "Knowledge Representation", 9),
+    ({"human in the loop"}, "AI Applications", "", 9),
+    ({"society of mind"}, "AI Theory", "Knowledge Representation", 8),
+    ({"kernel trick"}, "Statistical Methods", "Probabilistic Models", 8),
+    ({"bloom filter"}, "Data Processing", "Data Pipeline", 8),
+    ({"ab testing", "a/b testing"}, "Model Evaluation", "Performance Metrics", 8),
+    ({"approximate nearest neighbor"}, "Similarity & Deduplication", "", 8),
+    ({"composition of experts"}, "Neural Networks", "Specialized Architectures", 8),
+    # === Moderate-confidence single-token patterns ===
+    ({"calibration"}, "Model Evaluation", "Performance Metrics", 8),
+    ({"sequence"}, "Natural Language Processing", "Language Modeling", 8),
+    ({"decomposition"}, "Dimensionality Reduction", "Feature Reduction", 8),
+    ({"decoding"}, "Natural Language Processing", "Language Generation", 8),
+    # === Named architecture patterns ===
+    ({"bottleneck"}, "Representation Learning", "Feature Learning", 8),
+    ({"projection"}, "Dimensionality Reduction", "Feature Reduction", 8),
+    ({"backbone"}, "Neural Networks", "Core Models", 8),
+]
+AUTO_CLASSIFICATION_RULES.extend(BATCH_6)
+
+# ── Study-family taxonomy mapping (metadata-driven fallback) ──────
+
+STUDY_FAMILY_TAXONOMY_MAP: dict[str, tuple[str, str]] = {
+    "Evaluation": ("Model Evaluation", "Performance Metrics"),
+    "Ethics & Governance": ("Ethics & Governance", "Fairness in ML"),
+    "Statistics": ("Statistical Methods", "Bayesian Inference"),
+    "Similarity & Deduplication": ("Similarity & Deduplication", ""),
+}
 
 
 def family_content_profile(family: str) -> dict[str, str]:
@@ -684,6 +965,39 @@ def extract_taxonomy_lookup(glossary_path: Path) -> dict[str, dict]:
     return taxonomy
 
 
+def load_taxonomy_registry(registry_path: Path | None) -> dict[str, dict]:
+    """Load the authoritative editorial taxonomy registry.
+
+    The registry (data/taxonomy-registry.json, generated by
+    tools/extract_taxonomy_registry.py) holds curated (category, subCategory)
+    decisions keyed by normalized term title/alias. It is the primary taxonomy
+    source so the build is reproducible from the editorial record rather than
+    from a brittle derived keyword-rule layer. Returns {} when no path is given
+    or the file is absent (build falls back to workbook + auto-rules).
+    """
+    if registry_path is None:
+        return {}
+    path = Path(registry_path)
+    if not path.is_file():
+        return {}
+    payload = json.loads(path.read_text(encoding="utf-8"))
+    entries = payload.get("entries", {}) if isinstance(payload, dict) else {}
+    registry: dict[str, dict] = {}
+    for key, decision in entries.items():
+        if not isinstance(decision, dict):
+            continue
+        category = decision.get("category")
+        if not category:
+            continue
+        registry[key] = {
+            "term": key,
+            "category": category,
+            "subCategory": decision.get("subCategory") or "",
+            "rowNumber": -1,
+        }
+    return registry
+
+
 def extract_definition_lookup(glossary_path: Path) -> dict[str, dict]:
     workbook = load_workbook(glossary_path, read_only=True, data_only=True)
     sheet = workbook["main"]
@@ -786,7 +1100,7 @@ def extract_structure_registry(structure_path: Path) -> dict:
             key=lambda item: (item["layer"], item["firstColumnIndex"], item["section"].lower()),
         ),
         "launchSections": list(STRUCTURE_LAUNCH_SECTION_ORDER),
-        "editorialSections": sorted(STRUCTURE_EDITORIAL_SECTIONS),
+        "editorialSections": list(STRUCTURE_EDITORIAL_SECTION_ORDER),
     }
 
 def compact_title_list(values: list[str], limit: int = 2) -> str:
@@ -1207,12 +1521,18 @@ def auto_classify_term(
     Returns (category, subcategory, was_auto_classified).
     If no rule matches at or above the threshold, returns ("", "", False).
     """
+    
+    # Noise particles that appear as variant-suffix noise in unclassified terms.
+    # Strip using word boundaries to avoid false positives like 'variants' in 'invariants'.
+    _NOISE_RE = re.compile(r"\b(?:extensions|techniques|enhancements|variants)\b")
     best_score = 0
     best_category = ""
     best_subcategory = ""
 
     for title in term_titles:
-        lower_title = title.lower().strip()
+        lower_title = title.lower().strip().replace("-", " ")
+        lower_title = _NOISE_RE.sub(" ", lower_title)
+        lower_title = re.sub(r"\s+", " ", lower_title).strip()
         tokens = set(semantic_tokens(title))
 
         for keywords, category, subcategory, priority in auto_rules:
@@ -1290,7 +1610,13 @@ def build_structure_expansion_block(structure_registry: dict) -> dict:
         for section in structure_registry["sectionGroups"]
         if section["layer"] != "launch-runtime"
     ]
-    sections.sort(key=lambda item: (item["layer"], -item["fieldCount"], item["section"].lower()))
+    sections.sort(
+        key=lambda item: (
+            STRUCTURE_LAYER_PRIORITY.get(item["layer"], len(STRUCTURE_LAYER_PRIORITY)),
+            -item["fieldCount"],
+            item["section"].lower(),
+        )
+    )
     highlighted_sections = sections[:8]
     return {
         "id": "structure-expansion",
@@ -1429,7 +1755,7 @@ def build_blocks(
             "body": family_study_note(term, taxonomy),
         },
         build_curriculum_map_block(launch_contract),
-        build_structure_expansion_block(structure_registry) if editorial_tier == "featured" else None,
+        build_structure_expansion_block(structure_registry),
         build_comparison_block(term, summary, taxonomy, links),
         build_diagram_block(term, taxonomy, links),
         build_faq_block(term, summary, taxonomy, links),
@@ -1476,15 +1802,37 @@ def build_term_record(
     launch_contract: dict,
     structure_registry: dict,
     auto_rules: list[tuple[set[str], str, str, int]] | None = None,
+    taxonomy_registry: dict[str, dict] | None = None,
 ) -> dict:
     slug = resolve_slug(slugify(term["title"]), used_slugs)
-    taxonomy_candidates = [taxonomy_lookup[key] for key in term["titleKeys"] if key in taxonomy_lookup]
-    taxonomy = max(
-        taxonomy_candidates,
-        key=lambda row: (bool(row["category"]), bool(row["subCategory"]), -row["rowNumber"]),
-        default=None,
-    )
 
+    taxonomy_source = "none"
+    taxonomy = None
+
+    # Tier 1 — authoritative editorial registry (curated decisions of record).
+    if taxonomy_registry:
+        registry_candidates = [taxonomy_registry[key] for key in term["titleKeys"] if key in taxonomy_registry]
+        if registry_candidates:
+            taxonomy = max(
+                registry_candidates,
+                key=lambda row: (bool(row["category"]), bool(row["subCategory"])),
+                default=None,
+            )
+            if taxonomy and taxonomy["category"]:
+                taxonomy_source = "registry"
+
+    # Tier 2 — workbook taxonomy (columns N/O/P of the glossary sheet).
+    if not (taxonomy and taxonomy["category"]):
+        workbook_candidates = [taxonomy_lookup[key] for key in term["titleKeys"] if key in taxonomy_lookup]
+        taxonomy = max(
+            workbook_candidates,
+            key=lambda row: (bool(row["category"]), bool(row["subCategory"]), -row["rowNumber"]),
+            default=None,
+        )
+        if taxonomy and taxonomy["category"]:
+            taxonomy_source = "workbook"
+
+    # Tier 3 — keyword auto-classification (fallback for genuinely new terms).
     was_auto_classified = False
     if not (taxonomy and taxonomy["category"]):
         auto_category, auto_subcategory, classified = auto_classify_term(
@@ -1500,6 +1848,26 @@ def build_term_record(
                 "rowNumber": -1,
             }
             was_auto_classified = True
+            taxonomy_source = "auto"
+
+    # Tier 4 — study-family taxonomy mapping (metadata-driven fallback).
+    # Uses infer_study_family() output to map broad study families
+    # (Evaluation, Ethics & Governance, Statistics, Similarity &
+    # Deduplication) into concrete taxonomy categories when no other
+    # tier has produced a classification. Zero false-positive risk
+    # because the family keywords are narrow and domain-specific.
+    if not (taxonomy and taxonomy["category"]):
+        family = infer_study_family(term, taxonomy)
+        if family in STUDY_FAMILY_TAXONOMY_MAP:
+            cat, sub = STUDY_FAMILY_TAXONOMY_MAP[family]
+            taxonomy = {
+                "term": term["title"],
+                "category": cat,
+                "subCategory": sub,
+                "rowNumber": -1,
+            }
+            taxonomy_source = "study_family"
+
     definition_candidates = [definition_lookup[key] for key in term["titleKeys"] if key in definition_lookup]
     definition = max(
         definition_candidates,
@@ -1563,6 +1931,7 @@ def build_term_record(
             "studyFamily": infer_study_family(term, taxonomy),
             "editorialTier": editorial_tier,
             "autoClassified": was_auto_classified,
+            "taxonomySource": taxonomy_source,
         },
         "artifact": {
             "shardId": resolve_shard_id(slug),
@@ -2088,7 +2457,12 @@ def build_content_audit(
         coverage["terms"] += 1
         if term.get("taxonomy", {}).get("category"):
             coverage["taxonomy"] += 1
-            if term.get("metadata", {}).get("autoClassified"):
+            taxonomy_source = term.get("metadata", {}).get("taxonomySource", "none")
+            if taxonomy_source == "registry":
+                coverage["registryClassifiedTerms"] += 1
+            elif taxonomy_source == "workbook":
+                coverage["workbookClassifiedTerms"] += 1
+            elif taxonomy_source == "auto":
                 coverage["autoClassifiedTerms"] += 1
         if not term.get("taxonomy", {}).get("category"):
             coverage["unclassifiedTerms"] += 1
@@ -2190,6 +2564,8 @@ def build_content_audit(
         "coverage": {
             "taxonomyTerms": coverage["taxonomy"],
             "taxonomyCoverageRatio": round(coverage["taxonomy"] / len(term_records), 6) if term_records else 0,
+            "registryClassifiedTerms": coverage.get("registryClassifiedTerms", 0),
+            "workbookClassifiedTerms": coverage.get("workbookClassifiedTerms", 0),
             "autoClassifiedTerms": coverage.get("autoClassifiedTerms", 0),
             "unclassifiedTerms": coverage.get("unclassifiedTerms", 0),
             "definitionTerms": coverage["definition"],
@@ -2267,6 +2643,20 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--glossary-workbook", required=True, type=Path)
     parser.add_argument("--structure-workbook", required=True, type=Path)
     parser.add_argument("--out-dir", required=True, type=Path)
+    parser.add_argument(
+        "--taxonomy-registry",
+        type=Path,
+        default=Path(__file__).resolve().parents[1] / "data" / "taxonomy-registry.json",
+        help="Authoritative editorial taxonomy registry (default: data/taxonomy-registry.json). "
+             "Generate with tools/extract_taxonomy_registry.py. Pass a non-existent path to disable.",
+    )
+    parser.add_argument(
+        "--coverage-threshold",
+        type=float,
+        default=TAXONOMY_COVERAGE_MINIMUM,
+        help="Override the taxonomy coverage minimum (default: %(default)s). "
+             "Use 0 to disable the gate entirely for dev builds.",
+    )
     return parser.parse_args()
 
 
@@ -2281,12 +2671,14 @@ def main() -> int:
     definition_lookup = extract_definition_lookup(args.glossary_workbook)
     structure_registry = extract_structure_registry(args.structure_workbook)
     launch_contract = build_launch_contract(structure_registry)
+    taxonomy_registry = load_taxonomy_registry(args.taxonomy_registry)
 
     used_slugs: Counter[str] = Counter()
     term_records = [
         build_term_record(
             term, taxonomy_lookup, definition_lookup, used_slugs, launch_contract, structure_registry,
             auto_rules=AUTO_CLASSIFICATION_RULES,
+            taxonomy_registry=taxonomy_registry,
         )
         for term in inventory
     ]
@@ -2319,6 +2711,11 @@ def main() -> int:
         )
 
     taxonomy_matches = sum(1 for term in term_records if term["taxonomy"]["category"])
+    registry_classified = sum(1 for term in term_records if term["metadata"].get("taxonomySource") == "registry")
+    workbook_classified = sum(1 for term in term_records if term["metadata"].get("taxonomySource") == "workbook")
+    auto_classified = sum(1 for term in term_records if term["metadata"].get("taxonomySource") == "auto")
+    study_family_classified = sum(1 for term in term_records if term["metadata"].get("taxonomySource") == "study_family")
+    unclassified = sum(1 for term in term_records if not term["taxonomy"]["category"])
     definition_matches = sum(1 for term in term_records if term["source"]["glossaryWorkbook"]["definitionRow"])
     duplicate_groups = [
         {
@@ -2336,6 +2733,11 @@ def main() -> int:
         "termCount": len(term_records),
         "taxonomyMatches": taxonomy_matches,
         "taxonomyCoverageRatio": round(taxonomy_matches / len(term_records), 6) if term_records else 0,
+        "registryClassifiedTerms": registry_classified,
+        "workbookClassifiedTerms": workbook_classified,
+        "autoClassifiedTerms": auto_classified,
+        "studyFamilyClassifiedTerms": study_family_classified,
+        "unclassifiedTerms": unclassified,
         "definitionMatches": definition_matches,
         "definitionCoverageRatio": round(definition_matches / len(term_records), 6) if term_records else 0,
         "duplicateGroups": len(duplicate_groups),
@@ -2354,6 +2756,11 @@ def main() -> int:
 
     write_json(args.out_dir / "terms" / "index.json", build_catalog_index(term_records))
     write_json(args.out_dir / "terms" / "manifest.json", build_shard_manifest(term_shards))
+    # Per-term detail files: the frontend lazy-loads each term by slug
+    # (src/content/CatalogContext.tsx). These are the same finalized term
+    # records the shards carry, projected one-file-per-term for direct fetch.
+    for term in term_records:
+        write_json(args.out_dir / "terms" / "by-slug" / f"{term['slug']}.json", term)
     write_json(args.out_dir / "paths" / "index.json", path_summaries)
     for path_slug, detail in path_details.items():
         write_json(args.out_dir / "paths" / "by-slug" / f"{path_slug}.json", detail)
@@ -2379,6 +2786,14 @@ def main() -> int:
             content_depth,
         ),
     )
+    coverage_ratio = content_audit["coverage"]["taxonomyCoverageRatio"]
+    if args.coverage_threshold > 0 and coverage_ratio < args.coverage_threshold:
+        print(
+            f"WARNING: Taxonomy coverage ratio {coverage_ratio:.4f} "
+            f"is below minimum threshold {args.coverage_threshold:.2f}. "
+            "Add more rules to AUTO_CLASSIFICATION_RULES or extend the workbook taxonomy."
+        )
+
     if content_audit["qualityChecks"]["highSeverityIssueCount"] > 0:
         raise RuntimeError("Content audit failed with high-severity issues; inspect reports/content-audit.json.")
     return 0

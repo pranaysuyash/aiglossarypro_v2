@@ -75,6 +75,8 @@ html {
 body {
   margin: 0;
   min-height: 100vh;
+  background: var(--bg);
+  color: var(--ink);
 }
 
 a {
@@ -90,6 +92,25 @@ textarea {
 
 button {
   border: 0;
+}
+
+.skip-link {
+  position: fixed;
+  left: max(1rem, env(safe-area-inset-left));
+  top: max(1rem, env(safe-area-inset-top));
+  z-index: 100;
+  padding: 0.8rem 1rem;
+  border-radius: 999px;
+  background: var(--surface-strong);
+  color: var(--ink);
+  box-shadow: var(--shadow-soft);
+  transform: translateY(-200%);
+  transition: transform 160ms ease;
+}
+
+.skip-link:focus-visible {
+  outline: none;
+  transform: translateY(0);
 }
 
 .app-shell {
@@ -188,14 +209,22 @@ button {
   border-radius: 999px;
   border: 1px solid transparent;
   color: var(--muted);
-  transition: 160ms ease;
+  transition-property: color, background-color, border-color, box-shadow, transform;
+  transition-duration: 160ms;
+  transition-timing-function: ease;
 }
 
 .nav-link:hover,
+.nav-link:focus-visible,
 .nav-link.active {
   color: var(--ink);
   background: rgba(255, 255, 255, 0.92);
   border-color: rgba(24, 34, 45, 0.08);
+}
+
+.nav-link:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(255, 107, 61, 0.16);
 }
 
 .main-content {
@@ -1612,7 +1641,9 @@ button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  transition: transform 160ms ease, box-shadow 160ms ease, background 160ms ease;
+  transition-property: transform, box-shadow, background-color, color, border-color;
+  transition-duration: 160ms;
+  transition-timing-function: ease;
 }
 
 .primary-button {
@@ -1623,6 +1654,12 @@ button {
 
 .primary-button:hover {
   transform: translateY(-1px);
+}
+
+.primary-button:focus-visible,
+.ghost-button:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(255, 107, 61, 0.16), 0 0 0 1px rgba(24, 34, 45, 0.08);
 }
 
 .ghost-button {
@@ -2881,6 +2918,20 @@ textarea {
 .text-link {
   color: var(--accent-deep);
   font-weight: 700;
+  text-decoration: underline;
+  text-decoration-thickness: 0.08em;
+  text-underline-offset: 0.14em;
+}
+
+.text-link:hover,
+.text-link:focus-visible {
+  color: var(--accent);
+}
+
+.text-link:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(255, 107, 61, 0.16);
+  border-radius: 0.25rem;
 }
 
 ul,

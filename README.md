@@ -48,6 +48,18 @@ npx wrangler deploy --dry-run
   --out-dir public/content/published
 ```
 
+### Content Builder CLI Flags
+
+The `tools/build_published_content.py` script accepts the following flags:
+
+| Flag | Type | Required | Default | Description |
+|---|---|---|---|---|
+| `--glossary-workbook` | path | ✅ | — | Path to the glossary workbook (`data_glossary.xlsx`). Columns A/B/D–G provide the term inventory, columns N/P provide taxonomy lookups, column H provides definition snippets. |
+| `--structure-workbook` | path | ✅ | — | Path to the structure workbook (`data_structure.xlsx`). Sheet2 row 2 contains the editorial field registry. |
+| `--out-dir` | path | ✅ | — | Output directory for published content artifacts (terms, paths, search index, taxonomy tree, reports, editorial metadata). |
+| `--taxonomy-registry` | path | ❌ | `data/taxonomy-registry.json` | Path to the authoritative editorial taxonomy registry. Pass `__disabled_registry_for_fixture__` to disable it entirely (used in tests). |
+| `--coverage-threshold` | float | ❌ | `0.74` (TAXONOMY_COVERAGE_MINIMUM) | Minimum taxonomy coverage ratio gate. If coverage drops below this threshold, a warning is printed. Use `0` to disable the gate entirely (useful during development or when iterating on auto-classification rules).
+
 ## Local Setup
 
 - canonical repo root: `/Users/pranay/Projects/aiglossary_v2`
@@ -80,6 +92,7 @@ npx wrangler deploy --dry-run
 - `Docs/product/AIGLOSSARY_V2_MASTER_PLAN_2026-06-29.md`
 - `Docs/architecture/TECHNICAL_ARCHITECTURE_2026-06-29.md`
 - `Docs/data/CANONICAL_TERM_SCHEMA.md`
+- `Docs/data/AUTO_CLASSIFICATION_STRATEGY.md` — full taxonomy auto-classification pipeline: rule evolution, scoring formula, per-batch details, quality audits, hard-200 corrections, and Batch 7 candidate analysis
 - `Docs/data/LAUNCH_IMPORT_BOUNDARY.md`
 - `Docs/data/CONTENT_INGESTION_WORKFLOW.md`
 - `Docs/deployment/CLOUDFLARE_RUNTIME_SETUP_2026-06-29.md`

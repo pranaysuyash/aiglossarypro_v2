@@ -214,8 +214,11 @@ export function ExplorePage() {
       <label className="search-panel search-panel-large">
         <span>Search the living catalog</span>
         <input
+          autoComplete="off"
           value={query}
           onChange={(event) => setQuery(event.target.value)}
+          name="catalogSearch"
+          spellCheck={false}
           placeholder="Try: transformers, evaluation metrics, active learning, reasoning..."
         />
       </label>

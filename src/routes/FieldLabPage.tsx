@@ -432,14 +432,21 @@ export function FieldLabPage() {
           <label className="search-panel search-panel-large">
             <span>Search terms, families, aliases, tags, categories</span>
             <input
+              autoComplete="off"
               value={query}
               onChange={(event) => setQuery(event.target.value)}
+              name="fieldLabSearch"
+              spellCheck={false}
               placeholder="Try: transformer, rag, evaluation, active learning, alignment..."
             />
           </label>
           <label className="field-lab-select">
             <span>Tier filter</span>
-            <select value={tierFilter} onChange={(event) => setTierFilter(event.target.value as typeof tierFilter)}>
+            <select
+              name="tierFilter"
+              value={tierFilter}
+              onChange={(event) => setTierFilter(event.target.value as typeof tierFilter)}
+            >
               <option value="all">All terms</option>
               <option value="featured">Featured</option>
               <option value="standard">Standard</option>

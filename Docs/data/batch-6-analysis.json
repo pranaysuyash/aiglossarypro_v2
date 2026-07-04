@@ -1,0 +1,551 @@
+{
+  "meta": {
+    "title": "Batch 6 Auto-Classification Analysis",
+    "date": "2026-07-04",
+    "status": "Live in tools/build_published_content.py",
+    "totalTerms": 17988,
+    "totalRules": 365,
+    "totalBatch6Rules": 29,
+    "autoClassifiedTerms": 2013,
+    "unclassifiedTerms": 4504,
+    "taxonomyTerms": 13484,
+    "taxonomyCoverageRatio": 0.7496
+  },
+  "coverage_summary": {
+    "totalCorpus": 17988,
+    "registryClassified": 11471,
+    "workbookClassified": 0,
+    "autoClassified": 2013,
+    "unclassified": 4504,
+    "registryPercentage": 63.77,
+    "autoPercentage": 11.19,
+    "unclassifiedPercentage": 25.04
+  },
+  "tier_breakdown": {
+    "unclassified": {
+      "standard": 3006,
+      "sparse": 1498
+    },
+    "note": "Standard-tier terms are highest editorial priority; sparse-tier terms are lowest priority"
+  },
+  "study_family_gaps": {
+    "totalWithStudyFamily": 43,
+    "breakdown": [
+      {
+        "studyFamily": "Evaluation",
+        "count": 22
+      },
+      {
+        "studyFamily": "Ethics & Governance",
+        "count": 15
+      },
+      {
+        "studyFamily": "Statistics",
+        "count": 5
+      },
+      {
+        "studyFamily": "Similarity & Deduplication",
+        "count": 1
+      }
+    ]
+  },
+  "coverage_trajectory": [
+    {
+      "batch": "Baseline",
+      "totalRules": 0,
+      "autoClassified": 0,
+      "coverageRatio": 0.0
+    },
+    {
+      "batch": "Batch 1-2 (Original)",
+      "totalRules": 130,
+      "autoClassified": 0,
+      "coverageRatio": 0.5354
+    },
+    {
+      "batch": "Batch 3 (X-patterns)",
+      "totalRules": 210,
+      "autoClassified": 1537,
+      "coverageRatio": 0.7231
+    },
+    {
+      "batch": "Batch 4 (tough-100)",
+      "totalRules": 236,
+      "autoClassified": 1602,
+      "coverageRatio": 0.7268
+    },
+    {
+      "batch": "Batch 5 (hard-200)",
+      "totalRules": 255,
+      "autoClassified": 1886,
+      "coverageRatio": 0.7426
+    },
+    {
+      "batch": "Batch 6 (acronyms+v1)",
+      "totalRules": 277,
+      "autoClassified": 1929,
+      "coverageRatio": 0.7449
+    },
+    {
+      "batch": "Batch 6 (v2 expansion)",
+      "totalRules": 284,
+      "autoClassified": 2013,
+      "coverageRatio": 0.7496
+    }
+  ],
+  "batch_6_rules": [
+    {
+      "keywords": [
+        "nms"
+      ],
+      "category": "Computer Vision",
+      "subcategory": "Object Detection",
+      "priority": 9,
+      "termCount": 4,
+      "sampleTerms": [
+        "Non-Maximum Suppression (NMS)",
+        "Non-Maximum Suppression (NMS) Extensions",
+        "Non-Maximum Suppression (NMS) Extensions Techniques",
+        "Non-Maximum Suppression (NMS) Techniques"
+      ]
+    },
+    {
+      "keywords": [
+        "cart"
+      ],
+      "category": "Learning Paradigms",
+      "subcategory": "Supervised Learning",
+      "priority": 9,
+      "termCount": 3,
+      "sampleTerms": [
+        "CART Entropy",
+        "CART Gini Impurity",
+        "CART Mean Squared Error Split"
+      ]
+    },
+    {
+      "keywords": [
+        "slam"
+      ],
+      "category": "Computer Vision",
+      "subcategory": "Image Processing",
+      "priority": 8,
+      "termCount": 5,
+      "sampleTerms": [
+        "Differentiable SLAM",
+        "End-to-End SLAM",
+        "Learning-Based SLAM",
+        "SLAM (Simultaneous Localization and Mapping)",
+        "Visual-Inertial SLAM"
+      ]
+    },
+    {
+      "keywords": [
+        "admm"
+      ],
+      "category": "Optimization Algorithms",
+      "subcategory": "Gradient-Based Optimizers",
+      "priority": 8,
+      "termCount": 1,
+      "sampleTerms": [
+        "Alternating Direction Method of Multipliers (ADMM)"
+      ]
+    },
+    {
+      "keywords": [
+        "focl"
+      ],
+      "category": "Machine Learning Frameworks",
+      "subcategory": "Automated Processes",
+      "priority": 8,
+      "termCount": 1,
+      "sampleTerms": [
+        "FOCL (First Order Combined Learner)"
+      ]
+    },
+    {
+      "keywords": [
+        "ecoc"
+      ],
+      "category": "Loss Functions",
+      "subcategory": "Classification Loss",
+      "priority": 8,
+      "termCount": 1,
+      "sampleTerms": [
+        "Error-Correcting Output Codes (ECOC)"
+      ]
+    },
+    {
+      "keywords": [
+        "slim"
+      ],
+      "category": "Model Optimization",
+      "subcategory": "Model Compression",
+      "priority": 8,
+      "termCount": 1,
+      "sampleTerms": [
+        "SLIM (Supersparse Linear Integer Models)"
+      ]
+    },
+    {
+      "keywords": [
+        "nmf"
+      ],
+      "category": "Dimensionality Reduction",
+      "subcategory": "Feature Reduction",
+      "priority": 8,
+      "termCount": 1,
+      "sampleTerms": [
+        "Non-Negative Matrix Factorization (NMF)"
+      ]
+    },
+    {
+      "keywords": [
+        "nist"
+      ],
+      "category": "Ethics & Governance",
+      "subcategory": "",
+      "priority": 8,
+      "termCount": 1,
+      "sampleTerms": [
+        "NIST AI RMF 1.0"
+      ]
+    },
+    {
+      "keywords": [
+        "wer"
+      ],
+      "category": "Model Evaluation",
+      "subcategory": "Performance Metrics",
+      "priority": 8,
+      "termCount": 1,
+      "sampleTerms": [
+        "WER (Word Error Rate)"
+      ]
+    },
+    {
+      "keywords": [
+        "cer"
+      ],
+      "category": "Model Evaluation",
+      "subcategory": "Performance Metrics",
+      "priority": 8,
+      "termCount": 1,
+      "sampleTerms": [
+        "CER (Character Error Rate)"
+      ]
+    },
+    {
+      "keywords": [
+        "psnr"
+      ],
+      "category": "Computer Vision",
+      "subcategory": "Image Processing",
+      "priority": 8,
+      "termCount": 1,
+      "sampleTerms": [
+        "Peak Signal-to-Noise Ratio (PSNR)"
+      ]
+    },
+    {
+      "keywords": [
+        "mpnn"
+      ],
+      "category": "Neural Networks",
+      "subcategory": "Graph-Based Models",
+      "priority": 8,
+      "termCount": 1,
+      "sampleTerms": [
+        "Message Passing NN (MPNN)"
+      ]
+    },
+    {
+      "keywords": [
+        "pos"
+      ],
+      "category": "Natural Language Processing",
+      "subcategory": "Text Analysis",
+      "priority": 8,
+      "termCount": 3,
+      "sampleTerms": [
+        "Multi-Task POS+Parse Model",
+        "Part-of-Speech Tagging (POS)",
+        "POS-Constrained Swap"
+      ]
+    },
+    {
+      "keywords": [
+        "theory of mind"
+      ],
+      "category": "AI Theory",
+      "subcategory": "Knowledge Representation",
+      "priority": 9,
+      "termCount": 6,
+      "sampleTerms": [
+        "Cognitive Theory-of-Mind Networks",
+        "theory of mind",
+        "theory of mind agents",
+        "Theory of Mind AI",
+        "Theory of Mind in AI",
+        "Theory of Mind in AI Agents"
+      ]
+    },
+    {
+      "keywords": [
+        "human in the loop"
+      ],
+      "category": "AI Applications",
+      "subcategory": "",
+      "priority": 9,
+      "termCount": 4,
+      "sampleTerms": [
+        "Human-in-the-Loop Agents / HITL",
+        "Human-in-the-loop approvals",
+        "human-in-the-loop evaluation",
+        "Human-in-the-Loop Robotics"
+      ]
+    },
+    {
+      "keywords": [
+        "society of mind"
+      ],
+      "category": "AI Theory",
+      "subcategory": "Knowledge Representation",
+      "priority": 8,
+      "termCount": 4,
+      "sampleTerms": [
+        "Minsky\u2019s Society of Mind",
+        "Minsky\u2019s Society of Mind Model",
+        "Society of Mind Framework",
+        "Society of Minds in LLMs"
+      ]
+    },
+    {
+      "keywords": [
+        "kernel trick"
+      ],
+      "category": "Statistical Methods",
+      "subcategory": "Probabilistic Models",
+      "priority": 8,
+      "termCount": 2,
+      "sampleTerms": [
+        "Kernel Trick",
+        "Kernel Trick in High-Dimensional Space"
+      ]
+    },
+    {
+      "keywords": [
+        "bloom filter"
+      ],
+      "category": "Data Processing",
+      "subcategory": "Data Pipeline",
+      "priority": 8,
+      "termCount": 1,
+      "sampleTerms": [
+        "Bloom Filters in ML"
+      ]
+    },
+    {
+      "keywords": [
+        "a/b testing",
+        "ab testing"
+      ],
+      "category": "Model Evaluation",
+      "subcategory": "Performance Metrics",
+      "priority": 8,
+      "termCount": 4,
+      "sampleTerms": [
+        "A/B Testing for Machine Learning",
+        "A/B testing for ML",
+        "A/B Testing for ML Platforms",
+        "A/B Testing for Models"
+      ]
+    },
+    {
+      "keywords": [
+        "approximate nearest neighbor"
+      ],
+      "category": "Similarity & Deduplication",
+      "subcategory": "",
+      "priority": 8,
+      "termCount": 3,
+      "sampleTerms": [
+        "Annoy (Approximate Nearest Neighbors Oh Yeah)",
+        "Approximate Nearest Neighbor",
+        "approximate nearest neighbors (ANN)"
+      ]
+    },
+    {
+      "keywords": [
+        "composition of experts"
+      ],
+      "category": "Neural Networks",
+      "subcategory": "Specialized Architectures",
+      "priority": 8,
+      "termCount": 3,
+      "sampleTerms": [
+        "COE (Composition of Experts)",
+        "Conditional Composition of Experts",
+        "Dynamic Composition of Experts"
+      ]
+    },
+    {
+      "keywords": [
+        "calibration"
+      ],
+      "category": "Model Evaluation",
+      "subcategory": "Performance Metrics",
+      "priority": 8,
+      "termCount": 19,
+      "sampleTerms": [
+        "Calibration across groups",
+        "calibration curve",
+        "Calibration Curves",
+        "calibration error",
+        "Calibration Plots",
+        "Calibration under shift",
+        "Dirichlet calibration",
+        "Expected Calibration Error",
+        "Expected Calibration Error (ECE)",
+        "maximum calibration error (MCE)"
+      ]
+    },
+    {
+      "keywords": [
+        "sequence"
+      ],
+      "category": "Natural Language Processing",
+      "subcategory": "Language Modeling",
+      "priority": 8,
+      "termCount": 17,
+      "sampleTerms": [
+        "Event Sequence Rules",
+        "Hyena Sequence Model",
+        "Linearized Parse Sequence",
+        "Long Sequence Conformer",
+        "Mamba Sequence Models",
+        "Offline Sequence Modeling",
+        "RWKV Sequence Models",
+        "S4 (Structured State-Space Sequence Model)",
+        "Sequence Labeling",
+        "Sequence Masked Modeling"
+      ]
+    },
+    {
+      "keywords": [
+        "decomposition"
+      ],
+      "category": "Dimensionality Reduction",
+      "subcategory": "Feature Reduction",
+      "priority": 8,
+      "termCount": 19,
+      "sampleTerms": [
+        "Ambiguity Decomposition in Ensembles",
+        "canonical polyadic decomposition (CP decomposition)",
+        "Cholesky Decomposition",
+        "CUR decomposition",
+        "Embodied Task Decomposition",
+        "LU decomposition",
+        "MAXQ Hierarchical Decomposition",
+        "Problem Decomposition",
+        "QR decomposition",
+        "Schmidt Decomposition"
+      ]
+    },
+    {
+      "keywords": [
+        "decoding"
+      ],
+      "category": "Natural Language Processing",
+      "subcategory": "Language Generation",
+      "priority": 8,
+      "termCount": 25,
+      "sampleTerms": [
+        "Adaptive Speculative Decoding",
+        "Agentic Flash-Decoding",
+        "Argmax Decoding",
+        "Confidence-calibrated decoding",
+        "Constrained decoding with regex",
+        "Data Decoding",
+        "Decoding Strategies",
+        "Deliberate decoding",
+        "Deterministic Decoding",
+        "Draft-and-Verify decoding"
+      ]
+    },
+    {
+      "keywords": [
+        "bottleneck"
+      ],
+      "category": "Representation Learning",
+      "subcategory": "Feature Learning",
+      "priority": 8,
+      "termCount": 11,
+      "sampleTerms": [
+        "Agglomerative Information Bottleneck",
+        "Bottleneck Features",
+        "Grouped Bottleneck Convolution (GBConv)",
+        "Information Bottleneck",
+        "Information Bottleneck Models",
+        "Information Bottleneck Techniques",
+        "Variational Information Bottleneck",
+        "Variational Information Bottleneck (VIB)",
+        "Variational Information Bottleneck (VIB) Methods",
+        "Variational Information Bottleneck Extensions"
+      ]
+    },
+    {
+      "keywords": [
+        "projection"
+      ],
+      "category": "Dimensionality Reduction",
+      "subcategory": "Feature Reduction",
+      "priority": 8,
+      "termCount": 8,
+      "sampleTerms": [
+        "CCA Projection",
+        "Cross-Lingual Dependency Projection",
+        "Johnson-Lindenstrauss Projection",
+        "matrix projection",
+        "Projection Layers",
+        "Random Projection",
+        "random projection for indexing",
+        "Random Projection into High-Dimensional Space"
+      ]
+    },
+    {
+      "keywords": [
+        "backbone"
+      ],
+      "category": "Neural Networks",
+      "subcategory": "Core Models",
+      "priority": 8,
+      "termCount": 2,
+      "sampleTerms": [
+        "frozen backbone with trainable head",
+        "LiteRAS-Backbone"
+      ]
+    }
+  ],
+  "batch_6_rule_types": {
+    "namedAcronyms": 14,
+    "namedConcepts": 8,
+    "singleTokenModerate": 4,
+    "architecturePatterns": 3,
+    "total": 29
+  },
+  "unclassified_term_profile": {
+    "total": 4504,
+    "withStudyFamily": 43,
+    "withoutStudyFamily": 4461,
+    "standardTier": 3006,
+    "sparseTier": 1498
+  },
+  "production_artifacts": {
+    "buildScript": "tools/build_published_content.py",
+    "strategyDoc": "Docs/data/AUTO_CLASSIFICATION_STRATEGY.md",
+    "hard200Analysis": "Docs/data/hard-200-analysis.json",
+    "hard200Proposed": "Docs/data/hard-200-proposed.json",
+    "batch6Analysis": "Docs/data/batch-6-analysis.json"
+  }
+}

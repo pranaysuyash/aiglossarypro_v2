@@ -275,8 +275,8 @@ The structure is now explicitly mapped to product layers so we can keep building
 - The block is derived from the launch contract, so the workbook structure is now represented as first-class content rather than only as a UI helper or doc note.
 - This is the right next step toward fuller structure coverage because it makes the curriculum shape visible in the same artifacts that power bookmarks, notes, sharing, and exports.
 
-## Addendum (2026-07-02 Featured structure-expansion block)
+## Addendum (2026-07-04 Universal structure-expansion block)
 
-- Featured terms now also publish a `structure-expansion` block derived from the editorial and backlog structure sections.
-- This is the first runtime surface that visibly promotes beyond the launch contract into the broader workbook ceiling, while still keeping the content model JSON-first and selective.
-- The block is intentionally limited to featured terms so the corpus stays readable and the richer workbook layers stay earned rather than sprayed across every entry.
+- Every published term now carries a `structure-expansion` block derived from the editorial and backlog structure sections.
+- The block is still compact: it surfaces a ranked subset of the broader workbook ceiling rather than mirroring the full 295-field structure at runtime.
+- The ordering now respects the intended editorial priority, with `editorial-expansion` sections shown before `backlog` sections inside the expansion block.

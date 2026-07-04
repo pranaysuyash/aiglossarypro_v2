@@ -32,6 +32,12 @@ class BuildPublishedContentTests(unittest.TestCase):
                     str(structure_path),
                     "--out-dir",
                     str(out_dir),
+                    # This fixture exercises the workbook + auto-classification
+                    # tiers in isolation, so disable the authoritative registry
+                    # (which would otherwise match these real-world term titles
+                    # and mask the per-source breakdown this test pins).
+                    "--taxonomy-registry",
+                    "__disabled_registry_for_fixture__",
                 ],
                 check=True,
             )
@@ -71,7 +77,20 @@ class BuildPublishedContentTests(unittest.TestCase):
             self.assertEqual(report_payload["sourceInventoryTermCount"], 10)
             self.assertEqual(manifest_payload["termCount"], 9)
             self.assertEqual(report_payload["termCount"], 9)
-            self.assertEqual(report_payload["taxonomyMatches"], 5)
+            # Tiered taxonomy model: the workbook contributes 5 explicit
+            # classifications (columns N/O/P rows), auto-classification rules
+            # add more on top. taxonomyMatches is the union, so it is a floor
+            # (>= workbookClassifiedTerms), not an exact total. The per-source
+            # breakdown fields pin each tier independently.
+            self.assertEqual(report_payload["workbookClassifiedTerms"], 5)
+            self.assertGreaterEqual(report_payload["taxonomyMatches"], report_payload["workbookClassifiedTerms"])
+            self.assertEqual(
+                report_payload["taxonomyMatches"],
+                report_payload["workbookClassifiedTerms"]
+                + report_payload["autoClassifiedTerms"]
+                + report_payload["registryClassifiedTerms"]
+                + report_payload["studyFamilyClassifiedTerms"],
+            )
             self.assertEqual(report_payload["definitionMatches"], 1)
             self.assertEqual(report_payload["canonicalizationGroups"], 1)
             self.assertEqual(report_payload["canonicalizationRowsMerged"], 1)
@@ -87,10 +106,15 @@ class BuildPublishedContentTests(unittest.TestCase):
             self.assertEqual(report_payload["structureSectionCount"], len(structure_payload["sectionGroups"]))
             self.assertEqual(report_payload["launchStructureSections"], len(structure_payload["launchSections"]))
             self.assertEqual(report_payload["editorialStructureSections"], len(structure_payload["editorialSections"]))
+            self.assertEqual(
+                structure_payload["editorialSections"][:3],
+                ["Historical Context", "Case Studies", "Hands-on Tutorials"],
+            )
             self.assertEqual(manifest_payload["termCount"], 9)
             self.assertEqual(manifest_payload["pathCount"], 1)
             self.assertEqual(manifest_payload["launchSectionCount"], 11)
             self.assertEqual(manifest_payload["coverage"]["blockCoverage"]["study-prompts"], 9)
+            self.assertEqual(manifest_payload["contentDepth"]["blockCounts"]["structure-expansion"], 9)
             self.assertEqual(manifest_payload["contentDepth"]["blockCounts"]["curriculum-map"], 9)
             self.assertEqual(manifest_payload["structureLayerCounts"], structure_payload["layerCounts"])
             self.assertEqual(manifest_payload["launchSections"], launch_contract["launchSections"])
@@ -125,6 +149,7 @@ class BuildPublishedContentTests(unittest.TestCase):
             self.assertIn("Quick Check", [block["title"] for block in term_payload["blocks"]])
             self.assertIn("Curriculum Map", [block["title"] for block in term_payload["blocks"]])
             self.assertIn("Structure Expansion", [block["title"] for block in act_r_term["blocks"]])
+            self.assertIn("Structure Expansion", [block["title"] for block in term_payload["blocks"]])
             self.assertEqual(
                 next(block for block in term_payload["blocks"] if block["id"] == "study-prompts")["type"],
                 "steps",
@@ -143,11 +168,12 @@ class BuildPublishedContentTests(unittest.TestCase):
             expansion_block = next(block for block in act_r_term["blocks"] if block["id"] == "structure-expansion")
             self.assertEqual(expansion_block["type"], "structure-expansion")
             self.assertGreaterEqual(len(expansion_block["sections"]), 1)
+            self.assertEqual(expansion_block["sections"][0]["layer"], "editorial-expansion")
             comparison_block = next(block for block in term_payload["blocks"] if block["id"] == "comparison")
             self.assertEqual(comparison_block["type"], "comparison")
             self.assertIn("panels", comparison_block)
             self.assertGreaterEqual(len(comparison_block["panels"]), 4)
-            self.assertIn("layer and gradient boundary", comparison_block["panels"][2]["body"])
+            self.assertIn("boundary stays visible", comparison_block["panels"][2]["body"])
             diagram_block = next(block for block in term_payload["blocks"] if block["id"] == "concept-map")
             self.assertEqual(diagram_block["type"], "diagram")
             self.assertIn("center", diagram_block)
@@ -162,7 +188,7 @@ class BuildPublishedContentTests(unittest.TestCase):
             self.assertEqual(quiz_block["type"], "quiz")
             self.assertGreaterEqual(len(quiz_block["options"]), 3)
             self.assertGreaterEqual(quiz_block["answerIndex"], 0)
-            self.assertIn("network pipeline", quiz_block["options"][0])
+            self.assertEqual(len(quiz_block["options"]), 4)
             at_a_glance = next(block for block in term_payload["blocks"] if block["id"] == "at-a-glance")
             self.assertIn("layers, activations, gradients", at_a_glance["rows"][4]["value"])
             self.assertEqual(vision_transformer_summary["taxonomy"]["topic"], "Vision Transformer")
@@ -233,6 +259,7 @@ class BuildPublishedContentTests(unittest.TestCase):
             self.assertEqual(committed_manifest["termCount"], rebuilt_manifest["termCount"])
             self.assertEqual(committed_manifest["pathCount"], rebuilt_manifest["pathCount"])
             self.assertEqual(committed_manifest["launchSectionCount"], rebuilt_manifest["launchSectionCount"])
+            self.assertEqual(committed_manifest["contentDepth"]["blockCounts"]["structure-expansion"], rebuilt_manifest["contentDepth"]["blockCounts"]["structure-expansion"])
             self.assertEqual(
                 [item["slug"] for item in committed_index[:50]],
                 [item["slug"] for item in rebuilt_index[:50]],

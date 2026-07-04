@@ -24,6 +24,9 @@ const links = [
 export function AppLayout() {
   return (
     <div className="app-shell">
+      <a className="skip-link" href="#main-content">
+        Skip to main content
+      </a>
       <header className="site-header">
         <div className="brand-lockup">
           <div className="brand-mark" aria-hidden="true">
@@ -58,7 +61,7 @@ export function AppLayout() {
           )}
         </div>
       </header>
-      <main className="main-content">
+      <main className="main-content" id="main-content" tabIndex={-1}>
         <Outlet />
       </main>
       <footer className="site-footer">

@@ -1,0 +1,2566 @@
+[
+  {
+    "key": "activation function",
+    "owners": [
+      "Activation Function",
+      "Activation Function (CNNs)",
+      "Activation Function (RNNs)",
+      "Activation Function (Transformers)"
+    ],
+    "decisions": [
+      {
+        "category": "Neural Networks",
+        "subCategory": "Activation Functions",
+        "votes": 2
+      },
+      {
+        "category": "Neural Networks",
+        "subCategory": "Components",
+        "votes": 1
+      },
+      {
+        "category": "Neural Networks",
+        "subCategory": "Advanced Architectures",
+        "votes": 1
+      }
+    ]
+  },
+  {
+    "key": "cnns",
+    "owners": [
+      "Activation Function (CNNs)",
+      "Convolutional Neural Networks (CNNs)"
+    ],
+    "decisions": [
+      {
+        "category": "Neural Networks",
+        "subCategory": "Activation Functions",
+        "votes": 1
+      },
+      {
+        "category": "Neural Networks",
+        "subCategory": "Core Models",
+        "votes": 1
+      }
+    ]
+  },
+  {
+    "key": "rnns",
+    "owners": [
+      "Activation Function (RNNs)",
+      "Recurrent Neural Networks (RNNs)"
+    ],
+    "decisions": [
+      {
+        "category": "Neural Networks",
+        "subCategory": "Activation Functions",
+        "votes": 1
+      },
+      {
+        "category": "Neural Networks",
+        "subCategory": "Recurrent Models",
+        "votes": 1
+      }
+    ]
+  },
+  {
+    "key": "pgd",
+    "owners": [
+      "Adversarial Training (PGD)",
+      "Projected Gradient Descent (PGD)"
+    ],
+    "decisions": [
+      {
+        "category": "Neural Networks",
+        "subCategory": "Training Techniques",
+        "votes": 1
+      },
+      {
+        "category": "Optimization Algorithms",
+        "subCategory": "Gradient-Based Optimizers",
+        "votes": 1
+      }
+    ]
+  },
+  {
+    "key": "ar",
+    "owners": [
+      "AI and Augmented Reality (AR)",
+      "AI in Augmented Reality (AR)",
+      "Augmented Reality (AR)"
+    ],
+    "decisions": [
+      {
+        "category": "Data Preprocessing",
+        "subCategory": "",
+        "votes": 2
+      },
+      {
+        "category": "AI Applications",
+        "subCategory": "Extended Reality",
+        "votes": 1
+      }
+    ]
+  },
+  {
+    "key": "approximate bayesian computation",
+    "owners": [
+      "Approximate Bayesian Computation",
+      "Approximate Bayesian Computation (ABC)"
+    ],
+    "decisions": [
+      {
+        "category": "Statistical Methods",
+        "subCategory": "Bayesian Inference",
+        "votes": 1
+      },
+      {
+        "category": "Statistical Methods",
+        "subCategory": "",
+        "votes": 1
+      }
+    ]
+  },
+  {
+    "key": "reasoning eval",
+    "owners": [
+      "ARC-AGI (reasoning eval)",
+      "GPQA-Diamond (reasoning eval)"
+    ],
+    "decisions": [
+      {
+        "category": "AI Types",
+        "subCategory": "General AI",
+        "votes": 1
+      },
+      {
+        "category": "Evaluation Metrics",
+        "subCategory": "",
+        "votes": 1
+      }
+    ]
+  },
+  {
+    "key": "attention is all you need",
+    "owners": [
+      "Attention Is All You Need",
+      "Attention Is All You Need (Transformer Paper)"
+    ],
+    "decisions": [
+      {
+        "category": "Neural Networks",
+        "subCategory": "Transformer Models",
+        "votes": 1
+      },
+      {
+        "category": "Neural Networks",
+        "subCategory": "Advanced Architectures",
+        "votes": 1
+      }
+    ]
+  },
+  {
+    "key": "auto-encoding variational bayes",
+    "owners": [
+      "Auto-Encoding Variational Bayes",
+      "Auto-Encoding Variational Bayes (VAE)"
+    ],
+    "decisions": [
+      {
+        "category": "Data Preprocessing",
+        "subCategory": "Categorical Encoding",
+        "votes": 1
+      },
+      {
+        "category": "Neural Networks",
+        "subCategory": "Autoencoders",
+        "votes": 1
+      }
+    ]
+  },
+  {
+    "key": "vae",
+    "owners": [
+      "Auto-Encoding Variational Bayes (VAE)",
+      "VAE",
+      "Variational Autoencoder (VAE)",
+      "Variational Autoencoders (VAE)"
+    ],
+    "decisions": [
+      {
+        "category": "Neural Networks",
+        "subCategory": "Autoencoders",
+        "votes": 3
+      },
+      {
+        "category": "Generative Models",
+        "subCategory": "Autoencoders",
+        "votes": 1
+      }
+    ]
+  },
+  {
+    "key": "dec",
+    "owners": [
+      "Autoencoder for Clustering (DEC)",
+      "Deep Embedded Clustering (DEC)",
+      "Deep Embedding for Clustering (DEC)"
+    ],
+    "decisions": [
+      {
+        "category": "Clustering",
+        "subCategory": "",
+        "votes": 2
+      },
+      {
+        "category": "Neural Networks",
+        "subCategory": "Autoencoders",
+        "votes": 1
+      }
+    ]
+  },
+  {
+    "key": "batch normalization",
+    "owners": [
+      "Batch Normalization",
+      "Batch Normalization (in Deep Learning)"
+    ],
+    "decisions": [
+      {
+        "category": "Neural Networks",
+        "subCategory": "Training Techniques",
+        "votes": 1
+      },
+      {
+        "category": "Data Preprocessing",
+        "subCategory": "Data Scaling",
+        "votes": 1
+      }
+    ]
+  },
+  {
+    "key": "bayesian neural networks",
+    "owners": [
+      "Bayesian Neural Networks",
+      "Bayesian Neural Networks (BNNs)"
+    ],
+    "decisions": [
+      {
+        "category": "Neural Networks",
+        "subCategory": "Bayesian Models",
+        "votes": 1
+      },
+      {
+        "category": "Neural Networks",
+        "subCategory": "Core Models",
+        "votes": 1
+      }
+    ]
+  },
+  {
+    "key": "rl",
+    "owners": [
+      "Boltzmann Exploration (RL)",
+      "Parameter-Noise Exploration (RL)",
+      "Reinforcement Learning (RL)"
+    ],
+    "decisions": [
+      {
+        "category": "Reinforcement Learning",
+        "subCategory": "",
+        "votes": 1
+      },
+      {
+        "category": "Neural Networks",
+        "subCategory": "Model Parameters",
+        "votes": 1
+      },
+      {
+        "category": "Learning Paradigms",
+        "subCategory": "Decision Making",
+        "votes": 1
+      }
+    ]
+  },
+  {
+    "key": "boosting algorithms",
+    "owners": [
+      "Boosting Algorithms",
+      "Boosting Algorithms (e.g., AdaBoost, Gradient Boosting)"
+    ],
+    "decisions": [
+      {
+        "category": "Ensemble Methods",
+        "subCategory": "Tree-Based Models",
+        "votes": 1
+      },
+      {
+        "category": "Ensemble Methods",
+        "subCategory": "",
+        "votes": 1
+      }
+    ]
+  },
+  {
+    "key": "bootstrap aggregating",
+    "owners": [
+      "Bootstrap Aggregating (Bagging)",
+      "Bootstrap aggregating"
+    ],
+    "decisions": [
+      {
+        "category": "Statistical Methods",
+        "subCategory": "",
+        "votes": 1
+      },
+      {
+        "category": "Ensemble Methods",
+        "subCategory": "Tree-Based Models",
+        "votes": 1
+      }
+    ]
+  },
+  {
+    "key": "bootstrap aggregation",
+    "owners": [
+      "Bootstrap Aggregation",
+      "Bootstrap Aggregation (Bagging)"
+    ],
+    "decisions": [
+      {
+        "category": "Statistical Methods",
+        "subCategory": "",
+        "votes": 1
+      },
+      {
+        "category": "Ensemble Methods",
+        "subCategory": "Tree-Based Models",
+        "votes": 1
+      }
+    ]
+  },
+  {
+    "key": "deep q-network",
+    "owners": [
+      "Bootstrap DQN (Deep Q-Network)",
+      "Deep Q-Network",
+      "Deep Q-Network (DQN)"
+    ],
+    "decisions": [
+      {
+        "category": "Reinforcement Learning",
+        "subCategory": "Advanced RL Techniques",
+        "votes": 2
+      },
+      {
+        "category": "Neural Networks",
+        "subCategory": "Core Models",
+        "votes": 1
+      }
+    ]
+  },
+  {
+    "key": "byte pair encoding",
+    "owners": [
+      "Byte Pair Encoding",
+      "Byte Pair Encoding (BPE)"
+    ],
+    "decisions": [
+      {
+        "category": "Natural Language Processing",
+        "subCategory": "Tokenization",
+        "votes": 1
+      },
+      {
+        "category": "Data Preprocessing",
+        "subCategory": "Categorical Encoding",
+        "votes": 1
+      }
+    ]
+  },
+  {
+    "key": "cgan",
+    "owners": [
+      "Conditional GAN (cGAN)",
+      "cGAN"
+    ],
+    "decisions": [
+      {
+        "category": "Generative Models",
+        "subCategory": "Conditional GANs",
+        "votes": 1
+      },
+      {
+        "category": "Generative Models",
+        "subCategory": "Adversarial Networks",
+        "votes": 1
+      }
+    ]
+  },
+  {
+    "key": "convolutional neural network",
+    "owners": [
+      "CNN (Convolutional Neural Network)",
+      "Convolutional Neural Network",
+      "Convolutional Neural Network (CNN)"
+    ],
+    "decisions": [
+      {
+        "category": "Neural Networks",
+        "subCategory": "Core Models",
+        "votes": 2
+      },
+      {
+        "category": "Neural Networks",
+        "subCategory": "Deep Learning Models",
+        "votes": 1
+      }
+    ]
+  },
+  {
+    "key": "cnn",
+    "owners": [
+      "CNN (Convolutional Neural Network)",
+      "Convolutional Neural Network (CNN)"
+    ],
+    "decisions": [
+      {
+        "category": "Neural Networks",
+        "subCategory": "Core Models",
+        "votes": 1
+      },
+      {
+        "category": "Neural Networks",
+        "subCategory": "Deep Learning Models",
+        "votes": 1
+      }
+    ]
+  },
+  {
+    "key": "conditional random field",
+    "owners": [
+      "Conditional Random Field",
+      "Conditional Random Field (CRF)"
+    ],
+    "decisions": [
+      {
+        "category": "Computer Vision",
+        "subCategory": "",
+        "votes": 1
+      },
+      {
+        "category": "Statistical Models",
+        "subCategory": "Sequence Modeling",
+        "votes": 1
+      }
+    ]
+  },
+  {
+    "key": "crf",
+    "owners": [
+      "Conditional Random Field (CRF)",
+      "Conditional Random Fields (CRF)"
+    ],
+    "decisions": [
+      {
+        "category": "Statistical Models",
+        "subCategory": "Sequence Modeling",
+        "votes": 1
+      },
+      {
+        "category": "Statistical Models",
+        "subCategory": "",
+        "votes": 1
+      }
+    ]
+  },
+  {
+    "key": "consensus clustering",
+    "owners": [
+      "Consensus Clustering",
+      "Consensus Clustering (Ensemble Clustering via Bootstrap)"
+    ],
+    "decisions": [
+      {
+        "category": "Clustering",
+        "subCategory": "",
+        "votes": 1
+      },
+      {
+        "category": "Ensemble Methods",
+        "subCategory": "Tree-Based Models",
+        "votes": 1
+      }
+    ]
+  },
+  {
+    "key": "contrastive language-image pretraining",
+    "owners": [
+      "Contrastive Language-Image Pretraining",
+      "Contrastive Language-Image Pretraining (CLIP)"
+    ],
+    "decisions": [
+      {
+        "category": "Representation Learning",
+        "subCategory": "Multi-Modal Learning",
+        "votes": 1
+      },
+      {
+        "category": "Computer Vision",
+        "subCategory": "",
+        "votes": 1
+      }
+    ]
+  },
+  {
+    "key": "ddpg",
+    "owners": [
+      "DDPG",
+      "Deep Deterministic Policy Gradient (DDPG)",
+      "Deep Deterministic Policy Gradients (DDPG)"
+    ],
+    "decisions": [
+      {
+        "category": "Reinforcement Learning",
+        "subCategory": "Policy Gradient Methods",
+        "votes": 2
+      },
+      {
+        "category": "Reinforcement Learning",
+        "subCategory": "Advanced RL Techniques",
+        "votes": 1
+      }
+    ]
+  },
+  {
+    "key": "decoupled weight decay",
+    "owners": [
+      "Decoupled Weight Decay",
+      "Decoupled Weight Decay (AdamW)"
+    ],
+    "decisions": [
+      {
+        "category": "Neural Networks",
+        "subCategory": "Model Parameters",
+        "votes": 1
+      },
+      {
+        "category": "Optimization Algorithms",
+        "subCategory": "Gradient-Based Optimizers",
+        "votes": 1
+      }
+    ]
+  },
+  {
+    "key": "deep deterministic policy gradient",
+    "owners": [
+      "Deep Deterministic Policy Gradient",
+      "Deep Deterministic Policy Gradient (DDPG)"
+    ],
+    "decisions": [
+      {
+        "category": "Optimization Algorithms",
+        "subCategory": "Gradient-Based Optimizers",
+        "votes": 1
+      },
+      {
+        "category": "Reinforcement Learning",
+        "subCategory": "Policy Gradient Methods",
+        "votes": 1
+      }
+    ]
+  },
+  {
+    "key": "deep reinforcement learning",
+    "owners": [
+      "Deep Reinforcement Learning",
+      "Deep Reinforcement Learning (DRL)"
+    ],
+    "decisions": [
+      {
+        "category": "Reinforcement Learning",
+        "subCategory": "Advanced RL Techniques",
+        "votes": 1
+      },
+      {
+        "category": "Reinforcement Learning",
+        "subCategory": "",
+        "votes": 1
+      }
+    ]
+  },
+  {
+    "key": "dimensionality reduction techniques",
+    "owners": [
+      "Dimensionality Reduction Techniques",
+      "Dimensionality Reduction Techniques (e.g., PCA, t-SNE, UMAP)"
+    ],
+    "decisions": [
+      {
+        "category": "Dimensionality Reduction",
+        "subCategory": "",
+        "votes": 1
+      },
+      {
+        "category": "Dimensionality Reduction",
+        "subCategory": "Feature Reduction",
+        "votes": 1
+      }
+    ]
+  },
+  {
+    "key": "distributional rl",
+    "owners": [
+      "Distributional RL",
+      "Distributional RL (C51, QR-DQN)"
+    ],
+    "decisions": [
+      {
+        "category": "Reinforcement Learning",
+        "subCategory": "",
+        "votes": 1
+      },
+      {
+        "category": "Reinforcement Learning",
+        "subCategory": "Advanced RL Techniques",
+        "votes": 1
+      }
+    ]
+  },
+  {
+    "key": "dynamic graph neural networks",
+    "owners": [
+      "Dynamic Graph Neural Networks",
+      "Dynamic Graph Neural Networks (DGNNs)"
+    ],
+    "decisions": [
+      {
+        "category": "Neural Networks",
+        "subCategory": "Graph-Based Models",
+        "votes": 1
+      },
+      {
+        "category": "Neural Networks",
+        "subCategory": "Core Models",
+        "votes": 1
+      }
+    ]
+  },
+  {
+    "key": "efficient neural architecture search",
+    "owners": [
+      "Efficient Neural Architecture Search",
+      "Efficient Neural Architecture Search (ENAS)"
+    ],
+    "decisions": [
+      {
+        "category": "Model Optimization",
+        "subCategory": "Neural Architecture Search",
+        "votes": 1
+      },
+      {
+        "category": "Neural Networks",
+        "subCategory": "Core Models",
+        "votes": 1
+      }
+    ]
+  },
+  {
+    "key": "evolutionary algorithms",
+    "owners": [
+      "Evolutionary Algorithms",
+      "Evolutionary Algorithms (e.g., Genetic Algorithms, Genetic Programming)"
+    ],
+    "decisions": [
+      {
+        "category": "Optimization Algorithms",
+        "subCategory": "Heuristic Optimization",
+        "votes": 1
+      },
+      {
+        "category": "Optimization Algorithms",
+        "subCategory": "",
+        "votes": 1
+      }
+    ]
+  },
+  {
+    "key": "explainable reinforcement learning",
+    "owners": [
+      "Explainable Reinforcement Learning",
+      "Explainable Reinforcement Learning (XRL)"
+    ],
+    "decisions": [
+      {
+        "category": "Explainable AI (XAI)",
+        "subCategory": "Reinforcement Learning",
+        "votes": 1
+      },
+      {
+        "category": "Reinforcement Learning",
+        "subCategory": "",
+        "votes": 1
+      }
+    ]
+  },
+  {
+    "key": "feature",
+    "owners": [
+      "Feature",
+      "KS drift (feature)"
+    ],
+    "decisions": [
+      {
+        "category": "Feature Engineering",
+        "subCategory": "Feature Representation",
+        "votes": 1
+      },
+      {
+        "category": "Representation Learning",
+        "subCategory": "",
+        "votes": 1
+      }
+    ]
+  },
+  {
+    "key": "feature extraction",
+    "owners": [
+      "Feature Extraction",
+      "Feature Extraction (SIFT, SURF, ORB)"
+    ],
+    "decisions": [
+      {
+        "category": "Feature Engineering",
+        "subCategory": "Data Transformation",
+        "votes": 1
+      },
+      {
+        "category": "Representation Learning",
+        "subCategory": "",
+        "votes": 1
+      }
+    ]
+  },
+  {
+    "key": "feature hashing",
+    "owners": [
+      "Feature Hashing",
+      "Hash Encoding (Feature Hashing)"
+    ],
+    "decisions": [
+      {
+        "category": "Representation Learning",
+        "subCategory": "",
+        "votes": 1
+      },
+      {
+        "category": "Data Preprocessing",
+        "subCategory": "Categorical Encoding",
+        "votes": 1
+      }
+    ]
+  },
+  {
+    "key": "nas",
+    "owners": [
+      "Few-Shot Neural Architecture Search (NAS)",
+      "Neural Architecture Search (NAS)"
+    ],
+    "decisions": [
+      {
+        "category": "Learning Paradigms",
+        "subCategory": "Low-Data Learning",
+        "votes": 1
+      },
+      {
+        "category": "Model Optimization",
+        "subCategory": "Hyperparameter Tuning",
+        "votes": 1
+      }
+    ]
+  },
+  {
+    "key": "already in your list",
+    "owners": [
+      "Gated Recurrent Units (GRU) (Already in your list)",
+      "GloVe (Already in your list)",
+      "Layer-wise Learning Rate (Already in your list)",
+      "Leaky ReLU Variants (Already in your list)",
+      "Long Short-Term Memory (LSTM) (already in your list)"
+    ],
+    "decisions": [
+      {
+        "category": "Neural Networks",
+        "subCategory": "Recurrent Models",
+        "votes": 2
+      },
+      {
+        "category": "Neural Networks",
+        "subCategory": "Core Models",
+        "votes": 2
+      },
+      {
+        "category": "Learning Paradigms",
+        "subCategory": "",
+        "votes": 2
+      },
+      {
+        "category": "Neural Networks",
+        "subCategory": "Advanced Architectures",
+        "votes": 2
+      },
+      {
+        "category": "Natural Language Processing",
+        "subCategory": "Text Representation",
+        "votes": 1
+      },
+      {
+        "category": "Neural Networks",
+        "subCategory": "Activation Functions",
+        "votes": 1
+      },
+      {
+        "category": "Evaluation Metrics",
+        "subCategory": "",
+        "votes": 1
+      },
+      {
+        "category": "Learning Paradigms",
+        "subCategory": "Low-Data Learning",
+        "votes": 1
+      },
+      {
+        "category": "Neural Networks",
+        "subCategory": "Model Parameters",
+        "votes": 1
+      },
+      {
+        "category": "Reinforcement Learning",
+        "subCategory": "Advanced RL Techniques",
+        "votes": 1
+      },
+      {
+        "category": "Representation Learning",
+        "subCategory": "",
+        "votes": 1
+      }
+    ]
+  },
+  {
+    "key": "gaussian error linear unit",
+    "owners": [
+      "Gaussian Error Linear Unit (GELU)",
+      "Gaussian Error Linear Unit (SwiGLU)"
+    ],
+    "decisions": [
+      {
+        "category": "Neural Networks",
+        "subCategory": "Activation Functions",
+        "votes": 1
+      },
+      {
+        "category": "Neural Networks",
+        "subCategory": "Core Models",
+        "votes": 1
+      }
+    ]
+  },
+  {
+    "key": "swiglu",
+    "owners": [
+      "Gaussian Error Linear Unit (SwiGLU)",
+      "Gaussian Error Linear Unit with Swish (SwiGLU)"
+    ],
+    "decisions": [
+      {
+        "category": "Neural Networks",
+        "subCategory": "Core Models",
+        "votes": 1
+      },
+      {
+        "category": "Neural Networks",
+        "subCategory": "Activation Functions",
+        "votes": 1
+      }
+    ]
+  },
+  {
+    "key": "gaussian mixture model",
+    "owners": [
+      "Gaussian Mixture Model",
+      "Gaussian Mixture Model (GMM)"
+    ],
+    "decisions": [
+      {
+        "category": "Computer Vision",
+        "subCategory": "",
+        "votes": 1
+      },
+      {
+        "category": "Statistical Models",
+        "subCategory": "Probabilistic Models",
+        "votes": 1
+      }
+    ]
+  },
+  {
+    "key": "gaussian mixture models",
+    "owners": [
+      "Gaussian Mixture Models",
+      "Gaussian Mixture Models (GMM)"
+    ],
+    "decisions": [
+      {
+        "category": "Computer Vision",
+        "subCategory": "",
+        "votes": 1
+      },
+      {
+        "category": "Statistical Models",
+        "subCategory": "Probabilistic Models",
+        "votes": 1
+      }
+    ]
+  },
+  {
+    "key": "generative adversarial network",
+    "owners": [
+      "Generative Adversarial Network",
+      "Generative Adversarial Network (GAN)"
+    ],
+    "decisions": [
+      {
+        "category": "Neural Networks",
+        "subCategory": "Core Models",
+        "votes": 1
+      },
+      {
+        "category": "Generative Models",
+        "subCategory": "Adversarial Networks",
+        "votes": 1
+      }
+    ]
+  },
+  {
+    "key": "gnns",
+    "owners": [
+      "Generative Neural Networks (GNNs)",
+      "Graph Neural Networks (GNNs)"
+    ],
+    "decisions": [
+      {
+        "category": "Neural Networks",
+        "subCategory": "Core Models",
+        "votes": 1
+      },
+      {
+        "category": "Neural Networks",
+        "subCategory": "Graph-Based Models",
+        "votes": 1
+      }
+    ]
+  },
+  {
+    "key": "generative pretrained transformer 3",
+    "owners": [
+      "Generative Pretrained Transformer 3",
+      "Generative Pretrained Transformer 3 (GPT-3)"
+    ],
+    "decisions": [
+      {
+        "category": "Neural Networks",
+        "subCategory": "Advanced Architectures",
+        "votes": 1
+      },
+      {
+        "category": "Natural Language Processing",
+        "subCategory": "Pre-trained Models",
+        "votes": 1
+      }
+    ]
+  },
+  {
+    "key": "generative pretrained transformer 4",
+    "owners": [
+      "Generative Pretrained Transformer 4",
+      "Generative Pretrained Transformer 4 (GPT-4)"
+    ],
+    "decisions": [
+      {
+        "category": "Neural Networks",
+        "subCategory": "Advanced Architectures",
+        "votes": 1
+      },
+      {
+        "category": "Natural Language Processing",
+        "subCategory": "Pre-trained Models",
+        "votes": 1
+      }
+    ]
+  },
+  {
+    "key": "generative pretrained transformer 4o",
+    "owners": [
+      "Generative Pretrained Transformer 4o",
+      "Generative Pretrained Transformer 4o (GPT-4o)"
+    ],
+    "decisions": [
+      {
+        "category": "Neural Networks",
+        "subCategory": "Advanced Architectures",
+        "votes": 1
+      },
+      {
+        "category": "Natural Language Processing",
+        "subCategory": "Pre-trained Models",
+        "votes": 1
+      }
+    ]
+  },
+  {
+    "key": "generative pretrained transformer 5",
+    "owners": [
+      "Generative Pretrained Transformer 5",
+      "Generative Pretrained Transformer 5 (GPT-5)"
+    ],
+    "decisions": [
+      {
+        "category": "Neural Networks",
+        "subCategory": "Advanced Architectures",
+        "votes": 1
+      },
+      {
+        "category": "Natural Language Processing",
+        "subCategory": "Pre-trained Models",
+        "votes": 1
+      }
+    ]
+  },
+  {
+    "key": "gradient boosting",
+    "owners": [
+      "Gradient Boosting",
+      "Gradient Boosting (GBM)"
+    ],
+    "decisions": [
+      {
+        "category": "Ensemble Methods",
+        "subCategory": "Boosting Techniques",
+        "votes": 1
+      },
+      {
+        "category": "Optimization Algorithms",
+        "subCategory": "Gradient-Based Optimizers",
+        "votes": 1
+      }
+    ]
+  },
+  {
+    "key": "gradient checkpointing",
+    "owners": [
+      "Gradient Checkpointing",
+      "Gradient Checkpointing (Rematerialize)"
+    ],
+    "decisions": [
+      {
+        "category": "Training Techniques",
+        "subCategory": "Memory Optimization",
+        "votes": 1
+      },
+      {
+        "category": "Optimization Algorithms",
+        "subCategory": "Gradient-Based Optimizers",
+        "votes": 1
+      }
+    ]
+  },
+  {
+    "key": "norm",
+    "owners": [
+      "Gradient Clipping (Norm)",
+      "Norm"
+    ],
+    "decisions": [
+      {
+        "category": "Optimization Algorithms",
+        "subCategory": "Gradient-Based Optimizers",
+        "votes": 1
+      },
+      {
+        "category": "Mathematical Concepts",
+        "subCategory": "Vector Norms",
+        "votes": 1
+      }
+    ]
+  },
+  {
+    "key": "gcn",
+    "owners": [
+      "Graph Convolutional Network (GCN)",
+      "Graph Convolutional Networks (GCN)"
+    ],
+    "decisions": [
+      {
+        "category": "Neural Networks",
+        "subCategory": "Core Models",
+        "votes": 1
+      },
+      {
+        "category": "Graph Analysis",
+        "subCategory": "",
+        "votes": 1
+      }
+    ]
+  },
+  {
+    "key": "graph convolutional networks",
+    "owners": [
+      "Graph Convolutional Networks (GCN)",
+      "Graph Convolutional Networks (GCNs)"
+    ],
+    "decisions": [
+      {
+        "category": "Graph Analysis",
+        "subCategory": "",
+        "votes": 1
+      },
+      {
+        "category": "Neural Networks",
+        "subCategory": "Graph-Based Models",
+        "votes": 1
+      }
+    ]
+  },
+  {
+    "key": "gin",
+    "owners": [
+      "Graph Isomorphism Network (GIN)",
+      "Graph Isomorphism Networks (GIN)"
+    ],
+    "decisions": [
+      {
+        "category": "Neural Networks",
+        "subCategory": "Core Models",
+        "votes": 1
+      },
+      {
+        "category": "Graph Analysis",
+        "subCategory": "",
+        "votes": 1
+      }
+    ]
+  },
+  {
+    "key": "got",
+    "owners": [
+      "Graph of Thought (GoT)",
+      "Graph-of-Thoughts (GoT)"
+    ],
+    "decisions": [
+      {
+        "category": "Reasoning Methods",
+        "subCategory": "Logical Reasoning",
+        "votes": 1
+      },
+      {
+        "category": "Graph Analysis",
+        "subCategory": "",
+        "votes": 1
+      }
+    ]
+  },
+  {
+    "key": "han",
+    "owners": [
+      "HAN (Heterogeneous Attention Network)",
+      "Hierarchical Attention Networks (HAN)"
+    ],
+    "decisions": [
+      {
+        "category": "Neural Networks",
+        "subCategory": "Core Models",
+        "votes": 1
+      },
+      {
+        "category": "Neural Networks",
+        "subCategory": "Attention Mechanism",
+        "votes": 1
+      }
+    ]
+  },
+  {
+    "key": "hidden markov models",
+    "owners": [
+      "Hidden Markov Models",
+      "Hidden Markov Models (HMM)"
+    ],
+    "decisions": [
+      {
+        "category": "Statistical Models",
+        "subCategory": "Sequence Models",
+        "votes": 1
+      },
+      {
+        "category": "Statistical Models",
+        "subCategory": "Probabilistic Models",
+        "votes": 1
+      }
+    ]
+  },
+  {
+    "key": "hierarchical reinforcement learning",
+    "owners": [
+      "Hierarchical Reinforcement Learning",
+      "Hierarchical Reinforcement Learning (HRL)"
+    ],
+    "decisions": [
+      {
+        "category": "Reinforcement Learning",
+        "subCategory": "Advanced RL Techniques",
+        "votes": 1
+      },
+      {
+        "category": "Reinforcement Learning",
+        "subCategory": "",
+        "votes": 1
+      }
+    ]
+  },
+  {
+    "key": "human-robot interaction",
+    "owners": [
+      "Human-Robot Interaction",
+      "Human-Robot Interaction (HRI)"
+    ],
+    "decisions": [
+      {
+        "category": "AI Applications",
+        "subCategory": "Robotics Applications",
+        "votes": 1
+      },
+      {
+        "category": "Reinforcement Learning",
+        "subCategory": "",
+        "votes": 1
+      }
+    ]
+  },
+  {
+    "key": "hybrid retrieval",
+    "owners": [
+      "Hybrid Retrieval",
+      "Hybrid Retrieval (Dense + Sparse)"
+    ],
+    "decisions": [
+      {
+        "category": "Natural Language Processing",
+        "subCategory": "Knowledge-Enhanced Generation",
+        "votes": 1
+      },
+      {
+        "category": "Data Representation",
+        "subCategory": "",
+        "votes": 1
+      }
+    ]
+  },
+  {
+    "key": "ia3",
+    "owners": [
+      "IA3 (Injectable Attention Adapters)",
+      "IA3 (Input-Output Attention Adapters)",
+      "Low-Rank Adaptation (IA3)"
+    ],
+    "decisions": [
+      {
+        "category": "Neural Networks",
+        "subCategory": "Attention Mechanism",
+        "votes": 2
+      },
+      {
+        "category": "Learning Paradigms",
+        "subCategory": "Low-Data Learning",
+        "votes": 1
+      }
+    ]
+  },
+  {
+    "key": "instruction fine-tuning",
+    "owners": [
+      "Instruction Fine Tuning",
+      "Instruction Fine-Tuning (IFT)"
+    ],
+    "decisions": [
+      {
+        "category": "Transfer Learning",
+        "subCategory": "Model Adaptation",
+        "votes": 1
+      },
+      {
+        "category": "Natural Language Processing",
+        "subCategory": "Prompt Design",
+        "votes": 1
+      }
+    ]
+  },
+  {
+    "key": "inverse reinforcement learning",
+    "owners": [
+      "Inverse Reinforcement Learning",
+      "Inverse Reinforcement Learning (IRL)"
+    ],
+    "decisions": [
+      {
+        "category": "Reinforcement Learning",
+        "subCategory": "Learning Techniques",
+        "votes": 1
+      },
+      {
+        "category": "Reinforcement Learning",
+        "subCategory": "",
+        "votes": 1
+      }
+    ]
+  },
+  {
+    "key": "jarvis",
+    "owners": [
+      "Jarvis (LLM tool orchestration)",
+      "Jarvis (Microsoft tool orchestration)"
+    ],
+    "decisions": [
+      {
+        "category": "AI Types",
+        "subCategory": "Large Language Models",
+        "votes": 1
+      },
+      {
+        "category": "AI Applications",
+        "subCategory": "",
+        "votes": 1
+      }
+    ]
+  },
+  {
+    "key": "language models",
+    "owners": [
+      "Language Models",
+      "Language Models (e.g., BERT, GPT)"
+    ],
+    "decisions": [
+      {
+        "category": "Natural Language Processing",
+        "subCategory": "",
+        "votes": 1
+      },
+      {
+        "category": "Natural Language Processing",
+        "subCategory": "Pre-trained Models",
+        "votes": 1
+      }
+    ]
+  },
+  {
+    "key": "large language model",
+    "owners": [
+      "Large Language Model",
+      "Large Language Model (LLM)"
+    ],
+    "decisions": [
+      {
+        "category": "Natural Language Processing",
+        "subCategory": "",
+        "votes": 1
+      },
+      {
+        "category": "AI Types",
+        "subCategory": "Large Language Models",
+        "votes": 1
+      }
+    ]
+  },
+  {
+    "key": "latent dirichlet allocation",
+    "owners": [
+      "Latent Dirichlet Allocation",
+      "Latent Dirichlet Allocation (LDA)"
+    ],
+    "decisions": [
+      {
+        "category": "Representation Learning",
+        "subCategory": "",
+        "votes": 1
+      },
+      {
+        "category": "Dimensionality Reduction",
+        "subCategory": "Feature Reduction",
+        "votes": 1
+      }
+    ]
+  },
+  {
+    "key": "lsa",
+    "owners": [
+      "Latent Semantic Analysis (LSA)",
+      "Locality Sensitive Attention (LSA)"
+    ],
+    "decisions": [
+      {
+        "category": "Natural Language Processing",
+        "subCategory": "",
+        "votes": 1
+      },
+      {
+        "category": "Neural Networks",
+        "subCategory": "Attention Mechanism",
+        "votes": 1
+      }
+    ]
+  },
+  {
+    "key": "latent semantic indexing",
+    "owners": [
+      "Latent Semantic Indexing",
+      "Latent Semantic Indexing (LSI)"
+    ],
+    "decisions": [
+      {
+        "category": "Natural Language Processing",
+        "subCategory": "Text Representation",
+        "votes": 1
+      },
+      {
+        "category": "Natural Language Processing",
+        "subCategory": "",
+        "votes": 1
+      }
+    ]
+  },
+  {
+    "key": "linear discriminant analysis",
+    "owners": [
+      "Linear Discriminant Analysis",
+      "Linear Discriminant Analysis (LDA)"
+    ],
+    "decisions": [
+      {
+        "category": "Data Analysis",
+        "subCategory": "",
+        "votes": 1
+      },
+      {
+        "category": "Dimensionality Reduction",
+        "subCategory": "Feature Reduction",
+        "votes": 1
+      }
+    ]
+  },
+  {
+    "key": "locally linear embedding",
+    "owners": [
+      "Locally Linear Embedding",
+      "Locally Linear Embedding (LLE)"
+    ],
+    "decisions": [
+      {
+        "category": "Representation Learning",
+        "subCategory": "",
+        "votes": 1
+      },
+      {
+        "category": "Dimensionality Reduction",
+        "subCategory": "",
+        "votes": 1
+      }
+    ]
+  },
+  {
+    "key": "long short-term memory networks",
+    "owners": [
+      "Long Short-Term Memory Networks (LSTM)",
+      "Long Short-Term Memory Networks (LSTMs)"
+    ],
+    "decisions": [
+      {
+        "category": "Neural Networks",
+        "subCategory": "Recurrent Models",
+        "votes": 1
+      },
+      {
+        "category": "Neural Networks",
+        "subCategory": "Advanced Architectures",
+        "votes": 1
+      }
+    ]
+  },
+  {
+    "key": "mae",
+    "owners": [
+      "MAE (Masked Autoencoders for Vision)",
+      "Masked Autoencoder (MAE)",
+      "Masked Autoencoders (MAE)",
+      "Mean Absolute Error (MAE)"
+    ],
+    "decisions": [
+      {
+        "category": "Evaluation Metrics",
+        "subCategory": "Regression Metrics",
+        "votes": 3
+      },
+      {
+        "category": "Neural Networks",
+        "subCategory": "Autoencoders",
+        "votes": 1
+      }
+    ]
+  },
+  {
+    "key": "manifold learning",
+    "owners": [
+      "Manifold Learning",
+      "Manifold Learning (e.g., Isomap, LLE)"
+    ],
+    "decisions": [
+      {
+        "category": "Representation Learning",
+        "subCategory": "",
+        "votes": 1
+      },
+      {
+        "category": "Dimensionality Reduction",
+        "subCategory": "",
+        "votes": 1
+      }
+    ]
+  },
+  {
+    "key": "markov decision process",
+    "owners": [
+      "Markov Decision Process",
+      "Markov Decision Process (MDP)"
+    ],
+    "decisions": [
+      {
+        "category": "Reinforcement Learning",
+        "subCategory": "Decision Models",
+        "votes": 1
+      },
+      {
+        "category": "Reinforcement Learning",
+        "subCategory": "",
+        "votes": 1
+      }
+    ]
+  },
+  {
+    "key": "mars",
+    "owners": [
+      "Mars (Tensor-based analytics)",
+      "Multivariate Adaptive Regression Splines (MARS)"
+    ],
+    "decisions": [
+      {
+        "category": "Data Representation",
+        "subCategory": "",
+        "votes": 1
+      },
+      {
+        "category": "Statistical Models",
+        "subCategory": "",
+        "votes": 1
+      }
+    ]
+  },
+  {
+    "key": "masked language modeling",
+    "owners": [
+      "Masked Language Modeling",
+      "Masked Language Modeling (MLM)"
+    ],
+    "decisions": [
+      {
+        "category": "Natural Language Processing",
+        "subCategory": "Language Modeling",
+        "votes": 1
+      },
+      {
+        "category": "Natural Language Processing",
+        "subCategory": "",
+        "votes": 1
+      }
+    ]
+  },
+  {
+    "key": "mas",
+    "owners": [
+      "Memory Aware Synapses (MAS)",
+      "Multi-Agent System (MAS)"
+    ],
+    "decisions": [
+      {
+        "category": "Neural Networks",
+        "subCategory": "Advanced Architectures",
+        "votes": 1
+      },
+      {
+        "category": "Reinforcement Learning",
+        "subCategory": "",
+        "votes": 1
+      }
+    ]
+  },
+  {
+    "key": "meta-reinforcement learning",
+    "owners": [
+      "Meta Reinforcement Learning",
+      "Meta-Reinforcement Learning (Meta-RL)"
+    ],
+    "decisions": [
+      {
+        "category": "Reinforcement Learning",
+        "subCategory": "Advanced RL Techniques",
+        "votes": 1
+      },
+      {
+        "category": "Reinforcement Learning",
+        "subCategory": "",
+        "votes": 1
+      }
+    ]
+  },
+  {
+    "key": "meta-reasoning",
+    "owners": [
+      "Meta-Agent (Meta-Reasoning)",
+      "Meta-Reasoning"
+    ],
+    "decisions": [
+      {
+        "category": "Reinforcement Learning",
+        "subCategory": "",
+        "votes": 1
+      },
+      {
+        "category": "AI Theory",
+        "subCategory": "",
+        "votes": 1
+      }
+    ]
+  },
+  {
+    "key": "meta-learning",
+    "owners": [
+      "Meta-Learning (already in your list)",
+      "Meta-learning"
+    ],
+    "decisions": [
+      {
+        "category": "Learning Paradigms",
+        "subCategory": "Learning to Learn",
+        "votes": 1
+      },
+      {
+        "category": "Learning Paradigms",
+        "subCategory": "",
+        "votes": 1
+      }
+    ]
+  },
+  {
+    "key": "multi-agent reinforcement learning",
+    "owners": [
+      "Multi-Agent Reinforcement Learning (MARL)",
+      "Multi-agent Reinforcement Learning"
+    ],
+    "decisions": [
+      {
+        "category": "Reinforcement Learning",
+        "subCategory": "Multi-Agent Systems",
+        "votes": 1
+      },
+      {
+        "category": "Reinforcement Learning",
+        "subCategory": "",
+        "votes": 1
+      }
+    ]
+  },
+  {
+    "key": "mlp",
+    "owners": [
+      "Multilayer Perceptron (MLP)",
+      "Multilayer Perceptrons (MLP)"
+    ],
+    "decisions": [
+      {
+        "category": "Neural Networks",
+        "subCategory": "Core Models",
+        "votes": 1
+      },
+      {
+        "category": "Neural Networks",
+        "subCategory": "Feedforward Models",
+        "votes": 1
+      }
+    ]
+  },
+  {
+    "key": "named entity recognition",
+    "owners": [
+      "Named Entity Recognition",
+      "Named Entity Recognition (NER)"
+    ],
+    "decisions": [
+      {
+        "category": "Computer Vision",
+        "subCategory": "",
+        "votes": 1
+      },
+      {
+        "category": "Natural Language Processing",
+        "subCategory": "Text Analysis",
+        "votes": 1
+      }
+    ]
+  },
+  {
+    "key": "natural language generation",
+    "owners": [
+      "Natural Language Generation",
+      "Natural Language Generation (NLG)"
+    ],
+    "decisions": [
+      {
+        "category": "Natural Language Processing",
+        "subCategory": "",
+        "votes": 1
+      },
+      {
+        "category": "Natural Language Processing",
+        "subCategory": "Language Generation",
+        "votes": 1
+      }
+    ]
+  },
+  {
+    "key": "natural language processing",
+    "owners": [
+      "Natural Language Processing",
+      "Natural Language Processing (NLP)"
+    ],
+    "decisions": [
+      {
+        "category": "Natural Language Processing",
+        "subCategory": "",
+        "votes": 1
+      },
+      {
+        "category": "AI Applications",
+        "subCategory": "Language Understanding",
+        "votes": 1
+      }
+    ]
+  },
+  {
+    "key": "natural language understanding",
+    "owners": [
+      "Natural Language Understanding",
+      "Natural Language Understanding (NLU)"
+    ],
+    "decisions": [
+      {
+        "category": "Natural Language Processing",
+        "subCategory": "",
+        "votes": 1
+      },
+      {
+        "category": "Natural Language Processing",
+        "subCategory": "Language Understanding",
+        "votes": 1
+      }
+    ]
+  },
+  {
+    "key": "neural architecture search",
+    "owners": [
+      "Neural Architecture Search",
+      "Neural Architecture Search (NAS)"
+    ],
+    "decisions": [
+      {
+        "category": "Model Optimization",
+        "subCategory": "Automated Architecture Design",
+        "votes": 1
+      },
+      {
+        "category": "Model Optimization",
+        "subCategory": "Hyperparameter Tuning",
+        "votes": 1
+      }
+    ]
+  },
+  {
+    "key": "nmt",
+    "owners": [
+      "Neural Machine Translation (NMT)",
+      "Zero-Shot Neural Machine Translation (NMT)"
+    ],
+    "decisions": [
+      {
+        "category": "Natural Language Processing",
+        "subCategory": "Translation Models",
+        "votes": 1
+      },
+      {
+        "category": "Learning Paradigms",
+        "subCategory": "Low-Data Learning",
+        "votes": 1
+      }
+    ]
+  },
+  {
+    "key": "neural turing machines",
+    "owners": [
+      "Neural Turing Machines",
+      "Neural Turing Machines (NTM)",
+      "Neural Turing Machines (NTMs)"
+    ],
+    "decisions": [
+      {
+        "category": "Neural Networks",
+        "subCategory": "Core Models",
+        "votes": 2
+      },
+      {
+        "category": "Neural Networks",
+        "subCategory": "Advanced Architectures",
+        "votes": 1
+      }
+    ]
+  },
+  {
+    "key": "nucleus sampling",
+    "owners": [
+      "Nucleus Sampling",
+      "Nucleus Sampling (Top-p Sampling)",
+      "Top-p Sampling (Nucleus Sampling)"
+    ],
+    "decisions": [
+      {
+        "category": "Generative Models",
+        "subCategory": "",
+        "votes": 2
+      },
+      {
+        "category": "Natural Language Processing",
+        "subCategory": "Text Generation",
+        "votes": 1
+      }
+    ]
+  },
+  {
+    "key": "object detection",
+    "owners": [
+      "Object Detection",
+      "Object Detection (YOLO, SSD)"
+    ],
+    "decisions": [
+      {
+        "category": "Computer Vision",
+        "subCategory": "Detection Techniques",
+        "votes": 1
+      },
+      {
+        "category": "Computer Vision",
+        "subCategory": "",
+        "votes": 1
+      }
+    ]
+  },
+  {
+    "key": "one-hot encoding",
+    "owners": [
+      "One-Hot Encoding (for discretized bins)",
+      "One-hot Encoding"
+    ],
+    "decisions": [
+      {
+        "category": "Data Preprocessing",
+        "subCategory": "Categorical Encoding",
+        "votes": 1
+      },
+      {
+        "category": "Learning Paradigms",
+        "subCategory": "Low-Data Learning",
+        "votes": 1
+      }
+    ]
+  },
+  {
+    "key": "online learning",
+    "owners": [
+      "Online Learning",
+      "Online Learning (already in your list)"
+    ],
+    "decisions": [
+      {
+        "category": "Learning Paradigms",
+        "subCategory": "Incremental Learning",
+        "votes": 1
+      },
+      {
+        "category": "Learning Paradigms",
+        "subCategory": "",
+        "votes": 1
+      }
+    ]
+  },
+  {
+    "key": "pal",
+    "owners": [
+      "PAL (Program-Aided LM)",
+      "Program-Aided Language Models (PAL)"
+    ],
+    "decisions": [
+      {
+        "category": "Natural Language Processing",
+        "subCategory": "Language Generation",
+        "votes": 1
+      },
+      {
+        "category": "Natural Language Processing",
+        "subCategory": "",
+        "votes": 1
+      }
+    ]
+  },
+  {
+    "key": "parameter-efficient fine-tuning",
+    "owners": [
+      "Parameter Efficient Fine Tuning",
+      "Parameter-Efficient Fine-Tuning (PEFT)"
+    ],
+    "decisions": [
+      {
+        "category": "Transfer Learning",
+        "subCategory": "Model Adaptation",
+        "votes": 1
+      },
+      {
+        "category": "Neural Networks",
+        "subCategory": "Model Parameters",
+        "votes": 1
+      }
+    ]
+  },
+  {
+    "key": "parameter efficient fine tuning",
+    "owners": [
+      "PEFT (Parameter Efficient Fine Tuning)",
+      "Parameter Efficient Fine Tuning"
+    ],
+    "decisions": [
+      {
+        "category": "Transfer Learning",
+        "subCategory": "Model Adaptation",
+        "votes": 1
+      },
+      {
+        "category": "Neural Networks",
+        "subCategory": "Model Parameters",
+        "votes": 1
+      }
+    ]
+  },
+  {
+    "key": "principal component analysis",
+    "owners": [
+      "PCA (Principal Component Analysis)",
+      "Principal Component Analysis",
+      "Principal Component Analysis (PCA)"
+    ],
+    "decisions": [
+      {
+        "category": "Dimensionality Reduction",
+        "subCategory": "Feature Reduction",
+        "votes": 2
+      },
+      {
+        "category": "Data Analysis",
+        "subCategory": "",
+        "votes": 1
+      }
+    ]
+  },
+  {
+    "key": "perplexity",
+    "owners": [
+      "Perplexity",
+      "Quality filtering (perplexity)"
+    ],
+    "decisions": [
+      {
+        "category": "Evaluation Metrics",
+        "subCategory": "Language Modeling Metrics",
+        "votes": 1
+      },
+      {
+        "category": "Evaluation Metrics",
+        "subCategory": "",
+        "votes": 1
+      }
+    ]
+  },
+  {
+    "key": "prodigy",
+    "owners": [
+      "PRODIGY (planning architecture)",
+      "Prodigy (NLP Annotation)"
+    ],
+    "decisions": [
+      {
+        "category": "Natural Language Processing",
+        "subCategory": "",
+        "votes": 1
+      },
+      {
+        "category": "AI Theory",
+        "subCategory": "",
+        "votes": 1
+      }
+    ]
+  },
+  {
+    "key": "pot",
+    "owners": [
+      "Program of Thought (PoT)",
+      "Program-of-Thoughts (PoT)"
+    ],
+    "decisions": [
+      {
+        "category": "Reasoning Methods",
+        "subCategory": "Logical Reasoning",
+        "votes": 1
+      },
+      {
+        "category": "Natural Language Processing",
+        "subCategory": "Language Generation",
+        "votes": 1
+      }
+    ]
+  },
+  {
+    "key": "pruning",
+    "owners": [
+      "Pruning",
+      "Pruning (Magnitude)",
+      "Pruning (Magnitude, SNIP)",
+      "Pruning (SNIP)"
+    ],
+    "decisions": [
+      {
+        "category": "Model Optimization",
+        "subCategory": "Model Compression",
+        "votes": 3
+      },
+      {
+        "category": "Model Optimization",
+        "subCategory": "Model Simplification",
+        "votes": 1
+      }
+    ]
+  },
+  {
+    "key": "reinforcement learning algorithms",
+    "owners": [
+      "Reinforcement Learning Algorithms",
+      "Reinforcement Learning Algorithms (e.g., Q-Learning, SARSA, DQN)"
+    ],
+    "decisions": [
+      {
+        "category": "Reinforcement Learning",
+        "subCategory": "",
+        "votes": 1
+      },
+      {
+        "category": "Reinforcement Learning",
+        "subCategory": "Advanced RL Techniques",
+        "votes": 1
+      }
+    ]
+  },
+  {
+    "key": "rlhf",
+    "owners": [
+      "RLHF (Reinforcement Learning from Human Feedback)",
+      "Reinforcement Learning from Human Feedback (RLHF)",
+      "Reinforcement Learning with Human Feedback (RLHF)"
+    ],
+    "decisions": [
+      {
+        "category": "Reinforcement Learning",
+        "subCategory": "Learning Techniques",
+        "votes": 2
+      },
+      {
+        "category": "Reinforcement Learning",
+        "subCategory": "Human-Guided Learning",
+        "votes": 1
+      }
+    ]
+  },
+  {
+    "key": "reliability metrics",
+    "owners": [
+      "Reliability Metrics",
+      "Reliability Metrics (e.g., Adversarial Robustness)"
+    ],
+    "decisions": [
+      {
+        "category": "Evaluation Metrics",
+        "subCategory": "",
+        "votes": 1
+      },
+      {
+        "category": "Security & Robustness",
+        "subCategory": "Adversarial Machine Learning",
+        "votes": 1
+      }
+    ]
+  },
+  {
+    "key": "saycan",
+    "owners": [
+      "SayCan (Language + RL Control)",
+      "SayCan (language-to-action)"
+    ],
+    "decisions": [
+      {
+        "category": "Reinforcement Learning",
+        "subCategory": "",
+        "votes": 1
+      },
+      {
+        "category": "Natural Language Processing",
+        "subCategory": "",
+        "votes": 1
+      }
+    ]
+  },
+  {
+    "key": "selu",
+    "owners": [
+      "Scaled ELU (SELU)",
+      "Scaled Exponential Linear Unit (SELU)"
+    ],
+    "decisions": [
+      {
+        "category": "Neural Networks",
+        "subCategory": "Activation Functions",
+        "votes": 1
+      },
+      {
+        "category": "Neural Networks",
+        "subCategory": "Core Models",
+        "votes": 1
+      }
+    ]
+  },
+  {
+    "key": "self-organizing maps",
+    "owners": [
+      "Self-Organizing Maps",
+      "Self-Organizing Maps (SOM)",
+      "Self-organizing Maps (SOMs)"
+    ],
+    "decisions": [
+      {
+        "category": "Learning Paradigms",
+        "subCategory": "",
+        "votes": 2
+      },
+      {
+        "category": "Unsupervised Learning",
+        "subCategory": "Clustering Techniques",
+        "votes": 1
+      }
+    ]
+  },
+  {
+    "key": "srgan",
+    "owners": [
+      "SRGAN",
+      "Super-Resolution GAN (SRGAN)"
+    ],
+    "decisions": [
+      {
+        "category": "Generative Models",
+        "subCategory": "Super-Resolution GANs",
+        "votes": 1
+      },
+      {
+        "category": "Generative Models",
+        "subCategory": "Adversarial Networks",
+        "votes": 1
+      }
+    ]
+  },
+  {
+    "key": "support vector machines",
+    "owners": [
+      "Support Vector Machines",
+      "Support Vector Machines (SVM)",
+      "support vector machines (SVMs)"
+    ],
+    "decisions": [
+      {
+        "category": "Representation Learning",
+        "subCategory": "Vector Representations",
+        "votes": 2
+      },
+      {
+        "category": "Classification",
+        "subCategory": "Kernel Methods",
+        "votes": 1
+      }
+    ]
+  },
+  {
+    "key": "swe-bench+",
+    "owners": [
+      "SWE-bench+ (code agent eval)",
+      "SWE-bench+ (code agents)"
+    ],
+    "decisions": [
+      {
+        "category": "Reinforcement Learning",
+        "subCategory": "",
+        "votes": 1
+      },
+      {
+        "category": "Natural Language Processing",
+        "subCategory": "Language Generation",
+        "votes": 1
+      }
+    ]
+  },
+  {
+    "key": "t-sne",
+    "owners": [
+      "T-SNE",
+      "t-Distributed Stochastic Neighbor Embedding (t-SNE)",
+      "t-SNE (t-Distributed Stochastic Neighbor Embedding)"
+    ],
+    "decisions": [
+      {
+        "category": "Optimization Algorithms",
+        "subCategory": "Gradient-Based Optimizers",
+        "votes": 2
+      },
+      {
+        "category": "Dimensionality Reduction",
+        "subCategory": "Visualization Techniques",
+        "votes": 1
+      }
+    ]
+  },
+  {
+    "key": "td3",
+    "owners": [
+      "TD3",
+      "Twin Delayed DDPG (TD3)",
+      "Twin Delayed Deep Deterministic Policy Gradient (TD3)"
+    ],
+    "decisions": [
+      {
+        "category": "Reinforcement Learning",
+        "subCategory": "Advanced RL Techniques",
+        "votes": 2
+      },
+      {
+        "category": "Optimization Algorithms",
+        "subCategory": "Gradient-Based Optimizers",
+        "votes": 1
+      }
+    ]
+  },
+  {
+    "key": "byot",
+    "owners": [
+      "Teacher-Student Self-Distill (BYOT)",
+      "Teacher-Student Self-Distillation (BYOT)"
+    ],
+    "decisions": [
+      {
+        "category": "Learning Paradigms",
+        "subCategory": "",
+        "votes": 1
+      },
+      {
+        "category": "Model Optimization",
+        "subCategory": "Model Compression",
+        "votes": 1
+      }
+    ]
+  },
+  {
+    "key": "tf-idf",
+    "owners": [
+      "TF-IDF",
+      "Term Frequency-Inverse Document Frequency (TF-IDF)",
+      "tf-idf (term frequency-inverse document frequency)"
+    ],
+    "decisions": [
+      {
+        "category": "Natural Language Processing",
+        "subCategory": "",
+        "votes": 2
+      },
+      {
+        "category": "Natural Language Processing",
+        "subCategory": "Text Representation",
+        "votes": 1
+      }
+    ]
+  },
+  {
+    "key": "topological data analysis",
+    "owners": [
+      "Topological Data Analysis",
+      "Topological Data Analysis (TDA)"
+    ],
+    "decisions": [
+      {
+        "category": "Data Analysis",
+        "subCategory": "Advanced Data Analysis",
+        "votes": 1
+      },
+      {
+        "category": "Data Analysis",
+        "subCategory": "",
+        "votes": 1
+      }
+    ]
+  },
+  {
+    "key": "transformer models",
+    "owners": [
+      "Transformer Models",
+      "Transformer Models (e.g., BERT, GPT)",
+      "Transformer Models (e.g., BERT, GPT, T5)"
+    ],
+    "decisions": [
+      {
+        "category": "Natural Language Processing",
+        "subCategory": "Pre-trained Models",
+        "votes": 2
+      },
+      {
+        "category": "Neural Networks",
+        "subCategory": "Advanced Architectures",
+        "votes": 1
+      }
+    ]
+  },
+  {
+    "key": "transformer variants",
+    "owners": [
+      "Transformer Variants",
+      "Transformer Variants (e.g., BERT, GPT, T5)",
+      "Transformer Variants (e.g., GPT, T5)"
+    ],
+    "decisions": [
+      {
+        "category": "Natural Language Processing",
+        "subCategory": "Pre-trained Models",
+        "votes": 2
+      },
+      {
+        "category": "Neural Networks",
+        "subCategory": "Advanced Architectures",
+        "votes": 1
+      }
+    ]
+  },
+  {
+    "key": "triplet loss",
+    "owners": [
+      "Triplet Loss",
+      "Triplet loss (semi-hard)"
+    ],
+    "decisions": [
+      {
+        "category": "Loss Functions",
+        "subCategory": "Representation Learning",
+        "votes": 1
+      },
+      {
+        "category": "Learning Paradigms",
+        "subCategory": "",
+        "votes": 1
+      }
+    ]
+  },
+  {
+    "key": "uniform manifold approximation and projection",
+    "owners": [
+      "UMAP (Uniform Manifold Approximation and Projection)",
+      "Uniform Manifold Approximation and Projection",
+      "Uniform Manifold Approximation and Projection (UMAP)"
+    ],
+    "decisions": [
+      {
+        "category": "Dimensionality Reduction",
+        "subCategory": "Feature Reduction",
+        "votes": 2
+      },
+      {
+        "category": "Representation Learning",
+        "subCategory": "",
+        "votes": 1
+      }
+    ]
+  },
+  {
+    "key": "vgae",
+    "owners": [
+      "Variational Graph Autoencoder (VGAE)",
+      "Variational Graph Autoencoders (VGAE)"
+    ],
+    "decisions": [
+      {
+        "category": "Neural Networks",
+        "subCategory": "Autoencoders",
+        "votes": 1
+      },
+      {
+        "category": "Graph Analysis",
+        "subCategory": "",
+        "votes": 1
+      }
+    ]
+  },
+  {
+    "key": "vicreg",
+    "owners": [
+      "VICReg (Variance-Invariance-Covariance Regularization)",
+      "VicReg"
+    ],
+    "decisions": [
+      {
+        "category": "Representation Learning",
+        "subCategory": "",
+        "votes": 1
+      },
+      {
+        "category": "Statistical Methods",
+        "subCategory": "",
+        "votes": 1
+      }
+    ]
+  },
+  {
+    "key": "vit",
+    "owners": [
+      "ViT",
+      "Vision Transformer (ViT)",
+      "Vision Transformers (ViT)"
+    ],
+    "decisions": [
+      {
+        "category": "Neural Networks",
+        "subCategory": "Advanced Architectures",
+        "votes": 1
+      },
+      {
+        "category": "Neural Networks",
+        "subCategory": "Transformer-Based Models",
+        "votes": 1
+      },
+      {
+        "category": "Computer Vision",
+        "subCategory": "Image Processing",
+        "votes": 1
+      }
+    ]
+  },
+  {
+    "key": "vision transformers",
+    "owners": [
+      "Vision Transformers",
+      "Vision Transformers (ViT)",
+      "Vision Transformers (ViTs)"
+    ],
+    "decisions": [
+      {
+        "category": "Neural Networks",
+        "subCategory": "Transformer-Based Models",
+        "votes": 2
+      },
+      {
+        "category": "Computer Vision",
+        "subCategory": "",
+        "votes": 1
+      }
+    ]
+  },
+  {
+    "key": "wgan-gp",
+    "owners": [
+      "WGAN with Gradient Penalty (WGAN-GP)",
+      "WGAN-GP",
+      "WGAN-GP (Wasserstein GAN with Gradient Penalty)",
+      "Wasserstein GAN with Gradient Penalty (WGAN-GP)"
+    ],
+    "decisions": [
+      {
+        "category": "Optimization Algorithms",
+        "subCategory": "Gradient-Based Optimizers",
+        "votes": 3
+      },
+      {
+        "category": "Generative Models",
+        "subCategory": "Adversarial Networks",
+        "votes": 1
+      }
+    ]
+  },
+  {
+    "key": "webarena",
+    "owners": [
+      "WebArena (agentic browsing eval)",
+      "WebArena (tool-use)"
+    ],
+    "decisions": [
+      {
+        "category": "Evaluation Metrics",
+        "subCategory": "",
+        "votes": 1
+      },
+      {
+        "category": "AI Applications",
+        "subCategory": "",
+        "votes": 1
+      }
+    ]
+  },
+  {
+    "key": "word embeddings",
+    "owners": [
+      "Word Embeddings",
+      "Word Embeddings (Word2Vec, GloVe)"
+    ],
+    "decisions": [
+      {
+        "category": "Representation Learning",
+        "subCategory": "Vector Representations",
+        "votes": 1
+      },
+      {
+        "category": "Natural Language Processing",
+        "subCategory": "Text Representation",
+        "votes": 1
+      }
+    ]
+  }
+]

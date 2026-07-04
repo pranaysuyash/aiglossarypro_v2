@@ -226,3 +226,9 @@ The runtime content contract remains JSON-first and unchanged.
   - common confusion
   - best next step
 - This is a durable bridge between the structure sheet and the learner surface because it turns “adjacent concepts” into a visible study move instead of leaving them implicit in related-term links.
+
+## Addendum (2026-07-04 Structure Expansion Bridge)
+
+- The importer now publishes `structure-expansion` for every term, not only for featured terms.
+- The block surfaces a ranked slice of the broader workbook ceiling, with `editorial-expansion` sections shown before `backlog` sections.
+- The explicit `STRUCTURE_EDITORIAL_SECTION_ORDER` is preserved in `editorial/structure-registry.json` so downstream consumers do not silently lose the editorial sequence.

@@ -542,10 +542,13 @@ export function TermPage() {
                 : "Your note is stored in the browser until an active membership is linked."}
             </p>
             <textarea
+              autoComplete="off"
               value={note}
               onChange={(event) => {
                 void setNote(term.slug, event.target.value);
               }}
+              name="termNote"
+              spellCheck={false}
               placeholder="Capture what you want to remember, compare, or revisit."
             />
             {note.trim() ? (
@@ -650,6 +653,7 @@ export function TermPage() {
             <label className="search-panel">
               <span>Attach to block</span>
               <select
+                name="annotationBlock"
                 value={selectedBlockId}
                 onChange={(event) => setSelectedBlockId(event.target.value)}
               >
@@ -661,15 +665,21 @@ export function TermPage() {
               </select>
             </label>
             <textarea
+              autoComplete="off"
               value={annotationNote}
               onChange={(event) => setAnnotationNote(event.target.value)}
+              name="annotationNote"
+              spellCheck={false}
               placeholder="Write a focused annotation for this block."
             />
             <label className="search-panel">
               <span>Selected excerpt</span>
               <input
+                autoComplete="off"
                 value={annotationQuote}
                 onChange={(event) => setAnnotationQuote(event.target.value)}
+                name="annotationQuote"
+                spellCheck={false}
                 placeholder="Optional quote or exact phrase from the block"
               />
             </label>

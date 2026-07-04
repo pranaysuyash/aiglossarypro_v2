@@ -6,6 +6,13 @@ __pycache__/
 .DS_Store
 .wrangler/
 
+# Secrets / local runtime env (templates like .dev.vars.example are tracked)
+.dev.vars
+.env
+.env.local
+.env.*.local
+
+
 # Local runtime/debug artifacts
 mcp-shell.log
 .tmp-*.png

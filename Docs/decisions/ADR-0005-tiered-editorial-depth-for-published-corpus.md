@@ -111,6 +111,7 @@ Decision: accepted
 ## Implementation Notes
 
 - the importer assigns editorial tiers during published corpus generation
+- every published term receives the compact `structure-expansion` bridge block
 - featured terms receive an additional `deep-dive` block
 - published manifest artifacts expose tier counts
 - discovery, paths, account, saved shelf, and notes surfaces can read the same tier information
@@ -132,6 +133,7 @@ Affected files:
 
 - regenerate published JSON from the workbook exports
 - verify the manifest exposes tier counts
+- verify the structure-expansion block is present on every published term while deep-dive remains featured-only
 - verify featured terms receive the deep-dive block
 - verify the term, path, discovery, account, saved, and notebook surfaces all consume the same tier model
 - keep tests and build green after content regeneration
