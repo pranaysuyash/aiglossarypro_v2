@@ -1614,6 +1614,48 @@ textarea {
   gap: var(--space-lg);
 }
 
+.field-lab-hero-copy {
+  display: grid;
+  gap: var(--space-lg);
+}
+
+.field-lab-stat-strip {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.65rem;
+}
+
+.field-lab-stat-card,
+.field-lab-lane-card,
+.field-lab-contract-card {
+  display: grid;
+  gap: 0.55rem;
+  padding: var(--space-lg);
+  border-radius: var(--radius-xl);
+  background: var(--surface-card);
+  border: 1px solid var(--border-subtle);
+  box-shadow: var(--shadow-sm);
+}
+
+.field-lab-stat-card span,
+.field-lab-stat-card p,
+.field-lab-lane-card p,
+.field-lab-contract-card p {
+  margin: 0;
+  color: var(--ink-muted);
+}
+
+.field-lab-stat-card strong {
+  font-family: "Spectral", Georgia, serif;
+  font-size: 1.2rem;
+  line-height: 1;
+}
+
+.field-lab-hero-panels {
+  display: grid;
+  gap: var(--space-lg);
+}
+
 .field-lab-status-panel {
   display: grid;
   gap: 0.6rem;
@@ -1623,10 +1665,195 @@ textarea {
   border: 1px solid var(--border-subtle);
 }
 
+.field-lab-status-panel-primary {
+  background:
+    radial-gradient(circle at top right, var(--accent-soft), transparent 34%),
+    var(--surface-card-strong);
+}
+
+.field-lab-mini-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.65rem;
+}
+
+.field-lab-mini-grid div {
+  display: grid;
+  gap: 0.16rem;
+  padding: 0.72rem 0.8rem;
+  border-radius: var(--radius-lg);
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.field-lab-mini-grid strong {
+  font-family: "Spectral", Georgia, serif;
+  font-size: 1.05rem;
+  line-height: 1;
+}
+
+.field-lab-mini-grid span {
+  font-size: 0.82rem;
+}
+
 .field-lab-status-panel .showcase-label,
 .field-lab-status-panel p,
 .field-lab-status-panel span {
   color: var(--ink-muted);
+}
+
+.field-lab-status-panel-dark .field-lab-family-list {
+  display: grid;
+  gap: 0.42rem;
+}
+
+.field-lab-family-list {
+  display: grid;
+  gap: 0.42rem;
+}
+
+.field-lab-family-list div,
+.field-lab-contract-summary div {
+  display: grid;
+  gap: 0.12rem;
+}
+
+.field-lab-family-list strong,
+.field-lab-contract-summary strong {
+  font-size: 0.95rem;
+}
+
+.field-lab-family-list span,
+.field-lab-contract-summary span {
+  color: var(--ink-muted);
+  font-size: 0.82rem;
+}
+
+.field-lab-family-list-compact {
+  gap: 0.35rem;
+}
+
+.field-lab-family-list-compact div {
+  padding: 0.5rem 0.65rem;
+  border-radius: var(--radius-md);
+  background: var(--surface-inset);
+  border: 1px solid var(--border-subtle);
+}
+
+.field-lab-lane-grid,
+.field-lab-contract-grid {
+  display: grid;
+  gap: 0.9rem;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+}
+
+.field-lab-link-list {
+  display: grid;
+  gap: 0.45rem;
+}
+
+.field-lab-link-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.8rem;
+  align-items: center;
+  text-decoration: none;
+  padding: 0.72rem 0.85rem;
+  border-radius: var(--radius-lg);
+  background: var(--surface-raised);
+  border: 1px solid var(--border-subtle);
+  color: var(--ink-body);
+}
+
+.field-lab-link-row span {
+  color: var(--ink-muted);
+  font-size: 0.82rem;
+}
+
+.field-lab-link-row strong {
+  font-size: 0.88rem;
+}
+
+.field-lab-contract-summary {
+  display: grid;
+  gap: 0.7rem;
+}
+
+.field-lab-contract-summary div {
+  padding: 0.75rem 0.85rem;
+  border-radius: var(--radius-lg);
+  background: var(--surface-inset);
+  border: 1px solid var(--border-subtle);
+}
+
+.field-lab-contract-summary strong {
+  display: block;
+}
+
+.field-lab-contract-grid .field-lab-contract-card {
+  min-height: 100%;
+}
+
+.field-lab-contract-grid .field-lab-contract-card h3 {
+  margin: 0;
+  font-family: "Spectral", Georgia, serif;
+  font-size: 1.15rem;
+}
+
+.field-lab-contract-list {
+  display: grid;
+  gap: 0.65rem;
+}
+
+.field-lab-contract-item {
+  display: grid;
+  gap: 0.32rem;
+  padding: 0.72rem 0.8rem;
+  border-radius: var(--radius-lg);
+  background: var(--surface-inset);
+  border: 1px solid var(--border-subtle);
+}
+
+.field-lab-contract-item p {
+  color: var(--ink-muted);
+}
+
+.field-lab-layer-columns {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.field-lab-layer-column {
+  display: grid;
+  gap: 0.45rem;
+}
+
+.field-lab-layer-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.8rem;
+  align-items: center;
+  font-size: 0.86rem;
+}
+
+.field-lab-layer-group {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.8rem;
+  align-items: baseline;
+  padding: 0.52rem 0.65rem;
+  border-radius: var(--radius-md);
+  background: var(--surface-inset);
+  border: 1px solid var(--border-subtle);
+}
+
+.field-lab-layer-group span {
+  color: var(--ink-muted);
+  font-size: 0.8rem;
+}
+
+.field-lab-status-panel-primary .field-lab-mini-grid div {
+  background: rgba(255, 255, 255, 0.12);
 }
 
 /* ---- SAVED / NOTES PAGES ---- */
@@ -1870,6 +2097,12 @@ textarea {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
+  .field-lab-stat-strip,
+  .field-lab-lane-grid,
+  .field-lab-contract-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
   .site-header {
     align-items: start;
   }
@@ -1917,6 +2150,27 @@ textarea {
   .continue-meta-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
+
+  .field-lab-stat-strip,
+  .field-lab-lane-grid,
+  .field-lab-contract-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .field-lab-mini-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .field-lab-link-row,
+  .field-lab-layer-group {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .field-lab-layer-head {
+    align-items: flex-start;
+    flex-direction: column;
+  }
 }
 
 @media (max-width: 760px) {
@@ -1938,6 +2192,17 @@ textarea {
 
   .site-title {
     max-width: none;
+  }
+
+  .field-lab-hero {
+    gap: var(--space-md);
+  }
+
+  .field-lab-status-panel,
+  .field-lab-lane-card,
+  .field-lab-contract-card,
+  .field-lab-stat-card {
+    padding: var(--space-md);
   }
 }
 
@@ -1965,6 +2230,16 @@ textarea {
 
   .search-status {
     display: grid;
+  }
+
+  .site-nav {
+    justify-content: flex-start;
+    overflow-x: auto;
+    padding-bottom: 0.15rem;
+  }
+
+  .field-lab-stat-strip {
+    gap: 0.5rem;
   }
 }
 

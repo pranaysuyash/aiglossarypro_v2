@@ -1,10 +1,10 @@
 import {
   useCallback,
   createContext,
-  useContext,
   useEffect,
   useMemo,
   useRef,
+  use,
   useState,
   type ReactNode,
 } from "react";
@@ -28,9 +28,19 @@ export function CatalogProvider({ children }: { children: ReactNode }) {
   const [paths, setPaths] = useState<LearningPathSummary[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const termCacheRef = useRef<Map<string, TermRecord>>(new Map());
-  const shardCacheRef = useRef<Map<string, Map<string, TermRecord>>>(new Map());
-  const pathCacheRef = useRef<Map<string, LearningPathRecord>>(new Map());
+  const termCacheRef = useRef<Map<string, TermRecord> | null>(null);
+  const shardCacheRef = useRef<Map<string, Map<string, TermRecord>> | null>(null);
+  const pathCacheRef = useRef<Map<string, LearningPathRecord> | null>(null);
+
+  if (!termCacheRef.current) {
+    termCacheRef.current = new Map();
+  }
+  if (!shardCacheRef.current) {
+    shardCacheRef.current = new Map();
+  }
+  if (!pathCacheRef.current) {
+    pathCacheRef.current = new Map();
+  }
 
   useEffect(() => {
     let isCancelled = false;
@@ -81,7 +91,7 @@ export function CatalogProvider({ children }: { children: ReactNode }) {
   }, []);
 
   const loadTerm = useCallback(async (slug: string): Promise<TermRecord | null> => {
-    const cached = termCacheRef.current.get(slug);
+    const cached = termCacheRef.current?.get(slug);
     if (cached) {
       return cached;
     }
@@ -92,7 +102,7 @@ export function CatalogProvider({ children }: { children: ReactNode }) {
     });
     if (individualResponse.ok) {
       const payload = (await individualResponse.json()) as TermRecord;
-      termCacheRef.current.set(payload.slug, payload);
+      termCacheRef.current?.set(payload.slug, payload);
       return payload;
     }
 
@@ -103,7 +113,7 @@ export function CatalogProvider({ children }: { children: ReactNode }) {
     }
 
     const shardId = summary.artifact.shardId;
-    const cachedShard = shardCacheRef.current.get(shardId);
+    const cachedShard = shardCacheRef.current?.get(shardId);
     if (cachedShard) {
       return cachedShard.get(slug) ?? null;
     }
@@ -124,17 +134,17 @@ export function CatalogProvider({ children }: { children: ReactNode }) {
       terms: TermRecord[];
     };
     const shardMap = new Map(shardPayload.terms.map((term) => [term.slug, term]));
-    shardCacheRef.current.set(shardId, shardMap);
+    shardCacheRef.current?.set(shardId, shardMap);
 
     for (const term of shardPayload.terms) {
-      termCacheRef.current.set(term.slug, term);
+      termCacheRef.current?.set(term.slug, term);
     }
 
     return shardMap.get(slug) ?? null;
   }, [terms]);
 
   const loadPath = useCallback(async (slug: string): Promise<LearningPathRecord | null> => {
-    const cached = pathCacheRef.current.get(slug);
+    const cached = pathCacheRef.current?.get(slug);
     if (cached) {
       return cached;
     }
@@ -150,7 +160,7 @@ export function CatalogProvider({ children }: { children: ReactNode }) {
     }
 
     const payload = (await response.json()) as LearningPathRecord;
-    pathCacheRef.current.set(slug, payload);
+    pathCacheRef.current?.set(slug, payload);
     return payload;
   }, []);
 
@@ -172,7 +182,7 @@ export function CatalogProvider({ children }: { children: ReactNode }) {
 }
 
 export function useCatalog() {
-  const context = useContext(CatalogContext);
+  const context = use(CatalogContext);
   if (!context) {
     throw new Error("useCatalog must be used within CatalogProvider");
   }

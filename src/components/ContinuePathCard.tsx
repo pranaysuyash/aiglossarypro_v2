@@ -1,15 +1,11 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useCatalog } from "../content/CatalogContext";
 import { loadLastOpenedPathSlug } from "../study/storage";
-import { useEffect, useState } from "react";
 
 export function ContinuePathCard() {
   const { pathMap, paths } = useCatalog();
-  const [lastPathSlug, setLastPathSlug] = useState<string | null>(null);
-
-  useEffect(() => {
-    setLastPathSlug(loadLastOpenedPathSlug());
-  }, []);
+  const [lastPathSlug] = useState(() => loadLastOpenedPathSlug());
 
   const lastPath = lastPathSlug ? pathMap.get(lastPathSlug) ?? null : null;
   const firstPath = paths[0] ?? null;

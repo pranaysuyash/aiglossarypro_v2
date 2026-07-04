@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "npm run dev:web",
     "dev:web": "vite",
+    "dev:api": "node tools/dev_api_stub.mjs",
     "dev:worker": "wrangler dev --port 8787",
     "build": "vite build",
     "build:content": "./.venv/bin/python tools/build_published_content.py --glossary-workbook data_glossary.xlsx --structure-workbook data_structure.xlsx --out-dir public/content/published",

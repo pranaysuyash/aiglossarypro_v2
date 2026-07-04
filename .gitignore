@@ -5,6 +5,8 @@ __pycache__/
 .venv/
 .DS_Store
 .wrangler/
+skills/
+**/skills/
 
 # Secrets / local runtime env (templates like .dev.vars.example are tracked)
 .dev.vars
@@ -21,3 +23,4 @@ kickbacks.vsix
 
 # Agent-start compatibility mirror; canonical context lives in Docs/context/agent-start/
 .agent/
+.claude/
