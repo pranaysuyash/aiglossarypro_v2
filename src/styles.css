@@ -42,9 +42,10 @@
   --border-subtle: rgba(21, 34, 45, 0.08);
   --border-strong: rgba(21, 34, 45, 0.16);
 
-  --shadow-sm: 0 6px 18px rgba(21, 34, 45, 0.06);
-  --shadow-md: 0 18px 40px rgba(21, 34, 45, 0.09);
-  --shadow-lg: 0 28px 60px rgba(21, 34, 45, 0.16);
+  /* Flat, printed-page shadows — a hairline of lift, not a floating-card glow. */
+  --shadow-sm: 0 1px 2px rgba(21, 34, 45, 0.05);
+  --shadow-md: 0 2px 6px rgba(21, 34, 45, 0.06);
+  --shadow-lg: 0 4px 14px rgba(21, 34, 45, 0.09);
 
   --type-title: clamp(2.8rem, 5vw, 5.2rem);
   --type-headline: clamp(1.65rem, 3vw, 2.15rem);
@@ -63,11 +64,12 @@
   --space-4xl: 64px;
   --space-5xl: 96px;
 
-  --radius-sm: 12px;
-  --radius-md: 18px;
-  --radius-lg: 24px;
-  --radius-xl: 28px;
-  --radius-2xl: 32px;
+  /* Sharper, field-guide/library radius scale — not app-bubble rounding. */
+  --radius-sm: 3px;
+  --radius-md: 5px;
+  --radius-lg: 6px;
+  --radius-xl: 8px;
+  --radius-2xl: 10px;
   --radius-full: 999px;
 
   font-family: "Geist Variable", "Inter", "SF Pro Display", system-ui, sans-serif;
@@ -139,9 +141,9 @@
   --border-subtle: rgba(232, 237, 242, 0.08);
   --border-strong: rgba(232, 237, 242, 0.16);
 
-  --shadow-sm: 0 6px 18px rgba(0, 0, 0, 0.18);
-  --shadow-md: 0 18px 40px rgba(0, 0, 0, 0.24);
-  --shadow-lg: 0 28px 60px rgba(0, 0, 0, 0.32);
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.22);
+  --shadow-md: 0 2px 6px rgba(0, 0, 0, 0.26);
+  --shadow-lg: 0 4px 14px rgba(0, 0, 0, 0.32);
 
   --type-title: clamp(2.8rem, 5vw, 5.2rem);
   --type-headline: clamp(1.65rem, 3vw, 2.15rem);
@@ -160,11 +162,11 @@
   --space-4xl: 64px;
   --space-5xl: 96px;
 
-  --radius-sm: 12px;
-  --radius-md: 18px;
-  --radius-lg: 24px;
-  --radius-xl: 28px;
-  --radius-2xl: 32px;
+  --radius-sm: 3px;
+  --radius-md: 5px;
+  --radius-lg: 6px;
+  --radius-xl: 8px;
+  --radius-2xl: 10px;
   --radius-full: 999px;
 
   font-family: "Geist Variable", "Inter", "SF Pro Display", system-ui, sans-serif;
@@ -2410,8 +2412,7 @@ textarea {
 .study-ribbon-card {
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-2xl);
-  background:
-    linear-gradient(180deg, var(--surface-card), var(--surface-card-strong));
+  background: var(--surface-card);
   box-shadow: var(--shadow-md);
 }
 
@@ -2446,19 +2447,6 @@ textarea {
   overflow: clip;
 }
 
-.hero-card::before,
-.summary-card::before,
-.term-card::before,
-.family-card::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  background:
-    linear-gradient(135deg, rgba(255, 255, 255, 0.15), transparent 24%),
-    radial-gradient(circle at top right, var(--accent-soft), transparent 42%);
-  opacity: 0.9;
-}
 
 .hero-card > *,
 .summary-card > *,
@@ -2912,8 +2900,7 @@ textarea {
   padding: var(--space-xl);
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-2xl);
-  background:
-    linear-gradient(180deg, var(--surface-card), var(--surface-card-strong));
+  background: var(--surface-card);
   box-shadow: var(--shadow-sm);
   position: relative;
 }
@@ -2973,8 +2960,7 @@ textarea {
   padding: var(--space-xl);
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-2xl);
-  background:
-    linear-gradient(180deg, var(--surface-card), var(--surface-card-strong));
+  background: var(--surface-card);
   box-shadow: var(--shadow-sm);
 }
 
@@ -3041,8 +3027,7 @@ textarea {
   padding: var(--space-xl);
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-2xl);
-  background:
-    linear-gradient(180deg, var(--surface-card), var(--surface-card-strong));
+  background: var(--surface-card);
   box-shadow: var(--shadow-md);
   position: relative;
 }
@@ -3144,8 +3129,7 @@ textarea {
   padding: var(--space-xl);
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-2xl);
-  background:
-    linear-gradient(180deg, var(--surface-card), var(--surface-card-strong));
+  background: var(--surface-card);
   box-shadow: var(--shadow-md);
   position: relative;
 }

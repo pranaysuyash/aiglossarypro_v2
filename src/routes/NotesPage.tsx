@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 import { useMemo } from "react";
-import { ViewTransition } from "react";
 import { DirectionalTransition } from "../components/shared/DirectionalTransition";
 import { StudyRichText } from "../components/ai-elements/StudyRichText";
 import { useCatalog } from "../content/CatalogContext";
