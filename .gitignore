@@ -17,6 +17,7 @@ __pycache__/
 mcp-shell.log
 .tmp-*.png
 tmp-*.png
+kickbacks.vsix
 
 # Agent-start compatibility mirror; canonical context lives in Docs/context/agent-start/
 .agent/
