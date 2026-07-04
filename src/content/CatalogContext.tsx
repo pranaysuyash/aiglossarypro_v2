@@ -1,13 +1,4 @@
-import {
-  useCallback,
-  createContext,
-  useEffect,
-  useMemo,
-  useRef,
-  use,
-  useState,
-  type ReactNode,
-} from "react";
+import { useCallback, createContext, useMemo, useRef, use, type ReactNode } from "react";
 import type { LearningPathRecord, LearningPathSummary, TermRecord, TermSummary } from "../types";
 
 type CatalogContextValue = {
@@ -23,11 +14,52 @@ type CatalogContextValue = {
 
 const CatalogContext = createContext<CatalogContextValue | null>(null);
 
+type CatalogBootstrap = {
+  terms: TermSummary[];
+  paths: LearningPathSummary[];
+  error: string | null;
+};
+
+const catalogBootstrapPromise: Promise<CatalogBootstrap> = (async () => {
+  try {
+    const [termResponse, pathResponse] = await Promise.all([
+      fetch("/content/published/terms/index.json", {
+        headers: { accept: "application/json" },
+      }),
+      fetch("/content/published/paths/index.json", {
+        headers: { accept: "application/json" },
+      }),
+    ]);
+    if (!termResponse.ok) {
+      throw new Error(`Catalog request failed with status ${termResponse.status}`);
+    }
+    if (!pathResponse.ok) {
+      throw new Error(`Path request failed with status ${pathResponse.status}`);
+    }
+
+    const [termPayload, pathPayload] = await Promise.all([
+      termResponse.json() as Promise<TermSummary[]>,
+      pathResponse.json() as Promise<LearningPathSummary[]>,
+    ]);
+
+    return {
+      terms: termPayload,
+      paths: pathPayload,
+      error: null,
+    };
+  } catch (loadError) {
+    return {
+      terms: [],
+      paths: [],
+      error: loadError instanceof Error ? loadError.message : "Catalog load failed",
+    };
+  }
+})();
+
 export function CatalogProvider({ children }: { children: ReactNode }) {
-  const [terms, setTerms] = useState<TermSummary[]>([]);
-  const [paths, setPaths] = useState<LearningPathSummary[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
+  const bootstrap = use(catalogBootstrapPromise);
+  const { terms, paths, error } = bootstrap;
+  const isLoading = false;
   const termCacheRef = useRef<Map<string, TermRecord> | null>(null);
   const shardCacheRef = useRef<Map<string, Map<string, TermRecord>> | null>(null);
   const pathCacheRef = useRef<Map<string, LearningPathRecord> | null>(null);
@@ -41,54 +73,6 @@ export function CatalogProvider({ children }: { children: ReactNode }) {
   if (!pathCacheRef.current) {
     pathCacheRef.current = new Map();
   }
-
-  useEffect(() => {
-    let isCancelled = false;
-
-    async function loadCatalog() {
-      try {
-        const [termResponse, pathResponse] = await Promise.all([
-          fetch("/content/published/terms/index.json", {
-            headers: { accept: "application/json" },
-          }),
-          fetch("/content/published/paths/index.json", {
-            headers: { accept: "application/json" },
-          }),
-        ]);
-        if (!termResponse.ok) {
-          throw new Error(`Catalog request failed with status ${termResponse.status}`);
-        }
-        if (!pathResponse.ok) {
-          throw new Error(`Path request failed with status ${pathResponse.status}`);
-        }
-        const [termPayload, pathPayload] = await Promise.all([
-          termResponse.json() as Promise<TermSummary[]>,
-          pathResponse.json() as Promise<LearningPathSummary[]>,
-        ]);
-        if (!isCancelled) {
-          setTerms(termPayload);
-          setPaths(pathPayload);
-          setError(null);
-        }
-      } catch (loadError) {
-        if (!isCancelled) {
-          setTerms([]);
-          setPaths([]);
-          setError(loadError instanceof Error ? loadError.message : "Catalog load failed");
-        }
-      } finally {
-        if (!isCancelled) {
-          setIsLoading(false);
-        }
-      }
-    }
-
-    void loadCatalog();
-
-    return () => {
-      isCancelled = true;
-    };
-  }, []);
 
   const loadTerm = useCallback(async (slug: string): Promise<TermRecord | null> => {
     const cached = termCacheRef.current?.get(slug);
