@@ -1,0 +1,582 @@
+import { Link, useParams } from "react-router-dom";
+import { useEffect, useMemo, useState } from "react";
+import { useCatalog } from "../content/CatalogContext";
+import type { TermBlock, TermRecord, TermSummary } from "../types";
+import { buildInteractiveContentMix } from "../study/workspaceInsights";
+import { buildFamilyHighlights, familySlug, isFamilyMatch } from "./familyHighlights";
+
+export function FamilyDetailPage() {
+  const { familySlug: familySlugParam = "" } = useParams();
+  const { terms, paths, loadTerm, isLoading, error } = useCatalog();
+  const highlights = useMemo(() => buildFamilyHighlights(terms), [terms]);
+  const [familyTermRecords, setFamilyTermRecords] = useState<Map<string, TermRecord>>(new Map());
+  const family = highlights.find((item) => familySlug(item.title) === familySlugParam);
+  const familyTerms = useMemo(
+    () =>
+      family
+        ? terms.filter((term) => isFamilyMatch(term, family.title))
+        : [],
+    [family, terms],
+  );
+  const familyPaths = useMemo(
+    () =>
+      family
+        ? paths.filter(
+            (path) => path.category === family.title || path.title.toLowerCase().includes(family.title.toLowerCase()),
+          )
+        : [],
+    [family, paths],
+  );
+  const familyOrderedTerms = useMemo(() => {
+    const copy = [...familyTerms];
+    copy.sort((left, right) => {
+      if (left.metadata.editorialTier !== right.metadata.editorialTier) {
+        const leftTier = left.metadata.editorialTier ?? "standard";
+        const rightTier = right.metadata.editorialTier ?? "standard";
+        const score =
+          (rightTier === "featured" ? 3 : rightTier === "standard" ? 2 : 1) -
+          (leftTier === "featured" ? 3 : leftTier === "standard" ? 2 : 1);
+        if (score !== 0) {
+          return score;
+        }
+      }
+
+      return left.title.localeCompare(right.title);
+    });
+    return copy;
+  }, [familyTerms]);
+  const featuredTerms = useMemo(
+    () => familyTerms.filter((term) => term.metadata.editorialTier === "featured"),
+    [familyTerms],
+  );
+  const familyInteractiveMix = useMemo(
+    () => buildInteractiveContentMix(terms, featuredTerms.map((term) => term.slug)),
+    [featuredTerms, terms],
+  );
+  const familySequenceWindow = useMemo(() => {
+    const featuredSequence = featuredTerms.length ? featuredTerms : familyOrderedTerms;
+    const nextTerms = featuredSequence.slice(0, 6);
+
+    return {
+      nextTerms,
+      count: featuredSequence.length,
+      entryTerm: nextTerms[0],
+      lanePath: familyPaths[0] ?? null,
+    };
+  }, [familyPaths, featuredTerms, familyOrderedTerms]);
+  const familyTermLookup = useMemo(
+    () =>
+      new Map(
+        familyTerms.map((term) => [term.title.toLowerCase(), term]),
+      ),
+    [familyTerms],
+  );
+  const familySeedTerms = useMemo(() => familyTerms.slice(0, 12), [familyTerms]);
+  const familySeedTermSlugs = useMemo(() => familySeedTerms.map((term) => term.slug), [familySeedTerms]);
+  useEffect(() => {
+    let isCancelled = false;
+    if (!familySeedTermSlugs.length) {
+      setFamilyTermRecords(new Map());
+      return;
+    }
+
+    void (async () => {
+      const nextMap = new Map<string, TermRecord>();
+
+      await Promise.all(
+        familySeedTermSlugs.map(async (slug) => {
+          const fullTerm = await loadTerm(slug);
+          if (!isCancelled && fullTerm) {
+            nextMap.set(fullTerm.slug, fullTerm);
+          }
+        }),
+      );
+
+      if (!isCancelled) {
+        setFamilyTermRecords(nextMap);
+      }
+    })();
+
+    return () => {
+      isCancelled = true;
+    };
+  }, [familySeedTermSlugs, loadTerm]);
+  const featuredFamilyWidgets = useMemo(() => {
+    const seedTerms = featuredTerms.length ? featuredTerms : familyTerms;
+    const widgets: Array<{
+      type: "quiz" | "diagram" | "comparison" | "deep-dive";
+      title: string;
+      termSlug: string;
+      termTitle: string;
+      preview: string;
+      note: string;
+    }> = [];
+
+    for (const term of seedTerms) {
+      const blocks =
+        (familyTermRecords.get(term.slug) as TermRecord | TermSummary | undefined)?.blocks ?? term.blocks ?? [];
+      const quiz = blocks.find((block): block is Extract<TermBlock, { type: "quiz" }> => block.type === "quiz");
+      if (quiz) {
+        widgets.push({
+          type: "quiz",
+          title: quiz.title,
+          termSlug: term.slug,
+          termTitle: term.title,
+          preview: quiz.question,
+          note: `${quiz.options.length} options · correct index ${quiz.answerIndex + 1}`,
+        });
+      }
+
+      const diagram = blocks.find(
+        (block): block is Extract<TermBlock, { type: "diagram" }> => block.type === "diagram",
+      );
+      if (diagram) {
+        widgets.push({
+          type: "diagram",
+          title: diagram.title,
+          termSlug: term.slug,
+          termTitle: term.title,
+          preview: `${diagram.lanes.length} lanes · ${diagram.center.label}`,
+          note: diagram.takeaway,
+        });
+      }
+
+      const deepDive = blocks.find(
+        (block): block is Extract<TermBlock, { type: "deep-dive" }> => block.type === "deep-dive",
+      );
+      if (deepDive) {
+        widgets.push({
+          type: "deep-dive",
+          title: deepDive.title,
+          termSlug: term.slug,
+          termTitle: term.title,
+          preview: deepDive.takeaway,
+          note: `${deepDive.panels.length} panel(s) available`,
+        });
+      }
+
+      const comparison = blocks.find(
+        (block): block is Extract<TermBlock, { type: "comparison" }> => block.type === "comparison",
+      );
+      if (comparison) {
+        widgets.push({
+          type: "comparison",
+          title: comparison.title,
+          termSlug: term.slug,
+          termTitle: term.title,
+          preview: comparison.takeaway,
+          note: `${comparison.panels.length} comparison panel(s)`,
+        });
+      }
+
+      if (widgets.length >= 8) {
+        break;
+      }
+    }
+
+    return widgets;
+  }, [featuredTerms, familyTerms]);
+
+  const comparisonPairs = useMemo(() => {
+    const pairs: Array<{ anchor: string; neighbor: string; anchorSlug: string; neighborSlug: string }> = [];
+
+    featuredTerms.forEach((term) => {
+      const relatives = term.links.related
+        .map((title) => familyTermLookup.get(title.toLowerCase()))
+        .filter((match): match is (typeof familyTerms)[number] => Boolean(match))
+        .filter((match) => match.slug !== term.slug)
+        .slice(0, 2);
+
+      for (const related of relatives) {
+        pairs.push({
+          anchor: term.title,
+          neighbor: related.title,
+          anchorSlug: term.slug,
+          neighborSlug: related.slug,
+        });
+      }
+    });
+
+    return pairs.slice(0, 6);
+  }, [featuredTerms, familyTermLookup]);
+
+  if (isLoading) {
+    return (
+      <section className="page-grid">
+        <h2>Loading family lane</h2>
+        <p>Reading the published catalog to open the selected study cluster.</p>
+      </section>
+    );
+  }
+
+  if (error) {
+    return (
+      <section className="page-grid">
+        <h2>Family lane unavailable</h2>
+        <p>{error}</p>
+        <Link className="text-link" to="/families">
+          Back to families
+        </Link>
+      </section>
+    );
+  }
+
+  if (!family) {
+    return (
+      <section className="page-grid">
+        <h2>Family not found</h2>
+        <p>This flagship family is not present in the current published catalog.</p>
+        <Link className="text-link" to="/families">
+          Back to families
+        </Link>
+      </section>
+    );
+  }
+
+  const activeFamily = family;
+  const studyTrail = [
+    activeFamily.featuredCount ? "Start with a featured deep dive" : "Start with the overview block",
+    "Compare the nearest neighbors",
+    "Open a related path",
+    "Export the family packet",
+  ];
+
+  function exportFamilyPacket() {
+    const packet = {
+      exportedAt: new Date().toISOString(),
+      family: {
+        title: activeFamily.title,
+        note: activeFamily.note,
+        whyItMatters: activeFamily.whyItMatters,
+        studyMove: activeFamily.studyMove,
+        confusionCue: activeFamily.confusionCue,
+      },
+      featuredTerms: featuredTerms.map((term) => ({
+        slug: term.slug,
+        title: term.title,
+        summary: term.summary,
+        tier: term.metadata.editorialTier ?? "standard",
+      })),
+      relatedTerms: familyTerms.slice(0, 12).map((term) => ({
+        slug: term.slug,
+        title: term.title,
+        summary: term.summary,
+        tier: term.metadata.editorialTier ?? "standard",
+      })),
+      relatedPaths: familyPaths.map((path) => ({
+        slug: path.slug,
+        title: path.title,
+        description: path.description,
+      })),
+    };
+
+    const blob = new Blob([JSON.stringify(packet, null, 2)], {
+      type: "application/json",
+    });
+    const url = window.URL.createObjectURL(blob);
+    const anchor = document.createElement("a");
+    anchor.href = url;
+    anchor.download = `${family?.title ? `${familySlug(family.title)}-study-packet.json` : "family-study-packet.json"}`;
+    anchor.click();
+    window.URL.revokeObjectURL(url);
+  }
+
+  return (
+    <section className="page-grid">
+      <article className="hero-card term-hero">
+        <div className="term-hero-copy">
+          <p className="eyebrow">Flagship family</p>
+          <h2>{family.title}</h2>
+          <p className="term-hero-intro">{family.note}</p>
+          <p>{family.whyItMatters}</p>
+          <div className="shelf-links term-metrics">
+            <span>{familyTerms.length} terms in this family</span>
+            <span>{featuredTerms.length} featured concepts</span>
+            <span>{familyPaths.length} related paths</span>
+          </div>
+          <div className="hero-actions">
+            <Link className="primary-button" to="/explore">
+              Open library
+            </Link>
+            <Link className="ghost-button" to="/paths">
+              Browse paths
+            </Link>
+            <Link className="ghost-button" to="/pricing">
+              Review membership
+            </Link>
+            <button className="ghost-button" onClick={exportFamilyPacket} type="button">
+              Export family packet
+            </button>
+          </div>
+        </div>
+        <div className="term-hero-rail">
+          <article className="term-signal-card">
+            <p className="showcase-label">Study move</p>
+            <p>{family.studyMove}</p>
+          </article>
+          <article className="term-signal-card">
+            <p className="showcase-label">Boundary cue</p>
+            <p>{family.confusionCue}</p>
+          </article>
+        <article className="term-signal-card">
+            <p className="showcase-label">Workspace continuity</p>
+            <p>Your notes and bookmarks can stay attached to the same study account once you sign in.</p>
+            <div className="hero-actions">
+              <Link className="ghost-button" to="/notes">
+                Open notebook
+              </Link>
+              <Link className="ghost-button" to="/saved">
+                Open study shelf
+              </Link>
+            </div>
+          </article>
+          <article className="term-signal-card">
+            <p className="showcase-label">Family lane start</p>
+            <p>
+              {familySequenceWindow.entryTerm
+                ? `Start with ${familySequenceWindow.entryTerm.title} then move to neighboring flagship terms.`
+                : "Start with the first high-confidence terms in this family lane."}
+            </p>
+            <div className="hero-actions">
+              {familySequenceWindow.entryTerm ? (
+                <Link className="ghost-button" to={`/term/${familySequenceWindow.entryTerm.slug}`}>
+                  Open lane entry
+                </Link>
+              ) : null}
+              {familySequenceWindow.lanePath ? (
+                <Link className="ghost-button" to={`/paths/${familySequenceWindow.lanePath.slug}`}>
+                  Open related path
+                </Link>
+              ) : null}
+            </div>
+          </article>
+        </div>
+      </article>
+
+      <section className="family-grid">
+        <article className="summary-card">
+          <p className="showcase-label">Why this lane exists</p>
+          <h3>Some clusters need a more visual, comparative treatment.</h3>
+          <p>
+            This page keeps the important families distinct so the learner can compare concepts,
+            not just scan a list of term names.
+          </p>
+        </article>
+        <article className="summary-card">
+          <p className="showcase-label">How to use it</p>
+          <h3>Read one featured concept, then move sideways before moving on.</h3>
+          <p>
+            Start with the flagship concepts, compare the neighboring ideas, and then jump into the
+            path or term pages when you want the next layer.
+          </p>
+        </article>
+      </section>
+
+      <section className="family-trail-grid">
+        {studyTrail.map((step, index) => (
+          <article key={step} className="family-trail-card">
+            <p className="ritual-index">{String(index + 1).padStart(2, "0")}</p>
+            <h3>{step}</h3>
+          </article>
+        ))}
+      </section>
+
+      <section className="family-content-rail">
+        <div className="section-header">
+          <p className="eyebrow">Interactive family mix</p>
+          <h2>This lane already contains the depth signals that make the product feel premium.</h2>
+          <p>
+            The featured terms in the family are what carry the visual proof. They give the lane
+            a stronger balance of quizzes, diagrams, FAQs, comparisons, and deep dives.
+          </p>
+        </div>
+        <div className="family-content-grid">
+          <article className="family-content-card">
+            <p className="showcase-label">Recall</p>
+            <h3>
+              {familyInteractiveMix.quizzes} quizzes and {familyInteractiveMix.faqs} FAQs
+            </h3>
+            <p>Use these for quick checks when you want to remember the family without rereading everything.</p>
+          </article>
+          <article className="family-content-card">
+            <p className="showcase-label">Visual comparison</p>
+            <h3>
+              {familyInteractiveMix.diagrams} diagrams and {familyInteractiveMix.comparisons} comparisons
+            </h3>
+            <p>Use these to keep boundaries visible as the family expands across neighboring ideas.</p>
+          </article>
+          <article className="family-content-card">
+            <p className="showcase-label">Flagship depth</p>
+            <h3>{familyInteractiveMix.deepDives} deep dives</h3>
+            <p>Use these as the richer entry points when the family deserves a more authored study path.</p>
+          </article>
+        </div>
+      </section>
+
+      <section className="section-header">
+        <p className="eyebrow">Family lane sequence</p>
+        <h2>Start with the strongest anchors, then move across the map.</h2>
+      </section>
+      <section className="family-lane-grid">
+        {familySequenceWindow.nextTerms.length ? (
+          familySequenceWindow.nextTerms.map((term, index) => (
+            <article key={term.slug} className="family-card">
+              <div className="term-tier-row">
+                <span className={`term-tier term-tier-${term.metadata.editorialTier ?? "standard"}`}>
+                  Step {index + 1}
+                </span>
+              </div>
+              <p className="showcase-label">{family.title}</p>
+              <h3>{term.title}</h3>
+              <p>{term.summary}</p>
+              <Link className="text-link" to={`/term/${term.slug}`}>
+                Open lane term
+              </Link>
+            </article>
+          ))
+        ) : (
+          <article className="summary-card">
+            <h3>Lane is sparse</h3>
+            <p>This family currently has few enriched terms. The study path remains valid through path and search surfaces.</p>
+          </article>
+        )}
+      </section>
+
+      <section className="section-header">
+        <p className="eyebrow">Featured terms</p>
+        <h2>The richest terms in this family.</h2>
+      </section>
+      <section className="family-grid">
+        {featuredTerms.map((term) => (
+          <article key={term.slug} className="family-card">
+            <div className="family-card-head">
+              <p className="showcase-label">{term.title}</p>
+              <div className="term-tier-row">
+                <span className={`term-tier term-tier-${term.metadata.editorialTier ?? "standard"}`}>
+                  {term.metadata.editorialTier ?? "standard"}
+                </span>
+              </div>
+            </div>
+            <p>{term.summary}</p>
+            <Link className="text-link" to={`/term/${term.slug}`}>
+              Open deep dive
+            </Link>
+          </article>
+        ))}
+      </section>
+
+      <section className="section-header">
+        <p className="eyebrow">Interactive family surface</p>
+        <h2>Featured interactive widgets you can read before opening each term.</h2>
+      </section>
+      <section className="family-grid">
+        {featuredFamilyWidgets.length ? (
+          featuredFamilyWidgets.map((widget) => (
+            <article key={`${widget.type}-${widget.termSlug}-${widget.title}`} className="family-card">
+              <p className="showcase-label">{widget.type}</p>
+              <h3>{widget.title}</h3>
+              <p>{widget.preview}</p>
+              <p>{widget.note}</p>
+              <Link className="text-link" to={`/term/${widget.termSlug}`}>
+                Open {widget.termTitle}
+              </Link>
+            </article>
+          ))
+        ) : (
+          <article className="summary-card">
+            <h3>No family widgets yet</h3>
+            <p>This family still has launch surface terms; interactive widgets become available as more featured terms are enriched.</p>
+          </article>
+        )}
+      </section>
+
+      <section className="section-header">
+        <p className="eyebrow">Family comparison map</p>
+        <h2>Compare nearby featured terms before moving off the family lane.</h2>
+      </section>
+      <section className="family-grid">
+        {comparisonPairs.length ? (
+          comparisonPairs.map((pair) => (
+            <article key={`${pair.anchorSlug}-${pair.neighborSlug}`} className="family-card">
+              <p className="showcase-label">{pair.anchor} ↔ {pair.neighbor}</p>
+              <div className="hero-actions">
+                <Link className="text-link" to={`/term/${pair.anchorSlug}`}>
+                  Open anchor
+                </Link>
+                <span>vs</span>
+                <Link className="text-link" to={`/term/${pair.neighborSlug}`}>
+                  Open neighbor
+                </Link>
+              </div>
+            </article>
+          ))
+        ) : (
+          <article className="summary-card">
+            <h3>No direct feature pairings yet</h3>
+            <p>This family has fewer in-graph feature edges. Use related links or open the library to build comparison routes.</p>
+          </article>
+        )}
+      </section>
+
+      <section className="section-header">
+        <p className="eyebrow">Related terms</p>
+        <h2>Broader cluster around this family.</h2>
+      </section>
+      <section className="family-grid">
+        {familyTerms.slice(0, 8).map((term) => (
+          <article key={term.slug} className="family-card">
+            <p className="showcase-label">{term.title}</p>
+            <p>{term.summary}</p>
+            <Link className="text-link" to={`/term/${term.slug}`}>
+              Open term
+            </Link>
+          </article>
+        ))}
+      </section>
+
+      <section className="section-header">
+        <p className="eyebrow">Related paths</p>
+        <h2>Study trails that connect this family to the rest of the corpus.</h2>
+      </section>
+      <section className="family-grid">
+        {familyPaths.length ? (
+          familyPaths.map((path) => (
+            <article key={path.slug} className="family-card">
+              <p className="showcase-label">{path.title}</p>
+              <p>{path.description}</p>
+              <div className="path-row">
+                <span>{path.termCount} terms</span>
+                <span>{path.featuredTermSlugs.length} featured anchors</span>
+              </div>
+              <Link className="text-link" to={`/paths/${path.slug}`}>
+                Open path
+              </Link>
+            </article>
+          ))
+        ) : (
+          <article className="summary-card">
+            <h3>No matching paths yet</h3>
+            <p>The family is still useful as a standalone study lane even when no path is directly tagged.</p>
+          </article>
+        )}
+      </section>
+
+      {familyPaths.length ? (
+        <article className="summary-card summary-emphasis">
+          <p className="showcase-label">Best path entry</p>
+          <h3>
+            {familyPaths[0].title}
+          </h3>
+          <p>
+            Start here if you want a structured sequence rather than browsing one term at a time.
+          </p>
+          <div className="hero-actions">
+            <Link className="primary-button" to={`/paths/${familyPaths[0].slug}`}>
+              Open recommended path
+            </Link>
+          </div>
+        </article>
+      ) : null}
+    </section>
+  );
+}

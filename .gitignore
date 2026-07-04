@@ -1,0 +1,15 @@
+node_modules/
+dist/
+__pycache__/
+*.pyc
+.venv/
+.DS_Store
+.wrangler/
+
+# Local runtime/debug artifacts
+mcp-shell.log
+.tmp-*.png
+tmp-*.png
+
+# Agent-start compatibility mirror; canonical context lives in Docs/context/agent-start/
+.agent/
