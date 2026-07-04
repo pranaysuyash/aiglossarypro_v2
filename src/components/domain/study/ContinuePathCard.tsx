@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useCatalog } from "../../../content/CatalogContext";
 import { loadLastOpenedPathSlug } from "../../../study/storage";
+import { Button } from "@/components/ui/button";
 
 export function ContinuePathCard() {
   const { pathMap, paths } = useCatalog();
@@ -34,12 +35,14 @@ export function ContinuePathCard() {
         </div>
       </div>
       <div className="hero-actions">
-        <Link className="primary-button" to={lastPath ? `/paths/${lastPath.slug}` : "/paths"}>
-          {lastPath ? "Resume trail" : "Browse paths"}
-        </Link>
-        <Link className="ghost-button" to="/explore">
-          Explore terms
-        </Link>
+        <Button variant="accent" asChild>
+          <Link to={lastPath ? `/paths/${lastPath.slug}` : "/paths"}>
+            {lastPath ? "Resume trail" : "Browse paths"}
+          </Link>
+        </Button>
+        <Button variant="raised" asChild>
+          <Link to="/explore">Explore terms</Link>
+        </Button>
       </div>
     </article>
   );

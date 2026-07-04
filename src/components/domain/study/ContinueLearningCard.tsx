@@ -2,6 +2,7 @@ import { memo, useMemo } from "react";
 import { Link } from "react-router-dom";
 import { useCatalog } from "../../../content/CatalogContext";
 import { useStudy } from "../../../study/StudyContext";
+import { Button } from "@/components/ui/button";
 
 export const ContinueLearningCard = memo(function ContinueLearningCard() {
   const { termMap, paths } = useCatalog();
@@ -56,15 +57,19 @@ export const ContinueLearningCard = memo(function ContinueLearningCard() {
         </div>
       </div>
       <div className="hero-actions">
-        <Link className="primary-button" to={lastOpenedTerm ? `/term/${lastOpenedTerm.slug}` : "/explore"}>
-          {lastOpenedTerm ? "Resume term" : "Start exploring"}
-        </Link>
-        <Link className="ghost-button" to={suggestedNextTerm ? `/term/${suggestedNextTerm.slug}` : "/paths"}>
-          {suggestedNextTerm ? "Open next concept" : "Browse paths"}
-        </Link>
-        <Link className="ghost-button" to="/paths">
-          Browse paths
-        </Link>
+        <Button variant="accent" asChild>
+          <Link to={lastOpenedTerm ? `/term/${lastOpenedTerm.slug}` : "/explore"}>
+            {lastOpenedTerm ? "Resume term" : "Start exploring"}
+          </Link>
+        </Button>
+        <Button variant="raised" asChild>
+          <Link to={suggestedNextTerm ? `/term/${suggestedNextTerm.slug}` : "/paths"}>
+            {suggestedNextTerm ? "Open next concept" : "Browse paths"}
+          </Link>
+        </Button>
+        <Button variant="raised" asChild>
+          <Link to="/paths">Browse paths</Link>
+        </Button>
       </div>
     </article>
   );

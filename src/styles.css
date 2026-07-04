@@ -718,21 +718,15 @@ button {
 }
 
 .continue-panel-accent {
-  background:
-    radial-gradient(circle at top right, var(--accent-soft), transparent 28%),
-    var(--surface-card);
+  border-color: var(--accent-soft);
 }
 
 .continue-panel-secondary {
-  background:
-    radial-gradient(circle at top right, var(--secondary-soft), transparent 28%),
-    var(--surface-card);
+  border-color: var(--secondary-soft);
 }
 
 .continue-panel-gold {
-  background:
-    radial-gradient(circle at top right, var(--gold-soft), transparent 28%),
-    var(--surface-card);
+  border-color: var(--gold-soft);
 }
 
 .continue-panel h3 {
@@ -1257,8 +1251,7 @@ button {
   align-content: center;
   text-align: center;
   border-color: var(--accent-soft);
-  background:
-    linear-gradient(180deg, var(--accent-soft), var(--surface-card));
+  background: var(--accent-soft);
 }
 
 .diagram-center-kicker {
@@ -1715,9 +1708,8 @@ textarea {
 }
 
 .field-lab-status-panel-primary {
-  background:
-    radial-gradient(circle at top right, var(--accent-soft), transparent 34%),
-    var(--surface-card-strong);
+  background: var(--surface-card-strong);
+  border-color: var(--accent-soft);
 }
 
 .field-lab-mini-grid {
@@ -2567,9 +2559,9 @@ textarea {
 }
 
 .primary-button {
-  background: linear-gradient(135deg, var(--accent-primary), #c94820);
+  background: var(--accent-primary);
   color: white;
-  box-shadow: 0 14px 24px rgba(234, 91, 45, 0.18);
+  box-shadow: 0 2px 6px rgba(234, 91, 45, 0.22);
 }
 
 .ghost-button {
@@ -3523,9 +3515,8 @@ textarea {
 }
 
 .summary-emphasis {
-  background:
-    radial-gradient(circle at top right, var(--accent-soft), transparent 45%),
-    linear-gradient(180deg, var(--surface-card), var(--surface-card-strong));
+  background: var(--accent-soft);
+  border-color: var(--border-strong);
 }
 
 /* ---- home / field lab card components ---- */
@@ -3763,9 +3754,8 @@ textarea {
 /* ---- pricing ---- */
 
 .pricing-billboard {
-  background:
-    radial-gradient(circle at top right, var(--gold-soft), transparent 45%),
-    linear-gradient(180deg, var(--surface-card), var(--surface-card-strong));
+  background: var(--gold-soft);
+  border-color: var(--border-strong);
 }
 
 .pricing-grid {
