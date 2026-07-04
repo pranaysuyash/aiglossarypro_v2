@@ -15,12 +15,18 @@ export const buttonVariants = cva(
         destructive:
           "bg-destructive/10 text-destructive hover:bg-destructive/20 focus-visible:border-destructive/40 focus-visible:ring-destructive/20 dark:bg-destructive/20 dark:hover:bg-destructive/30 dark:focus-visible:ring-destructive/40",
         link: "text-primary underline-offset-4 hover:underline",
+        // Custom variants matching the app's design system
+        accent:
+          "bg-[var(--accent-primary)] text-white shadow-[0_8px_22px_var(--accent-glow)] hover:translate-y-[-1px] hover:shadow-[0_12px_28px_var(--accent-glow)] focus-visible:shadow-[0_0_0_3px_var(--accent-soft)]",
+        raised:
+          "bg-[var(--surface-raised)] text-[var(--ink-primary)] border border-[var(--border-subtle)] hover:bg-[var(--surface-card-strong)] focus-visible:shadow-[0_0_0_3px_var(--accent-soft)]",
       },
       size: {
         default:
           "h-8 gap-1.5 px-2.5 has-data-[icon=inline-end]:pr-2 has-data-[icon=inline-start]:pl-2",
         xs: "h-6 gap-1 rounded-[min(var(--radius-md),10px)] px-2 text-xs in-data-[slot=button-group]:rounded-lg has-data-[icon=inline-end]:pr-1.5 has-data-[icon=inline-start]:pl-1.5 [&_svg:not([class*='size-'])]:size-3",
         sm: "h-7 gap-1 rounded-[min(var(--radius-md),12px)] px-2.5 text-[0.8rem] in-data-[slot=button-group]:rounded-lg has-data-[icon=inline-end]:pr-1.5 has-data-[icon=inline-start]:pl-1.5 [&_svg:not([class*='size-'])]:size-3.5",
+        md: "h-10 gap-1.5 px-4 text-[0.9rem] rounded-[var(--radius-full)]",
         lg: "h-9 gap-1.5 px-2.5 has-data-[icon=inline-end]:pr-2 has-data-[icon=inline-start]:pl-2",
         icon: "size-8",
         "icon-xs":

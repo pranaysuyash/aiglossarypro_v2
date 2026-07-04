@@ -1,8 +1,8 @@
-import { useState } from "react";
+import { memo, useState } from "react";
 import { StudyRichText } from "./StudyRichText";
-import type { TermBlock } from "../types";
+import type { TermBlock } from "../../../types";
 
-export function TermBlockRenderer({ block }: { block: TermBlock }) {
+export const TermBlockRenderer = memo(function TermBlockRenderer({ block }: { block: TermBlock }) {
   if (block.type === "markdown") {
     const kicker =
       block.id === "source-definition"
@@ -187,7 +187,7 @@ export function TermBlockRenderer({ block }: { block: TermBlock }) {
                 {section.layer}
               </p>
               <h4>{section.section}</h4>
-              <p>{section.fieldCount} workbook fields</p>
+              <p>{section.fieldCount} structure fields</p>
               <div className="path-row">
                 {section.sampleFields.map((field) => (
                   <span key={field}>{field}</span>
@@ -259,9 +259,9 @@ export function TermBlockRenderer({ block }: { block: TermBlock }) {
       </ol>
     </section>
   );
-}
+});
 
-function QuizBlock({ block }: { block: Extract<TermBlock, { type: "quiz" }> }) {
+const QuizBlock = memo(function QuizBlock({ block }: { block: Extract<TermBlock, { type: "quiz" }> }) {
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
   const [revealed, setRevealed] = useState(false);
   const isCorrect = selectedIndex === block.answerIndex;
@@ -301,4 +301,4 @@ function QuizBlock({ block }: { block: Extract<TermBlock, { type: "quiz" }> }) {
       ) : null}
     </section>
   );
-}
+});

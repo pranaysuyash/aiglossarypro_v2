@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
+import { DirectionalTransition } from "../components/shared/DirectionalTransition";
 import { useCatalog } from "../content/CatalogContext";
 import {
   loadPublishedLaunchContract,
@@ -17,7 +18,7 @@ import { useStudy } from "../study/StudyContext";
 import { FieldLabTermInspection } from "./FieldLabTermInspection";
 
 export function FieldLabPage() {
-  const { terms, paths, isLoading, error } = useCatalog();
+  const { terms, paths, isLoading, error, reloadCatalog } = useCatalog();
   const { bookmarks, notes } = useStudy();
   const [manifest, setManifest] = useState<PublishedCorpusManifest | null>(null);
   const [registry, setRegistry] = useState<PublishedStructureRegistry | null>(null);
@@ -166,15 +167,6 @@ export function FieldLabPage() {
     return entries.sort((left, right) => right[1] - left[1]);
   }, [manifest]);
 
-  const layerGroups = useMemo(() => {
-    const list = registry?.sectionGroups ?? [];
-    return {
-      "launch-runtime": list.filter((group) => group.layer === "launch-runtime").slice(0, 8),
-      "editorial-expansion": list.filter((group) => group.layer === "editorial-expansion").slice(0, 8),
-      backlog: list.filter((group) => group.layer === "backlog").slice(0, 8),
-    };
-  }, [registry]);
-
   const systemStats = [
     {
       label: "Published corpus",
@@ -199,6 +191,7 @@ export function FieldLabPage() {
   ];
 
   return (
+    <DirectionalTransition>
     <section className="page-grid field-lab-page">
       <section className="hero-card field-lab-hero">
         <div className="field-lab-hero-copy">
@@ -239,9 +232,17 @@ export function FieldLabPage() {
                 : "Loading coverage snapshot…"}
             </h3>
             <p>
-              The app already knows what exists in the source workbooks. The job of this surface is to
-              make that knowledge inspectable and easy to compare against the live product.
+              This view shows what is live now, what the editorial plan still covers, and where the
+              published product has room to grow.
             </p>
+            {error ? (
+              <div className="field-lab-error-block">
+                <p>{error}</p>
+                <button className="ghost-button" type="button" onClick={reloadCatalog}>
+                  Retry catalog
+                </button>
+              </div>
+            ) : null}
             <div className="field-lab-mini-grid">
               <div>
                 <strong>{routeSurfaces.length}</strong>
@@ -332,19 +333,19 @@ export function FieldLabPage() {
           </article>
           <article className="field-lab-lane-card">
             <p className="showcase-label">Runtime contract</p>
-            <h3>Published artifacts should read like a system, not a report dump.</h3>
+            <h3>Keep the runtime contract readable without repeating every number twice.</h3>
+            <p>
+              The launch contract, structure registry, and published corpus should stay inspectable,
+              but they do not all need to shout the same metrics on the same screen.
+            </p>
             <div className="field-lab-contract-summary">
               <div>
-                <strong>
-                  {launchContract
-                    ? `${launchContract.launchSectionCount} launch sections`
-                    : "Loading launch contract…"}
-                </strong>
-                <span>mapped to the launch runtime</span>
+                <strong>Launch mapped</strong>
+                <span>{launchContract ? "Source sections are linked to the runtime" : "Loading launch contract…"}</span>
               </div>
               <div>
-                <strong>{registry ? `${registry.fieldCount} workbook fields` : "Loading structure…"}</strong>
-                <span>partitioned by product layer</span>
+                <strong>Structure held</strong>
+                <span>{registry ? "Editorial ceiling stays explicit" : "Loading structure…"}</span>
               </div>
             </div>
             <Link className="text-link" to="/field-lab">
@@ -354,65 +355,8 @@ export function FieldLabPage() {
         </div>
       </section>
 
-      <section className="field-lab-section">
-        <div className="section-header">
-          <p className="eyebrow">Contract details</p>
-          <h2>The runtime contract and editorial structure still need to be legible.</h2>
-          <p>
-            These panels should read like internal truth, not dashboard filler.
-          </p>
-        </div>
-        <div className="field-lab-contract-grid">
-          <article className="summary-card field-lab-contract-card">
-            <p className="eyebrow">Launch contract</p>
-            <h3>
-              {launchContract
-                ? `${launchContract.launchSectionCount} source sections mapped to the launch runtime`
-                : "Loading launch contract…"}
-            </h3>
-            <div className="field-lab-contract-list">
-              {(launchContract?.launchSections ?? []).slice(0, 5).map((section) => (
-                <div key={section.section} className="field-lab-contract-item">
-                  <strong>{section.section}</strong>
-                  <span>{section.status}</span>
-                  <p>{section.note}</p>
-                  <div className="field-lab-chip-row">
-                    {section.runtimeBlocks.slice(0, 3).map((block) => (
-                      <span key={block}>{block}</span>
-                    ))}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </article>
-          <article className="summary-card field-lab-contract-card">
-            <p className="eyebrow">Editorial structure</p>
-            <h3>
-              {registry
-                ? `${registry.fieldCount} workbook fields partitioned by product layer`
-                : "Loading structure registry…"}
-            </h3>
-            <div className="field-lab-layer-columns">
-              {(["launch-runtime", "editorial-expansion", "backlog"] as const).map((layer) => (
-                <section key={layer} className={`field-lab-layer-column field-lab-layer-column-${layer}`}>
-                  <div className="field-lab-layer-head">
-                    <strong>{layer}</strong>
-                    <span>{registry ? registry.layerCounts[layer].toLocaleString() : "—"} fields</span>
-                  </div>
-                  {layerGroups[layer].slice(0, 4).map((group) => (
-                    <div key={`${layer}-${group.section}`} className="field-lab-layer-group">
-                      <strong>{group.section}</strong>
-                      <span>{group.fieldCount} fields</span>
-                    </div>
-                  ))}
-                </section>
-              ))}
-            </div>
-          </article>
-        </div>
-      </section>
-
       <FieldLabTermInspection terms={terms} isLoading={isLoading} error={error} />
     </section>
+    </DirectionalTransition>
   );
 }

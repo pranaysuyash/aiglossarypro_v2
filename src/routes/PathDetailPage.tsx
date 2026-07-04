@@ -1,5 +1,7 @@
 import { Link, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
+import { ViewTransition } from "react";
+import { DirectionalTransition } from "../components/shared/DirectionalTransition";
 import type { LearningPathRecord } from "../types";
 import { useCatalog } from "../content/CatalogContext";
 import { getTermBlocks } from "../content/termBlocks";
@@ -121,15 +123,18 @@ export function PathDetailPage() {
 
   if (isCatalogLoading || isLoading) {
     return (
+      <DirectionalTransition>
       <section className="page-grid">
         <h2>Loading path…</h2>
         <p>Preparing the published learning trail.</p>
       </section>
+      </DirectionalTransition>
     );
   }
 
   if (catalogError || error || !path) {
     return (
+      <DirectionalTransition>
       <section className="page-grid">
         <h2>Learning trail syncing</h2>
         <p>{error ?? catalogError ?? "This path could not be loaded."}</p>
@@ -137,17 +142,21 @@ export function PathDetailPage() {
           Back to paths
         </Link>
       </section>
+      </DirectionalTransition>
     );
   }
 
   return (
+    <DirectionalTransition>
     <section className="page-grid">
       <article className="hero-card term-hero">
         <div className="term-hero-copy">
           <p className="eyebrow">
             {path.category} / {path.subCategory}
           </p>
-          <h1>{path.title}</h1>
+          <ViewTransition name={`path-title-${path.slug}`} share="text-morph">
+            <h1>{path.title}</h1>
+          </ViewTransition>
           <p className="term-hero-intro">
             A guided trail through the concepts that belong together. Use it when you want a
             learning sequence instead of a search result list.
@@ -291,5 +300,6 @@ export function PathDetailPage() {
         ))}
       </section>
     </section>
+    </DirectionalTransition>
   );
 }

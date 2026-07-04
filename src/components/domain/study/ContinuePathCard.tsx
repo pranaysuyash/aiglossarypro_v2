@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { useCatalog } from "../content/CatalogContext";
-import { loadLastOpenedPathSlug } from "../study/storage";
+import { useCatalog } from "../../../content/CatalogContext";
+import { loadLastOpenedPathSlug } from "../../../study/storage";
 
 export function ContinuePathCard() {
   const { pathMap, paths } = useCatalog();

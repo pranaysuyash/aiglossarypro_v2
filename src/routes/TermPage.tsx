@@ -1,9 +1,13 @@
-import { useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { Link, useParams } from "react-router-dom";
+import { ViewTransition } from "react";
 import { StudyRichText } from "../components/ai-elements/StudyRichText";
-import { TermBlockRenderer } from "../components/TermBlockRenderer";
+import { TermBlockRenderer } from "../components/domain/term/TermBlockRenderer";
+import { TermExtrasTabs } from "../components/domain/term/TermExtrasTabs";
+import { DirectionalTransition } from "../components/shared/DirectionalTransition";
 import { useCatalog } from "../content/CatalogContext";
 import { getTermBlocks } from "../content/termBlocks";
+import { getBlockTabKey, splitTermBlocks, type TermExtraTabKey } from "../content/termBlockGroups";
 import type { AnnotationRecord } from "../types";
 import { useWorkerRequest } from "../platform/workerApi";
 import { useStudy } from "../study/StudyContext";
@@ -15,6 +19,16 @@ const studyLoop = [
   "Bookmark the term",
   "Annotate a block",
   "Share or export the result",
+];
+
+const studyShortcuts = [
+  { id: "at-a-glance", label: "At a glance" },
+  { id: "concept-map", label: "Concept map" },
+  { id: "quick-faq", label: "Quick FAQ" },
+  { id: "comparison", label: "Comparison view" },
+  { id: "quick-quiz", label: "Quick quiz" },
+  { id: "deep-dive", label: "Featured deep dive" },
+  { id: "source-definition", label: "Source snippet" },
 ];
 
 export function TermPage() {
@@ -32,6 +46,7 @@ export function TermPage() {
   const [annotationQuote, setAnnotationQuote] = useState("");
   const [selectionCapture, setSelectionCapture] = useState<{ blockId: string; text: string } | null>(null);
   const [shareMessage, setShareMessage] = useState<string | null>(null);
+  const [activeExtraTab, setActiveExtraTab] = useState<TermExtraTabKey | undefined>(undefined);
 
   useEffect(() => {
     function captureSelection() {
@@ -156,14 +171,21 @@ export function TermPage() {
 
     return nextMap;
   }, [terms]);
-  const resolveTermSlug = (value: string) => termTitleToSlug.get(value.trim().toLowerCase()) ?? null;
-  const firstLinks = currentTerm
-    ? [
-        ...currentTerm.links.prerequisites.map((label) => ({ kind: "Prerequisite", label, slug: resolveTermSlug(label) })),
-        ...currentTerm.links.related.map((label) => ({ kind: "Related", label, slug: resolveTermSlug(label) })),
-        ...currentTerm.links.next.map((label) => ({ kind: "Next", label, slug: resolveTermSlug(label) })),
-      ].slice(0, 6)
-    : [];
+
+  const resolveTermSlug = useCallback((value: string) => termTitleToSlug.get(value.trim().toLowerCase()) ?? null, [termTitleToSlug]);
+
+  const firstLinks = useMemo(
+    () =>
+      currentTerm
+        ? [
+            ...currentTerm.links.prerequisites.map((label) => ({ kind: "Prerequisite", label, slug: resolveTermSlug(label) })),
+            ...currentTerm.links.related.map((label) => ({ kind: "Related", label, slug: resolveTermSlug(label) })),
+            ...currentTerm.links.next.map((label) => ({ kind: "Next", label, slug: resolveTermSlug(label) })),
+          ].slice(0, 6)
+        : [],
+    [currentTerm, resolveTermSlug],
+  );
+
   const familyHighlights = useMemo(() => buildFamilyHighlights(terms), [terms]);
   const studyFamilySlug = currentTerm
     ? currentTerm.metadata.studyFamily
@@ -212,17 +234,26 @@ export function TermPage() {
   const nextFamilyTerm =
     familyLaneIndex >= 0 && familyLaneIndex < familyLaneTerms.length - 1 ? familyLaneTerms[familyLaneIndex + 1] : null;
 
+  const activeBlocks = useMemo(() => getTermBlocks(term), [term]);
+  const filteredStudyShortcuts = useMemo(
+    () => studyShortcuts.filter((shortcut) => activeBlocks.some((block) => block.id === shortcut.id)),
+    [activeBlocks],
+  );
+
   if (isLoading || isTermLoading) {
     return (
+      <DirectionalTransition>
       <section className="page-grid">
         <h2>Loading term…</h2>
         <p>Reading the published catalog manifest and term detail artifact.</p>
       </section>
+      </DirectionalTransition>
     );
   }
 
   if (error) {
     return (
+      <DirectionalTransition>
       <section className="page-grid">
         <h2>Library syncing</h2>
         <p>{error}</p>
@@ -230,11 +261,13 @@ export function TermPage() {
           Back to explore
         </Link>
       </section>
+      </DirectionalTransition>
     );
   }
 
   if (termError || !term) {
     return (
+      <DirectionalTransition>
       <section className="page-grid">
         <h2>Term not found</h2>
         <p>{termError ?? "This slug is not present in the current published catalog manifest."}</p>
@@ -242,33 +275,29 @@ export function TermPage() {
           Back to explore
         </Link>
       </section>
+      </DirectionalTransition>
     );
   }
 
   const activeTerm = term;
-  const activeBlocks = getTermBlocks(activeTerm);
+  const { core: coreBlocks, extras: extraTabs } = splitTermBlocks(activeBlocks);
   const note = notes[activeTerm.slug] ?? "";
   const isSaved = bookmarks.includes(activeTerm.slug);
-  const blockTypeSummary = activeBlocks.reduce<Record<string, number>>((accumulator, block) => {
-    accumulator[block.type] = (accumulator[block.type] ?? 0) + 1;
-    return accumulator;
-  }, {});
-  const studyShortcuts = [
-    { id: "at-a-glance", label: "At a glance" },
-    { id: "concept-map", label: "Concept map" },
-    { id: "quick-faq", label: "Quick FAQ" },
-    { id: "comparison", label: "Comparison view" },
-    { id: "quick-quiz", label: "Quick quiz" },
-    { id: "deep-dive", label: "Featured deep dive" },
-    { id: "source-definition", label: "Source snippet" },
-  ].filter((shortcut) => activeBlocks.some((block) => block.id === shortcut.id));
+
   const source = activeTerm.source.glossaryWorkbook;
-  const sourceTraceItems = [
+  const sourceEvidenceItems = [
     `Workbook: ${source.file} / ${source.sheetName}`,
     `Inventory rows: ${source.inventoryRows.join(", ")}`,
     source.inventoryColumns.length ? `Inventory columns: ${source.inventoryColumns.join(", ")}` : "Inventory columns: none",
     source.taxonomyRow ? `Taxonomy row: ${source.taxonomyRow}` : "Taxonomy row: not present",
     source.definitionRow ? `Definition row: ${source.definitionRow}` : "Definition row: not present",
+  ];
+  const sourceSummaryItems = [
+    "Published source material",
+    `${source.inventoryRows.length.toLocaleString()} source markers`,
+    source.inventoryColumns.length ? `${source.inventoryColumns.length} source columns used` : "No source columns listed",
+    source.taxonomyRow ? "Taxonomy signal included" : "No taxonomy signal",
+    source.definitionRow ? "Definition signal included" : "No definition signal",
   ];
   async function copyShareLink() {
     if (isRemoteBacked) {
@@ -306,7 +335,7 @@ export function TermPage() {
           updatedAt: annotation.updatedAt,
         })),
       },
-      sourceTrace: sourceTraceItems,
+      sourceTrace: sourceEvidenceItems,
     };
 
     const blob = new Blob([JSON.stringify(packet, null, 2)], {
@@ -360,13 +389,16 @@ export function TermPage() {
   }
 
   return (
+    <DirectionalTransition>
     <section className="page-grid">
       <article className="hero-card term-hero">
         <div className="term-hero-copy">
           <p className="eyebrow">
             {(termSummary?.taxonomy.topic ?? activeTerm.taxonomy.topic)} / {activeTerm.taxonomy.category} / {activeTerm.taxonomy.subCategory}
           </p>
-          <h1>{activeTerm.title}</h1>
+          <ViewTransition name={`term-title-${activeTerm.slug}`} share="text-morph">
+            <h1>{activeTerm.title}</h1>
+          </ViewTransition>
           <p className="term-hero-intro">
             A focused entry in the field guide. Read the short version first, then stay for the
             concept graph, your own notes, and the deeper study blocks below.
@@ -377,12 +409,6 @@ export function TermPage() {
             </span>
           </div>
           <p>{activeTerm.summary}</p>
-          <div className="shelf-links term-metrics">
-            <span>{activeBlocks.length} learning blocks</span>
-            <span>{activeTerm.aliases.length} aliases</span>
-            <span>{Object.keys(blockTypeSummary).length} content shapes</span>
-            {activeTerm.metadata.studyFamily ? <span>{activeTerm.metadata.studyFamily}</span> : null}
-          </div>
           {familyLane ? (
             <p>
               <span className="showcase-label">Learn this through family lane:</span>{" "}
@@ -422,14 +448,28 @@ export function TermPage() {
               Export term packet
             </button>
           </div>
-          {studyShortcuts.length ? (
+          {filteredStudyShortcuts.length ? (
             <article className="study-shortcut-panel">
               <p className="showcase-label">Jump into study</p>
               <div className="study-shortcut-grid">
-                {studyShortcuts.map((shortcut) => (
-                  <a key={shortcut.id} className="study-shortcut" href={`#${shortcut.id}`}>
+                {filteredStudyShortcuts.map((shortcut) => (
+                  <button
+                    key={shortcut.id}
+                    type="button"
+                    className="study-shortcut"
+                    onClick={() => {
+                      const tabKey = getBlockTabKey(shortcut.id);
+                      const targetId = tabKey ? "term-extras" : shortcut.id;
+                      if (tabKey) {
+                        setActiveExtraTab(tabKey);
+                      }
+                      requestAnimationFrame(() => {
+                        document.getElementById(targetId)?.scrollIntoView({ behavior: "smooth", block: "start" });
+                      });
+                    }}
+                  >
                     {shortcut.label}
-                  </a>
+                  </button>
                 ))}
               </div>
             </article>
@@ -471,7 +511,7 @@ export function TermPage() {
             </div>
           </article>
           <article className="term-signal-card">
-            <p className="showcase-label">Study loop</p>
+            <p className="showcase-label">Study rhythm</p>
             <div className="connection-pills">
               {studyLoop.map((step) => (
                 <span key={step}>{step}</span>
@@ -479,9 +519,9 @@ export function TermPage() {
             </div>
           </article>
           <article className="term-signal-card">
-            <p className="showcase-label">Source trace</p>
+            <p className="showcase-label">Source notes</p>
             <div className="connection-pills">
-              {sourceTraceItems.map((item) => (
+              {sourceSummaryItems.map((item) => (
                 <span key={item}>{item}</span>
               ))}
             </div>
@@ -499,7 +539,7 @@ export function TermPage() {
           </p>
         </article>
         <article className="summary-card">
-          <p className="showcase-label">Study path</p>
+          <p className="showcase-label">How to move through it</p>
           <div className="path-row">
             <span>{activeTerm.links.prerequisites.length} prerequisites</span>
             <span>{activeTerm.links.related.length} related links</span>
@@ -507,21 +547,23 @@ export function TermPage() {
           </div>
         </article>
         <article className="summary-card">
-          <p className="showcase-label">Content shape</p>
-          <div className="path-row">
-            {Object.entries(blockTypeSummary).map(([type, count]) => (
-              <span key={type}>
-                {count} {type}
-              </span>
-            ))}
-          </div>
+          <p className="showcase-label">Also on this page</p>
+          {extraTabs.length ? (
+            <div className="path-row">
+              {extraTabs.map((tab) => (
+                <span key={tab.key}>{tab.label}</span>
+              ))}
+            </div>
+          ) : (
+            <p>This entry is short — the definition above is the whole picture for now.</p>
+          )}
         </article>
         <article className="summary-card">
-          <p className="showcase-label">Corpus accuracy</p>
+          <p className="showcase-label">Why you can trust it</p>
           <h3>Source-backed and build-audited.</h3>
           <p>
-            The published corpus is regenerated from the workbook snapshots and rechecked at build
-            time so term pages stay traceable to the source sheet instead of drifting into sample
+            The published corpus is regenerated from the source snapshots and rechecked at build
+            time so term pages stay traceable to the real material instead of drifting into sample
             content.
           </p>
         </article>
@@ -541,13 +583,14 @@ export function TermPage() {
               </article>
             ))}
           </section>
-          {getTermBlocks(term).map((block) => (
+          {coreBlocks.map((block) => (
             <TermBlockRenderer key={block.id} block={block} />
           ))}
+          <TermExtrasTabs tabs={extraTabs} activeKey={activeExtraTab} onSelect={setActiveExtraTab} />
         </div>
         <aside className="study-column">
           <section className="term-block study-note-card">
-            <p className="showcase-label">Notebook</p>
+            <p className="showcase-label">Your notes</p>
             <h3>Keep your own explanation</h3>
             <p>
               {isRemoteBacked
@@ -575,7 +618,7 @@ export function TermPage() {
             ) : null}
           </section>
           <section className="term-block">
-            <p className="showcase-label">Concept map</p>
+            <p className="showcase-label">Concept connections</p>
             <h3>Where this term sits</h3>
             <div className="graph-group">
               <p>
@@ -639,7 +682,7 @@ export function TermPage() {
           </section>
           <section className="term-block">
             <p className="showcase-label">Annotations</p>
-            <h3>Annotate the block that mattered</h3>
+            <h3>Save the part that mattered</h3>
             <p>
               {isRemoteBacked
                 ? "Annotations are stored through the active-member study API."
@@ -742,5 +785,6 @@ export function TermPage() {
         </aside>
       </div>
     </section>
+    </DirectionalTransition>
   );
 }

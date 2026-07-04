@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom";
 import { useMemo } from "react";
+import { ViewTransition } from "react";
+import { DirectionalTransition } from "../components/shared/DirectionalTransition";
 import { useCatalog } from "../content/CatalogContext";
 import { buildFamilyHighlights, familySlug, getFamilyPaths } from "./familyHighlights";
 
@@ -37,6 +39,7 @@ export function FamiliesPage() {
   );
 
   return (
+    <DirectionalTransition>
     <section className="page-grid">
       <div className="section-header explore-heading">
         <p className="eyebrow">Flagship families</p>
@@ -103,14 +106,16 @@ export function FamiliesPage() {
         <section className="family-grid">
           {familyCards.map((family) => (
             <article key={family.title} className="family-card">
-              <div className="family-card-head">
-                <p className="showcase-label">{family.title}</p>
+              <ViewTransition name={`family-title-${familySlug(family.title)}`} share="text-morph" default="none">
+                <div className="family-card-head">
+                  <p className="showcase-label">{family.title}</p>
                 <div className="term-tier-row">
                   <span className="term-tier term-tier-featured">{family.featuredCount} featured</span>
                   <span className="term-tier term-tier-standard">{family.count} total terms</span>
                   <span className="term-tier term-tier-featured">{family.laneTermCount} matching paths</span>
                 </div>
-              </div>
+                </div>
+              </ViewTransition>
               <h3>{family.note}</h3>
               <p>{family.whyItMatters}</p>
               <div className="family-block">
@@ -170,5 +175,6 @@ export function FamiliesPage() {
         </article>
       ) : null}
     </section>
+    </DirectionalTransition>
   );
 }

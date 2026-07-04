@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { loadPublishedCorpusManifest, type PublishedCorpusManifest } from "../content/publishedManifest";
+import { loadPublishedCorpusManifest, type PublishedCorpusManifest } from "../../../content/publishedManifest";
 
 function formatPercent(value: number) {
   return `${Math.round(value * 100)}%`;

@@ -1,19 +1,24 @@
+import { memo, useMemo } from "react";
 import { Link } from "react-router-dom";
-import { useCatalog } from "../content/CatalogContext";
-import { useStudy } from "../study/StudyContext";
+import { useCatalog } from "../../../content/CatalogContext";
+import { useStudy } from "../../../study/StudyContext";
 
-export function ContinueLearningCard() {
+export const ContinueLearningCard = memo(function ContinueLearningCard() {
   const { termMap, paths } = useCatalog();
   const { lastOpenedTermSlug, bookmarks, notes } = useStudy();
-  const lastOpenedTerm = lastOpenedTermSlug ? termMap.get(lastOpenedTermSlug) : null;
-  const suggestedNextSlug =
-    lastOpenedTerm?.links.next[0] ??
-    lastOpenedTerm?.links.related[0] ??
-    paths[0]?.featuredTermSlugs[0] ??
-    null;
-  const suggestedNextTerm = suggestedNextSlug ? termMap.get(suggestedNextSlug) ?? null : null;
+
+  const lastOpenedTerm = useMemo(() => (lastOpenedTermSlug ? termMap.get(lastOpenedTermSlug) : null), [lastOpenedTermSlug, termMap]);
+  const suggestedNextSlug = useMemo(
+    () =>
+      lastOpenedTerm?.links.next[0] ??
+      lastOpenedTerm?.links.related[0] ??
+      paths[0]?.featuredTermSlugs[0] ??
+      null,
+    [lastOpenedTerm, paths],
+  );
+  const suggestedNextTerm = useMemo(() => (suggestedNextSlug ? termMap.get(suggestedNextSlug) ?? null : null), [suggestedNextSlug, termMap]);
   const savedCount = bookmarks.length;
-  const noteCount = Object.values(notes).filter((value) => value.trim()).length;
+  const noteCount = useMemo(() => Object.values(notes).filter((value) => value.trim()).length, [notes]);
   const firstPath = paths[0] ?? null;
 
   return (
@@ -63,4 +68,4 @@ export function ContinueLearningCard() {
       </div>
     </article>
   );
-}
+});

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { loadPublishedCorpusManifest, type PublishedCorpusManifest } from "../content/publishedManifest";
+import { loadPublishedCorpusManifest, type PublishedCorpusManifest } from "../../../content/publishedManifest";
 
 function formatPercent(value: number) {
   return `${Math.round(value * 100)}%`;
@@ -28,7 +28,7 @@ const learningModes = [
   },
   {
     title: "Curriculum map",
-    note: "The workbook structure rendered as a visible learning arc on every term.",
+    note: "The curriculum structure rendered as a visible learning arc on every term.",
   },
   {
     title: "Structure expansion",

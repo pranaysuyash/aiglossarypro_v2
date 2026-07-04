@@ -1,5 +1,6 @@
 import { useDeferredValue, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
+import { useCatalog } from "../content/CatalogContext";
 import type { TermSummary } from "../types";
 
 const pageSize = 24;
@@ -13,6 +14,7 @@ export function FieldLabTermInspection({
   isLoading: boolean;
   error: string | null;
 }) {
+  const { reloadCatalog } = useCatalog();
   const [query, setQuery] = useState("");
   const [tierFilter, setTierFilter] = useState<"all" | "featured" | "standard" | "sparse">("all");
   const [pageIndex, setPageIndex] = useState(0);
@@ -101,6 +103,11 @@ export function FieldLabTermInspection({
               ? `Showing terms matching "${deferredQuery.trim()}" with the current tier filter.`
               : "Showing the current corpus through a paged inspection surface instead of an endless render."}
         </p>
+        {error ? (
+          <button className="ghost-button" type="button" onClick={reloadCatalog}>
+            Retry catalog
+          </button>
+        ) : null}
         <div className="field-lab-pagination">
           <button
             className="ghost-button"

@@ -1,10 +1,12 @@
 import { SignIn } from "@clerk/clerk-react";
 import { Link } from "react-router-dom";
+import { DirectionalTransition } from "../components/shared/DirectionalTransition";
 import { isClerkEnabled } from "../auth/config";
 
 export function LoginPage() {
   if (!isClerkEnabled) {
     return (
+      <DirectionalTransition>
       <section className="page-grid">
         <div className="section-header">
           <p className="eyebrow">Login</p>
@@ -15,10 +17,12 @@ export function LoginPage() {
           </p>
         </div>
       </section>
+      </DirectionalTransition>
     );
   }
 
   return (
+    <DirectionalTransition>
     <section className="page-grid">
       <div className="section-header">
         <p className="eyebrow">Login</p>
@@ -34,5 +38,6 @@ export function LoginPage() {
         </p>
       </article>
     </section>
+    </DirectionalTransition>
   );
 }

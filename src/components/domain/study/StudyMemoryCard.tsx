@@ -1,11 +1,11 @@
 import { Link } from "react-router-dom";
-import { useCatalog } from "../content/CatalogContext";
-import { useStudy } from "../study/StudyContext";
+import { useCatalog } from "../../../content/CatalogContext";
+import { useStudy } from "../../../study/StudyContext";
 import {
   buildInteractiveContentMix,
   buildNotebookSummary,
   buildSavedShelfSummaries,
-} from "../study/workspaceInsights";
+} from "../../../study/workspaceInsights";
 
 export function StudyMemoryCard() {
   const { terms } = useCatalog();

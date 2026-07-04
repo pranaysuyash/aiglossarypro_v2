@@ -1,38 +1,52 @@
+import { useMemo } from "react";
 import { Link } from "react-router-dom";
-import { TermCard } from "../components/TermCard";
+import { ViewTransition } from "react";
+import { TermCard } from "../components/domain/term/TermCard";
+import { DirectionalTransition } from "../components/shared/DirectionalTransition";
 import { useCatalog } from "../content/CatalogContext";
 import { buildFamilyHighlights, familySlug } from "./familyHighlights";
 
 export function HomePage() {
-  const { paths, terms, termMap, isLoading, error } = useCatalog();
+  const { paths, terms, termMap, isLoading, error, reloadCatalog } = useCatalog();
   const featuredPaths = paths.slice(0, 3);
-  const featuredCount = terms.filter((term) => term.metadata.editorialTier === "featured").length;
-  const standardCount = terms.filter((term) => term.metadata.editorialTier === "standard").length;
-  const sparseCount = terms.filter((term) => term.metadata.editorialTier === "sparse").length;
-  const featuredTerms = [] as typeof terms;
-  const seenFeaturedTermSlugs = new Set<string>();
-  for (const path of featuredPaths) {
-    for (const slug of path.featuredTermSlugs) {
-      if (seenFeaturedTermSlugs.has(slug)) {
-        continue;
-      }
-      seenFeaturedTermSlugs.add(slug);
-      const term = termMap.get(slug);
-      if (term) {
-        featuredTerms.push(term);
-      }
-      if (featuredTerms.length >= 6) {
-        break;
-      }
+
+  const tierCounts = useMemo(() => {
+    let featured = 0;
+    let standard = 0;
+    let sparse = 0;
+    for (const term of terms) {
+      if (term.metadata.editorialTier === "featured") featured++;
+      else if (term.metadata.editorialTier === "standard") standard++;
+      else sparse++;
     }
-    if (featuredTerms.length >= 6) {
-      break;
+    return { featured, standard, sparse };
+  }, [terms]);
+
+  const featuredTerms = useMemo(() => {
+    const result: typeof terms = [];
+    const seen = new Set<string>();
+    for (const path of featuredPaths) {
+      for (const slug of path.featuredTermSlugs) {
+        if (seen.has(slug)) continue;
+        seen.add(slug);
+        const term = termMap.get(slug);
+        if (term) result.push(term);
+        if (result.length >= 6) break;
+      }
+      if (result.length >= 6) break;
     }
-  }
-  const sampleTerm = featuredTerms[0] ?? terms.find((t) => t.metadata.editorialTier === "featured") ?? null;
-  const familyCards = buildFamilyHighlights(terms).slice(0, 6);
+    return result;
+  }, [featuredPaths, termMap]);
+
+  const sampleTerm = useMemo(
+    () => featuredTerms[0] ?? terms.find((t) => t.metadata.editorialTier === "featured") ?? null,
+    [featuredTerms, terms],
+  );
+
+  const familyCards = useMemo(() => buildFamilyHighlights(terms).slice(0, 6), [terms]);
 
   return (
+    <DirectionalTransition>
     <div className="page-grid">
       {/* ---- HERO ---- */}
       <section className="hero-home">
@@ -44,30 +58,6 @@ export function HomePage() {
             return to the same concepts with memory — not another browser tab that rots.
           </p>
 
-          <div className="hero-runtime-grid">
-            <article className="hero-runtime-card">
-              <span>Published terms</span>
-              <strong>{terms.length.toLocaleString()}</strong>
-              <p>entries live for search and deep-link</p>
-            </article>
-            <article className="hero-runtime-card">
-              <span>Guided paths</span>
-              <strong>{paths.length.toLocaleString()}</strong>
-              <p>inspectable learning trails</p>
-            </article>
-            <article className="hero-runtime-card">
-              <span>Depth tiers</span>
-              <strong>{featuredCount} featured</strong>
-              <p>{standardCount} standard, {sparseCount} sparse</p>
-            </article>
-          </div>
-
-          <div className="tier-row">
-            <span className="tier-tag tier-featured">Featured concepts</span>
-            <span className="tier-tag tier-standard">Standard corpus</span>
-            <span className="tier-tag tier-sparse">Sparse tail</span>
-          </div>
-
           <div className="hero-actions">
             <Link className="primary-button" to={sampleTerm ? `/term/${sampleTerm.slug}` : "/explore"}>
               Open a real term
@@ -75,16 +65,11 @@ export function HomePage() {
             <Link className="ghost-button" to="/explore">
               Enter the library
             </Link>
-            <Link className="ghost-button" to="/field-lab">
-              Inspect the app
-            </Link>
           </div>
 
-          <div className="trust-row">
-            <span>Paid, no free tier</span>
-            <span>18k+ terms visible live</span>
-            <span>Study memory with notes and bookmarks</span>
-          </div>
+          <p className="hero-stat-line">
+            {terms.length.toLocaleString()} terms · {paths.length.toLocaleString()} guided paths · {tierCounts.featured} flagship deep dives · paid membership, no free tier
+          </p>
         </div>
 
         <div className="hero-rail">
@@ -96,48 +81,15 @@ export function HomePage() {
                 dashboard, not a forum thread, not a doc page.
               </h3>
             </div>
-            <p>
-              Most AI learners drown in fragments spread across articles, tweets, paper abstracts, and
-              YouTube tabs. This product is designed to be the one surface where the language of AI
-              starts feeling native because you built the mental map yourself.
-            </p>
             <div className="field-spread-chips">
               <span>{terms.length.toLocaleString()} terms</span>
               <span>{paths.length.toLocaleString()} paths</span>
-              <span>{featuredCount} flagship</span>
               <span>Study memory</span>
             </div>
             <Link className="primary-button" to="/explore" style={{ width: "fit-content" }}>
               Start reading
             </Link>
           </article>
-
-          <div className="concept-rail">
-            {featuredPaths.length > 0
-              ? featuredPaths.map((path) => (
-                  <article key={path.slug} className="concept-card">
-                    <p className="showcase-label">
-                      {path.category} / {path.subCategory}
-                    </p>
-                    <h3>{path.title}</h3>
-                    <p>{path.description}</p>
-                    <div className="chip-row">
-                      <span>{path.termCount} terms</span>
-                      <span>{path.featuredTermSlugs.length} anchors</span>
-                    </div>
-                    <Link className="text-link" to={`/paths/${path.slug}`}>
-                      Open path
-                    </Link>
-                  </article>
-                ))
-              : (
-                <article className="concept-card">
-                  <p className="showcase-label">Published paths</p>
-                  <h3>Loading real learning trails…</h3>
-                  <p>These previews are generated from the live corpus, not sample content.</p>
-                </article>
-              )}
-          </div>
         </div>
       </section>
 
@@ -162,11 +114,11 @@ export function HomePage() {
                 <span>Terms ready</span>
               </div>
               <div className="continue-meta-cell">
-                <strong>{featuredCount.toLocaleString()}</strong>
+                <strong>{tierCounts.featured.toLocaleString()}</strong>
                 <span>Featured</span>
               </div>
               <div className="continue-meta-cell">
-                <strong>{standardCount.toLocaleString()}</strong>
+                <strong>{tierCounts.standard.toLocaleString()}</strong>
                 <span>Standard</span>
               </div>
             </div>
@@ -267,6 +219,9 @@ export function HomePage() {
           <article className="summary-card">
             <h3>Catalog unavailable</h3>
             <p>{error}</p>
+            <button className="ghost-button" type="button" onClick={reloadCatalog}>
+              Retry load
+            </button>
           </article>
         ) : (
           <div className="featured-grid">
@@ -277,5 +232,6 @@ export function HomePage() {
         )}
       </section>
     </div>
+    </DirectionalTransition>
   );
 }

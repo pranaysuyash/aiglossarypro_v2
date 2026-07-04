@@ -1,9 +1,11 @@
 import {
   createContext,
   startTransition,
-  useContext,
+  useCallback,
   useEffect,
+  use,
   useMemo,
+  useRef,
   useState,
   type ReactNode,
 } from "react";
@@ -41,6 +43,12 @@ export function StudyProvider({ children }: { children: ReactNode }) {
   const [notes, setNotes] = useState<Record<string, string>>({});
   const [lastOpenedTermSlug, setLastOpenedTermSlug] = useState<string | null>(null);
   const isRemoteBacked = Boolean(session?.authenticated && session.user && hasActiveMembership);
+
+  // Refs to avoid stale closures in memoized functions
+  const bookmarksRef = useRef(bookmarks);
+  const notesRef = useRef(notes);
+  bookmarksRef.current = bookmarks;
+  notesRef.current = notes;
 
   useEffect(() => {
     let isCancelled = false;
@@ -103,72 +111,87 @@ export function StudyProvider({ children }: { children: ReactNode }) {
     saveNotes(notes);
   }, [notes]);
 
+  const toggleBookmark = useCallback(
+    async (slug: string) => {
+      const current = bookmarksRef.current;
+      const nextBookmarks = current.includes(slug)
+        ? current.filter((item) => item !== slug)
+        : [...current, slug].sort();
+
+      startTransition(() => {
+        setBookmarks(nextBookmarks);
+      });
+
+      if (isRemoteBacked) {
+        if (current.includes(slug)) {
+          await destroyBookmark(slug, apiRequest);
+        } else {
+          await createBookmark(slug, apiRequest);
+        }
+      }
+    },
+    [apiRequest, isRemoteBacked],
+  );
+
+  const setNote = useCallback(
+    async (slug: string, value: string) => {
+      startTransition(() => {
+        setNotes((current) => ({
+          ...current,
+          [slug]: value,
+        }));
+      });
+
+      if (isRemoteBacked) {
+        await saveRemoteNote(slug, value, apiRequest);
+      }
+    },
+    [apiRequest, isRemoteBacked],
+  );
+
+  const markTermOpened = useCallback((slug: string) => {
+    startTransition(() => {
+      setLastOpenedTermSlug(slug);
+    });
+    saveLastOpenedTermSlug(slug);
+  }, []);
+
+  const exportStudyData = useCallback(() => {
+    const payload = {
+      exportedAt: new Date().toISOString(),
+      bookmarks: bookmarksRef.current,
+      notes: notesRef.current,
+    };
+    const blob = new Blob([JSON.stringify(payload, null, 2)], {
+      type: "application/json",
+    });
+    const url = window.URL.createObjectURL(blob);
+    const anchor = document.createElement("a");
+    anchor.href = url;
+    anchor.download = "aiglossary-study-export.json";
+    anchor.click();
+    window.URL.revokeObjectURL(url);
+  }, []);
+
   const value = useMemo<StudyContextValue>(
     () => ({
       bookmarks,
       notes,
       lastOpenedTermSlug,
       isRemoteBacked,
-      async toggleBookmark(slug) {
-        const nextBookmarks = bookmarks.includes(slug)
-          ? bookmarks.filter((item) => item !== slug)
-          : [...bookmarks, slug].sort();
-
-        startTransition(() => {
-          setBookmarks(nextBookmarks);
-        });
-
-        if (isRemoteBacked) {
-          if (bookmarks.includes(slug)) {
-            await destroyBookmark(slug, apiRequest);
-          } else {
-            await createBookmark(slug, apiRequest);
-          }
-        }
-      },
-      async setNote(slug, value) {
-        startTransition(() => {
-          setNotes((current) => ({
-            ...current,
-            [slug]: value,
-          }));
-        });
-
-        if (isRemoteBacked) {
-          await saveRemoteNote(slug, value, apiRequest);
-        }
-      },
-      markTermOpened(slug) {
-        startTransition(() => {
-          setLastOpenedTermSlug(slug);
-        });
-        saveLastOpenedTermSlug(slug);
-      },
-      exportStudyData() {
-        const payload = {
-          exportedAt: new Date().toISOString(),
-          bookmarks,
-          notes,
-        };
-        const blob = new Blob([JSON.stringify(payload, null, 2)], {
-          type: "application/json",
-        });
-        const url = window.URL.createObjectURL(blob);
-        const anchor = document.createElement("a");
-        anchor.href = url;
-        anchor.download = "aiglossary-study-export.json";
-        anchor.click();
-        window.URL.revokeObjectURL(url);
-      },
+      toggleBookmark,
+      setNote,
+      markTermOpened,
+      exportStudyData,
     }),
-    [apiRequest, bookmarks, isRemoteBacked, lastOpenedTermSlug, notes],
+    [bookmarks, notes, lastOpenedTermSlug, isRemoteBacked, toggleBookmark, setNote, markTermOpened, exportStudyData],
   );
 
   return <StudyContext.Provider value={value}>{children}</StudyContext.Provider>;
 }
 
 export function useStudy() {
-  const context = useContext(StudyContext);
+  const context = use(StudyContext);
   if (!context) {
     throw new Error("useStudy must be used within StudyProvider");
   }

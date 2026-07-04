@@ -9,7 +9,7 @@ export function StudyRichText({ children, className, variant = "default", ...pro
   return (
     <MessageResponse
       className={`study-rich-text study-rich-text-${variant}${className ? ` ${className}` : ""}`}
-      parseIncompleteMarkdown={false}
+      parseIncompleteMarkdown={true}
       {...props}
     >
       {children}

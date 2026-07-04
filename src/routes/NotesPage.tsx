@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom";
 import { useMemo } from "react";
+import { ViewTransition } from "react";
+import { DirectionalTransition } from "../components/shared/DirectionalTransition";
 import { StudyRichText } from "../components/ai-elements/StudyRichText";
 import { useCatalog } from "../content/CatalogContext";
 import { useStudy } from "../study/StudyContext";
@@ -35,6 +37,7 @@ export function NotesPage() {
   const strongestNote = notebook.longestNote;
 
   return (
+    <DirectionalTransition>
     <section className="page-grid">
       <div className="section-header">
         <p className="eyebrow">Study notebook</p>
@@ -172,5 +175,6 @@ export function NotesPage() {
         </article>
       )}
     </section>
+    </DirectionalTransition>
   );
 }

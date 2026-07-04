@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
-import { loadPublishedStructureRegistry, type PublishedStructureRegistry } from "../content/structureRegistry";
+import { loadPublishedStructureRegistry, type PublishedStructureRegistry } from "../../../content/structureRegistry";
 
 type LayerKey = "launch-runtime" | "editorial-expansion" | "backlog";
 
@@ -35,10 +35,10 @@ export function StructureExplorerCard() {
   return (
     <article className="structure-explorer-card">
       <p className="showcase-label">Curriculum blueprint</p>
-      <h3>{registry ? `${registry.fieldCount} workbook fields, one layered product` : "Loading structure map…"}</h3>
+      <h3>{registry ? `${registry.fieldCount} editorial fields, one layered product` : "Loading structure map…"}</h3>
       <p>
-        The workbook is not treated as one giant schema. It is split into launch runtime, editorial
-        expansion, and backlog so the app can stay lean while still knowing exactly what exists.
+        The editorial plan is split into launch runtime, editorial expansion, and backlog so the app
+        can stay lean while still knowing exactly what exists.
       </p>
       <div className="structure-layers">
         {( ["launch-runtime", "editorial-expansion", "backlog"] as LayerKey[] ).map((layer) => {
@@ -71,7 +71,7 @@ export function StructureExplorerCard() {
       <p className="structure-explorer-footnote">
         {registry
           ? `The launch contract covers ${registry.launchSections.length} sections and the rest remains explicitly partitioned instead of hidden.`
-          : "The structure registry is loading from published JSON."}
+          : "The structure map is loading from published JSON."}
       </p>
     </article>
   );

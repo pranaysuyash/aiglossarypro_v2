@@ -1,5 +1,7 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
+import { ViewTransition } from "react";
+import { DirectionalTransition } from "../components/shared/DirectionalTransition";
 import { useCatalog } from "../content/CatalogContext";
 import { useStudy } from "../study/StudyContext";
 import type { ExportJobRecord } from "../types";
@@ -23,13 +25,14 @@ export function SavedPage() {
   const { bookmarks, exportStudyData, isRemoteBacked } = useStudy();
   const apiRequest = useWorkerRequest();
   const [exportJobs, setExportJobs] = useState<ExportJobRecord[]>([]);
-  const bookmarkedTermSlugs = new Set(bookmarks);
-  const savedTerms = terms.filter((term) => bookmarkedTermSlugs.has(term.slug));
-  const savedTermLookup = new Map(savedTerms.map((term) => [term.slug, term]));
-  const savedShelves = buildSavedShelfSummaries(terms, bookmarks);
-  const savedTierBreakdown = buildEditorialTierBreakdown(terms, bookmarks);
-  const savedInteractiveMix = buildInteractiveContentMix(terms, bookmarks);
-  const latestExportJob = getLatestExportJob(exportJobs);
+
+  const bookmarkedTermSlugs = useMemo(() => new Set(bookmarks), [bookmarks]);
+  const savedTerms = useMemo(() => terms.filter((term) => bookmarkedTermSlugs.has(term.slug)), [terms, bookmarkedTermSlugs]);
+  const savedTermLookup = useMemo(() => new Map(savedTerms.map((term) => [term.slug, term])), [savedTerms]);
+  const savedShelves = useMemo(() => buildSavedShelfSummaries(terms, bookmarks), [terms, bookmarks]);
+  const savedTierBreakdown = useMemo(() => buildEditorialTierBreakdown(terms, bookmarks), [terms, bookmarks]);
+  const savedInteractiveMix = useMemo(() => buildInteractiveContentMix(terms, bookmarks), [terms, bookmarks]);
+  const latestExportJob = useMemo(() => getLatestExportJob(exportJobs), [exportJobs]);
   const primaryShelf = savedShelves[0] ?? null;
 
   useEffect(() => {
@@ -58,7 +61,7 @@ export function SavedPage() {
     };
   }, [apiRequest, isRemoteBacked]);
 
-  async function exportWorkspace() {
+  const exportWorkspace = useCallback(async () => {
     if (!isRemoteBacked) {
       exportStudyData();
       return;
@@ -75,7 +78,7 @@ export function SavedPage() {
     anchor.click();
     window.URL.revokeObjectURL(url);
     setExportJobs((current) => [result.exportJob, ...current]);
-  }
+  }, [apiRequest, exportStudyData, isRemoteBacked]);
 
   const latestExportLabel = latestExportJob
     ? `${latestExportJob.status} · ${formatWorkspaceDate(latestExportJob.requestedAt)}`
@@ -83,6 +86,7 @@ export function SavedPage() {
   const topShelfTermTitles = primaryShelf?.representativeTerms.map((term) => term.title) ?? [];
 
   return (
+    <DirectionalTransition>
     <section className="page-grid">
       <div className="section-header">
         <p className="eyebrow">Study shelf</p>
@@ -240,6 +244,7 @@ export function SavedPage() {
         </article>
       )}
     </section>
+    </DirectionalTransition>
   );
 }
 

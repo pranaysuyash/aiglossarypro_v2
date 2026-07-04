@@ -46,27 +46,20 @@ src/
 │   │   ├── context-menu.tsx
 │   │   ├── menubar.tsx
 │   │   ├── navigation-menu.tsx
-│   │   ├── sidebar.tsx
 │   │   ├── sheet.tsx
 │   │   ├── drawer.tsx
 │   │   ├── alert-dialog.tsx
 │   │   ├── form.tsx
 │   │   ├── input-otp.tsx
 │   │   ├── calendar.tsx
-│   │   ├── date-picker.tsx
-│   │   ├── chart.tsx
+│   │   ├── input-group.tsx
 │   │   ├── index.ts           # Barrel export
-│   │   └── types.ts           # Shared type definitions
-│   ├── compound/              # Compound components (multi-part)
-│   │   ├── data-table.tsx
-│   │   ├── form-field.tsx
-│   │   ├── command-palette.tsx
-│   │   └── index.ts
 │   ├── domain/                # Domain-specific components
 │   │   ├── term/
 │   │   │   ├── TermCard.tsx
 │   │   │   ├── TermBlockRenderer.tsx
-│   │   │   ├── TermHero.tsx
+│   │   │   ├── TermExtrasTabs.tsx
+│   │   │   ├── StudyRichText.tsx
 │   │   │   └── index.ts
 │   │   ├── study/
 │   │   │   ├── ContinueLearningCard.tsx
@@ -77,10 +70,13 @@ src/
 │   │   │   ├── LearningAtlasCard.tsx
 │   │   │   ├── StructureExplorerCard.tsx
 │   │   │   ├── LaunchCurriculumPreview.tsx
+│   │   │   ├── CorpusProgressPreview.tsx
 │   │   │   └── index.ts
 │   │   ├── activity/
 │   │   │   ├── RecentActivityCard.tsx
 │   │   │   └── index.ts
+│   ├── shared/                # Shared cross-domain components
+│   │   ├── DirectionalTransition.tsx
 │   │   └── index.ts
 │   ├── layout/                # Layout primitives
 │   │   ├── container.tsx
@@ -89,24 +85,17 @@ src/
 │   │   ├── section.tsx
 │   │   └── index.ts
 │   ├── feedback/              # Feedback components
-│   │   ├── toast.tsx
 │   │   ├── empty-state.tsx
 │   │   ├── error-boundary.tsx
 │   │   └── index.ts
 │   ├── ai-elements/           # AI-specific components
 │   │   ├── message.tsx
-│   │   ├── message-response.tsx
-│   │   ├── message-branch.tsx
+│   │   ├── StudyRichText.tsx
 │   │   └── index.ts
 │   ├── hooks/                 # Component-specific hooks
-│   │   ├── use-toast.ts
-│   │   ├── use-media-query.ts
-│   │   └── index.ts
+│   │   ├── index.ts
 │   ├── utils/                 # Component utilities
-│   │   ├── cn.ts
-│   │   ├── animations.ts
-│   │   ├── focus-ring.ts
-│   │   └── index.ts
+│   │   ├── index.ts
 │   ├── providers/             # React context providers
 │   │   ├── theme-provider.tsx
 │   │   └── index.ts
@@ -277,17 +266,19 @@ All design tokens are defined as CSS custom properties in `src/styles.css` and m
 | Button | `src/components/ui/button.tsx` | `src/components/ui/button.tsx` | ✅ Already standardized |
 | Tooltip | `src/components/ui/tooltip.tsx` | `src/components/ui/tooltip.tsx` | ✅ Already standardized |
 | Separator | `src/components/ui/separator.tsx` | `src/components/ui/separator.tsx` | ✅ Already standardized |
-| TermCard | `src/components/TermCard.tsx` | `src/components/domain/term/TermCard.tsx` | 🔄 Pending |
-| TermBlockRenderer | `src/components/TermBlockRenderer.tsx` | `src/components/domain/term/TermBlockRenderer.tsx` | 🔄 Pending |
-| ContinueLearningCard | `src/components/ContinueLearningCard.tsx` | `src/components/domain/study/ContinueLearningCard.tsx` | 🔄 Pending |
-| ContinuePathCard | `src/components/ContinuePathCard.tsx` | `src/components/domain/study/ContinuePathCard.tsx` | 🔄 Pending |
-| LearningAtlasCard | `src/components/LearningAtlasCard.tsx` | `src/components/domain/curriculum/LearningAtlasCard.tsx` | 🔄 Pending |
-| StructureExplorerCard | `src/components/StructureExplorerCard.tsx` | `src/components/domain/curriculum/StructureExplorerCard.tsx` | 🔄 Pending |
-| LaunchCurriculumPreview | `src/components/LaunchCurriculumPreview.tsx` | `src/components/domain/curriculum/LaunchCurriculumPreview.tsx` | 🔄 Pending |
-| RecentActivityCard | `src/components/RecentActivityCard.tsx` | `src/components/domain/activity/RecentActivityCard.tsx` | 🔄 Pending |
-| StudyMemoryCard | `src/components/StudyMemoryCard.tsx` | `src/components/domain/study/StudyMemoryCard.tsx` | 🔄 Pending |
-| CorpusProgressPreview | `src/components/CorpusProgressPreview.tsx` | `src/components/domain/curriculum/CorpusProgressPreview.tsx` | 🔄 Pending |
-| StudyRichText | `src/components/StudyRichText.tsx` | `src/components/ai-elements/StudyRichText.tsx` | 🔄 Pending |
+| TermCard | `src/components/TermCard.tsx` | `src/components/domain/term/TermCard.tsx` | ✅ Migrated |
+| TermBlockRenderer | `src/components/TermBlockRenderer.tsx` | `src/components/domain/term/TermBlockRenderer.tsx` | ✅ Migrated |
+| TermExtrasTabs | `src/components/TermExtrasTabs.tsx` | `src/components/domain/term/TermExtrasTabs.tsx` | ✅ Migrated |
+| ContinueLearningCard | `src/components/ContinueLearningCard.tsx` | `src/components/domain/study/ContinueLearningCard.tsx` | ✅ Migrated |
+| ContinuePathCard | `src/components/ContinuePathCard.tsx` | `src/components/domain/study/ContinuePathCard.tsx` | ✅ Migrated |
+| LearningAtlasCard | `src/components/LearningAtlasCard.tsx` | `src/components/domain/curriculum/LearningAtlasCard.tsx` | ✅ Migrated |
+| StructureExplorerCard | `src/components/StructureExplorerCard.tsx` | `src/components/domain/curriculum/StructureExplorerCard.tsx` | ✅ Migrated |
+| LaunchCurriculumPreview | `src/components/LaunchCurriculumPreview.tsx` | `src/components/domain/curriculum/LaunchCurriculumPreview.tsx` | ✅ Migrated |
+| RecentActivityCard | `src/components/RecentActivityCard.tsx` | `src/components/domain/activity/RecentActivityCard.tsx` | ✅ Migrated |
+| StudyMemoryCard | `src/components/StudyMemoryCard.tsx` | `src/components/domain/study/StudyMemoryCard.tsx` | ✅ Migrated |
+| CorpusProgressPreview | `src/components/CorpusProgressPreview.tsx` | `src/components/domain/curriculum/CorpusProgressPreview.tsx` | ✅ Migrated |
+| StudyRichText (root) | `src/components/StudyRichText.tsx` | `src/components/domain/term/StudyRichText.tsx` | ✅ Migrated |
+| DirectionalTransition | `src/components/DirectionalTransition.tsx` | `src/components/shared/DirectionalTransition.tsx` | ✅ Migrated |
 | ai-elements/message | `src/components/ai-elements/message.tsx` | `src/components/ai-elements/message.tsx` | ✅ Keep |
 
 ### New Components to Create

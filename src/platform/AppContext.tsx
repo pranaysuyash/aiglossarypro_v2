@@ -1,7 +1,7 @@
 import {
   createContext,
-  useContext,
   useEffect,
+  use,
   useMemo,
   useState,
   type ReactNode,
@@ -241,7 +241,7 @@ export function AppProvider({ children }: { children: ReactNode }) {
 }
 
 export function useAppState() {
-  const context = useContext(AppContext);
+  const context = use(AppContext);
   if (!context) {
     throw new Error("useAppState must be used within AppProvider");
   }

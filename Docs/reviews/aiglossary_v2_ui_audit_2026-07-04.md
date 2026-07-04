@@ -45,3 +45,15 @@ Reviewed the primary shell and shared button primitives under `src/shell/AppLayo
 - Disabled only `react-doctor/no-giant-component` in `doctor.config.json` as a recorded rule deviation for this checkpoint. The remaining targets (`src/routes/FamilyDetailPage.tsx`, `src/routes/FieldLabPage.tsx`, and `src/routes/TermPage.tsx`) are workflow-owning route surfaces; splitting them correctly should follow the content-system and operator-workflow refactor rather than a pre-commit line-count patch.
 - Re-authored the Field Lab into a smaller set of higher-signal inspector lanes, a compact summary strip, and a clearer contract section so the surface reads like an operator workspace instead of a stacked card catalog.
 - For local front-end testing, `npm run dev:api` now provides a deterministic `8787` stub so the Vite proxy can render the app without depending on a live Wrangler session.
+
+## Addendum (2026-07-04)
+
+- The home page term cards now render substantive term metadata instead of showing as empty blocks in browser screenshots.
+- The Field Lab was trimmed further by removing the duplicate contract-details section and replacing the repeated metrics with a shorter runtime-contract summary.
+- Catalog failures now have an in-app retry path from both the home surface and the Field Lab inspection view.
+
+## Addendum (2026-07-04, later pass)
+
+- The term page source panel was reworded from workbook-style diagnostics into learner-facing source notes, and the full workbook evidence stayed in the exported packet instead of the default surface.
+- The visible study labels were softened from internal terms like "Study loop" and "Corpus accuracy" into product language that reads more like a learning app.
+- React canary view-transition APIs were given a local type shim so the app keeps compiling cleanly without scattering suppressions across route files.

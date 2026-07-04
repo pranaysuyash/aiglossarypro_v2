@@ -1,5 +1,7 @@
 import { Link, useParams } from "react-router-dom";
 import { useEffect, useMemo, useState } from "react";
+import { ViewTransition } from "react";
+import { DirectionalTransition } from "../components/shared/DirectionalTransition";
 import { useCatalog } from "../content/CatalogContext";
 import { getTermBlocks } from "../content/termBlocks";
 import type { TermBlock, TermRecord } from "../types";
@@ -200,15 +202,18 @@ export function FamilyDetailPage() {
 
   if (isLoading) {
     return (
+      <DirectionalTransition>
       <section className="page-grid">
         <h2>Loading family lane…</h2>
         <p>Reading the published catalog to open the selected study cluster.</p>
       </section>
+      </DirectionalTransition>
     );
   }
 
   if (error) {
     return (
+      <DirectionalTransition>
       <section className="page-grid">
         <h2>Family lane unavailable</h2>
         <p>{error}</p>
@@ -216,11 +221,13 @@ export function FamilyDetailPage() {
           Back to families
         </Link>
       </section>
+      </DirectionalTransition>
     );
   }
 
   if (!family) {
     return (
+      <DirectionalTransition>
       <section className="page-grid">
         <h2>Family not found</h2>
         <p>This flagship family is not present in the current published catalog.</p>
@@ -228,6 +235,7 @@ export function FamilyDetailPage() {
           Back to families
         </Link>
       </section>
+      </DirectionalTransition>
     );
   }
 
@@ -280,11 +288,14 @@ export function FamilyDetailPage() {
   }
 
   return (
+    <DirectionalTransition>
     <section className="page-grid">
       <article className="hero-card term-hero">
         <div className="term-hero-copy">
           <p className="eyebrow">Flagship family</p>
-          <h1>{family.title}</h1>
+          <ViewTransition name={`family-title-${familySlugParam}`} share="text-morph">
+            <h1>{family.title}</h1>
+          </ViewTransition>
           <p className="term-hero-intro">{family.note}</p>
           <p>{family.whyItMatters}</p>
           <div className="shelf-links term-metrics">
@@ -576,5 +587,6 @@ export function FamilyDetailPage() {
         </article>
       ) : null}
     </section>
+    </DirectionalTransition>
   );
 }

@@ -1,8 +1,10 @@
 import { useEffect, useMemo, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import { TermBlockRenderer } from "../components/TermBlockRenderer";
+import { DirectionalTransition } from "../components/shared/DirectionalTransition";
+import { TermBlockRenderer } from "../components/domain/term/TermBlockRenderer";
 import { useCatalog } from "../content/CatalogContext";
 import { getTermBlocks } from "../content/termBlocks";
+import { splitTermBlocks } from "../content/termBlockGroups";
 import type { SharedResourceRecord, TermRecord } from "../types";
 import { fetchSharedResource } from "../study/workspaceApi";
 
@@ -69,15 +71,18 @@ export function SharedTermPage() {
 
   if (isLoading || isShareLoading) {
     return (
+      <DirectionalTransition>
       <section className="page-grid">
         <h2>Opening shared term…</h2>
         <p>Resolving the shared token and loading the published term artifact.</p>
       </section>
+      </DirectionalTransition>
     );
   }
 
   if (error) {
     return (
+      <DirectionalTransition>
       <section className="page-grid">
         <h2>Library syncing</h2>
         <p>{error}</p>
@@ -85,11 +90,13 @@ export function SharedTermPage() {
           Back to explore
         </Link>
       </section>
+      </DirectionalTransition>
     );
   }
 
   if (shareError || !shared || !term) {
     return (
+      <DirectionalTransition>
       <section className="page-grid">
         <h2>Share preview unavailable</h2>
         <p>{shareError ?? "This share link could not be resolved."}</p>
@@ -97,12 +104,14 @@ export function SharedTermPage() {
           Browse the glossary
         </Link>
       </section>
+      </DirectionalTransition>
     );
   }
 
   const currentSummary = termSummary ?? term;
 
   return (
+    <DirectionalTransition>
     <section className="page-grid">
       <article className="hero-card term-hero">
         <div className="term-hero-copy">
@@ -183,7 +192,7 @@ export function SharedTermPage() {
 
       <div className="detail-grid">
         <div className="content-column">
-          {getTermBlocks(term).map((block) => (
+          {splitTermBlocks(getTermBlocks(term)).core.map((block) => (
             <TermBlockRenderer key={block.id} block={block} />
           ))}
         </div>
@@ -193,7 +202,8 @@ export function SharedTermPage() {
             <h3>Turn this shared concept into your own study trail.</h3>
             <p>
               Create an account to save bookmarks, keep private notes, attach annotations, and sync
-              your study memory across devices.
+              your study memory across devices. The canonical page also has the full compare, quiz,
+              diagram, FAQ, and curriculum depth for this term.
             </p>
             <div className="hero-actions">
               <Link className="primary-button" to="/pricing">
@@ -207,5 +217,6 @@ export function SharedTermPage() {
         </aside>
       </div>
     </section>
+    </DirectionalTransition>
   );
 }

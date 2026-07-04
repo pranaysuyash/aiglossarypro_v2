@@ -1,4 +1,6 @@
 import { Link } from "react-router-dom";
+import { ViewTransition } from "react";
+import { DirectionalTransition } from "../components/shared/DirectionalTransition";
 import { useCatalog } from "../content/CatalogContext";
 
 export function PathsPage() {
@@ -7,6 +9,7 @@ export function PathsPage() {
   const categoryCount = new Set(paths.map((path) => path.category)).size;
 
   return (
+    <DirectionalTransition>
     <section className="page-grid">
       <div className="section-header explore-heading">
         <p className="eyebrow">Paths</p>
@@ -45,14 +48,16 @@ export function PathsPage() {
         <div className="card-grid featured-cards">
           {featuredPaths.map((path) => (
             <article key={path.slug} className="term-card">
-              <div className="term-card-header">
-                <div>
-                  <p className="term-taxonomy">
-                    {path.category} / {path.subCategory}
-                  </p>
-                  <h2>{path.title}</h2>
+              <ViewTransition name={`path-title-${path.slug}`} share="text-morph" default="none">
+                <div className="term-card-header">
+                  <div>
+                    <p className="term-taxonomy">
+                      {path.category} / {path.subCategory}
+                    </p>
+                    <h2>{path.title}</h2>
+                  </div>
                 </div>
-              </div>
+              </ViewTransition>
               <p>{path.description}</p>
               <div className="path-row">
                 <span>{path.termCount} terms in cluster</span>
@@ -66,5 +71,6 @@ export function PathsPage() {
         </div>
       )}
     </section>
+    </DirectionalTransition>
   );
 }

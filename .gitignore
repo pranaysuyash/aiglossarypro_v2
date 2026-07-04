@@ -19,6 +19,14 @@ skills/
 mcp-shell.log
 .tmp-*.png
 tmp-*.png
+*-after-fix.png
+*-current*.png
+*-full.png
+home-current*.png
+term-current*.png
+field-lab-*.png
+aiglossary-home-full.png
+.playwright-mcp/
 kickbacks.vsix
 
 # Agent-start compatibility mirror; canonical context lives in Docs/context/agent-start/

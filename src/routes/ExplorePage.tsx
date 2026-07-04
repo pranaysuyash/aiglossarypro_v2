@@ -1,6 +1,8 @@
-import { useDeferredValue, useMemo, useState } from "react";
+import { Suspense, useDeferredValue, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
-import { TermCard } from "../components/TermCard";
+import { ViewTransition } from "react";
+import { TermCard } from "../components/domain/term/TermCard";
+import { DirectionalTransition } from "../components/shared/DirectionalTransition";
 import { useCatalog } from "../content/CatalogContext";
 
 export function ExplorePage() {
@@ -121,6 +123,7 @@ export function ExplorePage() {
     return lenses;
   }, []);
   return (
+    <DirectionalTransition>
     <section className="page-grid">
       <div className="section-header explore-heading">
         <p className="eyebrow">Library</p>
@@ -160,7 +163,9 @@ export function ExplorePage() {
                     {term.taxonomy.category} / {term.taxonomy.subCategory}
                   </p>
                 </div>
-                <h3>{term.title}</h3>
+                <ViewTransition name={`term-title-${term.slug}`} share="text-morph" default="none">
+                  <h3>{term.title}</h3>
+                </ViewTransition>
                 <p>{term.summary}</p>
                 <Link className="text-link" to={`/term/${term.slug}`}>
                   Open {term.title}
@@ -250,6 +255,7 @@ export function ExplorePage() {
         </div>
       )}
     </section>
+    </DirectionalTransition>
   );
 }
 

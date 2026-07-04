@@ -1,4 +1,4 @@
-import { useCallback, createContext, useMemo, useRef, use, type ReactNode } from "react";
+import { useCallback, createContext, useMemo, useRef, use, useState, type ReactNode } from "react";
 import type { LearningPathRecord, LearningPathSummary, TermRecord, TermSummary } from "../types";
 
 type CatalogContextValue = {
@@ -8,6 +8,7 @@ type CatalogContextValue = {
   pathMap: Map<string, LearningPathSummary>;
   isLoading: boolean;
   error: string | null;
+  reloadCatalog: () => void;
   loadTerm: (slug: string) => Promise<TermRecord | null>;
   loadPath: (slug: string) => Promise<LearningPathRecord | null>;
 };
@@ -20,44 +21,57 @@ type CatalogBootstrap = {
   error: string | null;
 };
 
-const catalogBootstrapPromise: Promise<CatalogBootstrap> = (async () => {
-  try {
-    const [termResponse, pathResponse] = await Promise.all([
-      fetch("/content/published/terms/index.json", {
-        headers: { accept: "application/json" },
-      }),
-      fetch("/content/published/paths/index.json", {
-        headers: { accept: "application/json" },
-      }),
-    ]);
-    if (!termResponse.ok) {
-      throw new Error(`Catalog request failed with status ${termResponse.status}`);
-    }
-    if (!pathResponse.ok) {
-      throw new Error(`Path request failed with status ${pathResponse.status}`);
-    }
+const catalogBootstrapCache = new Map<number, Promise<CatalogBootstrap>>();
 
-    const [termPayload, pathPayload] = await Promise.all([
-      termResponse.json() as Promise<TermSummary[]>,
-      pathResponse.json() as Promise<LearningPathSummary[]>,
-    ]);
-
-    return {
-      terms: termPayload,
-      paths: pathPayload,
-      error: null,
-    };
-  } catch (loadError) {
-    return {
-      terms: [],
-      paths: [],
-      error: loadError instanceof Error ? loadError.message : "Catalog load failed",
-    };
+function getCatalogBootstrapPromise(version: number): Promise<CatalogBootstrap> {
+  const cached = catalogBootstrapCache.get(version);
+  if (cached) {
+    return cached;
   }
-})();
+
+  const promise = (async () => {
+    try {
+      const [termResponse, pathResponse] = await Promise.all([
+        fetch("/content/published/terms/index.json", {
+          headers: { accept: "application/json" },
+        }),
+        fetch("/content/published/paths/index.json", {
+          headers: { accept: "application/json" },
+        }),
+      ]);
+      if (!termResponse.ok) {
+        throw new Error(`Catalog request failed with status ${termResponse.status}`);
+      }
+      if (!pathResponse.ok) {
+        throw new Error(`Path request failed with status ${pathResponse.status}`);
+      }
+
+      const [termPayload, pathPayload] = await Promise.all([
+        termResponse.json() as Promise<TermSummary[]>,
+        pathResponse.json() as Promise<LearningPathSummary[]>,
+      ]);
+
+      return {
+        terms: termPayload,
+        paths: pathPayload,
+        error: null,
+      };
+    } catch (loadError) {
+      return {
+        terms: [],
+        paths: [],
+        error: loadError instanceof Error ? loadError.message : "Catalog load failed",
+      };
+    }
+  })();
+
+  catalogBootstrapCache.set(version, promise);
+  return promise;
+}
 
 export function CatalogProvider({ children }: { children: ReactNode }) {
-  const bootstrap = use(catalogBootstrapPromise);
+  const [bootstrapVersion, setBootstrapVersion] = useState(0);
+  const bootstrap = use(getCatalogBootstrapPromise(bootstrapVersion));
   const { terms, paths, error } = bootstrap;
   const isLoading = false;
   const termCacheRef = useRef<Map<string, TermRecord> | null>(null);
@@ -81,13 +95,15 @@ export function CatalogProvider({ children }: { children: ReactNode }) {
     }
 
     // Try fetching the individual term file first (lazy load)
-    const individualResponse = await fetch(`/content/published/terms/by-slug/${slug}.json`, {
+    const individualPayload = await fetch(`/content/published/terms/by-slug/${slug}.json`, {
       headers: { accept: "application/json" },
-    });
-    if (individualResponse.ok) {
-      const payload = (await individualResponse.json()) as TermRecord;
-      termCacheRef.current?.set(payload.slug, payload);
-      return payload;
+    })
+      .then((r) => (r.ok ? (r.json() as Promise<TermRecord>) : null))
+      .catch(() => null);
+
+    if (individualPayload) {
+      termCacheRef.current?.set(individualPayload.slug, individualPayload);
+      return individualPayload;
     }
 
     // Fall back to shard loading if individual file is not available
@@ -102,21 +118,24 @@ export function CatalogProvider({ children }: { children: ReactNode }) {
       return cachedShard.get(slug) ?? null;
     }
 
-    const shardResponse = await fetch(`/content/published/terms/shards/${shardId}.json`, {
+    const shardPayload = await fetch(`/content/published/terms/shards/${shardId}.json`, {
       headers: { accept: "application/json" },
-    });
-    if (shardResponse.status === 404) {
+    })
+      .then((r) => {
+        if (r.status === 404) return null;
+        if (!r.ok) throw new Error(`Term request failed with status ${r.status}`);
+        return r.json() as Promise<{
+          id: string;
+          termCount: number;
+          terms: TermRecord[];
+        }>;
+      })
+      .catch(() => null);
+
+    if (!shardPayload) {
       return null;
     }
-    if (!shardResponse.ok) {
-      throw new Error(`Term request failed with status ${shardResponse.status}`);
-    }
 
-    const shardPayload = (await shardResponse.json()) as {
-      id: string;
-      termCount: number;
-      terms: TermRecord[];
-    };
     const shardMap = new Map(shardPayload.terms.map((term) => [term.slug, term]));
     shardCacheRef.current?.set(shardId, shardMap);
 
@@ -148,6 +167,13 @@ export function CatalogProvider({ children }: { children: ReactNode }) {
     return payload;
   }, []);
 
+  const reloadCatalog = useCallback(() => {
+    setBootstrapVersion((value) => {
+      catalogBootstrapCache.delete(value);
+      return value + 1;
+    });
+  }, []);
+
   const value = useMemo<CatalogContextValue>(
     () => ({
       terms,
@@ -156,10 +182,11 @@ export function CatalogProvider({ children }: { children: ReactNode }) {
       pathMap: new Map(paths.map((path) => [path.slug, path])),
       isLoading,
       error,
+      reloadCatalog,
       loadTerm,
       loadPath,
     }),
-    [error, isLoading, loadPath, loadTerm, paths, terms],
+    [error, isLoading, loadPath, loadTerm, paths, reloadCatalog, terms],
   );
 
   return <CatalogContext.Provider value={value}>{children}</CatalogContext.Provider>;

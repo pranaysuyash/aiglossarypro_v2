@@ -1,4 +1,4 @@
-import { useCallback } from "react";
+import { useCallback, useRef } from "react";
 import { useAuthToken } from "../auth/AuthTokenContext";
 
 export type WorkerRequest = <T>(url: string, init?: RequestInit) => Promise<T>;
@@ -34,10 +34,18 @@ export async function requestJsonWithToken<T>(
 
 function useWorkerRequest(): WorkerRequest {
   const getToken = useAuthToken();
+  const tokenPromiseRef = useRef<Promise<string | null> | null>(null);
+  const tokenExpiryRef = useRef<number>(0);
 
   return useCallback(
     async <T,>(url: string, init: RequestInit = {}) => {
-      const token = await getToken().catch(() => null);
+      const now = Date.now();
+      // Reuse token promise if it's less than 30 seconds old
+      if (!tokenPromiseRef.current || now > tokenExpiryRef.current) {
+        tokenPromiseRef.current = getToken().catch(() => null);
+        tokenExpiryRef.current = now + 30_000;
+      }
+      const token = await tokenPromiseRef.current;
       return requestJsonWithToken<T>(url, init, token);
     },
     [getToken],

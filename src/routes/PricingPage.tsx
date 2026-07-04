@@ -1,9 +1,10 @@
 import { SignInButton, SignedOut } from "@clerk/clerk-react";
 import { startTransition, useState } from "react";
+import { DirectionalTransition } from "../components/shared/DirectionalTransition";
 import { isClerkEnabled } from "../auth/config";
 import { useAppState } from "../platform/AppContext";
 import { useWorkerRequest } from "../platform/workerApi";
-import { LaunchCurriculumPreview } from "../components/LaunchCurriculumPreview";
+import { LaunchCurriculumPreview } from "../components/domain/curriculum/LaunchCurriculumPreview";
 
 const planDetails: Record<string, string> = {
   "pro-subscription":
@@ -100,6 +101,7 @@ export function PricingPage() {
   }
 
   return (
+    <DirectionalTransition>
     <section className="page-grid">
       <section className="pricing-intake">
         <article className="hero-card pricing-hero">
@@ -269,5 +271,6 @@ export function PricingPage() {
         </article>
       </section>
     </section>
+    </DirectionalTransition>
   );
 }

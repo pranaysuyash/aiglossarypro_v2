@@ -1,6 +1,7 @@
 import { lazy, Suspense } from "react";
 import { NavLink, Outlet } from "react-router-dom";
 import { isClerkEnabled } from "../auth/config";
+import { useNavigationDirection } from "../hooks/useNavigationDirection";
 
 const HeaderAuthControls = isClerkEnabled
   ? lazy(async () => {
@@ -11,7 +12,6 @@ const HeaderAuthControls = isClerkEnabled
 
 const links = [
   { to: "/", label: "Discover" },
-  { to: "/field-lab", label: "Field Lab" },
   { to: "/explore", label: "Library" },
   { to: "/families", label: "Families" },
   { to: "/paths", label: "Paths" },
@@ -22,12 +22,14 @@ const links = [
 ];
 
 export function AppLayout() {
+  const { push } = useNavigationDirection();
+
   return (
     <div className="app-shell">
       <a className="skip-link" href="#main-content">
         Skip to main content
       </a>
-      <header className="site-header">
+      <header className="site-header" style={{ viewTransitionName: "site-header" } as React.CSSProperties}>
         <div className="brand-lockup">
           <div className="brand-mark" aria-hidden="true">
             <span>AG</span>
@@ -43,19 +45,30 @@ export function AppLayout() {
               key={link.to}
               to={link.to}
               className={({ isActive }) => (isActive ? "nav-link active" : "nav-link")}
+              onClick={(e) => {
+                e.preventDefault();
+                push(link.to);
+              }}
             >
               {link.label}
             </NavLink>
           ))}
         </nav>
         <div className="header-cta">
-          <p>One subscription. One lifetime pass. Routes, features, and corpus depth all visible.</p>
+          <p>One subscription. One lifetime pass to the whole library.</p>
           {isClerkEnabled && HeaderAuthControls ? (
             <Suspense fallback={<button className="primary-button" type="button">Sign In</button>}>
               <HeaderAuthControls />
             </Suspense>
           ) : (
-            <NavLink className="primary-button" to="/pricing">
+            <NavLink
+              className="primary-button"
+              to="/pricing"
+              onClick={(e) => {
+                e.preventDefault();
+                push("/pricing");
+              }}
+            >
               Unlock Full Access
             </NavLink>
           )}
@@ -64,7 +77,7 @@ export function AppLayout() {
       <main className="main-content" id="main-content" tabIndex={-1}>
         <Outlet />
       </main>
-      <footer className="site-footer">
+      <footer className="site-footer" style={{ viewTransitionName: "site-footer" } as React.CSSProperties}>
         <p>AIGlossary Pro turns scattered AI terminology into a learning habit you can actually keep.</p>
       </footer>
     </div>

@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
-import { useCatalog } from "../content/CatalogContext";
-import { useStudy } from "../study/StudyContext";
+import { useCatalog } from "../../../content/CatalogContext";
+import { useStudy } from "../../../study/StudyContext";
 
 export function RecentActivityCard() {
   const { termMap } = useCatalog();

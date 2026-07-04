@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { DirectionalTransition } from "../components/shared/DirectionalTransition";
 import { loadPublishedCorpusManifest, type PublishedCorpusManifest } from "../content/publishedManifest";
 import { useAppState } from "../platform/AppContext";
 
@@ -43,6 +44,7 @@ export function AccountPage() {
   ];
 
   return (
+    <DirectionalTransition>
     <section className="page-grid">
       <div className="section-header">
         <p className="eyebrow">Profile</p>
@@ -169,5 +171,6 @@ export function AccountPage() {
         </p>
       </article>
     </section>
+    </DirectionalTransition>
   );
 }

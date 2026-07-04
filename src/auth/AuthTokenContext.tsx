@@ -1,4 +1,4 @@
-import { createContext, useContext, type ReactNode } from "react";
+import { createContext, use, type ReactNode } from "react";
 
 type AuthTokenGetter = () => Promise<string | null>;
 
@@ -17,5 +17,5 @@ export function AuthTokenProvider({
 }
 
 export function useAuthToken() {
-  return useContext(AuthTokenContext);
+  return use(AuthTokenContext);
 }
