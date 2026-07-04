@@ -31,14 +31,17 @@ class PublishedCatalogJsonTests(unittest.TestCase):
         self.assertEqual(manifest["totalTerms"], len(payload))
         self.assertGreater(manifest["shardCount"], 0)
 
+        shard_terms_by_id: dict[str, dict[str, dict]] = {}
         for term in payload:
             self.assertIn("artifact", term)
             shard_id = term["artifact"]["shardId"]
             shard_path = TERM_SHARD_DIR / f"{shard_id}.json"
             self.assertTrue(shard_path.exists(), shard_path.as_posix())
 
-            shard_payload = json.loads(shard_path.read_text(encoding="utf-8"))
-            detail_payload = next((item for item in shard_payload["terms"] if item["slug"] == term["slug"]), None)
+            if shard_id not in shard_terms_by_id:
+                shard_payload = json.loads(shard_path.read_text(encoding="utf-8"))
+                shard_terms_by_id[shard_id] = {item["slug"]: item for item in shard_payload["terms"]}
+            detail_payload = shard_terms_by_id[shard_id].get(term["slug"])
             self.assertIsNotNone(detail_payload, term["slug"])
             self.assertEqual(detail_payload["slug"], term["slug"])
             self.assertIn("blocks", detail_payload)

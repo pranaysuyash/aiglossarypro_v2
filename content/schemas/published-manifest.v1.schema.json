@@ -1,0 +1,60 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aiglossarypro.local/schemas/published-manifest.v1.schema.json",
+  "title": "AI Glossary Published Manifest",
+  "type": "object",
+  "required": [
+    "publishedAt",
+    "status",
+    "termCount",
+    "pathCount",
+    "coverage",
+    "qualityChecks",
+    "artifacts"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "type": "string"
+    },
+    "contentVersion": {
+      "type": "string"
+    },
+    "publishedAt": {
+      "type": "string"
+    },
+    "status": {
+      "enum": [
+        "pass",
+        "fail"
+      ]
+    },
+    "termCount": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "pathCount": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "coverage": {
+      "type": "object"
+    },
+    "qualityChecks": {
+      "type": "object"
+    },
+    "sourceHashes": {
+      "type": "object"
+    },
+    "artifacts": {
+      "type": "object"
+    },
+    "artifactHashReport": {
+      "type": "string"
+    },
+    "artifactHashReportHash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    }
+  },
+  "additionalProperties": true
+}

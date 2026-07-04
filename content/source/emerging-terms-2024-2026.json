@@ -1,0 +1,1317 @@
+{
+  "$schema": "https://aiglossarypro.local/schemas/emerging-terms.v1.schema.json",
+  "kind": "emerging-terms",
+  "contentVersion": "2026.07.04-emerging-ai-ml-v1",
+  "description": "Diffable source seed for recent AI/ML terms originally appended through the workbook path.",
+  "termCount": 109,
+  "terms": [
+    {
+      "title": "Mamba",
+      "sourceWindow": "2024-2026",
+      "sourceType": "emerging-ai-ml-term-seed",
+      "taxonomy": {
+        "category": "Model Architecture",
+        "subCategory": "Large-Scale Models"
+      },
+      "status": "active",
+      "reviewState": "curated-seed",
+      "taxonomySource": "registry"
+    },
+    {
+      "title": "Mamba-2",
+      "sourceWindow": "2024-2026",
+      "sourceType": "emerging-ai-ml-term-seed",
+      "taxonomy": {
+        "category": "Model Architecture",
+        "subCategory": "Large-Scale Models"
+      },
+      "status": "active",
+      "reviewState": "curated-seed",
+      "taxonomySource": "emerging-source-curated"
+    },
+    {
+      "title": "Jamba",
+      "sourceWindow": "2024-2026",
+      "sourceType": "emerging-ai-ml-term-seed",
+      "taxonomy": {
+        "category": "Model Architecture",
+        "subCategory": "Large-Scale Models"
+      },
+      "status": "active",
+      "reviewState": "curated-seed",
+      "taxonomySource": "emerging-source-curated"
+    },
+    {
+      "title": "RWKV",
+      "sourceWindow": "2024-2026",
+      "sourceType": "emerging-ai-ml-term-seed",
+      "taxonomy": {
+        "category": "Neural Networks",
+        "subCategory": "Recurrent Models"
+      },
+      "status": "active",
+      "reviewState": "curated-seed",
+      "taxonomySource": "registry"
+    },
+    {
+      "title": "StripedHyena",
+      "sourceWindow": "2024-2026",
+      "sourceType": "emerging-ai-ml-term-seed",
+      "taxonomy": {
+        "category": "Model Architecture",
+        "subCategory": "Large-Scale Models"
+      },
+      "status": "active",
+      "reviewState": "curated-seed",
+      "taxonomySource": "emerging-source-curated"
+    },
+    {
+      "title": "Kolmogorov-Arnold Networks (KANs)",
+      "sourceWindow": "2024-2026",
+      "sourceType": "emerging-ai-ml-term-seed",
+      "taxonomy": {
+        "category": "Neural Networks",
+        "subCategory": "Core Models"
+      },
+      "status": "active",
+      "reviewState": "curated-seed",
+      "taxonomySource": "auto"
+    },
+    {
+      "title": "Mixture-of-Depths",
+      "sourceWindow": "2024-2026",
+      "sourceType": "emerging-ai-ml-term-seed",
+      "taxonomy": {
+        "category": "Neural Networks",
+        "subCategory": "Advanced Architectures"
+      },
+      "status": "active",
+      "reviewState": "curated-seed",
+      "taxonomySource": "emerging-source-curated"
+    },
+    {
+      "title": "Mixture-of-Recursions",
+      "sourceWindow": "2024-2026",
+      "sourceType": "emerging-ai-ml-term-seed",
+      "taxonomy": {
+        "category": "Neural Networks",
+        "subCategory": "Advanced Architectures"
+      },
+      "status": "active",
+      "reviewState": "curated-seed",
+      "taxonomySource": "emerging-source-curated"
+    },
+    {
+      "title": "Linear Attention Transformer",
+      "sourceWindow": "2024-2026",
+      "sourceType": "emerging-ai-ml-term-seed",
+      "taxonomy": {
+        "category": "Neural Networks",
+        "subCategory": "Core Models"
+      },
+      "status": "active",
+      "reviewState": "curated-seed",
+      "taxonomySource": "auto"
+    },
+    {
+      "title": "Neural State Machine",
+      "sourceWindow": "2024-2026",
+      "sourceType": "emerging-ai-ml-term-seed",
+      "taxonomy": {
+        "category": "Neural Networks",
+        "subCategory": "Core Models"
+      },
+      "status": "active",
+      "reviewState": "curated-seed",
+      "taxonomySource": "auto"
+    },
+    {
+      "title": "Adaptive Depth Transformer",
+      "sourceWindow": "2024-2026",
+      "sourceType": "emerging-ai-ml-term-seed",
+      "taxonomy": {
+        "category": "Neural Networks",
+        "subCategory": "Core Models"
+      },
+      "status": "active",
+      "reviewState": "curated-seed",
+      "taxonomySource": "auto"
+    },
+    {
+      "title": "Sparse Attention Mechanism",
+      "sourceWindow": "2024-2026",
+      "sourceType": "emerging-ai-ml-term-seed",
+      "taxonomy": {
+        "category": "Neural Networks",
+        "subCategory": "Attention Mechanism"
+      },
+      "status": "active",
+      "reviewState": "curated-seed",
+      "taxonomySource": "auto"
+    },
+    {
+      "title": "Gated Linear Attention",
+      "sourceWindow": "2024-2026",
+      "sourceType": "emerging-ai-ml-term-seed",
+      "taxonomy": {
+        "category": "Neural Networks",
+        "subCategory": "Attention Mechanism"
+      },
+      "status": "active",
+      "reviewState": "curated-seed",
+      "taxonomySource": "auto"
+    },
+    {
+      "title": "KTO (Kahneman-Tversky Optimization)",
+      "sourceWindow": "2024-2026",
+      "sourceType": "emerging-ai-ml-term-seed",
+      "taxonomy": {
+        "category": "Optimization Algorithms",
+        "subCategory": ""
+      },
+      "status": "active",
+      "reviewState": "curated-seed",
+      "taxonomySource": "registry"
+    },
+    {
+      "title": "ORPO (Odds Ratio Preference Optimization)",
+      "sourceWindow": "2024-2026",
+      "sourceType": "emerging-ai-ml-term-seed",
+      "taxonomy": {
+        "category": "Optimization Algorithms",
+        "subCategory": ""
+      },
+      "status": "active",
+      "reviewState": "curated-seed",
+      "taxonomySource": "registry"
+    },
+    {
+      "title": "SimPO (Simple Preference Optimization)",
+      "sourceWindow": "2024-2026",
+      "sourceType": "emerging-ai-ml-term-seed",
+      "taxonomy": {
+        "category": "Optimization Algorithms",
+        "subCategory": ""
+      },
+      "status": "active",
+      "reviewState": "curated-seed",
+      "taxonomySource": "registry"
+    },
+    {
+      "title": "IPO (Identity Preference Optimization)",
+      "sourceWindow": "2024-2026",
+      "sourceType": "emerging-ai-ml-term-seed",
+      "taxonomy": {
+        "category": "Optimization Algorithms",
+        "subCategory": ""
+      },
+      "status": "active",
+      "reviewState": "curated-seed",
+      "taxonomySource": "registry"
+    },
+    {
+      "title": "CPO (Contrastive Preference Optimization)",
+      "sourceWindow": "2024-2026",
+      "sourceType": "emerging-ai-ml-term-seed",
+      "taxonomy": {
+        "category": "Optimization Algorithms",
+        "subCategory": "Preference Optimization"
+      },
+      "status": "active",
+      "reviewState": "curated-seed",
+      "taxonomySource": "emerging-source-curated"
+    },
+    {
+      "title": "SLiC (Sequence Likelihood Calibration)",
+      "sourceWindow": "2024-2026",
+      "sourceType": "emerging-ai-ml-term-seed",
+      "taxonomy": {
+        "category": "Model Evaluation",
+        "subCategory": "Performance Metrics"
+      },
+      "status": "active",
+      "reviewState": "curated-seed",
+      "taxonomySource": "auto"
+    },
+    {
+      "title": "Constitutional AI",
+      "sourceWindow": "2024-2026",
+      "sourceType": "emerging-ai-ml-term-seed",
+      "taxonomy": {
+        "category": "Reinforcement Learning",
+        "subCategory": ""
+      },
+      "status": "active",
+      "reviewState": "curated-seed",
+      "taxonomySource": "registry"
+    },
+    {
+      "title": "Superalignment",
+      "sourceWindow": "2024-2026",
+      "sourceType": "emerging-ai-ml-term-seed",
+      "taxonomy": {
+        "category": "Explainable AI",
+        "subCategory": "Model Interpretability"
+      },
+      "status": "active",
+      "reviewState": "curated-seed",
+      "taxonomySource": "auto"
+    },
+    {
+      "title": "Mechanistic Interpretability",
+      "sourceWindow": "2024-2026",
+      "sourceType": "emerging-ai-ml-term-seed",
+      "taxonomy": {
+        "category": "Data Analysis",
+        "subCategory": ""
+      },
+      "status": "active",
+      "reviewState": "curated-seed",
+      "taxonomySource": "registry"
+    },
+    {
+      "title": "Circuit Analysis",
+      "sourceWindow": "2024-2026",
+      "sourceType": "emerging-ai-ml-term-seed",
+      "taxonomy": {
+        "category": "Data Analysis",
+        "subCategory": ""
+      },
+      "status": "active",
+      "reviewState": "curated-seed",
+      "taxonomySource": "registry"
+    },
+    {
+      "title": "Inference-Time Compute",
+      "sourceWindow": "2024-2026",
+      "sourceType": "emerging-ai-ml-term-seed",
+      "taxonomy": {
+        "category": "Statistical Methods",
+        "subCategory": "Bayesian Inference"
+      },
+      "status": "active",
+      "reviewState": "curated-seed",
+      "taxonomySource": "auto"
+    },
+    {
+      "title": "System 2 Reasoning",
+      "sourceWindow": "2024-2026",
+      "sourceType": "emerging-ai-ml-term-seed",
+      "taxonomy": {
+        "category": "Natural Language Processing",
+        "subCategory": "Language Generation"
+      },
+      "status": "active",
+      "reviewState": "curated-seed",
+      "taxonomySource": "auto"
+    },
+    {
+      "title": "Test-Time Reinforcement Learning",
+      "sourceWindow": "2024-2026",
+      "sourceType": "emerging-ai-ml-term-seed",
+      "taxonomy": {
+        "category": "Reinforcement Learning",
+        "subCategory": "Learning Techniques"
+      },
+      "status": "active",
+      "reviewState": "curated-seed",
+      "taxonomySource": "auto"
+    },
+    {
+      "title": "Speculative Decoding",
+      "sourceWindow": "2024-2026",
+      "sourceType": "emerging-ai-ml-term-seed",
+      "taxonomy": {
+        "category": "Natural Language Processing",
+        "subCategory": "Language Generation"
+      },
+      "status": "active",
+      "reviewState": "curated-seed",
+      "taxonomySource": "auto"
+    },
+    {
+      "title": "Prompt Caching",
+      "sourceWindow": "2024-2026",
+      "sourceType": "emerging-ai-ml-term-seed",
+      "taxonomy": {
+        "category": "Natural Language Processing",
+        "subCategory": "Prompt Design"
+      },
+      "status": "active",
+      "reviewState": "curated-seed",
+      "taxonomySource": "emerging-source-curated"
+    },
+    {
+      "title": "Self-Correction Loop",
+      "sourceWindow": "2024-2026",
+      "sourceType": "emerging-ai-ml-term-seed",
+      "taxonomy": {
+        "category": "Reasoning Methods",
+        "subCategory": "Logical Reasoning"
+      },
+      "status": "active",
+      "reviewState": "curated-seed",
+      "taxonomySource": "emerging-source-curated"
+    },
+    {
+      "title": "Search-Based Inference",
+      "sourceWindow": "2024-2026",
+      "sourceType": "emerging-ai-ml-term-seed",
+      "taxonomy": {
+        "category": "Statistical Methods",
+        "subCategory": "Bayesian Inference"
+      },
+      "status": "active",
+      "reviewState": "curated-seed",
+      "taxonomySource": "auto"
+    },
+    {
+      "title": "Monte Carlo Tree Search LLM",
+      "sourceWindow": "2024-2026",
+      "sourceType": "emerging-ai-ml-term-seed",
+      "taxonomy": {
+        "category": "Statistical Methods",
+        "subCategory": "Bayesian Inference"
+      },
+      "status": "active",
+      "reviewState": "curated-seed",
+      "taxonomySource": "auto"
+    },
+    {
+      "title": "Chain-of-Thought Decoding",
+      "sourceWindow": "2024-2026",
+      "sourceType": "emerging-ai-ml-term-seed",
+      "taxonomy": {
+        "category": "Natural Language Processing",
+        "subCategory": "Language Generation"
+      },
+      "status": "active",
+      "reviewState": "curated-seed",
+      "taxonomySource": "auto"
+    },
+    {
+      "title": "GPT-4o",
+      "sourceWindow": "2024-2026",
+      "sourceType": "emerging-ai-ml-term-seed",
+      "taxonomy": {
+        "category": "Natural Language Processing",
+        "subCategory": "Pre-trained Models"
+      },
+      "status": "active",
+      "reviewState": "curated-seed",
+      "taxonomySource": "registry"
+    },
+    {
+      "title": "OpenAI o1",
+      "sourceWindow": "2024-2026",
+      "sourceType": "emerging-ai-ml-term-seed",
+      "taxonomy": {
+        "category": "AI Types",
+        "subCategory": "Large Language Models"
+      },
+      "status": "active",
+      "reviewState": "curated-seed",
+      "taxonomySource": "emerging-source-curated"
+    },
+    {
+      "title": "OpenAI o3",
+      "sourceWindow": "2024-2026",
+      "sourceType": "emerging-ai-ml-term-seed",
+      "taxonomy": {
+        "category": "AI Applications",
+        "subCategory": ""
+      },
+      "status": "active",
+      "reviewState": "curated-seed",
+      "taxonomySource": "registry"
+    },
+    {
+      "title": "Claude 3 Opus",
+      "sourceWindow": "2024-2026",
+      "sourceType": "emerging-ai-ml-term-seed",
+      "taxonomy": {
+        "category": "Natural Language Processing",
+        "subCategory": "Pre-trained Models"
+      },
+      "status": "active",
+      "reviewState": "curated-seed",
+      "taxonomySource": "auto"
+    },
+    {
+      "title": "Claude 3.5 Sonnet",
+      "sourceWindow": "2024-2026",
+      "sourceType": "emerging-ai-ml-term-seed",
+      "taxonomy": {
+        "category": "Natural Language Processing",
+        "subCategory": "Pre-trained Models"
+      },
+      "status": "active",
+      "reviewState": "curated-seed",
+      "taxonomySource": "auto"
+    },
+    {
+      "title": "Claude 4",
+      "sourceWindow": "2024-2026",
+      "sourceType": "emerging-ai-ml-term-seed",
+      "taxonomy": {
+        "category": "Natural Language Processing",
+        "subCategory": "Pre-trained Models"
+      },
+      "status": "active",
+      "reviewState": "curated-seed",
+      "taxonomySource": "auto"
+    },
+    {
+      "title": "Gemini 1.5 Pro",
+      "sourceWindow": "2024-2026",
+      "sourceType": "emerging-ai-ml-term-seed",
+      "taxonomy": {
+        "category": "Natural Language Processing",
+        "subCategory": "Pre-trained Models"
+      },
+      "status": "active",
+      "reviewState": "curated-seed",
+      "taxonomySource": "auto"
+    },
+    {
+      "title": "Gemini 1.5 Flash",
+      "sourceWindow": "2024-2026",
+      "sourceType": "emerging-ai-ml-term-seed",
+      "taxonomy": {
+        "category": "Natural Language Processing",
+        "subCategory": "Pre-trained Models"
+      },
+      "status": "active",
+      "reviewState": "curated-seed",
+      "taxonomySource": "auto"
+    },
+    {
+      "title": "Gemini 2.0",
+      "sourceWindow": "2024-2026",
+      "sourceType": "emerging-ai-ml-term-seed",
+      "taxonomy": {
+        "category": "Natural Language Processing",
+        "subCategory": "Pre-trained Models"
+      },
+      "status": "active",
+      "reviewState": "curated-seed",
+      "taxonomySource": "auto"
+    },
+    {
+      "title": "Llama 3",
+      "sourceWindow": "2024-2026",
+      "sourceType": "emerging-ai-ml-term-seed",
+      "taxonomy": {
+        "category": "Natural Language Processing",
+        "subCategory": "Pre-trained Models"
+      },
+      "status": "active",
+      "reviewState": "curated-seed",
+      "taxonomySource": "auto"
+    },
+    {
+      "title": "Llama 3.1",
+      "sourceWindow": "2024-2026",
+      "sourceType": "emerging-ai-ml-term-seed",
+      "taxonomy": {
+        "category": "Natural Language Processing",
+        "subCategory": "Pre-trained Models"
+      },
+      "status": "active",
+      "reviewState": "curated-seed",
+      "taxonomySource": "auto"
+    },
+    {
+      "title": "Llama 4",
+      "sourceWindow": "2024-2026",
+      "sourceType": "emerging-ai-ml-term-seed",
+      "taxonomy": {
+        "category": "Natural Language Processing",
+        "subCategory": "Pre-trained Models"
+      },
+      "status": "active",
+      "reviewState": "curated-seed",
+      "taxonomySource": "auto"
+    },
+    {
+      "title": "DeepSeek R1",
+      "sourceWindow": "2024-2026",
+      "sourceType": "emerging-ai-ml-term-seed",
+      "taxonomy": {
+        "category": "AI Types",
+        "subCategory": "Large Language Models"
+      },
+      "status": "active",
+      "reviewState": "curated-seed",
+      "taxonomySource": "emerging-source-curated"
+    },
+    {
+      "title": "DeepSeek V3",
+      "sourceWindow": "2024-2026",
+      "sourceType": "emerging-ai-ml-term-seed",
+      "taxonomy": {
+        "category": "Neural Networks",
+        "subCategory": "Core Models"
+      },
+      "status": "active",
+      "reviewState": "curated-seed",
+      "taxonomySource": "registry"
+    },
+    {
+      "title": "Qwen2",
+      "sourceWindow": "2024-2026",
+      "sourceType": "emerging-ai-ml-term-seed",
+      "taxonomy": {
+        "category": "Neural Networks",
+        "subCategory": "Core Models"
+      },
+      "status": "active",
+      "reviewState": "curated-seed",
+      "taxonomySource": "registry"
+    },
+    {
+      "title": "Qwen2.5",
+      "sourceWindow": "2024-2026",
+      "sourceType": "emerging-ai-ml-term-seed",
+      "taxonomy": {
+        "category": "Neural Networks",
+        "subCategory": "Core Models"
+      },
+      "status": "active",
+      "reviewState": "curated-seed",
+      "taxonomySource": "registry"
+    },
+    {
+      "title": "Mixtral 8x22B",
+      "sourceWindow": "2024-2026",
+      "sourceType": "emerging-ai-ml-term-seed",
+      "taxonomy": {
+        "category": "Neural Networks",
+        "subCategory": "Advanced Architectures"
+      },
+      "status": "active",
+      "reviewState": "curated-seed",
+      "taxonomySource": "registry"
+    },
+    {
+      "title": "Mistral Large",
+      "sourceWindow": "2024-2026",
+      "sourceType": "emerging-ai-ml-term-seed",
+      "taxonomy": {
+        "category": "Natural Language Processing",
+        "subCategory": "Pre-trained Models"
+      },
+      "status": "active",
+      "reviewState": "curated-seed",
+      "taxonomySource": "auto"
+    },
+    {
+      "title": "Phi-3 Mini",
+      "sourceWindow": "2024-2026",
+      "sourceType": "emerging-ai-ml-term-seed",
+      "taxonomy": {
+        "category": "AI Types",
+        "subCategory": "Large Language Models"
+      },
+      "status": "active",
+      "reviewState": "curated-seed",
+      "taxonomySource": "emerging-source-curated"
+    },
+    {
+      "title": "Phi-4",
+      "sourceWindow": "2024-2026",
+      "sourceType": "emerging-ai-ml-term-seed",
+      "taxonomy": {
+        "category": "AI Types",
+        "subCategory": "Large Language Models"
+      },
+      "status": "active",
+      "reviewState": "curated-seed",
+      "taxonomySource": "emerging-source-curated"
+    },
+    {
+      "title": "Gemma 2",
+      "sourceWindow": "2024-2026",
+      "sourceType": "emerging-ai-ml-term-seed",
+      "taxonomy": {
+        "category": "AI Types",
+        "subCategory": "Large Language Models"
+      },
+      "status": "active",
+      "reviewState": "curated-seed",
+      "taxonomySource": "emerging-source-curated"
+    },
+    {
+      "title": "Gemma 3",
+      "sourceWindow": "2024-2026",
+      "sourceType": "emerging-ai-ml-term-seed",
+      "taxonomy": {
+        "category": "AI Types",
+        "subCategory": "Large Language Models"
+      },
+      "status": "active",
+      "reviewState": "curated-seed",
+      "taxonomySource": "emerging-source-curated"
+    },
+    {
+      "title": "StarCoder2",
+      "sourceWindow": "2024-2026",
+      "sourceType": "emerging-ai-ml-term-seed",
+      "taxonomy": {
+        "category": "AI Types",
+        "subCategory": "Large Language Models"
+      },
+      "status": "active",
+      "reviewState": "curated-seed",
+      "taxonomySource": "emerging-source-curated"
+    },
+    {
+      "title": "Yi 34B",
+      "sourceWindow": "2024-2026",
+      "sourceType": "emerging-ai-ml-term-seed",
+      "taxonomy": {
+        "category": "AI Types",
+        "subCategory": "Large Language Models"
+      },
+      "status": "active",
+      "reviewState": "curated-seed",
+      "taxonomySource": "emerging-source-curated"
+    },
+    {
+      "title": "Model Context Protocol (MCP)",
+      "sourceWindow": "2024-2026",
+      "sourceType": "emerging-ai-ml-term-seed",
+      "taxonomy": {
+        "category": "Reinforcement Learning",
+        "subCategory": "Training Techniques"
+      },
+      "status": "active",
+      "reviewState": "curated-seed",
+      "taxonomySource": "registry"
+    },
+    {
+      "title": "Microsoft Semantic Kernel",
+      "sourceWindow": "2024-2026",
+      "sourceType": "emerging-ai-ml-term-seed",
+      "taxonomy": {
+        "category": "Natural Language Processing",
+        "subCategory": "Text Analysis"
+      },
+      "status": "active",
+      "reviewState": "curated-seed",
+      "taxonomySource": "auto"
+    },
+    {
+      "title": "GPTScript",
+      "sourceWindow": "2024-2026",
+      "sourceType": "emerging-ai-ml-term-seed",
+      "taxonomy": {
+        "category": "Machine Learning Frameworks",
+        "subCategory": "Automated Processes"
+      },
+      "status": "active",
+      "reviewState": "curated-seed",
+      "taxonomySource": "emerging-source-curated"
+    },
+    {
+      "title": "AgentOps",
+      "sourceWindow": "2024-2026",
+      "sourceType": "emerging-ai-ml-term-seed",
+      "taxonomy": {
+        "category": "Machine Learning Frameworks",
+        "subCategory": "Automated Processes"
+      },
+      "status": "active",
+      "reviewState": "curated-seed",
+      "taxonomySource": "emerging-source-curated"
+    },
+    {
+      "title": "LLMOps Pipeline",
+      "sourceWindow": "2024-2026",
+      "sourceType": "emerging-ai-ml-term-seed",
+      "taxonomy": {
+        "category": "Machine Learning Frameworks",
+        "subCategory": "Automated Processes"
+      },
+      "status": "active",
+      "reviewState": "curated-seed",
+      "taxonomySource": "emerging-source-curated"
+    },
+    {
+      "title": "AI Browser Agent",
+      "sourceWindow": "2024-2026",
+      "sourceType": "emerging-ai-ml-term-seed",
+      "taxonomy": {
+        "category": "AI Applications",
+        "subCategory": ""
+      },
+      "status": "active",
+      "reviewState": "curated-seed",
+      "taxonomySource": "auto"
+    },
+    {
+      "title": "Computer Use (Anthropic)",
+      "sourceWindow": "2024-2026",
+      "sourceType": "emerging-ai-ml-term-seed",
+      "taxonomy": {
+        "category": "AI Applications",
+        "subCategory": "Agentic Systems"
+      },
+      "status": "active",
+      "reviewState": "curated-seed",
+      "taxonomySource": "emerging-source-curated"
+    },
+    {
+      "title": "Computer Use (OpenAI)",
+      "sourceWindow": "2024-2026",
+      "sourceType": "emerging-ai-ml-term-seed",
+      "taxonomy": {
+        "category": "AI Applications",
+        "subCategory": "Agentic Systems"
+      },
+      "status": "active",
+      "reviewState": "curated-seed",
+      "taxonomySource": "emerging-source-curated"
+    },
+    {
+      "title": "Mem0 Memory Layer",
+      "sourceWindow": "2024-2026",
+      "sourceType": "emerging-ai-ml-term-seed",
+      "taxonomy": {
+        "category": "Neural Networks",
+        "subCategory": "Specialized Architectures"
+      },
+      "status": "active",
+      "reviewState": "curated-seed",
+      "taxonomySource": "auto"
+    },
+    {
+      "title": "Zep Memory Layer",
+      "sourceWindow": "2024-2026",
+      "sourceType": "emerging-ai-ml-term-seed",
+      "taxonomy": {
+        "category": "Neural Networks",
+        "subCategory": "Specialized Architectures"
+      },
+      "status": "active",
+      "reviewState": "curated-seed",
+      "taxonomySource": "auto"
+    },
+    {
+      "title": "Episodic Memory Module",
+      "sourceWindow": "2024-2026",
+      "sourceType": "emerging-ai-ml-term-seed",
+      "taxonomy": {
+        "category": "Neural Networks",
+        "subCategory": "Specialized Architectures"
+      },
+      "status": "active",
+      "reviewState": "curated-seed",
+      "taxonomySource": "auto"
+    },
+    {
+      "title": "Sora (OpenAI Video)",
+      "sourceWindow": "2024-2026",
+      "sourceType": "emerging-ai-ml-term-seed",
+      "taxonomy": {
+        "category": "Computer Vision",
+        "subCategory": ""
+      },
+      "status": "active",
+      "reviewState": "curated-seed",
+      "taxonomySource": "auto"
+    },
+    {
+      "title": "Kling Video Generation",
+      "sourceWindow": "2024-2026",
+      "sourceType": "emerging-ai-ml-term-seed",
+      "taxonomy": {
+        "category": "Computer Vision",
+        "subCategory": ""
+      },
+      "status": "active",
+      "reviewState": "curated-seed",
+      "taxonomySource": "auto"
+    },
+    {
+      "title": "Gen-3 Alpha (Runway)",
+      "sourceWindow": "2024-2026",
+      "sourceType": "emerging-ai-ml-term-seed",
+      "taxonomy": {
+        "category": "Data Processing",
+        "subCategory": "Data Pipeline"
+      },
+      "status": "active",
+      "reviewState": "curated-seed",
+      "taxonomySource": "registry"
+    },
+    {
+      "title": "Stable Video Diffusion",
+      "sourceWindow": "2024-2026",
+      "sourceType": "emerging-ai-ml-term-seed",
+      "taxonomy": {
+        "category": "Computer Vision",
+        "subCategory": ""
+      },
+      "status": "active",
+      "reviewState": "curated-seed",
+      "taxonomySource": "registry"
+    },
+    {
+      "title": "Chameleon (Meta)",
+      "sourceWindow": "2024-2026",
+      "sourceType": "emerging-ai-ml-term-seed",
+      "taxonomy": {
+        "category": "Multi-Modal Learning",
+        "subCategory": "Multimodal Models"
+      },
+      "status": "active",
+      "reviewState": "curated-seed",
+      "taxonomySource": "emerging-source-curated"
+    },
+    {
+      "title": "Pixtral (Mistral)",
+      "sourceWindow": "2024-2026",
+      "sourceType": "emerging-ai-ml-term-seed",
+      "taxonomy": {
+        "category": "Natural Language Processing",
+        "subCategory": "Pre-trained Models"
+      },
+      "status": "active",
+      "reviewState": "curated-seed",
+      "taxonomySource": "auto"
+    },
+    {
+      "title": "Gemini Omni",
+      "sourceWindow": "2024-2026",
+      "sourceType": "emerging-ai-ml-term-seed",
+      "taxonomy": {
+        "category": "Natural Language Processing",
+        "subCategory": "Pre-trained Models"
+      },
+      "status": "active",
+      "reviewState": "curated-seed",
+      "taxonomySource": "auto"
+    },
+    {
+      "title": "Audio-to-Audio Streaming",
+      "sourceWindow": "2024-2026",
+      "sourceType": "emerging-ai-ml-term-seed",
+      "taxonomy": {
+        "category": "Natural Language Processing",
+        "subCategory": "Language Generation"
+      },
+      "status": "active",
+      "reviewState": "curated-seed",
+      "taxonomySource": "emerging-source-curated"
+    },
+    {
+      "title": "Interleaved Image-Text Training",
+      "sourceWindow": "2024-2026",
+      "sourceType": "emerging-ai-ml-term-seed",
+      "taxonomy": {
+        "category": "Computer Vision",
+        "subCategory": ""
+      },
+      "status": "active",
+      "reviewState": "curated-seed",
+      "taxonomySource": "auto"
+    },
+    {
+      "title": "Native Multimodal Embedding",
+      "sourceWindow": "2024-2026",
+      "sourceType": "emerging-ai-ml-term-seed",
+      "taxonomy": {
+        "category": "Neural Networks",
+        "subCategory": "Specialized Architectures"
+      },
+      "status": "active",
+      "reviewState": "curated-seed",
+      "taxonomySource": "auto"
+    },
+    {
+      "title": "Gemini Robotics 1.5",
+      "sourceWindow": "2024-2026",
+      "sourceType": "emerging-ai-ml-term-seed",
+      "taxonomy": {
+        "category": "AI Applications",
+        "subCategory": ""
+      },
+      "status": "active",
+      "reviewState": "curated-seed",
+      "taxonomySource": "auto"
+    },
+    {
+      "title": "Chain-of-Action Planning",
+      "sourceWindow": "2024-2026",
+      "sourceType": "emerging-ai-ml-term-seed",
+      "taxonomy": {
+        "category": "AI Applications",
+        "subCategory": ""
+      },
+      "status": "active",
+      "reviewState": "curated-seed",
+      "taxonomySource": "auto"
+    },
+    {
+      "title": "Foundation Model for Robotics",
+      "sourceWindow": "2024-2026",
+      "sourceType": "emerging-ai-ml-term-seed",
+      "taxonomy": {
+        "category": "AI Applications",
+        "subCategory": ""
+      },
+      "status": "active",
+      "reviewState": "curated-seed",
+      "taxonomySource": "auto"
+    },
+    {
+      "title": "Molmo-Act",
+      "sourceWindow": "2024-2026",
+      "sourceType": "emerging-ai-ml-term-seed",
+      "taxonomy": {
+        "category": "AI Applications",
+        "subCategory": "Robotics"
+      },
+      "status": "active",
+      "reviewState": "curated-seed",
+      "taxonomySource": "emerging-source-curated"
+    },
+    {
+      "title": "DeepMind Co-Scientist",
+      "sourceWindow": "2024-2026",
+      "sourceType": "emerging-ai-ml-term-seed",
+      "taxonomy": {
+        "category": "AI Applications",
+        "subCategory": "Scientific Discovery"
+      },
+      "status": "active",
+      "reviewState": "curated-seed",
+      "taxonomySource": "emerging-source-curated"
+    },
+    {
+      "title": "ProGen3 Protein Generation",
+      "sourceWindow": "2024-2026",
+      "sourceType": "emerging-ai-ml-term-seed",
+      "taxonomy": {
+        "category": "AI Applications",
+        "subCategory": "Scientific Discovery"
+      },
+      "status": "active",
+      "reviewState": "curated-seed",
+      "taxonomySource": "emerging-source-curated"
+    },
+    {
+      "title": "Virtual Lab Simulation",
+      "sourceWindow": "2024-2026",
+      "sourceType": "emerging-ai-ml-term-seed",
+      "taxonomy": {
+        "category": "AI Applications",
+        "subCategory": "Scientific Discovery"
+      },
+      "status": "active",
+      "reviewState": "curated-seed",
+      "taxonomySource": "emerging-source-curated"
+    },
+    {
+      "title": "AI-Driven Drug Discovery",
+      "sourceWindow": "2024-2026",
+      "sourceType": "emerging-ai-ml-term-seed",
+      "taxonomy": {
+        "category": "AI Applications",
+        "subCategory": ""
+      },
+      "status": "active",
+      "reviewState": "curated-seed",
+      "taxonomySource": "auto"
+    },
+    {
+      "title": "EU AI Act Compliance",
+      "sourceWindow": "2024-2026",
+      "sourceType": "emerging-ai-ml-term-seed",
+      "taxonomy": {
+        "category": "AI Applications",
+        "subCategory": ""
+      },
+      "status": "active",
+      "reviewState": "curated-seed",
+      "taxonomySource": "auto"
+    },
+    {
+      "title": "Automated Red Teaming",
+      "sourceWindow": "2024-2026",
+      "sourceType": "emerging-ai-ml-term-seed",
+      "taxonomy": {
+        "category": "Security & Robustness",
+        "subCategory": "Adversarial Machine Learning"
+      },
+      "status": "active",
+      "reviewState": "curated-seed",
+      "taxonomySource": "auto"
+    },
+    {
+      "title": "Model Transparency Budget",
+      "sourceWindow": "2024-2026",
+      "sourceType": "emerging-ai-ml-term-seed",
+      "taxonomy": {
+        "category": "Ethics & Governance",
+        "subCategory": "AI Safety"
+      },
+      "status": "active",
+      "reviewState": "curated-seed",
+      "taxonomySource": "emerging-source-curated"
+    },
+    {
+      "title": "Pragmatic Safety Budget",
+      "sourceWindow": "2024-2026",
+      "sourceType": "emerging-ai-ml-term-seed",
+      "taxonomy": {
+        "category": "Ethics & Governance",
+        "subCategory": "Fairness in ML"
+      },
+      "status": "active",
+      "reviewState": "curated-seed",
+      "taxonomySource": "study_family"
+    },
+    {
+      "title": "Capability Tradeoff Analysis",
+      "sourceWindow": "2024-2026",
+      "sourceType": "emerging-ai-ml-term-seed",
+      "taxonomy": {
+        "category": "Ethics & Governance",
+        "subCategory": "AI Safety"
+      },
+      "status": "active",
+      "reviewState": "curated-seed",
+      "taxonomySource": "emerging-source-curated"
+    },
+    {
+      "title": "FP8 Quantization",
+      "sourceWindow": "2024-2026",
+      "sourceType": "emerging-ai-ml-term-seed",
+      "taxonomy": {
+        "category": "Model Optimization",
+        "subCategory": "Model Compression"
+      },
+      "status": "active",
+      "reviewState": "curated-seed",
+      "taxonomySource": "emerging-source-curated"
+    },
+    {
+      "title": "INT4 Quantization",
+      "sourceWindow": "2024-2026",
+      "sourceType": "emerging-ai-ml-term-seed",
+      "taxonomy": {
+        "category": "Model Optimization",
+        "subCategory": "Model Compression"
+      },
+      "status": "active",
+      "reviewState": "curated-seed",
+      "taxonomySource": "emerging-source-curated"
+    },
+    {
+      "title": "EXL2 Quantization Format",
+      "sourceWindow": "2024-2026",
+      "sourceType": "emerging-ai-ml-term-seed",
+      "taxonomy": {
+        "category": "Model Optimization",
+        "subCategory": "Model Compression"
+      },
+      "status": "active",
+      "reviewState": "curated-seed",
+      "taxonomySource": "emerging-source-curated"
+    },
+    {
+      "title": "GGUF Quantization Format",
+      "sourceWindow": "2024-2026",
+      "sourceType": "emerging-ai-ml-term-seed",
+      "taxonomy": {
+        "category": "Model Optimization",
+        "subCategory": "Model Compression"
+      },
+      "status": "active",
+      "reviewState": "curated-seed",
+      "taxonomySource": "emerging-source-curated"
+    },
+    {
+      "title": "Precision-Aware Training",
+      "sourceWindow": "2024-2026",
+      "sourceType": "emerging-ai-ml-term-seed",
+      "taxonomy": {
+        "category": "Model Evaluation",
+        "subCategory": "Performance Metrics"
+      },
+      "status": "active",
+      "reviewState": "curated-seed",
+      "taxonomySource": "study_family"
+    },
+    {
+      "title": "Adaptive Quantization",
+      "sourceWindow": "2024-2026",
+      "sourceType": "emerging-ai-ml-term-seed",
+      "taxonomy": {
+        "category": "Model Optimization",
+        "subCategory": "Model Compression"
+      },
+      "status": "active",
+      "reviewState": "curated-seed",
+      "taxonomySource": "emerging-source-curated"
+    },
+    {
+      "title": "Token Merging",
+      "sourceWindow": "2024-2026",
+      "sourceType": "emerging-ai-ml-term-seed",
+      "taxonomy": {
+        "category": "Natural Language Processing",
+        "subCategory": "Text Representation"
+      },
+      "status": "active",
+      "reviewState": "curated-seed",
+      "taxonomySource": "registry"
+    },
+    {
+      "title": "Multi-Agent Orchestration",
+      "sourceWindow": "2024-2026",
+      "sourceType": "emerging-ai-ml-term-seed",
+      "taxonomy": {
+        "category": "AI Applications",
+        "subCategory": ""
+      },
+      "status": "active",
+      "reviewState": "curated-seed",
+      "taxonomySource": "auto"
+    },
+    {
+      "title": "Agent Swarm",
+      "sourceWindow": "2024-2026",
+      "sourceType": "emerging-ai-ml-term-seed",
+      "taxonomy": {
+        "category": "AI Applications",
+        "subCategory": ""
+      },
+      "status": "active",
+      "reviewState": "curated-seed",
+      "taxonomySource": "auto"
+    },
+    {
+      "title": "Reflection Agent Pattern",
+      "sourceWindow": "2024-2026",
+      "sourceType": "emerging-ai-ml-term-seed",
+      "taxonomy": {
+        "category": "AI Applications",
+        "subCategory": ""
+      },
+      "status": "active",
+      "reviewState": "curated-seed",
+      "taxonomySource": "auto"
+    },
+    {
+      "title": "Tool-Use Agent Loop",
+      "sourceWindow": "2024-2026",
+      "sourceType": "emerging-ai-ml-term-seed",
+      "taxonomy": {
+        "category": "AI Applications",
+        "subCategory": ""
+      },
+      "status": "active",
+      "reviewState": "curated-seed",
+      "taxonomySource": "auto"
+    },
+    {
+      "title": "ReAct Agent Pattern",
+      "sourceWindow": "2024-2026",
+      "sourceType": "emerging-ai-ml-term-seed",
+      "taxonomy": {
+        "category": "AI Applications",
+        "subCategory": ""
+      },
+      "status": "active",
+      "reviewState": "curated-seed",
+      "taxonomySource": "auto"
+    },
+    {
+      "title": "Plan-and-Execute Agent",
+      "sourceWindow": "2024-2026",
+      "sourceType": "emerging-ai-ml-term-seed",
+      "taxonomy": {
+        "category": "Reinforcement Learning",
+        "subCategory": ""
+      },
+      "status": "active",
+      "reviewState": "curated-seed",
+      "taxonomySource": "registry"
+    },
+    {
+      "title": "Agentic RAG",
+      "sourceWindow": "2024-2026",
+      "sourceType": "emerging-ai-ml-term-seed",
+      "taxonomy": {
+        "category": "Natural Language Processing",
+        "subCategory": "Knowledge-Enhanced Generation"
+      },
+      "status": "active",
+      "reviewState": "curated-seed",
+      "taxonomySource": "registry"
+    },
+    {
+      "title": "Synthetic Data Generation Loop",
+      "sourceWindow": "2024-2026",
+      "sourceType": "emerging-ai-ml-term-seed",
+      "taxonomy": {
+        "category": "Data Processing",
+        "subCategory": "Data Pipeline"
+      },
+      "status": "active",
+      "reviewState": "curated-seed",
+      "taxonomySource": "emerging-source-curated"
+    },
+    {
+      "title": "High-Quality Curation Pipeline",
+      "sourceWindow": "2024-2026",
+      "sourceType": "emerging-ai-ml-term-seed",
+      "taxonomy": {
+        "category": "Data Processing",
+        "subCategory": "Data Pipeline"
+      },
+      "status": "active",
+      "reviewState": "curated-seed",
+      "taxonomySource": "emerging-source-curated"
+    },
+    {
+      "title": "Sovereign AI Infrastructure",
+      "sourceWindow": "2024-2026",
+      "sourceType": "emerging-ai-ml-term-seed",
+      "taxonomy": {
+        "category": "AI Applications",
+        "subCategory": ""
+      },
+      "status": "active",
+      "reviewState": "curated-seed",
+      "taxonomySource": "auto"
+    },
+    {
+      "title": "Stargate Supercomputer",
+      "sourceWindow": "2024-2026",
+      "sourceType": "emerging-ai-ml-term-seed",
+      "taxonomy": {
+        "category": "AI Applications",
+        "subCategory": "AI Infrastructure"
+      },
+      "status": "active",
+      "reviewState": "curated-seed",
+      "taxonomySource": "emerging-source-curated"
+    },
+    {
+      "title": "Post-Training Scaling Laws",
+      "sourceWindow": "2024-2026",
+      "sourceType": "emerging-ai-ml-term-seed",
+      "taxonomy": {
+        "category": "Neural Networks",
+        "subCategory": "Training Techniques"
+      },
+      "status": "active",
+      "reviewState": "curated-seed",
+      "taxonomySource": "auto"
+    }
+  ]
+}

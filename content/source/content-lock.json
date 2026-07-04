@@ -1,0 +1,23 @@
+{
+  "activeTermCount": 18075,
+  "artifacts": {
+    "manifest": "content/source/content-lock.json",
+    "slugHistory": "content/migrations/slug-history.json",
+    "terms": "content/source/terms.jsonl"
+  },
+  "contentVersion": "2026.07.04-source-v1",
+  "deprecatedTermCount": 0,
+  "mergedTermCount": 0,
+  "removedTermCount": 0,
+  "schemaVersion": "content-source-manifest.v1",
+  "sourceHashes": {
+    "emergingTerms": "ef44deee0cfa4485aa87a911b69c09ffd37962ffe88981e32f7d6dcd7dae475f",
+    "glossaryWorkbook": "8b0a7f613b1fca8605856d257f79d50836c758049f7ff341661c010dd59024e7",
+    "pathSequences": "cc5f3bfd6eead6b804801c84f98a61c3d6a67a7bcc85ce208b52beb02d68487a",
+    "publishedManifest": "428c1232f0f16d07062c9cd638bcd0c392f2cc701e432de3f6eb7c6a18389901",
+    "structureWorkbook": "64973f342b0bb133058021653ac344d35637c13d36b0e3f816881179cad85803",
+    "taxonomyRegistry": "030dd4aae962a9c7869acd177cedc7d4b975836c06044c4dfc713b3876b36c76"
+  },
+  "sourceRowsHash": "ce6b97105d7bf5b1bb9fe63ce04327833bcdae361bcb0000b3254f3ca4d78d98",
+  "termCount": 18075
+}

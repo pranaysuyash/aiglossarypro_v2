@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aiglossarypro.local/schemas/term-source.v1.schema.json",
+  "title": "AI Glossary Source Term",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "termId",
+    "status",
+    "revision",
+    "sourceKey",
+    "title",
+    "canonicalSlug",
+    "slugHistory",
+    "taxonomy",
+    "metadata",
+    "source",
+    "publishedArtifact",
+    "publishedContentHash",
+    "contentHash"
+  ],
+  "properties": {
+    "schemaVersion": { "const": "content-source-term.v1" },
+    "termId": { "type": "string", "pattern": "^term_[a-f0-9]{16}$" },
+    "status": { "enum": ["active", "deprecated", "removed", "merged"] },
+    "revision": { "type": "integer", "minimum": 1 },
+    "sourceKey": { "type": "string", "minLength": 1 },
+    "title": { "type": "string", "minLength": 1 },
+    "canonicalSlug": { "type": "string", "minLength": 1 },
+    "slugHistory": { "type": "array", "items": { "type": "string" }, "minItems": 1, "uniqueItems": true },
+    "aliases": { "type": "array", "items": { "type": "string" } },
+    "taxonomy": { "type": "object" },
+    "metadata": { "type": "object" },
+    "source": { "type": "object" },
+    "publishedArtifact": { "type": "string", "minLength": 1 },
+    "publishedContentHash": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+    "contentHash": { "type": "string", "pattern": "^[a-f0-9]{64}$" }
+  },
+  "additionalProperties": true
+}

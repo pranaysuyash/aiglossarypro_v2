@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aiglossarypro.local/schemas/emerging-terms.v1.schema.json",
+  "title": "AI Glossary Emerging Terms Source",
+  "type": "object",
+  "required": ["$schema", "kind", "contentVersion", "termCount", "terms"],
+  "properties": {
+    "$schema": { "type": "string" },
+    "kind": { "const": "emerging-terms" },
+    "contentVersion": { "type": "string", "minLength": 1 },
+    "description": { "type": "string" },
+    "termCount": { "type": "integer", "minimum": 0 },
+    "terms": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["title", "sourceWindow", "sourceType", "taxonomy", "status", "reviewState"],
+        "properties": {
+          "title": { "type": "string", "minLength": 1 },
+          "sourceWindow": { "type": "string", "minLength": 1 },
+          "sourceType": { "type": "string", "minLength": 1 },
+          "taxonomy": {
+            "type": "object",
+            "required": ["category", "subCategory"],
+            "properties": {
+              "category": { "type": "string", "minLength": 1 },
+              "subCategory": { "type": "string" }
+            },
+            "additionalProperties": false
+          },
+          "status": { "enum": ["active", "deprecated", "removed"] },
+          "reviewState": { "type": "string", "minLength": 1 },
+          "taxonomySource": { "type": "string" }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}

@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aiglossarypro.local/schemas/content-source-manifest.v1.schema.json",
+  "title": "AI Glossary Content Source Manifest",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "contentVersion",
+    "termCount",
+    "activeTermCount",
+    "removedTermCount",
+    "deprecatedTermCount",
+    "mergedTermCount",
+    "sourceHashes",
+    "sourceRowsHash",
+    "artifacts"
+  ],
+  "properties": {
+    "schemaVersion": { "const": "content-source-manifest.v1" },
+    "contentVersion": { "type": "string", "minLength": 1 },
+    "termCount": { "type": "integer", "minimum": 0 },
+    "activeTermCount": { "type": "integer", "minimum": 0 },
+    "removedTermCount": { "type": "integer", "minimum": 0 },
+    "deprecatedTermCount": { "type": "integer", "minimum": 0 },
+    "mergedTermCount": { "type": "integer", "minimum": 0 },
+    "sourceHashes": { "type": "object", "additionalProperties": { "type": "string", "pattern": "^[a-f0-9]{64}$" } },
+    "sourceRowsHash": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+    "artifacts": { "type": "object" }
+  },
+  "additionalProperties": false
+}

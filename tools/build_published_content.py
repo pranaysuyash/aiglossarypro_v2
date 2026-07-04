@@ -16,9 +16,12 @@ preserving source evidence and coverage gaps honestly.
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
+import os
 import re
 import shutil
+import tempfile
 from datetime import datetime, timezone
 from collections import Counter, defaultdict
 from pathlib import Path
@@ -136,6 +139,9 @@ FAMILY_CONTENT_PROFILES = {
 # ── Auto-classification system ──────────────────────────────────────────────
 
 TAXONOMY_COVERAGE_MINIMUM = 0.74
+PUBLISHED_SCHEMA_VERSION = "published-manifest.v1"
+CONTENT_VERSION = "2026.07.04-source-v1"
+BUILDER_VERSION = "build_published_content.atomic-v1"
 
 AUTO_CLASSIFICATION_RULES: list[tuple[set[str], str, str, int]] = [
     # ==========================================
@@ -771,6 +777,41 @@ def title_tokens_for_graph(value: object | None) -> list[str]:
 def write_json(path: Path, payload: object) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(json.dumps(payload, ensure_ascii=True, separators=(",", ":")) + "\n", encoding="utf-8")
+
+
+def file_sha256(path: Path) -> str:
+    digest = hashlib.sha256()
+    with path.open("rb") as handle:
+        for chunk in iter(lambda: handle.read(1024 * 1024), b""):
+            digest.update(chunk)
+    return digest.hexdigest()
+
+
+def collect_artifact_hashes(out_dir: Path) -> dict[str, str]:
+    hashes: dict[str, str] = {}
+    for path in sorted(out_dir.rglob("*.json")):
+        relative = path.relative_to(out_dir).as_posix()
+        if relative == "manifest.json":
+            continue
+        hashes[relative] = file_sha256(path)
+    return hashes
+
+
+def replace_directory_after_success(staging_dir: Path, final_dir: Path) -> None:
+    final_dir.parent.mkdir(parents=True, exist_ok=True)
+    previous_dir = final_dir.with_name(f".{final_dir.name}.previous")
+    if previous_dir.exists():
+        shutil.rmtree(previous_dir)
+    if final_dir.exists():
+        os.replace(final_dir, previous_dir)
+    try:
+        os.replace(staging_dir, final_dir)
+    except Exception:
+        if previous_dir.exists() and not final_dir.exists():
+            os.replace(previous_dir, final_dir)
+        raise
+    if previous_dir.exists():
+        shutil.rmtree(previous_dir)
 
 
 def resolve_slug(base_slug: str, used_slugs: Counter[str]) -> str:
@@ -2669,8 +2710,13 @@ def build_published_manifest(
     structure_registry: dict,
     launch_contract: dict,
     content_depth: dict,
+    source_hashes: dict[str, str],
+    artifact_hash_report_hash: str,
 ) -> dict:
     return {
+        "schemaVersion": PUBLISHED_SCHEMA_VERSION,
+        "contentVersion": CONTENT_VERSION,
+        "builderVersion": BUILDER_VERSION,
         "publishedAt": content_audit["auditedAt"],
         "status": content_audit["status"],
         "sourceInventoryTermCount": len(source_inventory),
@@ -2690,6 +2736,9 @@ def build_published_manifest(
         "launchBlockIds": launch_contract["launchBlockIds"],
         "launchSections": launch_contract["launchSections"],
         "contentDepth": content_depth,
+        "sourceHashes": source_hashes,
+        "artifactHashReport": "reports/artifact-hashes.json",
+        "artifactHashReportHash": artifact_hash_report_hash,
         "artifacts": {
             "termsIndex": "terms/index.json",
             "termsManifest": "terms/manifest.json",
@@ -2700,6 +2749,7 @@ def build_published_manifest(
             "duplicateGroups": "reports/duplicate-groups.json",
             "canonicalizationGroups": "reports/canonicalization-groups.json",
             "contentAudit": "reports/content-audit.json",
+            "artifactHashes": "reports/artifact-hashes.json",
             "structureRegistry": "editorial/structure-registry.json",
             "launchContract": "editorial/launch-contract.json",
         },
@@ -2719,6 +2769,12 @@ def parse_args() -> argparse.Namespace:
              "Generate with tools/extract_taxonomy_registry.py. Pass a non-existent path to disable.",
     )
     parser.add_argument(
+        "--path-sequences",
+        type=Path,
+        default=None,
+        help="Optional editorial path sequence JSON. Defaults to the existing output directory editorial/path-sequences.json when present.",
+    )
+    parser.add_argument(
         "--coverage-threshold",
         type=float,
         default=TAXONOMY_COVERAGE_MINIMUM,
@@ -2730,8 +2786,10 @@ def parse_args() -> argparse.Namespace:
 
 def main() -> int:
     args = parse_args()
-    if args.out_dir.exists():
-        shutil.rmtree(args.out_dir)
+    final_out_dir = args.out_dir
+    staging_root = final_out_dir.parent
+    staging_root.mkdir(parents=True, exist_ok=True)
+    args.out_dir = Path(tempfile.mkdtemp(prefix=f".{final_out_dir.name}.staging.", dir=staging_root))
 
     source_inventory = extract_term_inventory(args.glossary_workbook)
     inventory, canonicalization_groups = merge_semantic_variants(source_inventory)
@@ -2740,6 +2798,9 @@ def main() -> int:
     structure_registry = extract_structure_registry(args.structure_workbook)
     launch_contract = build_launch_contract(structure_registry)
     taxonomy_registry = load_taxonomy_registry(args.taxonomy_registry)
+    source_path_sequences = Path("content/source/path-sequences.json")
+    path_sequences_path = args.path_sequences or (source_path_sequences if source_path_sequences.exists() else final_out_dir / "editorial" / "path-sequences.json")
+    path_sequences = load_path_sequences(path_sequences_path)
 
     used_slugs: Counter[str] = Counter()
     term_records = [
@@ -2754,7 +2815,7 @@ def main() -> int:
     finalize_term_content(term_records, launch_contract, structure_registry)
     strip_internal_fields(term_records)
     term_shards = build_term_shards(term_records)
-    path_summaries, path_details = build_learning_paths(term_records)
+    path_summaries, path_details = build_learning_paths(term_records, path_sequences)
     content_audit = build_content_audit(term_records, source_inventory, canonicalization_groups)
     block_counts = Counter()
     for term in term_records:
@@ -2840,6 +2901,27 @@ def main() -> int:
     write_json(args.out_dir / "reports" / "content-audit.json", content_audit)
     write_json(args.out_dir / "editorial" / "structure-registry.json", structure_registry)
     write_json(args.out_dir / "editorial" / "launch-contract.json", launch_contract)
+    if path_sequences:
+        if path_sequences_path and path_sequences_path.exists():
+            target_path_sequences = args.out_dir / "editorial" / "path-sequences.json"
+            target_path_sequences.parent.mkdir(parents=True, exist_ok=True)
+            shutil.copyfile(path_sequences_path, target_path_sequences)
+        else:
+            write_json(args.out_dir / "editorial" / "path-sequences.json", path_sequences)
+    source_hashes = {
+        "glossaryWorkbook": file_sha256(args.glossary_workbook),
+        "structureWorkbook": file_sha256(args.structure_workbook),
+    }
+    if args.taxonomy_registry and args.taxonomy_registry.exists():
+        source_hashes["taxonomyRegistry"] = file_sha256(args.taxonomy_registry)
+    emerging_terms_path = Path("content/source/emerging-terms-2024-2026.json")
+    if emerging_terms_path.exists():
+        source_hashes["emergingTerms"] = file_sha256(emerging_terms_path)
+    if path_sequences_path and path_sequences_path.exists():
+        source_hashes["pathSequences"] = file_sha256(path_sequences_path)
+    artifact_hashes = collect_artifact_hashes(args.out_dir)
+    write_json(args.out_dir / "reports" / "artifact-hashes.json", artifact_hashes)
+    artifact_hash_report_hash = file_sha256(args.out_dir / "reports" / "artifact-hashes.json")
     write_json(
         args.out_dir / "manifest.json",
         build_published_manifest(
@@ -2852,6 +2934,8 @@ def main() -> int:
             structure_registry,
             launch_contract,
             content_depth,
+            source_hashes,
+            artifact_hash_report_hash,
         ),
     )
     coverage_ratio = content_audit["coverage"]["taxonomyCoverageRatio"]
@@ -2864,6 +2948,9 @@ def main() -> int:
 
     if content_audit["qualityChecks"]["highSeverityIssueCount"] > 0:
         raise RuntimeError("Content audit failed with high-severity issues; inspect reports/content-audit.json.")
+
+    replace_directory_after_success(args.out_dir, final_out_dir)
+    print(f"Published {len(term_records)} terms into {final_out_dir}")
     return 0
 
 

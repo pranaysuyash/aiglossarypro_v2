@@ -12,6 +12,29 @@ This document describes what an operator can observe about the health of the con
 
 ## 1. Build Pipeline Observability
 
+### 1.0 Source Ledger Health
+
+Before trusting a generated corpus, validate the diffable source layer:
+
+```bash
+./.venv/bin/python tools/validate_content_source.py
+./.venv/bin/python tools/content_inventory.py
+```
+
+Healthy output should show:
+
+- source validation passes
+- `source.activeTermCount` matches the intended active corpus count
+- removals are represented as tombstones, not missing rows
+- `content/source/content-lock.json` contains current source hashes and `sourceRowsHash`
+
+For review of source changes, compare old and new ledgers:
+
+```bash
+./.venv/bin/python tools/content_diff.py before.jsonl content/source/terms.jsonl \
+  --fail-removals-without-tombstone
+```
+
 ### 1.1 Build Reports (Always Generated)
 
 Every successful build emits the following reports:
@@ -25,6 +48,17 @@ Every successful build emits the following reports:
 | `reports/content-audit.json` (qualityChecks) | JSON | High-severity issue count, warnings |
 
 These are generated to `{out-dir}/reports/` (default `public/content/published/reports/`).
+
+The root manifest also records:
+
+- `schemaVersion`
+- `contentVersion`
+- `builderVersion`
+- `sourceHashes`
+- `artifactHashReport`
+- `artifactHashReportHash`
+
+These fields make it possible to explain which source inputs and runtime artifacts produced a deployed corpus.
 
 ### 1.2 Key Metrics to Check After a Rebuild
 
@@ -92,7 +126,17 @@ The build exits non-zero when:
 - **OOM**: Python process exceeds available memory (~600 MB peak for 18k terms)
 - **Disk full**: Cannot write output artifacts (IOError)
 
-### 1.5 Determinism Check
+### 1.5 Partial-Write Safety
+
+The builder writes to a staging directory first and swaps into the requested output directory only after the content audit passes. This is deliberately different from deleting `public/content/published` before generation.
+
+If a build fails:
+
+- the previous published corpus should remain available
+- the failed staging directory may remain for inspection
+- operators should inspect the build error and `reports/content-audit.json` in the staging directory if present
+
+### 1.6 Determinism Check
 
 A healthy build is deterministic: running twice on the same workbooks and same code produces byte-identical output.
 
@@ -105,7 +149,7 @@ python3 tools/build_published_content.py --glossary-workbook data_glossary.xlsx 
 diff -r /tmp/build1 /tmp/build2
 ```
 
-If `diff` produces any output, the build is non-deterministic. Investigate:
+If `diff` produces output outside expected timestamp/hash fields, investigate:
 - Did the workbook change between runs?
 - Is there a timestamp in any output?
 - Is a set/dict iteration order non-deterministic (Python 3.6+ should be insertion-order-preserving, but check for unbucketed sets)?
@@ -170,7 +214,7 @@ After deploy, verify these URLs return valid JSON:
 | URL | What It Should Return |
 |---|---|
 | `/content/published/terms/index.json` | Array of term catalog entries |
-| `/content/published/terms/shards/shard-manifest.json` | Shard ID → count mapping |
+| `/content/published/terms/manifest.json` | Shard ID → count mapping |
 | `/content/published/paths/index.json` | Array of path summaries |
 | `/content/published/search/search-index.json` | Array of search entries |
 | `/content/published/manifest.json` | Top-level manifest with termCount, pathCount |

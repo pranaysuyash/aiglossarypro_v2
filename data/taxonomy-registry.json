@@ -3,36 +3,36 @@
   "kind": "taxonomy-registry",
   "description": "Authoritative editorial taxonomy registry. Keyed by normalized term title/alias to (category, subCategory). Consumed by tools/build_published_content.py as the primary taxonomy source; auto-classification rules are a fallback for terms not present here. Regenerate via tools/extract_taxonomy_registry.py from a published corpus.",
   "sourceCorpus": "/Users/pranay/Projects/aiglossary_v2/public/content/published",
-  "keyCount": 17717,
+  "keyCount": 17806,
   "categoryCounts": {
-    "Neural Networks": 4016,
-    "Reinforcement Learning": 1817,
-    "Natural Language Processing": 1560,
-    "Computer Vision": 922,
-    "Optimization Algorithms": 874,
+    "Neural Networks": 4029,
+    "Reinforcement Learning": 1818,
+    "Natural Language Processing": 1578,
+    "Computer Vision": 925,
+    "Optimization Algorithms": 876,
     "Representation Learning": 810,
     "Ensemble Methods": 696,
-    "Statistical Methods": 656,
+    "Statistical Methods": 659,
     "Learning Paradigms": 652,
     "Data Preprocessing": 594,
-    "AI Applications": 567,
+    "AI Applications": 586,
     "Generative Models": 548,
     "AI Theory": 519,
-    "Machine Learning Frameworks": 496,
-    "Model Optimization": 406,
+    "Machine Learning Frameworks": 499,
+    "Model Optimization": 411,
     "Evaluation Metrics": 359,
-    "Data Processing": 302,
+    "Data Processing": 304,
     "Statistical Models": 258,
     "Graph Analysis": 231,
     "Clustering": 201,
-    "Reasoning Methods": 170,
-    "AI Types": 153,
+    "Reasoning Methods": 171,
+    "AI Types": 161,
     "Data Analysis": 120,
-    "Model Architecture": 117,
+    "Model Architecture": 120,
     "Data Representation": 93,
-    "Model Evaluation": 78,
-    "Security & Robustness": 77,
-    "Ethics & Governance": 73,
+    "Model Evaluation": 80,
+    "Security & Robustness": 78,
+    "Ethics & Governance": 76,
     "Distributed Learning": 71,
     "Dimensionality Reduction": 57,
     "Explainable AI (XAI)": 56,
@@ -54,7 +54,7 @@
     "Self-Supervised Learning": 3,
     "Deep Learning": 2,
     "Model Training": 2,
-    "Multi-Modal Learning": 2,
+    "Multi-Modal Learning": 3,
     "Supervised Learning": 2,
     "Mathematical Concepts": 2,
     "AI Challenges": 2,
@@ -80,21 +80,22 @@
     "Hyperparameter Optimization": 1,
     "Model Interpretation": 1,
     "Research Methodology": 1,
-    "Data Storage": 1
+    "Data Storage": 1,
+    "Explainable AI": 1
   },
   "sourceTermTotal": 17988,
-  "sourceTermWithTaxonomy": 15945,
+  "sourceTermWithTaxonomy": 17806,
   "collisionCount": 130,
   "entries": {
-    "π0 diffusion policy control": {
+    "\u03c00 diffusion policy control": {
       "category": "Reinforcement Learning",
       "subCategory": ""
     },
-    "π0 generalist agent": {
+    "\u03c00 generalist agent": {
       "category": "Reinforcement Learning",
       "subCategory": ""
     },
-    "π0 (pi-zero) generalist vla": {
+    "\u03c00 (pi-zero) generalist vla": {
       "category": "Learning Paradigms",
       "subCategory": "Low-Data Learning"
     },
@@ -102,11 +103,11 @@
       "category": "Optimization Algorithms",
       "subCategory": "Gradient-Based Optimizers"
     },
-    "ℓ1 regularization": {
+    "\u21131 regularization": {
       "category": "Neural Networks",
       "subCategory": "Training Techniques"
     },
-    "ℓ2 regularization": {
+    "\u21132 regularization": {
       "category": "Neural Networks",
       "subCategory": "Training Techniques"
     },
@@ -1942,11 +1943,11 @@
       "category": "Reinforcement Learning",
       "subCategory": ""
     },
-    "google cloud’s multi-agent framework": {
+    "google cloud\u2019s multi-agent framework": {
       "category": "Reinforcement Learning",
       "subCategory": ""
     },
-    "agent-development / agentspace (google cloud’s multi-agent framework)": {
+    "agent-development / agentspace (google cloud\u2019s multi-agent framework)": {
       "category": "Reinforcement Learning",
       "subCategory": ""
     },
@@ -5746,7 +5747,7 @@
       "category": "Ensemble Methods",
       "subCategory": "Tree-Based Models"
     },
-    "baker’s distribution in rl": {
+    "baker\u2019s distribution in rl": {
       "category": "Reinforcement Learning",
       "subCategory": ""
     },
@@ -5822,7 +5823,7 @@
       "category": "Neural Networks",
       "subCategory": "Core Models"
     },
-    "barabási-albert model": {
+    "barab\u00e1si-albert model": {
       "category": "Natural Language Processing",
       "subCategory": "Pre-trained Models"
     },
@@ -7258,7 +7259,7 @@
       "category": "Representation Learning",
       "subCategory": "Vector Representations"
     },
-    "b³ metric": {
+    "b\u00b3 metric": {
       "category": "Evaluation Metrics",
       "subCategory": ""
     },
@@ -8990,7 +8991,7 @@
       "category": "Neural Networks",
       "subCategory": "Advanced Architectures"
     },
-    "ceaf_φ4 metric": {
+    "ceaf_\u03c64 metric": {
       "category": "Evaluation Metrics",
       "subCategory": ""
     },
@@ -15182,7 +15183,7 @@
       "category": "Reinforcement Learning",
       "subCategory": ""
     },
-    "dijkstra’s algorithm": {
+    "dijkstra\u2019s algorithm": {
       "category": "Optimization Algorithms",
       "subCategory": ""
     },
@@ -16562,15 +16563,15 @@
       "category": "Clustering",
       "subCategory": ""
     },
-    "earth mover’s distance": {
+    "earth mover\u2019s distance": {
       "category": "Clustering",
       "subCategory": ""
     },
-    "earth mover’s distance (emd)": {
+    "earth mover\u2019s distance (emd)": {
       "category": "Clustering",
       "subCategory": ""
     },
-    "earth mover’s distance loss": {
+    "earth mover\u2019s distance loss": {
       "category": "Clustering",
       "subCategory": ""
     },
@@ -18046,7 +18047,7 @@
       "category": "Neural Networks",
       "subCategory": "Advanced Architectures"
     },
-    "erdös-renyi network": {
+    "erd\u00f6s-renyi network": {
       "category": "Neural Networks",
       "subCategory": "Core Models"
     },
@@ -20302,11 +20303,11 @@
       "category": "Loss Functions",
       "subCategory": "Classification Loss"
     },
-    "α-γ": {
+    "\u03b1-\u03b3": {
       "category": "Loss Functions",
       "subCategory": "Classification Loss"
     },
-    "focal loss (α-γ)": {
+    "focal loss (\u03b1-\u03b3)": {
       "category": "Loss Functions",
       "subCategory": "Classification Loss"
     },
@@ -20554,7 +20555,7 @@
       "category": "Statistical Methods",
       "subCategory": ""
     },
-    "friedman’s gradient boosting": {
+    "friedman\u2019s gradient boosting": {
       "category": "Optimization Algorithms",
       "subCategory": "Gradient-Based Optimizers"
     },
@@ -20574,7 +20575,7 @@
       "category": "Neural Networks",
       "subCategory": "Advanced Architectures"
     },
-    "fréchet inception distance (fid)": {
+    "fr\u00e9chet inception distance (fid)": {
       "category": "Computer Vision",
       "subCategory": ""
     },
@@ -20582,7 +20583,7 @@
       "category": "Computer Vision",
       "subCategory": ""
     },
-    "fréchet inception distance": {
+    "fr\u00e9chet inception distance": {
       "category": "Computer Vision",
       "subCategory": ""
     },
@@ -22030,7 +22031,7 @@
       "category": "Ensemble Methods",
       "subCategory": "Tree-Based Models"
     },
-    "gower’s similarity coefficient": {
+    "gower\u2019s similarity coefficient": {
       "category": "Clustering",
       "subCategory": ""
     },
@@ -22482,19 +22483,19 @@
       "category": "Mathematical Concepts",
       "subCategory": "Vector Norms"
     },
-    "ℓ2": {
+    "\u21132": {
       "category": "Optimization Algorithms",
       "subCategory": "Gradient-Based Optimizers"
     },
-    "gradient clipping (ℓ2)": {
+    "gradient clipping (\u21132)": {
       "category": "Optimization Algorithms",
       "subCategory": "Gradient-Based Optimizers"
     },
-    "gradient clipping (ℓ2, global, norm)": {
+    "gradient clipping (\u21132, global, norm)": {
       "category": "Optimization Algorithms",
       "subCategory": "Gradient-Based Optimizers"
     },
-    "ℓ2, global, norm": {
+    "\u21132, global, norm": {
       "category": "Optimization Algorithms",
       "subCategory": "Gradient-Based Optimizers"
     },
@@ -24846,7 +24847,7 @@
       "category": "AI Theory",
       "subCategory": ""
     },
-    "“height”-dimension neural architecture": {
+    "\u201cheight\u201d-dimension neural architecture": {
       "category": "Neural Networks",
       "subCategory": "Core Models"
     },
@@ -24854,7 +24855,7 @@
       "category": "Neural Networks",
       "subCategory": "Core Models"
     },
-    "“height”-dimension neural architecture (brain-inspired intra-layer links & feedback loops)": {
+    "\u201cheight\u201d-dimension neural architecture (brain-inspired intra-layer links & feedback loops)": {
       "category": "Neural Networks",
       "subCategory": "Core Models"
     },
@@ -29258,7 +29259,7 @@
       "category": "Clustering",
       "subCategory": ""
     },
-    "evo-sgd β,0": {
+    "evo-sgd \u03b2,0": {
       "category": "Optimization Algorithms",
       "subCategory": "Gradient-Based Optimizers"
     },
@@ -29266,7 +29267,7 @@
       "category": "Optimization Algorithms",
       "subCategory": "Gradient-Based Optimizers"
     },
-    "lion (evo-sgd β,0)": {
+    "lion (evo-sgd \u03b2,0)": {
       "category": "Optimization Algorithms",
       "subCategory": "Gradient-Based Optimizers"
     },
@@ -29874,7 +29875,7 @@
       "category": "Neural Networks",
       "subCategory": "Advanced Architectures"
     },
-    "lovász-softmax loss": {
+    "lov\u00e1sz-softmax loss": {
       "category": "Neural Networks",
       "subCategory": "Activation Functions"
     },
@@ -35006,7 +35007,7 @@
       "category": "Optimization Algorithms",
       "subCategory": "Gradient-Based Optimizers"
     },
-    "newton’s method for optimization": {
+    "newton\u2019s method for optimization": {
       "category": "Optimization Algorithms",
       "subCategory": ""
     },
@@ -37110,11 +37111,11 @@
       "category": "Reinforcement Learning",
       "subCategory": "Advanced RL Techniques"
     },
-    "pi²": {
+    "pi\u00b2": {
       "category": "Reinforcement Learning",
       "subCategory": "Advanced RL Techniques"
     },
-    "path integral policy improvement (pi²)": {
+    "path integral policy improvement (pi\u00b2)": {
       "category": "Reinforcement Learning",
       "subCategory": "Advanced RL Techniques"
     },
@@ -37758,7 +37759,7 @@
       "category": "Natural Language Processing",
       "subCategory": "Language Generation"
     },
-    "poincaré embeddings": {
+    "poincar\u00e9 embeddings": {
       "category": "Representation Learning",
       "subCategory": ""
     },
@@ -41122,11 +41123,11 @@
       "category": "Neural Networks",
       "subCategory": "Advanced Architectures"
     },
-    "resnext-101-32×8d": {
+    "resnext-101-32\u00d78d": {
       "category": "Neural Networks",
       "subCategory": "Advanced Architectures"
     },
-    "resnext-50-32×4d": {
+    "resnext-50-32\u00d74d": {
       "category": "Neural Networks",
       "subCategory": "Advanced Architectures"
     },
@@ -41990,7 +41991,7 @@
       "category": "Representation Learning",
       "subCategory": ""
     },
-    "rotary positional embedding 2π": {
+    "rotary positional embedding 2\u03c0": {
       "category": "Representation Learning",
       "subCategory": ""
     },
@@ -42658,7 +42659,7 @@
       "category": "Generative Models",
       "subCategory": "Diffusion Models"
     },
-    "schrödinger bridge diffusion models": {
+    "schr\u00f6dinger bridge diffusion models": {
       "category": "Generative Models",
       "subCategory": "Diffusion Models"
     },
@@ -47734,11 +47735,11 @@
       "category": "Reinforcement Learning",
       "subCategory": "Advanced RL Techniques"
     },
-    "td(λ)": {
+    "td(\u03bb)": {
       "category": "Reinforcement Learning",
       "subCategory": "Advanced RL Techniques"
     },
-    "td(λ) learning": {
+    "td(\u03bb) learning": {
       "category": "Reinforcement Learning",
       "subCategory": "Advanced RL Techniques"
     },
@@ -50734,7 +50735,7 @@
       "category": "Reinforcement Learning",
       "subCategory": ""
     },
-    "β-vae": {
+    "\u03b2-vae": {
       "category": "Neural Networks",
       "subCategory": "Autoencoders"
     },
@@ -51654,7 +51655,7 @@
       "category": "Computer Vision",
       "subCategory": ""
     },
-    "vision-language-action (vla) models: openvla, π₀ (pi-zero), helix, gr00t n1": {
+    "vision-language-action (vla) models: openvla, \u03c0\u2080 (pi-zero), helix, gr00t n1": {
       "category": "Learning Paradigms",
       "subCategory": "Low-Data Learning"
     },
@@ -52470,7 +52471,7 @@
       "category": "Natural Language Processing",
       "subCategory": "Text Representation"
     },
-    "word mover’s distance": {
+    "word mover\u2019s distance": {
       "category": "Clustering",
       "subCategory": ""
     },
@@ -52514,11 +52515,11 @@
       "category": "Natural Language Processing",
       "subCategory": "Text Representation"
     },
-    "wordmover’s distance": {
+    "wordmover\u2019s distance": {
       "category": "Clustering",
       "subCategory": ""
     },
-    "wordmover’s distance (already in your list)*": {
+    "wordmover\u2019s distance (already in your list)*": {
       "category": "Clustering",
       "subCategory": ""
     },
@@ -56366,7 +56367,7 @@
       "category": "Reinforcement Learning",
       "subCategory": ""
     },
-    "erdős-rényi model": {
+    "erd\u0151s-r\u00e9nyi model": {
       "category": "Neural Networks",
       "subCategory": "Training Techniques"
     },
@@ -57154,7 +57155,7 @@
       "category": "AI Applications",
       "subCategory": ""
     },
-    "gradual warmup → any scheduler": {
+    "gradual warmup \u2192 any scheduler": {
       "category": "AI Applications",
       "subCategory": ""
     },
@@ -58778,7 +58779,7 @@
       "category": "Model Optimization",
       "subCategory": "Model Compression"
     },
-    "lovász-hinge": {
+    "lov\u00e1sz-hinge": {
       "category": "Neural Networks",
       "subCategory": "Activation Functions"
     },
@@ -59726,7 +59727,7 @@
       "category": "Computer Vision",
       "subCategory": "Gradient-Based Optimizers"
     },
-    "newton’s method": {
+    "newton\u2019s method": {
       "category": "Optimization Algorithms",
       "subCategory": "Gradient-Based Optimizers"
     },
@@ -60978,7 +60979,7 @@
       "category": "Statistical Methods",
       "subCategory": "Regression Metrics"
     },
-    "r-squared (r²)": {
+    "r-squared (r\u00b2)": {
       "category": "Evaluation Metrics",
       "subCategory": "Regression Metrics"
     },
@@ -63458,7 +63459,7 @@
       "category": "Graph Analysis",
       "subCategory": "Low-Data Learning"
     },
-    "ward’s method": {
+    "ward\u2019s method": {
       "category": "Computer Vision",
       "subCategory": "Gradient-Based Optimizers"
     },
@@ -63854,15 +63855,15 @@
       "category": "Neural Networks",
       "subCategory": "Advanced Architectures"
     },
-    "ε-greedy strategy": {
+    "\u03b5-greedy strategy": {
       "category": "Reinforcement Learning",
       "subCategory": "Advanced RL Techniques"
     },
-    "π0 vla": {
+    "\u03c00 vla": {
       "category": "Reinforcement Learning",
       "subCategory": "Low-Data Learning"
     },
-    "ℓ1, ℓ2, elastic-net": {
+    "\u21131, \u21132, elastic-net": {
       "category": "Neural Networks",
       "subCategory": "Core Models"
     },
@@ -63874,7 +63875,7 @@
       "category": "Clustering",
       "subCategory": "Core Models"
     },
-    "adni (alzheimer’s disease neuroimaging initiative)": {
+    "adni (alzheimer\u2019s disease neuroimaging initiative)": {
       "category": "Representation Learning",
       "subCategory": "Model Parameters"
     },
@@ -63982,11 +63983,11 @@
       "category": "Generative Models",
       "subCategory": "Advanced Architectures"
     },
-    "cramér-rao bound": {
+    "cram\u00e9r-rao bound": {
       "category": "Optimization Algorithms",
       "subCategory": "Tree-Based Models"
     },
-    "cramér-rao lower bound": {
+    "cram\u00e9r-rao lower bound": {
       "category": "Optimization Algorithms",
       "subCategory": "Advanced Architectures"
     },
@@ -64406,7 +64407,7 @@
       "category": "Neural Networks",
       "subCategory": "Advanced Architectures"
     },
-    "mixtral 8×7b": {
+    "mixtral 8\u00d77b": {
       "category": "Neural Networks",
       "subCategory": "Advanced Architectures"
     },
@@ -65046,7 +65047,7 @@
       "category": "Neural Networks",
       "subCategory": "Core Models"
     },
-    "condensenet (ℓ=8)": {
+    "condensenet (\u2113=8)": {
       "category": "Neural Networks",
       "subCategory": "Core Models"
     },
@@ -66618,7 +66619,7 @@
       "category": "Statistical Methods",
       "subCategory": "Bayesian Inference"
     },
-    "cohen’s kappa": {
+    "cohen\u2019s kappa": {
       "category": "Statistical Methods",
       "subCategory": "Bayesian Inference"
     },
@@ -69374,15 +69375,15 @@
       "category": "Neural Networks",
       "subCategory": "Core Models"
     },
-    "nyströmformer": {
+    "nystr\u00f6mformer": {
       "category": "Neural Networks",
       "subCategory": "Core Models"
     },
-    "nyströmformer-base": {
+    "nystr\u00f6mformer-base": {
       "category": "Neural Networks",
       "subCategory": "Core Models"
     },
-    "nyströmformer-plus": {
+    "nystr\u00f6mformer-plus": {
       "category": "Neural Networks",
       "subCategory": "Core Models"
     },
@@ -70953,6 +70954,362 @@
     "slimpajama": {
       "category": "Data Processing",
       "subCategory": "Data Pipeline"
+    },
+    "mamba-2": {
+      "category": "Model Architecture",
+      "subCategory": "Large-Scale Models"
+    },
+    "jamba": {
+      "category": "Model Architecture",
+      "subCategory": "Large-Scale Models"
+    },
+    "stripedhyena": {
+      "category": "Model Architecture",
+      "subCategory": "Large-Scale Models"
+    },
+    "kolmogorov-arnold networks (kans)": {
+      "category": "Neural Networks",
+      "subCategory": "Core Models"
+    },
+    "mixture-of-depths": {
+      "category": "Neural Networks",
+      "subCategory": "Advanced Architectures"
+    },
+    "mixture-of-recursions": {
+      "category": "Neural Networks",
+      "subCategory": "Advanced Architectures"
+    },
+    "linear attention transformer": {
+      "category": "Neural Networks",
+      "subCategory": "Core Models"
+    },
+    "neural state machine": {
+      "category": "Neural Networks",
+      "subCategory": "Core Models"
+    },
+    "adaptive depth transformer": {
+      "category": "Neural Networks",
+      "subCategory": "Core Models"
+    },
+    "sparse attention mechanism": {
+      "category": "Neural Networks",
+      "subCategory": "Attention Mechanism"
+    },
+    "gated linear attention": {
+      "category": "Neural Networks",
+      "subCategory": "Attention Mechanism"
+    },
+    "orpo (odds ratio preference optimization)": {
+      "category": "Optimization Algorithms",
+      "subCategory": ""
+    },
+    "cpo (contrastive preference optimization)": {
+      "category": "Optimization Algorithms",
+      "subCategory": "Preference Optimization"
+    },
+    "slic (sequence likelihood calibration)": {
+      "category": "Model Evaluation",
+      "subCategory": "Performance Metrics"
+    },
+    "superalignment": {
+      "category": "Explainable AI",
+      "subCategory": "Model Interpretability"
+    },
+    "inference-time compute": {
+      "category": "Statistical Methods",
+      "subCategory": "Bayesian Inference"
+    },
+    "system 2 reasoning": {
+      "category": "Natural Language Processing",
+      "subCategory": "Language Generation"
+    },
+    "test-time reinforcement learning": {
+      "category": "Reinforcement Learning",
+      "subCategory": "Learning Techniques"
+    },
+    "speculative decoding": {
+      "category": "Natural Language Processing",
+      "subCategory": "Language Generation"
+    },
+    "prompt caching": {
+      "category": "Natural Language Processing",
+      "subCategory": "Prompt Design"
+    },
+    "self-correction loop": {
+      "category": "Reasoning Methods",
+      "subCategory": "Logical Reasoning"
+    },
+    "search-based inference": {
+      "category": "Statistical Methods",
+      "subCategory": "Bayesian Inference"
+    },
+    "monte carlo tree search llm": {
+      "category": "Statistical Methods",
+      "subCategory": "Bayesian Inference"
+    },
+    "chain-of-thought decoding": {
+      "category": "Natural Language Processing",
+      "subCategory": "Language Generation"
+    },
+    "openai o1": {
+      "category": "AI Types",
+      "subCategory": "Large Language Models"
+    },
+    "claude 3 opus": {
+      "category": "Natural Language Processing",
+      "subCategory": "Pre-trained Models"
+    },
+    "claude 3.5 sonnet": {
+      "category": "Natural Language Processing",
+      "subCategory": "Pre-trained Models"
+    },
+    "claude 4": {
+      "category": "Natural Language Processing",
+      "subCategory": "Pre-trained Models"
+    },
+    "gemini 1.5 pro": {
+      "category": "Natural Language Processing",
+      "subCategory": "Pre-trained Models"
+    },
+    "gemini 1.5 flash": {
+      "category": "Natural Language Processing",
+      "subCategory": "Pre-trained Models"
+    },
+    "gemini 2.0": {
+      "category": "Natural Language Processing",
+      "subCategory": "Pre-trained Models"
+    },
+    "llama 3": {
+      "category": "Natural Language Processing",
+      "subCategory": "Pre-trained Models"
+    },
+    "llama 3.1": {
+      "category": "Natural Language Processing",
+      "subCategory": "Pre-trained Models"
+    },
+    "llama 4": {
+      "category": "Natural Language Processing",
+      "subCategory": "Pre-trained Models"
+    },
+    "deepseek r1": {
+      "category": "AI Types",
+      "subCategory": "Large Language Models"
+    },
+    "mistral large": {
+      "category": "Natural Language Processing",
+      "subCategory": "Pre-trained Models"
+    },
+    "phi-3 mini": {
+      "category": "AI Types",
+      "subCategory": "Large Language Models"
+    },
+    "phi-4": {
+      "category": "AI Types",
+      "subCategory": "Large Language Models"
+    },
+    "gemma 2": {
+      "category": "AI Types",
+      "subCategory": "Large Language Models"
+    },
+    "gemma 3": {
+      "category": "AI Types",
+      "subCategory": "Large Language Models"
+    },
+    "starcoder2": {
+      "category": "AI Types",
+      "subCategory": "Large Language Models"
+    },
+    "yi 34b": {
+      "category": "AI Types",
+      "subCategory": "Large Language Models"
+    },
+    "microsoft semantic kernel": {
+      "category": "Natural Language Processing",
+      "subCategory": "Text Analysis"
+    },
+    "gptscript": {
+      "category": "Machine Learning Frameworks",
+      "subCategory": "Automated Processes"
+    },
+    "agentops": {
+      "category": "Machine Learning Frameworks",
+      "subCategory": "Automated Processes"
+    },
+    "llmops pipeline": {
+      "category": "Machine Learning Frameworks",
+      "subCategory": "Automated Processes"
+    },
+    "ai browser agent": {
+      "category": "AI Applications",
+      "subCategory": ""
+    },
+    "computer use (anthropic)": {
+      "category": "AI Applications",
+      "subCategory": "Agentic Systems"
+    },
+    "computer use (openai)": {
+      "category": "AI Applications",
+      "subCategory": "Agentic Systems"
+    },
+    "mem0 memory layer": {
+      "category": "Neural Networks",
+      "subCategory": "Specialized Architectures"
+    },
+    "zep memory layer": {
+      "category": "Neural Networks",
+      "subCategory": "Specialized Architectures"
+    },
+    "episodic memory module": {
+      "category": "Neural Networks",
+      "subCategory": "Specialized Architectures"
+    },
+    "sora (openai video)": {
+      "category": "Computer Vision",
+      "subCategory": ""
+    },
+    "kling video generation": {
+      "category": "Computer Vision",
+      "subCategory": ""
+    },
+    "chameleon (meta)": {
+      "category": "Multi-Modal Learning",
+      "subCategory": "Multimodal Models"
+    },
+    "pixtral (mistral)": {
+      "category": "Natural Language Processing",
+      "subCategory": "Pre-trained Models"
+    },
+    "gemini omni": {
+      "category": "Natural Language Processing",
+      "subCategory": "Pre-trained Models"
+    },
+    "audio-to-audio streaming": {
+      "category": "Natural Language Processing",
+      "subCategory": "Language Generation"
+    },
+    "interleaved image-text training": {
+      "category": "Computer Vision",
+      "subCategory": ""
+    },
+    "native multimodal embedding": {
+      "category": "Neural Networks",
+      "subCategory": "Specialized Architectures"
+    },
+    "gemini robotics 1.5": {
+      "category": "AI Applications",
+      "subCategory": ""
+    },
+    "chain-of-action planning": {
+      "category": "AI Applications",
+      "subCategory": ""
+    },
+    "foundation model for robotics": {
+      "category": "AI Applications",
+      "subCategory": ""
+    },
+    "molmo-act": {
+      "category": "AI Applications",
+      "subCategory": "Robotics"
+    },
+    "deepmind co-scientist": {
+      "category": "AI Applications",
+      "subCategory": "Scientific Discovery"
+    },
+    "progen3 protein generation": {
+      "category": "AI Applications",
+      "subCategory": "Scientific Discovery"
+    },
+    "virtual lab simulation": {
+      "category": "AI Applications",
+      "subCategory": "Scientific Discovery"
+    },
+    "ai-driven drug discovery": {
+      "category": "AI Applications",
+      "subCategory": ""
+    },
+    "eu ai act compliance": {
+      "category": "AI Applications",
+      "subCategory": ""
+    },
+    "automated red teaming": {
+      "category": "Security & Robustness",
+      "subCategory": "Adversarial Machine Learning"
+    },
+    "model transparency budget": {
+      "category": "Ethics & Governance",
+      "subCategory": "AI Safety"
+    },
+    "pragmatic safety budget": {
+      "category": "Ethics & Governance",
+      "subCategory": "Fairness in ML"
+    },
+    "capability tradeoff analysis": {
+      "category": "Ethics & Governance",
+      "subCategory": "AI Safety"
+    },
+    "fp8 quantization": {
+      "category": "Model Optimization",
+      "subCategory": "Model Compression"
+    },
+    "int4 quantization": {
+      "category": "Model Optimization",
+      "subCategory": "Model Compression"
+    },
+    "exl2 quantization format": {
+      "category": "Model Optimization",
+      "subCategory": "Model Compression"
+    },
+    "gguf quantization format": {
+      "category": "Model Optimization",
+      "subCategory": "Model Compression"
+    },
+    "precision-aware training": {
+      "category": "Model Evaluation",
+      "subCategory": "Performance Metrics"
+    },
+    "adaptive quantization": {
+      "category": "Model Optimization",
+      "subCategory": "Model Compression"
+    },
+    "multi-agent orchestration": {
+      "category": "AI Applications",
+      "subCategory": ""
+    },
+    "agent swarm": {
+      "category": "AI Applications",
+      "subCategory": ""
+    },
+    "reflection agent pattern": {
+      "category": "AI Applications",
+      "subCategory": ""
+    },
+    "tool-use agent loop": {
+      "category": "AI Applications",
+      "subCategory": ""
+    },
+    "react agent pattern": {
+      "category": "AI Applications",
+      "subCategory": ""
+    },
+    "synthetic data generation loop": {
+      "category": "Data Processing",
+      "subCategory": "Data Pipeline"
+    },
+    "high-quality curation pipeline": {
+      "category": "Data Processing",
+      "subCategory": "Data Pipeline"
+    },
+    "sovereign ai infrastructure": {
+      "category": "AI Applications",
+      "subCategory": ""
+    },
+    "stargate supercomputer": {
+      "category": "AI Applications",
+      "subCategory": "AI Infrastructure"
+    },
+    "post-training scaling laws": {
+      "category": "Neural Networks",
+      "subCategory": "Training Techniques"
     }
   }
 }

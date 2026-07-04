@@ -1,28 +1,71 @@
 # Content Ingestion Workflow
 
 Date: 2026-06-29
+Latest Addendum: 2026-07-04
 
 ## Goal
 
-Turn the source sheets into a clean, versioned, JSON-first content pack that can power AIGlossary v2.
+Turn the source sheets and source ledger into a clean, versioned, JSON-first content pack that can power AIGlossary v2.
 
 ## Current Reality
 
-The durable ingest path is now workbook-first:
+The durable ingest path is now ledger-first with workbook import compatibility:
 
-- export the live Google Sheets to `.xlsx`
+- export the live Google Sheets to `.xlsx` when workbook-origin content changes
 - preserve those workbook snapshots locally
-- build published runtime artifacts from the workbooks
+- export or update the diffable source ledger
+- validate source identity, slug history, and tombstone rules
+- build published runtime artifacts from the canonical builder
 
 Current verified source files in local use:
 
+- `content/source/terms.jsonl`
+- `content/source/content-lock.json`
+- `content/source/emerging-terms-2024-2026.json`
+- `content/migrations/slug-history.json`
 - `data_glossary.xlsx`
 - `data_structure.xlsx`
+- `data/taxonomy-registry.json`
 
 Source tabs used:
 
 - glossary workbook: `main`
 - structure workbook: `Sheet2`
+
+## Source Ledger Commands
+
+Export or refresh the source ledger from the current published corpus:
+
+```bash
+./.venv/bin/python tools/export_workbooks_to_source.py
+```
+
+Validate the ledger:
+
+```bash
+./.venv/bin/python tools/validate_content_source.py
+```
+
+Compare two ledgers before accepting source changes:
+
+```bash
+./.venv/bin/python tools/content_diff.py before.jsonl content/source/terms.jsonl \
+  --fail-removals-without-tombstone
+```
+
+Inventory current source and published counts:
+
+```bash
+./.venv/bin/python tools/content_inventory.py
+```
+
+Append missing recent terms from the diffable emerging-term source into the workbook import surface:
+
+```bash
+./.venv/bin/python tools/add_emerging_terms.py
+```
+
+This command is idempotent. The term list and taxonomy decisions live in `content/source/emerging-terms-2024-2026.json`, not inside the script.
 
 ## Current Builder To Run
 
@@ -33,7 +76,7 @@ Source tabs used:
   --out-dir public/content/published
 ```
 
-## What The Tool Produces
+## What The Profiling Tools Produce
 
 - row counts
 - header snapshots
@@ -70,7 +113,7 @@ Artifacts:
   - editorial expansion sections
   - long-tail backlog sections
 - resolves slug collisions explicitly so the runtime corpus remains stable
-- clears stale published artifacts before writing the next canonical output pack
+- writes to a staging directory first and swaps into the requested output directory only after the audit passes
 - emits:
   - `terms/index.json`
   - `terms/manifest.json`
@@ -90,6 +133,7 @@ Artifacts:
   - editorial section count
   - total section group count
 - emits `editorial/launch-contract.json` to define which structure sections map to the current runtime block set
+- emits root `manifest.json` with `schemaVersion`, `contentVersion`, `builderVersion`, source hashes, and an artifact-hash report pointer
 
 ## Normalization Rules To Apply Next
 
@@ -106,8 +150,11 @@ After profiling, implement a second-stage normalization tool with these rules:
 
 Each row or merged row-group should map into:
 
+- stable term ID
+- status and revision
 - term identity
 - display title
+- slug history
 - aliases
 - taxonomy path
 - summary
@@ -135,6 +182,28 @@ Current real-workbook import results:
 
 This is a real corpus import, but not yet a fully editorially completed corpus.
 
+## Addendum (2026-07-04 Source Ledger)
+
+The first source-ledger snapshot records:
+
+- active source terms: `18,075`
+- source manifest: `content/source/content-lock.json`
+- schema version: `content-source-term.v1`
+- content version: `2026.07.04-source-v1`
+- emerging AI/ML seed terms: `109`
+
+The ledger is intentionally text-based and source-controlled. It is the review surface for term-level add/update/remove decisions. Workbooks remain import sources until the builder is migrated to read the ledger directly.
+
+The recent-term seed is also source-controlled in `content/source/emerging-terms-2024-2026.json`. Those terms are classified through `data/taxonomy-registry.json` so they do not depend on fallback auto-classification.
+
+Removal rule:
+
+- do not delete a term row to remove content
+- preserve the row and set `status=removed`, `status=merged`, or `status=deprecated`
+- update `slugHistory` and redirect metadata in a later migration when user-facing redirects are implemented
+
+The builder now stages output before replacing `public/content/published`, so a failed build should not leave the runtime corpus empty.
+
 ## Risks To Watch
 
 - duplicate terms with slightly different spelling
@@ -144,6 +213,7 @@ This is a real corpus import, but not yet a fully editorially completed corpus.
 - structure rows that describe sections or meta-guidance rather than finished term prose
 - limited taxonomy/definition coverage is still the biggest content-quality gap after the topology fix
 - lexical fallback links are helpful but still heuristic; the highest-value topic clusters still need editorial review for truly great study paths
+- the source ledger is currently exported from the published corpus; the next architectural step is making it the builder input instead of a control-plane overlay
 
 ## Addendum (2026-06-30)
 
@@ -234,7 +304,7 @@ The runtime content contract remains JSON-first and unchanged.
 ## Addendum (2026-07-04 Taxonomy Registry Pipeline)
 
 - The editorial taxonomy registry (`data/taxonomy-registry.json`) is now the primary taxonomy source for the build pipeline.
-- Registry entries override auto-classification rules and workbook taxonomy fields. The build prioritizes: registry > auto-classification > workbook taxonomy.
+- Registry entries override workbook taxonomy fields and auto-classification rules. The build prioritizes: registry > workbook taxonomy > auto-classification.
 - The registry grew from 13,256 → 17,717 entries through automated batch classification.
 
 ### Batch Classification Pipeline (Consolidated)
@@ -274,5 +344,3 @@ Total coverage impact: from 74.49% baseline to 100%.
 - `tools/propose_taxonomy_registry.py` — token-similarity proposal engine (first pass, 2,689 proposals)
 - `tools/classify_unclassified.py` — consolidated batch classifier (replaces legacy v1-v4 scripts)
 - `public/content/published/reports/content-audit.json` — per-build quality audit with coverage tracking
-
-
