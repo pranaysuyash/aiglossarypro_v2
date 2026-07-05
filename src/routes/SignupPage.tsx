@@ -1,7 +1,11 @@
-import { SignUp } from "@clerk/clerk-react";
+import { Suspense, lazy } from "react";
 import { Link } from "react-router-dom";
 import { DirectionalTransition } from "../components/shared/DirectionalTransition";
 import { isClerkEnabled } from "../auth/config";
+
+const ClerkSignUp = isClerkEnabled
+  ? lazy(() => import("@clerk/clerk-react").then(m => ({ default: m.SignUp })))
+  : null;
 
 export function SignupPage() {
   if (!isClerkEnabled) {
@@ -28,9 +32,13 @@ export function SignupPage() {
         <h2>Open your private AI study workspace.</h2>
         <p>Create the learner identity that will hold your notes, entitlements, and long-term study memory.</p>
       </div>
-      <article className="summary-card">
-        <SignUp path="/signup" routing="path" signInUrl="/login" forceRedirectUrl="/pricing" />
-      </article>
+      {ClerkSignUp ? (
+        <article className="summary-card">
+          <Suspense fallback={null}>
+            <ClerkSignUp path="/signup" routing="path" signInUrl="/login" forceRedirectUrl="/pricing" />
+          </Suspense>
+        </article>
+      ) : null}
       <article className="subtle-note">
         <p>
           Already have an account? <Link to="/login">Sign in here</Link>.

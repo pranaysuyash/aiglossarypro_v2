@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom";
 import { ViewTransition } from "react";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 import { DirectionalTransition } from "../components/shared/DirectionalTransition";
 import { useCatalog } from "../content/CatalogContext";
 
@@ -59,13 +61,13 @@ export function PathsPage() {
                 </div>
               </ViewTransition>
               <p>{path.description}</p>
-              <div className="path-row">
-                <span>{path.termCount} terms in cluster</span>
-                <span>{path.featuredTermSlugs.length} featured steps</span>
+              <div className="flex flex-wrap gap-2">
+                <Badge variant="chip">{path.termCount} terms in cluster</Badge>
+                <Badge variant="chip">{path.featuredTermSlugs.length} featured steps</Badge>
               </div>
-              <Link to={`/paths/${path.slug}`} className="text-link">
+              <Button variant="link" asChild><Link to={`/paths/${path.slug}`}>
                 Open learning trail
-              </Link>
+              </Link></Button>
             </article>
           ))}
         </div>

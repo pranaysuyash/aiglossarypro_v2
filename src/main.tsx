@@ -6,6 +6,7 @@ import { HomePage } from "./routes/HomePage";
 import { CatalogProvider } from "./content/CatalogContext";
 import { AppProvider } from "./platform/AppContext";
 import { StudyProvider } from "./study/StudyContext";
+import { ThemeProvider } from "./components/providers/theme-provider";
 import { CLERK_PUBLISHABLE_KEY, isClerkEnabled } from "./auth/config";
 import "./styles.css";
 
@@ -86,6 +87,13 @@ const router = createBrowserRouter([
         },
       },
       {
+        path: "review",
+        lazy: async () => {
+          const { ReviewPage } = await import("./routes/ReviewPage");
+          return { Component: ReviewPage };
+        },
+      },
+      {
         path: "saved",
         lazy: async () => {
           const { SavedPage } = await import("./routes/SavedPage");
@@ -126,15 +134,17 @@ const router = createBrowserRouter([
 
 const appTree = (
   <StrictMode>
-    <AppProvider>
-      <CatalogProvider>
-        <StudyProvider>
-          <Suspense fallback={<div className="route-loading-shell">Loading screen…</div>}>
-            <RouterProvider router={router} />
-          </Suspense>
-        </StudyProvider>
-      </CatalogProvider>
-    </AppProvider>
+    <ThemeProvider>
+      <AppProvider>
+        <CatalogProvider>
+          <StudyProvider>
+            <Suspense fallback={<div className="route-loading-shell">Loading screen…</div>}>
+              <RouterProvider router={router} />
+            </Suspense>
+          </StudyProvider>
+        </CatalogProvider>
+      </AppProvider>
+    </ThemeProvider>
   </StrictMode>
 );
 

@@ -107,53 +107,51 @@ export function buildNotebookSummary(terms: TermSummary[], notes: Record<string,
 
 export function buildEditorialTierBreakdown(terms: TermSummary[], slugs: string[]): EditorialTierBreakdown {
   const slugSet = new Set(slugs);
-  const matchedTerms = terms.filter((term) => slugSet.has(term.slug));
-  const breakdown = matchedTerms.reduce(
-    (accumulator, term) => {
-      const tier = term.metadata.editorialTier ?? "standard";
-      accumulator[tier] += 1;
-      accumulator.total += 1;
-      return accumulator;
-    },
-    {
-      featured: 0,
-      standard: 0,
-      sparse: 0,
-      total: 0,
-    },
-  );
+  const breakdown: EditorialTierBreakdown = {
+    featured: 0,
+    standard: 0,
+    sparse: 0,
+    total: 0,
+  };
+
+  for (const term of terms) {
+    if (!slugSet.has(term.slug)) continue;
+    const tier = term.metadata.editorialTier ?? "standard";
+    breakdown[tier] += 1;
+    breakdown.total += 1;
+  }
 
   return breakdown;
 }
 
 export function buildInteractiveContentMix(terms: TermSummary[], slugs: string[]): InteractiveContentMix {
   const slugSet = new Set(slugs);
-  const matchedTerms = terms.filter((term) => slugSet.has(term.slug));
-  return matchedTerms.reduce(
-    (accumulator, term) => {
-      for (const block of getTermBlocks(term)) {
-        if (block.type === "quiz") {
-          accumulator.quizzes += 1;
-        } else if (block.type === "diagram") {
-          accumulator.diagrams += 1;
-        } else if (block.type === "faq") {
-          accumulator.faqs += 1;
-        } else if (block.type === "comparison") {
-          accumulator.comparisons += 1;
-        } else if (block.type === "deep-dive") {
-          accumulator.deepDives += 1;
-        }
+  const mix: InteractiveContentMix = {
+    quizzes: 0,
+    diagrams: 0,
+    faqs: 0,
+    comparisons: 0,
+    deepDives: 0,
+  };
+
+  for (const term of terms) {
+    if (!slugSet.has(term.slug)) continue;
+    for (const block of getTermBlocks(term)) {
+      if (block.type === "quiz") {
+        mix.quizzes += 1;
+      } else if (block.type === "diagram") {
+        mix.diagrams += 1;
+      } else if (block.type === "faq") {
+        mix.faqs += 1;
+      } else if (block.type === "comparison") {
+        mix.comparisons += 1;
+      } else if (block.type === "deep-dive") {
+        mix.deepDives += 1;
       }
-      return accumulator;
-    },
-    {
-      quizzes: 0,
-      diagrams: 0,
-      faqs: 0,
-      comparisons: 0,
-      deepDives: 0,
-    },
-  );
+    }
+  }
+
+  return mix;
 }
 
 export function getLatestExportJob(exportJobs: ExportJobRecord[]): ExportJobRecord | null {

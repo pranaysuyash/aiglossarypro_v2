@@ -1,5 +1,7 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 import { DirectionalTransition } from "../components/shared/DirectionalTransition";
 import { useCatalog } from "../content/CatalogContext";
 import { useStudy } from "../study/StudyContext";
@@ -105,32 +107,32 @@ export function SavedPage() {
               ? "Bookmarks, notes, and exports are tied to the active membership and can be restored through the Worker-backed study state."
               : "Bookmarking and export still work locally, and the paid account layer will carry this shelf across devices once attached."}
           </p>
-          <div className="note-snippet-list">
-            <span>{savedTerms.length} saved terms</span>
-            <span>{savedShelves.length} shelves</span>
-            <span>{latestExportLabel}</span>
+          <div className="flex flex-wrap gap-2">
+            <Badge variant="metric">{savedTerms.length} saved terms</Badge>
+            <Badge variant="metric">{savedShelves.length} shelves</Badge>
+            <Badge variant="metric">{latestExportLabel}</Badge>
           </div>
-          <div className="path-row">
-            <span>{savedTierBreakdown.featured} featured</span>
-            <span>{savedTierBreakdown.standard} standard</span>
-            <span>{savedTierBreakdown.sparse} sparse</span>
+          <div className="flex flex-wrap gap-2">
+            <Badge variant="chip">{savedTierBreakdown.featured} featured</Badge>
+            <Badge variant="chip">{savedTierBreakdown.standard} standard</Badge>
+            <Badge variant="chip">{savedTierBreakdown.sparse} sparse</Badge>
           </div>
-          <div className="path-row">
-            <span>{savedInteractiveMix.quizzes} quizzes</span>
-            <span>{savedInteractiveMix.diagrams} diagrams</span>
-            <span>{savedInteractiveMix.faqs} FAQs</span>
-            <span>{savedInteractiveMix.comparisons} comparisons</span>
-            <span>{savedInteractiveMix.deepDives} deep dives</span>
+          <div className="flex flex-wrap gap-2">
+            <Badge variant="chip">{savedInteractiveMix.quizzes} quizzes</Badge>
+            <Badge variant="chip">{savedInteractiveMix.diagrams} diagrams</Badge>
+            <Badge variant="chip">{savedInteractiveMix.faqs} FAQs</Badge>
+            <Badge variant="chip">{savedInteractiveMix.comparisons} comparisons</Badge>
+            <Badge variant="chip">{savedInteractiveMix.deepDives} deep dives</Badge>
           </div>
-          <div className="path-row">
-            <span>Term packets</span>
-            <span>Path packets</span>
-            <span>Workspace export</span>
+          <div className="flex flex-wrap gap-2">
+            <Badge variant="chip">Term packets</Badge>
+            <Badge variant="chip">Path packets</Badge>
+            <Badge variant="chip">Workspace export</Badge>
           </div>
           <div className="hero-actions">
-            <Link className="ghost-button" to="/pricing">
+            <Button variant="raised" size="md" asChild><Link to="/pricing">
               Review membership
-            </Link>
+            </Link></Button>
           </div>
         </article>
         <article className="summary-card">
@@ -145,11 +147,11 @@ export function SavedPage() {
               ? "This is the cluster the learner can return to when they want to revisit a focused part of the corpus."
               : "Bookmark a few terms from explore or a term page to create a focused shelf."}
           </p>
-          <div className="note-snippet-list">
+          <div className="flex flex-wrap gap-2">
             {topShelfTermTitles.length ? (
-              topShelfTermTitles.map((title) => <span key={title}>{title}</span>)
+              topShelfTermTitles.map((title) => <Badge key={title} variant="metric">{title}</Badge>)
             ) : (
-              <span>Bookmark a few terms to build a shelf.</span>
+              <Badge variant="metric">Bookmark a few terms to build a shelf.</Badge>
             )}
           </div>
           <p className="term-metrics">
@@ -168,20 +170,16 @@ export function SavedPage() {
             Export now includes the full study workspace, while individual terms and paths can also be saved as standalone JSON packets from their own pages.
           </p>
           <div className="hero-actions">
-            <button
-              className="primary-button"
-              onClick={() => {
-                void exportWorkspace();
-              }}
-              type="button"
-            >
+            <Button variant="accent" size="md" onClick={() => {
+              void exportWorkspace();
+            }}>
               Export study data
-            </button>
+            </Button>
           </div>
-          <div className="path-row">
-            <span>Study mix ready</span>
-            <span>{savedInteractiveMix.quizzes} quizzes</span>
-            <span>{savedInteractiveMix.diagrams} diagrams</span>
+          <div className="flex flex-wrap gap-2">
+            <Badge variant="chip">Study mix ready</Badge>
+            <Badge variant="chip">{savedInteractiveMix.quizzes} quizzes</Badge>
+            <Badge variant="chip">{savedInteractiveMix.diagrams} diagrams</Badge>
           </div>
           <p className="term-metrics">Last export: {latestExportLabel}</p>
         </article>
@@ -226,9 +224,9 @@ export function SavedPage() {
                       </p>
                       <h3>{term.title}</h3>
                       <p>{savedTerm?.summary ?? "Saved term"}</p>
-                      <Link className="text-link" to={`/term/${term.slug}`}>
+                      <Button variant="link" asChild><Link to={`/term/${term.slug}`}>
                         Open term
-                      </Link>
+                      </Link></Button>
                     </article>
                   );
                 })}

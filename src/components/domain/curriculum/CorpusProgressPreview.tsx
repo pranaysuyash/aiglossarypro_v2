@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react";
+import { Badge } from "@/components/ui/badge";
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 import { loadPublishedCorpusManifest, type PublishedCorpusManifest } from "../../../content/publishedManifest";
 
 function formatPercent(value: number) {
@@ -85,9 +87,30 @@ export function CorpusProgressPreview() {
             <strong>{manifest ? `${manifest.pathCount.toLocaleString()}` : "—"}</strong>
             <span>guided paths</span>
           </div>
-          <div className="content-depth-orbit-ring content-depth-orbit-runtime" style={{ width: `${(runtime / totalStructure) * 100}%` }} title="Launch runtime" />
-          <div className="content-depth-orbit-ring content-depth-orbit-editorial" style={{ width: `${(editorial / totalStructure) * 100}%` }} title="Editorial expansion" />
-          <div className="content-depth-orbit-ring content-depth-orbit-backlog" style={{ width: `${(backlog / totalStructure) * 100}%` }} title="Backlog" />
+          <TooltipProvider>
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <div className="content-depth-orbit-ring content-depth-orbit-runtime" style={{ width: `${(runtime / totalStructure) * 100}%` }} />
+              </TooltipTrigger>
+              <TooltipContent>Launch runtime</TooltipContent>
+            </Tooltip>
+          </TooltipProvider>
+          <TooltipProvider>
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <div className="content-depth-orbit-ring content-depth-orbit-editorial" style={{ width: `${(editorial / totalStructure) * 100}%` }} />
+              </TooltipTrigger>
+              <TooltipContent>Editorial expansion</TooltipContent>
+            </Tooltip>
+          </TooltipProvider>
+          <TooltipProvider>
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <div className="content-depth-orbit-ring content-depth-orbit-backlog" style={{ width: `${(backlog / totalStructure) * 100}%` }} />
+              </TooltipTrigger>
+              <TooltipContent>Backlog</TooltipContent>
+            </Tooltip>
+          </TooltipProvider>
         </div>
         <div className="depth-snippet-grid">
           <span>
@@ -176,10 +199,10 @@ export function CorpusProgressPreview() {
           <li>Path headers and landing surfaces that need stronger infographic proof</li>
           <li>Comparisons, edge cases, and “why this matters” views for paid members</li>
         </ul>
-        <div className="shelf-links">
-          <span>{manifest ? `${manifest.coverage.blockCoverage.overview} overview blocks` : "Overview"}</span>
-          <span>{manifest ? `${manifest.coverage.blockCoverage.connections} connection blocks` : "Connections"}</span>
-          <span>{manifest ? `${manifest.coverage.blockCoverage["study-prompts"]} study prompts` : "Study prompts"}</span>
+        <div className="flex flex-wrap gap-2">
+          <Badge variant="metric">{manifest ? `${manifest.coverage.blockCoverage.overview} overview blocks` : "Overview"}</Badge>
+          <Badge variant="metric">{manifest ? `${manifest.coverage.blockCoverage.connections} connection blocks` : "Connections"}</Badge>
+          <Badge variant="metric">{manifest ? `${manifest.coverage.blockCoverage["study-prompts"]} study prompts` : "Study prompts"}</Badge>
         </div>
       </article>
     </section>

@@ -1,5 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { Link, useParams } from "react-router-dom";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 import { DirectionalTransition } from "../components/shared/DirectionalTransition";
 import { TermBlockRenderer } from "../components/domain/term/TermBlockRenderer";
 import { useCatalog } from "../content/CatalogContext";
@@ -86,9 +88,9 @@ export function SharedTermPage() {
       <section className="page-grid">
         <h2>Library syncing</h2>
         <p>{error}</p>
-        <Link className="text-link" to="/explore">
+        <Button variant="link" asChild><Link to="/explore">
           Back to explore
-        </Link>
+        </Link></Button>
       </section>
       </DirectionalTransition>
     );
@@ -100,9 +102,9 @@ export function SharedTermPage() {
       <section className="page-grid">
         <h2>Share preview unavailable</h2>
         <p>{shareError ?? "This share link could not be resolved."}</p>
-        <Link className="text-link" to="/explore">
+        <Button variant="link" asChild><Link to="/explore">
           Browse the glossary
-        </Link>
+        </Link></Button>
       </section>
       </DirectionalTransition>
     );
@@ -125,12 +127,12 @@ export function SharedTermPage() {
           </p>
           <p>{term.summary}</p>
           <div className="hero-actions">
-            <Link className="primary-button" to={`/term/${term.slug}`}>
+            <Button variant="accent" size="md" asChild><Link to={`/term/${term.slug}`}>
               Open full study page
-            </Link>
-            <Link className="ghost-button" to="/signup">
+            </Link></Button>
+            <Button variant="raised" size="md" asChild><Link to="/signup">
               Create account
-            </Link>
+            </Link></Button>
           </div>
         </div>
         <div className="term-hero-rail">
@@ -138,15 +140,13 @@ export function SharedTermPage() {
             <p className="showcase-label">Shared access</p>
             <h3>{shared.visibility}</h3>
             <p>{shared.expiresAt ? `Expires ${shared.expiresAt}` : "No expiry configured"}</p>
-            <div className="term-tier-row">
-              <span className={`term-tier term-tier-${term.metadata.editorialTier ?? "standard"}`}>
-                {term.metadata.editorialTier ?? "standard"}
-              </span>
+            <div className="flex flex-wrap gap-2">
+              <Badge variant="tier">{term.metadata.editorialTier ?? "standard"}</Badge>
             </div>
           </article>
           <article className="term-signal-card">
             <p className="showcase-label">Study links</p>
-            <div className="connection-pills">
+            <div className="flex flex-wrap gap-2">
               {[
                 ...term.links.prerequisites.map((label) => `Prerequisite: ${label}`),
                 ...term.links.related.map((label) => `Related: ${label}`),
@@ -154,7 +154,7 @@ export function SharedTermPage() {
               ]
                 .slice(0, 6)
                 .map((label) => (
-                  <span key={label}>{label}</span>
+                  <Badge key={label} variant="chip">{label}</Badge>
                 ))}
             </div>
           </article>
@@ -183,10 +183,10 @@ export function SharedTermPage() {
           Copy the shared link to send the concept to someone else, or open the canonical page to
           attach bookmarks, private notes, annotations, and a downloadable term packet.
         </p>
-        <div className="path-row">
-          <span>Preview is public</span>
-          <span>Study packet is private</span>
-          <span>Export stays JSON-first</span>
+        <div className="flex flex-wrap gap-2">
+          <Badge variant="chip">Preview is public</Badge>
+          <Badge variant="chip">Study packet is private</Badge>
+          <Badge variant="chip">Export stays JSON-first</Badge>
         </div>
       </section>
 
@@ -206,12 +206,12 @@ export function SharedTermPage() {
               diagram, FAQ, and curriculum depth for this term.
             </p>
             <div className="hero-actions">
-              <Link className="primary-button" to="/pricing">
+              <Button variant="accent" size="md" asChild><Link to="/pricing">
                 View plans
-              </Link>
-              <Link className="ghost-button" to={`/term/${term.slug}`}>
+              </Link></Button>
+              <Button variant="raised" size="md" asChild><Link to={`/term/${term.slug}`}>
                 Go to canonical term page
-              </Link>
+              </Link></Button>
             </div>
           </section>
         </aside>

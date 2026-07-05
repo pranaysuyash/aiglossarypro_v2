@@ -1,5 +1,7 @@
 import { Link, useParams } from "react-router-dom";
 import { useEffect, useMemo, useState } from "react";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 import { ViewTransition } from "react";
 import { DirectionalTransition } from "../components/shared/DirectionalTransition";
 import { useCatalog } from "../content/CatalogContext";
@@ -217,9 +219,9 @@ export function FamilyDetailPage() {
       <section className="page-grid">
         <h2>Family lane unavailable</h2>
         <p>{error}</p>
-        <Link className="text-link" to="/families">
+        <Button variant="link" asChild><Link to="/families">
           Back to families
-        </Link>
+        </Link></Button>
       </section>
       </DirectionalTransition>
     );
@@ -231,9 +233,9 @@ export function FamilyDetailPage() {
       <section className="page-grid">
         <h2>Family not found</h2>
         <p>This flagship family is not present in the current published catalog.</p>
-        <Link className="text-link" to="/families">
+        <Button variant="link" asChild><Link to="/families">
           Back to families
-        </Link>
+        </Link></Button>
       </section>
       </DirectionalTransition>
     );
@@ -298,24 +300,24 @@ export function FamilyDetailPage() {
           </ViewTransition>
           <p className="term-hero-intro">{family.note}</p>
           <p>{family.whyItMatters}</p>
-          <div className="shelf-links term-metrics">
-            <span>{familyTerms.length} terms in this family</span>
-            <span>{featuredTerms.length} featured concepts</span>
-            <span>{familyPaths.length} related paths</span>
+          <div className="flex flex-wrap gap-2">
+            <Badge variant="metric">{familyTerms.length} terms in this family</Badge>
+            <Badge variant="metric">{featuredTerms.length} featured concepts</Badge>
+            <Badge variant="metric">{familyPaths.length} related paths</Badge>
           </div>
           <div className="hero-actions">
-            <Link className="primary-button" to="/explore">
-              Browse library
-            </Link>
-            <Link className="ghost-button" to="/paths">
-              Browse paths
-            </Link>
-            <Link className="ghost-button" to="/pricing">
-              Review membership
-            </Link>
-            <button className="ghost-button" onClick={exportFamilyPacket} type="button">
+            <Button variant="accent" asChild>
+              <Link to="/explore">Browse library</Link>
+            </Button>
+            <Button variant="raised" asChild>
+              <Link to="/paths">Browse paths</Link>
+            </Button>
+            <Button variant="raised" asChild>
+              <Link to="/pricing">Review membership</Link>
+            </Button>
+            <Button variant="raised" onClick={exportFamilyPacket}>
               Export family packet
-            </button>
+            </Button>
           </div>
         </div>
         <div className="term-hero-rail">
@@ -331,12 +333,12 @@ export function FamilyDetailPage() {
             <p className="showcase-label">Workspace continuity</p>
             <p>Your notes and bookmarks can stay attached to the same study account once you sign in.</p>
             <div className="hero-actions">
-              <Link className="ghost-button" to="/notes">
-                Open notes
-              </Link>
-              <Link className="ghost-button" to="/saved">
-                Open study shelf
-              </Link>
+              <Button variant="raised" size="sm" asChild>
+                <Link to="/notes">Open notes</Link>
+              </Button>
+              <Button variant="raised" size="sm" asChild>
+                <Link to="/saved">Open study shelf</Link>
+              </Button>
             </div>
           </article>
           <article className="term-signal-card">
@@ -348,14 +350,18 @@ export function FamilyDetailPage() {
             </p>
             <div className="hero-actions">
               {familySequenceWindow.entryTerm ? (
-                <Link className="ghost-button" to={`/term/${familySequenceWindow.entryTerm.slug}`}>
-                  Open lane entry
-                </Link>
+                <Button variant="raised" size="sm" asChild>
+                  <Link to={`/term/${familySequenceWindow.entryTerm.slug}`}>
+                    Open lane entry
+                  </Link>
+                </Button>
               ) : null}
               {familySequenceWindow.lanePath ? (
-                <Link className="ghost-button" to={`/paths/${familySequenceWindow.lanePath.slug}`}>
-                  Open related path
-                </Link>
+                <Button variant="raised" size="sm" asChild>
+                  <Link to={`/paths/${familySequenceWindow.lanePath.slug}`}>
+                    Open related path
+                  </Link>
+                </Button>
               ) : null}
             </div>
           </article>
@@ -430,17 +436,17 @@ export function FamilyDetailPage() {
         {familySequenceWindow.nextTerms.length ? (
           familySequenceWindow.nextTerms.map((term, index) => (
             <article key={term.slug} className="family-card">
-              <div className="term-tier-row">
-                <span className={`term-tier term-tier-${term.metadata.editorialTier ?? "standard"}`}>
+              <div className="flex flex-wrap gap-2">
+                <Badge variant="tier">
                   Step {index + 1}
-                </span>
+                </Badge>
               </div>
               <p className="showcase-label">{family.title}</p>
               <h3>{term.title}</h3>
               <p>{term.summary}</p>
-              <Link className="text-link" to={`/term/${term.slug}`}>
+              <Button variant="link" asChild><Link to={`/term/${term.slug}`}>
                 Open lane term
-              </Link>
+              </Link></Button>
             </article>
           ))
         ) : (
@@ -460,16 +466,16 @@ export function FamilyDetailPage() {
           <article key={term.slug} className="family-card">
             <div className="family-card-head">
               <p className="showcase-label">{term.title}</p>
-              <div className="term-tier-row">
-                <span className={`term-tier term-tier-${term.metadata.editorialTier ?? "standard"}`}>
+              <div className="flex flex-wrap gap-2">
+                <Badge variant="tier">
                   {term.metadata.editorialTier ?? "standard"}
-                </span>
+                </Badge>
               </div>
             </div>
             <p>{term.summary}</p>
-            <Link className="text-link" to={`/term/${term.slug}`}>
+            <Button variant="link" asChild><Link to={`/term/${term.slug}`}>
               Open {term.title}
-            </Link>
+            </Link></Button>
           </article>
         ))}
       </section>
@@ -486,9 +492,9 @@ export function FamilyDetailPage() {
               <h3>{widget.title}</h3>
               <p>{widget.preview}</p>
               <p>{widget.note}</p>
-              <Link className="text-link" to={`/term/${widget.termSlug}`}>
+              <Button variant="link" asChild><Link to={`/term/${widget.termSlug}`}>
                 Open {widget.termTitle}
-              </Link>
+              </Link></Button>
             </article>
           ))
         ) : (
@@ -509,13 +515,13 @@ export function FamilyDetailPage() {
             <article key={`${pair.anchorSlug}-${pair.neighborSlug}`} className="family-card">
               <p className="showcase-label">{pair.anchor} ↔ {pair.neighbor}</p>
               <div className="hero-actions">
-                <Link className="text-link" to={`/term/${pair.anchorSlug}`}>
+                <Button variant="link" asChild><Link to={`/term/${pair.anchorSlug}`}>
                   Open anchor
-                </Link>
+                </Link></Button>
                 <span>vs</span>
-                <Link className="text-link" to={`/term/${pair.neighborSlug}`}>
+                <Button variant="link" asChild><Link to={`/term/${pair.neighborSlug}`}>
                   Open neighbor
-                </Link>
+                </Link></Button>
               </div>
             </article>
           ))
@@ -536,9 +542,9 @@ export function FamilyDetailPage() {
           <article key={term.slug} className="family-card">
             <p className="showcase-label">{term.title}</p>
             <p>{term.summary}</p>
-            <Link className="text-link" to={`/term/${term.slug}`}>
+            <Button variant="link" asChild><Link to={`/term/${term.slug}`}>
               Open term
-            </Link>
+            </Link></Button>
           </article>
         ))}
       </section>
@@ -553,13 +559,13 @@ export function FamilyDetailPage() {
             <article key={path.slug} className="family-card">
               <p className="showcase-label">{path.title}</p>
               <p>{path.description}</p>
-              <div className="path-row">
-                <span>{path.termCount} terms</span>
-                <span>{path.featuredTermSlugs.length} featured anchors</span>
+              <div className="flex flex-wrap gap-2">
+                <Badge variant="chip">{path.termCount} terms</Badge>
+                <Badge variant="chip">{path.featuredTermSlugs.length} featured anchors</Badge>
               </div>
-              <Link className="text-link" to={`/paths/${path.slug}`} aria-label={`Open trail: ${path.title}`}>
+              <Button variant="link" asChild><Link to={`/paths/${path.slug}`} aria-label={`Open trail: ${path.title}`}>
                 Open path
-              </Link>
+              </Link></Button>
             </article>
           ))
         ) : (
@@ -580,9 +586,9 @@ export function FamilyDetailPage() {
             Start here if you want a structured sequence rather than browsing one term at a time.
           </p>
           <div className="hero-actions">
-            <Link className="primary-button" to={`/paths/${familyPaths[0].slug}`}>
-              Open recommended path
-            </Link>
+            <Button variant="accent" asChild>
+              <Link to={`/paths/${familyPaths[0].slug}`}>Open recommended path</Link>
+            </Button>
           </div>
         </article>
       ) : null}

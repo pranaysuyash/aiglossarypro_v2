@@ -1,7 +1,16 @@
-import { SignInButton, SignedOut } from "@clerk/clerk-react";
-import { startTransition, useState } from "react";
+import { Suspense, lazy, startTransition, useState } from "react";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 import { DirectionalTransition } from "../components/shared/DirectionalTransition";
 import { isClerkEnabled } from "../auth/config";
+
+const ClerkSignedOut = isClerkEnabled
+  ? lazy(() => import("@clerk/clerk-react").then(m => ({ default: m.SignedOut })))
+  : null;
+
+const ClerkSignInButton = isClerkEnabled
+  ? lazy(() => import("@clerk/clerk-react").then(m => ({ default: m.SignInButton })))
+  : null;
 import { useAppState } from "../platform/AppContext";
 import { useWorkerRequest } from "../platform/workerApi";
 import { LaunchCurriculumPreview } from "../components/domain/curriculum/LaunchCurriculumPreview";
@@ -111,10 +120,10 @@ export function PricingPage() {
             AIGlossary Pro should feel like a premium learning membership, not a feature matrix puzzle.
             Choose the pace that fits you: ongoing membership or a permanent seat at the table.
           </p>
-          <div className="shelf-links">
-            <span>Monthly or yearly</span>
-            <span>Lifetime access</span>
-            <span>No free plan</span>
+          <div className="flex flex-wrap gap-2">
+            <Badge variant="metric">Monthly or yearly</Badge>
+            <Badge variant="metric">Lifetime access</Badge>
+            <Badge variant="metric">No free plan</Badge>
           </div>
         </article>
         <article className="summary-card summary-emphasis pricing-billboard">
@@ -179,12 +188,14 @@ export function PricingPage() {
           <p>
             Paid access should attach directly to your learner identity so bookmarks, notes, and entitlements stay synchronized.
           </p>
-          {isClerkEnabled ? (
-            <SignedOut>
-              <SignInButton mode="modal">
-                <button className="primary-button" type="button">Sign In To Continue</button>
-              </SignInButton>
-            </SignedOut>
+          {ClerkSignedOut && ClerkSignInButton ? (
+            <Suspense fallback={null}>
+              <ClerkSignedOut>
+                <ClerkSignInButton mode="modal">
+                  <Button variant="accent" size="md">Sign In To Continue</Button>
+                </ClerkSignInButton>
+              </ClerkSignedOut>
+            </Suspense>
           ) : null}
         </article>
       ) : null}
@@ -220,15 +231,15 @@ export function PricingPage() {
               </p>
               <div className="hero-actions">
                 {plan.billingOptions.map((billingMode) => (
-                  <button
+                  <Button
                     key={billingMode}
-                    className="primary-button"
+                    variant="accent"
+                    size="md"
                     disabled={!canCheckout}
                     onClick={() => startCheckout(plan.key, billingMode)}
-                    type="button"
                   >
                     {isSubmitting ? "Preparing checkout…" : `Choose ${billingMode}`}
-                  </button>
+                  </Button>
                 ))}
               </div>
             </article>

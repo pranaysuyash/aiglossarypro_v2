@@ -15,6 +15,10 @@ const badgeVariants = cva(
         ghost:
           "hover:bg-muted hover:text-muted-foreground dark:hover:bg-muted/50",
         link: "text-primary underline-offset-4 hover:underline",
+        // Custom variants matching the app's chip/pill patterns
+        chip: "bg-[var(--surface-inset)] text-[var(--ink-muted)] border border-[var(--border-subtle)] rounded-full px-3 py-1",
+        metric: "bg-[var(--surface-raised)] text-[var(--ink-primary)] border border-[var(--border-subtle)] rounded-full px-3 py-1 text-sm",
+        tier: "bg-[var(--accent-soft)] text-[var(--accent-primary)] border border-[var(--accent-glow)] rounded-full px-3 py-1 text-xs font-semibold uppercase tracking-wider",
       },
     },
     defaultVariants: {

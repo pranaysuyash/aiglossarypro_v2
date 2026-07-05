@@ -1,13 +1,14 @@
 import { SignInButton, SignedIn, SignedOut, UserButton } from "@clerk/clerk-react";
+import { Button } from "@/components/ui/button";
 
 export function HeaderAuthControls() {
   return (
     <>
       <SignedOut>
         <SignInButton mode="modal">
-          <button className="primary-button" type="button">
+          <Button variant="accent" size="md">
             Sign In
-          </button>
+          </Button>
         </SignInButton>
       </SignedOut>
       <SignedIn>

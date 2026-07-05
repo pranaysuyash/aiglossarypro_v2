@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Badge } from "@/components/ui/badge";
 import { loadPublishedCorpusManifest, type PublishedCorpusManifest } from "../../../content/publishedManifest";
 
 export function LaunchCurriculumPreview() {
@@ -29,10 +30,10 @@ export function LaunchCurriculumPreview() {
           The editorial plan now has a published launch contract so the app knows which parts belong
           in the current runtime and which ones stay in expansion mode.
         </p>
-        <div className="note-snippet-list">
-          <span>{manifest ? `${manifest.launchSectionCount} launch sections` : "Loading launch sections…"}</span>
-          <span>{manifest ? `${manifest.structureLayerCounts["launch-runtime"]} runtime fields` : "JSON-backed"}</span>
-          <span>{manifest ? `${manifest.structureLayerCounts.backlog} backlog fields` : "Structure-aware"}</span>
+        <div className="flex flex-wrap gap-2">
+          <Badge variant="metric">{manifest ? `${manifest.launchSectionCount} launch sections` : "Loading launch sections…"}</Badge>
+          <Badge variant="metric">{manifest ? `${manifest.structureLayerCounts["launch-runtime"]} runtime fields` : "JSON-backed"}</Badge>
+          <Badge variant="metric">{manifest ? `${manifest.structureLayerCounts.backlog} backlog fields` : "Structure-aware"}</Badge>
         </div>
       </article>
       <article className="summary-card">
@@ -43,20 +44,20 @@ export function LaunchCurriculumPreview() {
           whole editorial plan, while every published term also carries a curriculum-map block derived
           from the launch contract.
         </p>
-        <div className="shelf-links">
+        <div className="flex flex-wrap gap-2">
           {(manifest?.launchBlockIds ?? ["overview", "taxonomy", "connections", "study-prompts"]).map((blockId) => (
-            <span key={blockId}>{blockId}</span>
+            <Badge key={blockId} variant="metric">{blockId}</Badge>
           ))}
         </div>
       </article>
       <article className="summary-card">
         <p className="showcase-label">Launch sections</p>
         <h3>Mapped from the source plan, not invented twice</h3>
-        <div className="note-snippet-list">
+        <div className="flex flex-wrap gap-2">
           {(manifest?.launchSections ?? []).slice(0, 6).map((item) => (
-            <span key={item.section}>
+            <Badge key={item.section} variant="metric">
               {item.section}
-            </span>
+            </Badge>
           ))}
         </div>
         <p className="term-metrics">

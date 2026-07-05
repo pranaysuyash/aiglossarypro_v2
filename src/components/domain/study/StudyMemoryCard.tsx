@@ -6,6 +6,7 @@ import {
   buildNotebookSummary,
   buildSavedShelfSummaries,
 } from "../../../study/workspaceInsights";
+import { Button } from "@/components/ui/button";
 
 export function StudyMemoryCard() {
   const { terms } = useCatalog();
@@ -79,15 +80,15 @@ export function StudyMemoryCard() {
         </div>
       </div>
       <div className="hero-actions">
-        <Link className="ghost-button" to="/saved">
-          Open shelf
-        </Link>
-        <Link className="ghost-button" to="/notes">
-          Open notes
-        </Link>
-        <button className="primary-button" onClick={exportStudyData} type="button">
+        <Button variant="raised" asChild>
+          <Link to="/saved">Open shelf</Link>
+        </Button>
+        <Button variant="raised" asChild>
+          <Link to="/notes">Open notes</Link>
+        </Button>
+        <Button variant="accent" onClick={exportStudyData}>
           Export memory
-        </button>
+        </Button>
       </div>
     </article>
   );

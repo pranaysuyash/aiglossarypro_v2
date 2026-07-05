@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
+import { Button } from "@/components/ui/button";
 import { DirectionalTransition } from "../components/shared/DirectionalTransition";
 import { useCatalog } from "../content/CatalogContext";
 import {
@@ -212,15 +213,19 @@ export function FieldLabPage() {
             ))}
           </div>
           <div className="hero-actions">
-            <Link className="primary-button" to="/explore">
-              Open full library
-            </Link>
-            <Link className="ghost-button" to={sampleInteractiveTerm ? `/term/${sampleInteractiveTerm.slug}` : "/explore"}>
-              Open sample deep dive
-            </Link>
-            <Link className="ghost-button" to={samplePath ? `/paths/${samplePath.slug}` : "/paths"}>
-              Open sample trail
-            </Link>
+            <Button variant="accent" asChild>
+              <Link to="/explore">Open full library</Link>
+            </Button>
+            <Button variant="raised" asChild>
+              <Link to={sampleInteractiveTerm ? `/term/${sampleInteractiveTerm.slug}` : "/explore"}>
+                Open sample deep dive
+              </Link>
+            </Button>
+            <Button variant="raised" asChild>
+              <Link to={samplePath ? `/paths/${samplePath.slug}` : "/paths"}>
+                Open sample trail
+              </Link>
+            </Button>
           </div>
         </div>
         <div className="field-lab-hero-panels">
@@ -238,9 +243,9 @@ export function FieldLabPage() {
             {error ? (
               <div className="field-lab-error-block">
                 <p>{error}</p>
-                <button className="ghost-button" type="button" onClick={reloadCatalog}>
+                <Button variant="raised" size="sm" onClick={reloadCatalog}>
                   Retry catalog
-                </button>
+                </Button>
               </div>
             ) : null}
             <div className="field-lab-mini-grid">
@@ -348,9 +353,9 @@ export function FieldLabPage() {
                 <span>{registry ? "Editorial ceiling stays explicit" : "Loading structure…"}</span>
               </div>
             </div>
-            <Link className="text-link" to="/field-lab">
+            <Button variant="link" asChild><Link to="/field-lab">
               Stay in the inspector
-            </Link>
+            </Link></Button>
           </article>
         </div>
       </section>

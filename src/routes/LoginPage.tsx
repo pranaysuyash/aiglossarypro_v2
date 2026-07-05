@@ -1,7 +1,11 @@
-import { SignIn } from "@clerk/clerk-react";
+import { Suspense, lazy } from "react";
 import { Link } from "react-router-dom";
 import { DirectionalTransition } from "../components/shared/DirectionalTransition";
 import { isClerkEnabled } from "../auth/config";
+
+const ClerkSignIn = isClerkEnabled
+  ? lazy(() => import("@clerk/clerk-react").then(m => ({ default: m.SignIn })))
+  : null;
 
 export function LoginPage() {
   if (!isClerkEnabled) {
@@ -29,9 +33,13 @@ export function LoginPage() {
         <h2>Sign in to turn your study memory into account-bound state.</h2>
         <p>Bookmarks, notes, annotations, exports, and paid access all anchor to your learner account.</p>
       </div>
-      <article className="summary-card">
-        <SignIn path="/login" routing="path" signUpUrl="/signup" forceRedirectUrl="/account" />
-      </article>
+      {ClerkSignIn ? (
+        <article className="summary-card">
+          <Suspense fallback={null}>
+            <ClerkSignIn path="/login" routing="path" signUpUrl="/signup" forceRedirectUrl="/account" />
+          </Suspense>
+        </article>
+      ) : null}
       <article className="subtle-note">
         <p>
           New here? <Link to="/signup">Create your member account</Link>.

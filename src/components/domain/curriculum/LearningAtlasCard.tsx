@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { loadPublishedCorpusManifest, type PublishedCorpusManifest } from "../../../content/publishedManifest";
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 
 function formatPercent(value: number) {
   return `${Math.round(value * 100)}%`;
@@ -38,21 +39,39 @@ export function LearningAtlasCard() {
         alive, visual, and easy to enter. This atlas keeps the corpus readable at a glance.
       </p>
       <div className="atlas-bar" aria-label="Structure layers">
-        <div
-          className="atlas-layer atlas-layer-runtime"
-          style={{ width: `${(runtime / totalStructure) * 100}%` }}
-          title={`Launch runtime: ${runtime} fields`}
-        />
-        <div
-          className="atlas-layer atlas-layer-editorial"
-          style={{ width: `${(editorial / totalStructure) * 100}%` }}
-          title={`Editorial expansion: ${editorial} fields`}
-        />
-        <div
-          className="atlas-layer atlas-layer-backlog"
-          style={{ width: `${(backlog / totalStructure) * 100}%` }}
-          title={`Backlog: ${backlog} fields`}
-        />
+        <TooltipProvider>
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <div
+                className="atlas-layer atlas-layer-runtime"
+                style={{ width: `${(runtime / totalStructure) * 100}%` }}
+              />
+            </TooltipTrigger>
+            <TooltipContent>{`Launch runtime: ${runtime} fields`}</TooltipContent>
+          </Tooltip>
+        </TooltipProvider>
+        <TooltipProvider>
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <div
+                className="atlas-layer atlas-layer-editorial"
+                style={{ width: `${(editorial / totalStructure) * 100}%` }}
+              />
+            </TooltipTrigger>
+            <TooltipContent>{`Editorial expansion: ${editorial} fields`}</TooltipContent>
+          </Tooltip>
+        </TooltipProvider>
+        <TooltipProvider>
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <div
+                className="atlas-layer atlas-layer-backlog"
+                style={{ width: `${(backlog / totalStructure) * 100}%` }}
+              />
+            </TooltipTrigger>
+            <TooltipContent>{`Backlog: ${backlog} fields`}</TooltipContent>
+          </Tooltip>
+        </TooltipProvider>
       </div>
       <div className="atlas-stats">
         <span>{manifest ? `${manifest.pathCount.toLocaleString()} paths` : "Paths"}</span>

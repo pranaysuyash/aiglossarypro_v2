@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom";
 import { useMemo } from "react";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 import { DirectionalTransition } from "../components/shared/DirectionalTransition";
 import { StudyRichText } from "../components/ai-elements/StudyRichText";
 import { useCatalog } from "../content/CatalogContext";
@@ -14,22 +16,22 @@ export function NotesPage() {
   const { terms, isLoading, error } = useCatalog();
   const { notes, isRemoteBacked, exportStudyData } = useStudy();
   const notebook = buildNotebookSummary(terms, notes);
-  const noteSlugs = useMemo(() => {
+  const { noteSlugs, notedTerms } = useMemo(() => {
     const slugs: string[] = [];
+    const slugSet = new Set<string>();
 
     for (const [slug, value] of Object.entries(notes)) {
       if (value.trim()) {
         slugs.push(slug);
+        slugSet.add(slug);
       }
     }
 
-    return slugs;
-  }, [notes]);
-  const noteSlugSet = useMemo(() => new Set(noteSlugs), [noteSlugs]);
-  const notedTerms = useMemo(
-    () => terms.filter((term) => noteSlugSet.has(term.slug)),
-    [noteSlugSet, terms],
-  );
+    return {
+      noteSlugs: slugs,
+      notedTerms: terms.filter((term) => slugSet.has(term.slug)),
+    };
+  }, [notes, terms]);
   const notebookTierBreakdown = buildEditorialTierBreakdown(terms, noteSlugs);
   const notebookInteractiveMix = buildInteractiveContentMix(terms, noteSlugs);
   const recentNotes = [...notebook.denseNotes].slice(0, 6);
@@ -56,27 +58,27 @@ export function NotesPage() {
           <p>
             Use this page like a study ledger, not a dumping ground. Keep only what helps you think better later.
           </p>
-          <div className="note-snippet-list">
-            <span>Average {notebook.averageWords} words</span>
-            <span>{isRemoteBacked ? "Account-backed" : "Browser-backed"}</span>
-            <span>{strongestNote ? `${strongestNote.wordCount}-word longest note` : "No notes yet"}</span>
+          <div className="flex flex-wrap gap-2">
+            <Badge variant="metric">Average {notebook.averageWords} words</Badge>
+            <Badge variant="metric">{isRemoteBacked ? "Account-backed" : "Browser-backed"}</Badge>
+            <Badge variant="metric">{strongestNote ? `${strongestNote.wordCount}-word longest note` : "No notes yet"}</Badge>
           </div>
-          <div className="path-row">
-            <span>{notebookTierBreakdown.featured} featured notes</span>
-            <span>{notebookTierBreakdown.standard} standard notes</span>
-            <span>{notebookTierBreakdown.sparse} sparse notes</span>
+          <div className="flex flex-wrap gap-2">
+            <Badge variant="chip">{notebookTierBreakdown.featured} featured notes</Badge>
+            <Badge variant="chip">{notebookTierBreakdown.standard} standard notes</Badge>
+            <Badge variant="chip">{notebookTierBreakdown.sparse} sparse notes</Badge>
           </div>
-          <div className="path-row">
-            <span>{notebookInteractiveMix.quizzes} quizzes</span>
-            <span>{notebookInteractiveMix.diagrams} diagrams</span>
-            <span>{notebookInteractiveMix.faqs} FAQs</span>
-            <span>{notebookInteractiveMix.comparisons} comparisons</span>
-            <span>{notebookInteractiveMix.deepDives} deep dives</span>
+          <div className="flex flex-wrap gap-2">
+            <Badge variant="chip">{notebookInteractiveMix.quizzes} quizzes</Badge>
+            <Badge variant="chip">{notebookInteractiveMix.diagrams} diagrams</Badge>
+            <Badge variant="chip">{notebookInteractiveMix.faqs} FAQs</Badge>
+            <Badge variant="chip">{notebookInteractiveMix.comparisons} comparisons</Badge>
+            <Badge variant="chip">{notebookInteractiveMix.deepDives} deep dives</Badge>
           </div>
-          <div className="path-row">
-            <span>Term packet ready</span>
-            <span>Path packet ready</span>
-            <span>Notebook export ready</span>
+          <div className="flex flex-wrap gap-2">
+            <Badge variant="chip">Term packet ready</Badge>
+            <Badge variant="chip">Path packet ready</Badge>
+            <Badge variant="chip">Notebook export ready</Badge>
           </div>
         </article>
         <article className="summary-card">
@@ -87,26 +89,22 @@ export function NotesPage() {
               ? `Your deepest note is already ${strongestNote.wordCount} words long. Revisit it when you want to sharpen the idea.`
               : "Open any term and write the first interpretation so the notebook has a memory to build on."}
           </p>
-          <div className="note-snippet-list">
+          <div className="flex flex-wrap gap-2">
             {notebook.denseNotes.length ? (
-              notebook.denseNotes.slice(0, 3).map((note) => <span key={note.slug}>{note.title}</span>)
+              notebook.denseNotes.slice(0, 3).map((note) => <Badge key={note.slug} variant="metric">{note.title}</Badge>)
             ) : (
-              <span>Write a note to start the study loop.</span>
+              <Badge variant="metric">Write a note to start the study loop.</Badge>
             )}
           </div>
           <div className="hero-actions">
-            <button
-              className="primary-button"
-              onClick={() => {
-                exportStudyData();
-              }}
-              type="button"
-            >
+            <Button variant="accent" size="md" onClick={() => {
+              exportStudyData();
+            }}>
               Export notebook
-            </button>
-            <Link className="ghost-button" to="/saved">
+            </Button>
+            <Button variant="raised" size="md" asChild><Link to="/saved">
               Review saved shelf
-            </Link>
+            </Link></Button>
           </div>
           <p className="term-metrics">
             The notebook export works alongside the term and path study packets, so the learner can carry the whole study system forward in JSON form.
@@ -137,21 +135,21 @@ export function NotesPage() {
         <div className="notes-column">
           <section className="note-preview-grid">
             {recentNotes.map(({ slug, title, excerpt, wordCount }) => (
-              <article key={slug} className="note-preview-card">
+              <article key={slug} className="note-preview-card" style={{ contentVisibility: "auto", containIntrinsicSize: "0 120px" }}>
                 <p className="showcase-label">Working note</p>
                 <h3>{title}</h3>
                 <p>{excerpt}</p>
-                <div className="path-row">
-                  <span>{wordCount} words</span>
+                <div className="flex flex-wrap gap-2">
+                  <Badge variant="chip">{wordCount} words</Badge>
                 </div>
-                <Link className="text-link" to={`/term/${slug}`}>
+                <Button variant="link" asChild><Link to={`/term/${slug}`}>
                   Open note
-                </Link>
+                </Link></Button>
               </article>
             ))}
           </section>
           {notedTerms.map((term) => (
-              <article key={term.slug} className="note-card">
+              <article key={term.slug} className="note-card" style={{ contentVisibility: "auto", containIntrinsicSize: "0 120px" }}>
                 <div className="term-card-header">
                   <div>
                     <p className="term-taxonomy">
@@ -159,9 +157,9 @@ export function NotesPage() {
                     </p>
                     <h3>{term.title}</h3>
                   </div>
-                  <Link className="ghost-button" to={`/term/${term.slug}`}>
+                   <Button variant="raised" size="md" asChild><Link to={`/term/${term.slug}`}>
                     Continue note
-                  </Link>
+                  </Link></Button>
                 </div>
                 <StudyRichText>{notes[term.slug]}</StudyRichText>
               </article>

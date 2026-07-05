@@ -1,3 +1,4 @@
+import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { TermBlockRenderer } from "./TermBlockRenderer";
 import type { TermExtraTab, TermExtraTabKey } from "../../../content/termBlockGroups";
 
@@ -18,25 +19,22 @@ export function TermExtrasTabs({
 
   return (
     <section className="term-extras" id="term-extras">
-      <div className="term-extras-tablist" role="tablist" aria-label="More on this term">
+      <Tabs value={activeTab.key} onValueChange={(value) => onSelect(value as TermExtraTabKey)}>
+        <TabsList aria-label="More on this term">
+          {tabs.map((tab) => (
+            <TabsTrigger key={tab.key} value={tab.key}>
+              {tab.label}
+            </TabsTrigger>
+          ))}
+        </TabsList>
         {tabs.map((tab) => (
-          <button
-            key={tab.key}
-            type="button"
-            role="tab"
-            aria-selected={tab.key === activeTab.key}
-            className={`term-extras-tab ${tab.key === activeTab.key ? "term-extras-tab-active" : ""}`}
-            onClick={() => onSelect(tab.key)}
-          >
-            {tab.label}
-          </button>
+          <TabsContent key={tab.key} value={tab.key}>
+            {tab.blocks.map((block) => (
+              <TermBlockRenderer key={block.id} block={block} />
+            ))}
+          </TabsContent>
         ))}
-      </div>
-      <div className="term-extras-panel" role="tabpanel">
-        {activeTab.blocks.map((block) => (
-          <TermBlockRenderer key={block.id} block={block} />
-        ))}
-      </div>
+      </Tabs>
     </section>
   );
 }

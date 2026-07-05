@@ -20,8 +20,8 @@ export const TermCard = memo(function TermCard({ term }: { term: TermSummary }) 
           <ViewTransition name={`term-title-${term.slug}`} share="text-morph" default="none">
             <h2>{term.title}</h2>
           </ViewTransition>
-          <div className="term-tier-row">
-            <Badge variant="outline">{term.metadata.editorialTier ?? "standard"}</Badge>
+          <div className="flex flex-wrap gap-2">
+            <Badge variant="tier">{term.metadata.editorialTier ?? "standard"}</Badge>
           </div>
         </div>
         <Button variant="raised" size="sm" onClick={() => void toggleBookmark(term.slug)}>
@@ -30,9 +30,8 @@ export const TermCard = memo(function TermCard({ term }: { term: TermSummary }) 
       </div>
       <p>{term.summary}</p>
       <div className="term-card-meta-row">
-        <span>{term.aliases.length} aliases</span>
-        <span>{term.metadata.studyFamily ?? "No family"}</span>
-        <span>Shard {term.artifact.shardId}</span>
+        {term.aliases.length ? <span>Also called {term.aliases[0]}</span> : null}
+        {term.metadata.studyFamily ? <span>{term.metadata.studyFamily}</span> : null}
       </div>
       <Button variant="link" asChild>
         <Link to={`/term/${term.slug}`}>Open term</Link>

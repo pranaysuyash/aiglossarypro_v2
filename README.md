@@ -66,6 +66,7 @@ The `tools/build_published_content.py` script accepts the following flags:
 - canonical repo root: `/Users/pranay/Projects/aiglossary_v2`
 - frontend dev server: `npm run dev`
 - local preview API stub: `npm run dev:api`
+- signed-in preview API stub for UI QA: `AIGLOSSARY_DEV_AUTH=1 npm run dev:api`
 - Worker API dev server: `npm run dev:worker`
 - Vite proxies `/api/*` to `http://127.0.0.1:8787`; during local UI work that port can be served by either the Worker dev server or the preview API stub
 - static plan copy remains renderable without the Worker, but account/auth/billing state is now treated as unavailable instead of silently downgraded

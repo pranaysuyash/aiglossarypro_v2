@@ -2,6 +2,8 @@ import http from "node:http";
 
 const port = 8787;
 const now = () => new Date().toISOString();
+const mockAuthenticated = process.env.AIGLOSSARY_DEV_AUTH === "1";
+const mockPremium = process.env.AIGLOSSARY_DEV_PREMIUM !== "0";
 
 function json(response, status, payload) {
   response.writeHead(status, {
@@ -44,15 +46,47 @@ const plans = {
   ],
 };
 
-const session = {
-  session: {
-    authenticated: false,
-    configured: false,
-    provider: "clerk",
-    user: null,
-    entitlements: [],
-  },
-};
+function buildSession() {
+  if (!mockAuthenticated) {
+    return {
+      session: {
+        authenticated: false,
+        configured: false,
+        provider: "clerk",
+        user: null,
+        entitlements: [],
+      },
+    };
+  }
+
+  const timestamp = now();
+  return {
+    session: {
+      authenticated: true,
+      configured: false,
+      provider: "clerk",
+      user: {
+        id: "dev-user-arjun",
+        email: "arjun.dev@example.test",
+        displayName: "Arjun",
+      },
+      entitlements: mockPremium
+        ? [
+            {
+              id: "dev-entitlement-pro-lifetime",
+              planFamily: "pro",
+              billingMode: "lifetime",
+              status: "active",
+              startsAt: null,
+              endsAt: null,
+              createdAt: timestamp,
+              updatedAt: timestamp,
+            },
+          ]
+        : [],
+    },
+  };
+}
 
 const health = {
   ok: true,
@@ -80,7 +114,7 @@ const server = http.createServer((request, response) => {
   }
 
   if (request.method === "GET" && url.pathname === "/api/auth/session") {
-    json(response, 200, session);
+    json(response, 200, buildSession());
     return;
   }
 
@@ -139,5 +173,6 @@ const server = http.createServer((request, response) => {
 });
 
 server.listen(port, "127.0.0.1", () => {
-  console.log(`AIGlossary dev API stub listening at http://127.0.0.1:${port}`);
+  const mode = mockAuthenticated ? `mock authenticated${mockPremium ? " Pro" : ""}` : "logged out";
+  console.log(`AIGlossary dev API stub listening at http://127.0.0.1:${port} (${mode})`);
 });

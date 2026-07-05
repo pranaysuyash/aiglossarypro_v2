@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { useCatalog } from "../../../content/CatalogContext";
 import { useStudy } from "../../../study/StudyContext";
+import { Button } from "@/components/ui/button";
 
 export function RecentActivityCard() {
   const { termMap } = useCatalog();
@@ -9,9 +10,14 @@ export function RecentActivityCard() {
   const lastOpenedTerm = lastOpenedTermSlug ? termMap.get(lastOpenedTermSlug) ?? null : null;
   const latestBookmarkSlug = bookmarks.length ? bookmarks[bookmarks.length - 1] : null;
   const latestBookmark = latestBookmarkSlug ? termMap.get(latestBookmarkSlug) ?? null : null;
-  const latestNoteSlug = Object.entries(notes)
-    .reverse()
-    .find(([, value]) => value.trim())?.[0] ?? null;
+  const noteKeys = Object.keys(notes);
+  let latestNoteSlug: string | null = null;
+  for (let i = noteKeys.length - 1; i >= 0; i--) {
+    if (notes[noteKeys[i]].trim()) {
+      latestNoteSlug = noteKeys[i];
+      break;
+    }
+  }
   const latestNote = latestNoteSlug ? termMap.get(latestNoteSlug) ?? null : null;
   const latestNoteSnippet = latestNoteSlug ? notes[latestNoteSlug].trim().replace(/\s+/g, " ") : "";
 
@@ -47,12 +53,14 @@ export function RecentActivityCard() {
         </div>
       </div>
       <div className="hero-actions">
-        <Link className="primary-button" to={lastOpenedTerm ? `/term/${lastOpenedTerm.slug}` : "/explore"}>
-          {lastOpenedTerm ? "Resume term" : "Start exploring"}
-        </Link>
-        <Link className="ghost-button" to="/notes">
-          Open notes
-        </Link>
+        <Button variant="accent" asChild>
+          <Link to={lastOpenedTerm ? `/term/${lastOpenedTerm.slug}` : "/explore"}>
+            {lastOpenedTerm ? "Resume term" : "Start exploring"}
+          </Link>
+        </Button>
+        <Button variant="raised" asChild>
+          <Link to="/notes">Open notes</Link>
+        </Button>
       </div>
     </article>
   );

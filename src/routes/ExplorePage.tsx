@@ -1,12 +1,15 @@
 import { Suspense, useDeferredValue, useMemo, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 import { ViewTransition } from "react";
 import { TermCard } from "../components/domain/term/TermCard";
 import { DirectionalTransition } from "../components/shared/DirectionalTransition";
 import { useCatalog } from "../content/CatalogContext";
 
 export function ExplorePage() {
-  const [query, setQuery] = useState("");
+  const [searchParams] = useSearchParams();
+  const [query, setQuery] = useState(() => searchParams.get("q") ?? "");
   const deferredQuery = useDeferredValue(query);
   const { terms, isLoading, error } = useCatalog();
 
@@ -156,9 +159,7 @@ export function ExplorePage() {
             {featuredConcepts.map((term) => (
               <article key={term.slug} className="featured-concept-card">
                 <div className="featured-concept-head">
-                  <span className={`term-tier term-tier-${term.metadata.editorialTier ?? "standard"}`}>
-                    {term.metadata.editorialTier ?? "standard"}
-                  </span>
+                  <Badge variant="tier">{term.metadata.editorialTier ?? "standard"}</Badge>
                   <p className="term-taxonomy">
                     {term.taxonomy.category} / {term.taxonomy.subCategory}
                   </p>
@@ -167,9 +168,9 @@ export function ExplorePage() {
                   <h3>{term.title}</h3>
                 </ViewTransition>
                 <p>{term.summary}</p>
-                <Link className="text-link" to={`/term/${term.slug}`}>
+                <Button variant="link" asChild><Link to={`/term/${term.slug}`}>
                   Open {term.title}
-                </Link>
+                </Link></Button>
               </article>
             ))}
           </div>
@@ -182,16 +183,16 @@ export function ExplorePage() {
               <p className="eyebrow">{shelf.label}</p>
               <h3>{shelf.count} terms in this family</h3>
               <p>{shelf.note}</p>
-              <div className="shelf-links">
+              <div className="flex flex-wrap gap-2">
                 {shelf.terms.map((term) => (
-                  <Link key={term.slug} className="text-link" to={`/term/${term.slug}`}>
+                  <Badge key={term.slug} variant="metric" asChild><Link to={`/term/${term.slug}`}>
                     {term.title}
-                  </Link>
+                  </Link></Badge>
                 ))}
               </div>
-              <Link className="text-link" to="/families" aria-label={`Browse families for ${shelf.label}`}>
+              <Button variant="link" asChild><Link to="/families" aria-label={`Browse families for ${shelf.label}`}>
                 Browse families
-              </Link>
+              </Link></Button>
             </article>
           ))}
         </section>
@@ -202,16 +203,16 @@ export function ExplorePage() {
             <article key={shelf.label} className="library-shelf-card">
               <p className="eyebrow">{shelf.label}</p>
               <h3>{shelf.note}</h3>
-              <div className="shelf-links">
+              <div className="flex flex-wrap gap-2">
                 {shelf.terms.map((term) => (
-                  <Link key={term.slug} className="text-link" to={`/term/${term.slug}`}>
+                  <Badge key={term.slug} variant="metric" asChild><Link to={`/term/${term.slug}`}>
                     {term.title}
-                  </Link>
+                  </Link></Badge>
                 ))}
               </div>
-              <Link className="text-link" to="/families" aria-label={`Browse families for ${shelf.label}`}>
+              <Button variant="link" asChild><Link to="/families" aria-label={`Browse families for ${shelf.label}`}>
                 Browse families
-              </Link>
+              </Link></Button>
             </article>
           ))}
         </section>

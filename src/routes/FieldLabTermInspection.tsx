@@ -1,5 +1,7 @@
 import { useDeferredValue, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 import { useCatalog } from "../content/CatalogContext";
 import type { TermSummary } from "../types";
 
@@ -104,53 +106,51 @@ export function FieldLabTermInspection({
               : "Showing the current corpus through a paged inspection surface instead of an endless render."}
         </p>
         {error ? (
-          <button className="ghost-button" type="button" onClick={reloadCatalog}>
+          <Button variant="raised" size="md" onClick={reloadCatalog}>
             Retry catalog
-          </button>
+          </Button>
         ) : null}
         <div className="field-lab-pagination">
-          <button
-            className="ghost-button"
-            type="button"
+          <Button
+            variant="raised"
+            size="md"
             onClick={() => setPageIndex((value) => Math.max(0, value - 1))}
             disabled={currentPage === 0}
           >
             Previous
-          </button>
+          </Button>
           <span>
             Page {currentPage + 1} of {totalPages}
           </span>
-          <button
-            className="ghost-button"
-            type="button"
+          <Button
+            variant="raised"
+            size="md"
             onClick={() => setPageIndex((value) => Math.min(totalPages - 1, value + 1))}
             disabled={currentPage >= totalPages - 1}
           >
             Next
-          </button>
+          </Button>
         </div>
       </article>
       <div className="field-lab-term-grid">
         {visibleTerms.map((term) => (
-          <article key={term.slug} className="field-lab-term-card">
+          <article key={term.slug} className="field-lab-term-card" style={{ contentVisibility: "auto", containIntrinsicSize: "0 200px" }}>
             <div className="field-lab-term-head">
-              <span className={`term-tier term-tier-${term.metadata.editorialTier ?? "standard"}`}>
-                {term.metadata.editorialTier ?? "standard"}
-              </span>
+              <Badge variant="tier">{term.metadata.editorialTier ?? "standard"}</Badge>
               <p className="term-taxonomy">
                 {term.taxonomy.category} / {term.taxonomy.subCategory}
               </p>
             </div>
             <h3>{term.title}</h3>
             <p>{term.summary}</p>
-            <div className="field-lab-chip-row">
-              <span>{term.aliases.length} aliases</span>
-              <span>{term.metadata.studyFamily || "No family"}</span>
-              <span>Shard {term.artifact.shardId}</span>
+            <div className="flex flex-wrap gap-2">
+              <Badge variant="chip">{term.aliases.length} aliases</Badge>
+              <Badge variant="chip">{term.metadata.studyFamily || "No family"}</Badge>
+              <Badge variant="chip">Shard {term.artifact.shardId}</Badge>
             </div>
-            <Link className="text-link" to={`/term/${term.slug}`}>
+            <Button variant="link" asChild><Link to={`/term/${term.slug}`}>
               Open {term.title}
-            </Link>
+            </Link></Button>
           </article>
         ))}
       </div>

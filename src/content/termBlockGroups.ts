@@ -11,11 +11,11 @@ export type TermExtraTab = {
 const EXTRA_TAB_ORDER: Array<{ key: TermExtraTabKey; label: string }> = [
   { key: "compare", label: "Compare" },
   { key: "quiz", label: "Quiz" },
-  { key: "diagram", label: "Diagram" },
-  { key: "faq", label: "FAQ" },
-  { key: "deep-dive", label: "Deep dive" },
-  { key: "curriculum", label: "Curriculum" },
-  { key: "reference", label: "Reference" },
+  { key: "diagram", label: "Visuals" },
+  { key: "faq", label: "Misconceptions" },
+  { key: "deep-dive", label: "Explanation" },
+  { key: "curriculum", label: "Examples" },
+  { key: "reference", label: "Notes" },
 ];
 
 const BLOCK_ID_TO_TAB: Record<string, TermExtraTabKey> = {

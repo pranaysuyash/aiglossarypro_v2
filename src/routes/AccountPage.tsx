@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Badge } from "@/components/ui/badge";
 import { DirectionalTransition } from "../components/shared/DirectionalTransition";
 import { loadPublishedCorpusManifest, type PublishedCorpusManifest } from "../content/publishedManifest";
 import { useAppState } from "../platform/AppContext";
@@ -77,17 +78,17 @@ export function AccountPage() {
             </p>
             {session?.user ? <p>Signed in as {session.user.email}.</p> : null}
             {capabilities ? (
-              <div className="shelf-links">
-                <span>{capabilities.clerkConfigured ? "Auth ready" : "Auth pending"}</span>
-                <span>{capabilities.d1Configured ? "D1 ready" : "D1 pending"}</span>
-                <span>{capabilities.dodoBillingConfigured ? "Dodo ready" : "Dodo pending"}</span>
+              <div className="flex flex-wrap gap-2">
+                <Badge variant="metric">{capabilities.clerkConfigured ? "Auth ready" : "Auth pending"}</Badge>
+                <Badge variant="metric">{capabilities.d1Configured ? "D1 ready" : "D1 pending"}</Badge>
+                <Badge variant="metric">{capabilities.dodoBillingConfigured ? "Dodo ready" : "Dodo pending"}</Badge>
               </div>
             ) : null}
-            <div className="note-snippet-list">
+            <div className="flex flex-wrap gap-2">
               {accountSignals.map((signal) => (
-                <span key={signal.label}>
+                <Badge key={signal.label} variant="metric" style={{ contentVisibility: "auto", containIntrinsicSize: "0 80px" }}>
                   {signal.label}: {signal.value}
-                </span>
+                </Badge>
               ))}
             </div>
           </article>
@@ -97,11 +98,11 @@ export function AccountPage() {
             <p>
               Membership value grows when the notebook, annotations, exports, and entitlements stay attached to the learner account.
             </p>
-            <div className="path-row">
-              <span>Bookmarks</span>
-              <span>Notes</span>
-              <span>Exports</span>
-              <span>Share links</span>
+            <div className="flex flex-wrap gap-2">
+              <Badge variant="chip">Bookmarks</Badge>
+              <Badge variant="chip">Notes</Badge>
+              <Badge variant="chip">Exports</Badge>
+              <Badge variant="chip">Share links</Badge>
             </div>
           </article>
         </section>
@@ -142,12 +143,12 @@ export function AccountPage() {
           <p>
             Membership protects the full corpus, but the best terms get extra editorial depth so the library feels curated instead of flat.
           </p>
-            <div className="shelf-links">
-              <span>{manifest ? `${manifest.contentTierCounts.standard ?? 0} standard terms` : "Standard terms"}</span>
-              <span>{manifest ? `${manifest.contentTierCounts.sparse ?? 0} sparse long-tail terms` : "Sparse long tail"}</span>
-              <span>{manifest ? `${manifest.coverage.blockCoverage["study-prompts"]} study prompts` : "Study prompts"}</span>
-              <span>{manifest ? `${quickQuizCount} quick quizzes` : "Quick quizzes"}</span>
-              <span>{manifest ? `${deepDiveCount} featured deep dives` : "Featured deep dives"}</span>
+            <div className="flex flex-wrap gap-2">
+              <Badge variant="metric">{manifest ? `${manifest.contentTierCounts.standard ?? 0} standard terms` : "Standard terms"}</Badge>
+              <Badge variant="metric">{manifest ? `${manifest.contentTierCounts.sparse ?? 0} sparse long-tail terms` : "Sparse long tail"}</Badge>
+              <Badge variant="metric">{manifest ? `${manifest.coverage.blockCoverage["study-prompts"]} study prompts` : "Study prompts"}</Badge>
+              <Badge variant="metric">{manifest ? `${quickQuizCount} quick quizzes` : "Quick quizzes"}</Badge>
+              <Badge variant="metric">{manifest ? `${deepDiveCount} featured deep dives` : "Featured deep dives"}</Badge>
             </div>
           </article>
         <article className="summary-card">
@@ -156,10 +157,10 @@ export function AccountPage() {
           <p>
             The subscription plan fits active learners who want ongoing updates; the lifetime plan fits people who want permanent access without recurring billing.
           </p>
-          <div className="path-row">
-            <span>Subscription</span>
-            <span>Lifetime</span>
-            <span>No free tier</span>
+          <div className="flex flex-wrap gap-2">
+            <Badge variant="chip">Subscription</Badge>
+            <Badge variant="chip">Lifetime</Badge>
+            <Badge variant="chip">No free tier</Badge>
           </div>
         </article>
       </section>

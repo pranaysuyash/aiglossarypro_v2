@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom";
 import { useMemo } from "react";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 import { ViewTransition } from "react";
 import { DirectionalTransition } from "../components/shared/DirectionalTransition";
 import { useCatalog } from "../content/CatalogContext";
@@ -58,16 +60,16 @@ export function FamiliesPage() {
             Use this page to find the family that fits what you are learning right now, then move
             into the term pages, compare blocks, and deep dives.
           </p>
-          <div className="shelf-links">
-            <Link className="text-link" to="/explore">
+          <div className="flex flex-wrap gap-2">
+            <Badge variant="metric" asChild><Link to="/explore">
               Open the library
-            </Link>
-            <Link className="text-link" to="/paths">
+            </Link></Badge>
+            <Badge variant="metric" asChild><Link to="/paths">
               Browse paths
-            </Link>
-            <Link className="text-link" to="/pricing">
+            </Link></Badge>
+            <Badge variant="metric" asChild><Link to="/pricing">
               Review membership
-            </Link>
+            </Link></Badge>
           </div>
           <div className="family-compass" aria-label="Top study lanes">
             {compassLanes.map((lane) => (
@@ -105,14 +107,14 @@ export function FamiliesPage() {
       {!isLoading && !error ? (
         <section className="family-grid">
           {familyCards.map((family) => (
-            <article key={family.title} className="family-card">
+            <article key={family.title} className="family-card" style={{ contentVisibility: "auto", containIntrinsicSize: "0 150px" }}>
               <ViewTransition name={`family-title-${familySlug(family.title)}`} share="text-morph" default="none">
                 <div className="family-card-head">
                   <p className="showcase-label">{family.title}</p>
-                <div className="term-tier-row">
-                  <span className="term-tier term-tier-featured">{family.featuredCount} featured</span>
-                  <span className="term-tier term-tier-standard">{family.count} total terms</span>
-                  <span className="term-tier term-tier-featured">{family.laneTermCount} matching paths</span>
+                <div className="flex flex-wrap gap-2">
+                  <Badge variant="tier">{family.featuredCount} featured</Badge>
+                  <Badge variant="tier">{family.count} total terms</Badge>
+                  <Badge variant="tier">{family.laneTermCount} matching paths</Badge>
                 </div>
                 </div>
               </ViewTransition>
@@ -129,34 +131,34 @@ export function FamiliesPage() {
               {family.featuredLaneTerms.length ? (
                 <div className="family-lane-preview">
                   <p className="showcase-label">Starter terms in this family</p>
-                  <div className="family-lane-chip-row">
+                  <div className="flex flex-wrap gap-2">
                     {family.featuredLaneTerms.map((term) => (
-                      <Link key={term.slug} className="text-link" to={`/term/${term.slug}`}>
-                        {term.title}
-                      </Link>
+                    <Badge key={term.slug} variant="chip" asChild><Link to={`/term/${term.slug}`}>
+                      {term.title}
+                    </Link></Badge>
                     ))}
                   </div>
                 </div>
               ) : null}
-              <div className="shelf-links">
+              <div className="flex flex-wrap gap-2">
                 {family.terms.map((term) => (
-                  <Link key={term.slug} className="text-link" to={`/term/${term.slug}`}>
+                  <Badge key={term.slug} variant="metric" asChild><Link to={`/term/${term.slug}`}>
                     {term.title}
-                  </Link>
+                  </Link></Badge>
                 ))}
               </div>
-              <Link className="text-link" to={`/families/${familySlug(family.title)}`}>
+              <Button variant="link" asChild><Link to={`/families/${familySlug(family.title)}`}>
                 Open family lane
-              </Link>
+              </Link></Button>
               {family.starterTerm ? (
-                <Link className="primary-button" to={`/term/${family.starterTerm.slug}`}>
+                <Button variant="accent" size="md" asChild><Link to={`/term/${family.starterTerm.slug}`}>
                   Open flagship term
-                </Link>
+                </Link></Button>
               ) : null}
               {family.starterPath ? (
-                <Link className="ghost-button" to={`/paths/${family.starterPath.slug}`}>
+                <Button variant="raised" size="md" asChild><Link to={`/paths/${family.starterPath.slug}`}>
                   Start with a path
-                </Link>
+                </Link></Button>
               ) : null}
             </article>
           ))}
